@@ -1,3 +1,12 @@
+const breakpoints = {
+  xs: 420,
+  s: 576,
+  md: 800,
+  lg: 992,
+  xl: 1200,
+  xxl: 1400,
+};
+
 export const theme = {
   fonts: {
     mainFont: `'Poppins', sans-serif`,
@@ -36,4 +45,8 @@ export const theme = {
     xxl: "4.8rem",
     xxxl: "8.6rem",
   },
-}
+  mq: Object.keys(breakpoints).reduce((acc, breakpoint) => {
+    acc[breakpoint] = `@media (min-width: ${breakpoints[breakpoint]}px)`;
+    return acc;
+  }, {}),
+};

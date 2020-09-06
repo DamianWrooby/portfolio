@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components"
-import reset from "styled-reset"
+import { createGlobalStyle } from "styled-components";
+import reset from "styled-reset";
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -32,11 +32,11 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     color: ${({ theme }) => theme.dark};
-    background: ${({ theme }) => theme.white};
+    background: ${({ theme }) => theme.dark200};
     font-family: ${({ theme }) => theme.fonts.mainFont};
     font-size: 1.6rem;
     overflow-x: hidden;
   }
-`
+`;
 
-export default GlobalStyle
+export default GlobalStyle;
