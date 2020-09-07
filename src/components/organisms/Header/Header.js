@@ -19,16 +19,46 @@ const Wrapper = styled.header`
 
 const Title = styled.h1`
   font-family: ${({ theme }) => theme.fonts.mainFont};
-  font-size: ${({ theme }) => theme.fontSize.xl};
+  font-size: ${({ theme }) => theme.fontSize.xxxl};
+  font-weight: 700;
   margin-left: 240px;
   color: white;
+  z-index: 3;
+`;
+
+const SecondTitle = styled.p`
+  position: absolute;
+  top: 34vh;
+  left: 39vw;
+  font-family: ${({ theme }) => theme.fonts.mainFont};
+  font-size: ${({ theme }) => theme.fontSize.xxl};
+  font-weight: 700;
+  color: white;
+  z-index: 3;
+`;
+
+const SecondSubtitle = styled.p`
+  position: absolute;
+  top: 42vh;
+  left: 20vw;
+  font-family: ${({ theme }) => theme.fonts.mainFont};
+  font-size: ${({ theme }) => theme.fontSize.xxl};
+  font-weight: 700;
+  margin-left: 240px;
+  color: white;
+  z-index: 3;
+`;
+
+const ColorSpan = styled.span`
+  color: ${({ theme }) => theme.blue};
 `;
 
 const Subtitle = styled.h2`
   font-family: ${({ theme }) => theme.fonts.mainFont};
-  font-size: ${({ theme }) => theme.fontSize.lg};
-  margin-left: 150px;
+  font-size: ${({ theme }) => theme.fontSize.xxl};
+  margin-left: 250px;
   color: white;
+  z-index: 3;
 `;
 
 const StickyBackground = styled.div`
@@ -65,6 +95,8 @@ const Header = () => {
   const topLayerBgRef = useRef(null);
   const titleRef = useRef(null);
   const subtitleRef = useRef(null);
+  const secondTitleRef = useRef(null);
+  const secondSubtitleRef = useRef(null);
   const wrapperRef = useRef(null);
 
   useEffect(() => {
@@ -72,15 +104,25 @@ const Header = () => {
     const topLayerBg = topLayerBgRef.current;
     const title = titleRef.current;
     const subtitle = subtitleRef.current;
+    const secondTitle = secondTitleRef.current;
+    const secondSubtitle = secondSubtitleRef.current;
     const wrapper = wrapperRef.current;
 
     gsap.set([topLayer, title, subtitle], { autoAlpha: 0 });
     const tl = gsap.timeline({ defaults: { ease: "power3.inOut" } });
-    const tl2 = gsap.timeline({
-      paused: true,
-    });
+    const tl2 = gsap.timeline({ paused: true });
 
     const controller = new ScrollMagic.Controller();
+
+    tl.fromTo(
+      title,
+      { y: "-=200" },
+      { duration: 1, y: "+=200", autoAlpha: 1 }
+    ).fromTo(
+      subtitle,
+      { x: "-=100" },
+      { duration: 1, x: "+=100", autoAlpha: 1 }
+    );
 
     tl2
       .fromTo(
@@ -90,8 +132,56 @@ const Header = () => {
         },
         {
           duration: 3,
+          ease: "power4.in",
           autoAlpha: 1,
         }
+      )
+      .to(
+        [title, subtitle],
+        {
+          duration: 1,
+          y: -100,
+          autoAlpha: 0,
+        },
+        "-=3"
+      )
+      .fromTo(
+        secondTitle,
+        {
+          autoAlpha: 0,
+          y: "+=200",
+        },
+        {
+          duration: 2,
+          y: "-=200",
+          ease: "power1.in",
+          autoAlpha: 1,
+        },
+        "-=3"
+      )
+      .fromTo(
+        secondSubtitle,
+        {
+          y: "+=200",
+        },
+        {
+          duration: 2,
+          y: "-=200",
+          ease: "power1.in",
+        },
+        "-=2"
+      )
+      .fromTo(
+        secondSubtitle,
+        {
+          autoAlpha: 0,
+        },
+        {
+          duration: 2,
+          ease: "power4.in",
+          autoAlpha: 1,
+        },
+        "-=2"
       )
       .fromTo(
         topLayerBg,
@@ -104,36 +194,34 @@ const Header = () => {
         }
       );
 
-    tl.fromTo(
-      title,
-      { y: "-=200" },
-      { duration: 1, y: "+=200", autoAlpha: 1 }
-    ).fromTo(
-      subtitle,
-      { x: "-=100" },
-      { duration: 1, x: "+=100", autoAlpha: 1 }
-    );
-
     const scene = new ScrollMagic.Scene({
-      triggerElement: "#wrapper",
+      triggerElement: wrapper,
       duration: 1000,
       triggerHook: 0,
     })
       .addIndicators()
       .addTo(controller)
       .setTween(tl2.resume())
-      .setPin("#wrapper");
+      .setPin(wrapper);
 
     console.log(scene);
   });
 
   return (
-    <Wrapper id="wrapper" ref={wrapperRef}>
+    <Wrapper ref={wrapperRef}>
       <StickyBackground>
         <TopLayerImg ref={topLayerRef} />
         <TopLayerBg ref={topLayerBgRef} />
-        <Title ref={titleRef}>Hi, I am Damian Wróblewski</Title>
+        <Title ref={titleRef}>
+          Hi, I am <ColorSpan>Damian</ColorSpan>
+        </Title>
         <Subtitle ref={subtitleRef}>I am front-end web developer</Subtitle>
+        <SecondTitle ref={secondTitleRef}>
+          I will turn your <ColorSpan>ideas</ColorSpan>
+        </SecondTitle>
+        <SecondSubtitle ref={secondSubtitleRef}>
+          Into clean and effective <ColorSpan>code</ColorSpan>
+        </SecondSubtitle>
       </StickyBackground>
     </Wrapper>
   );

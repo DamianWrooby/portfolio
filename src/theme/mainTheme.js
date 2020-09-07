@@ -9,8 +9,8 @@ const breakpoints = {
 
 export const theme = {
   fonts: {
-    mainFont: `'Poppins', sans-serif`,
-    subFont: `'Kalam', cursive`,
+    mainFont: `'Sarala', sans-serif`,
+    subFont: `'Timmana', sans-serif`,
   },
   white: "hsl(0, 0%, 100%)",
   gray: "hsl(0, 0%, 72%)",
@@ -22,10 +22,10 @@ export const theme = {
   dark150: "hsl(251, 12%, 30%)",
   dark200: "hsl(246, 15%, 25%)",
   darkGradient: "linear-gradient(45deg, #25232a 0%, #3c3a4e 100%)",
-  green: "hsl(128, 50%, 56%)",
+  green: "#00C6BC",
   red: "hsla(348, 100%, 63%)",
   red100: "hsla(348, 100%, 63%, 0.8)",
-  blue: "hsl(208, 63%, 57%)",
+  blue: "#2393FA",
   blue50: "hsl(208, 73%, 63%)",
   blue100: "hsl(208, 100%, 74%)",
   blueGradient: "linear-gradient(45deg, #4c96d6 0%, #abd8ff 100%)",
