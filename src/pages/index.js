@@ -6,7 +6,7 @@ import Header from "../components/organisms/Header/Header";
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    {/* <Navigation /> */}
+    <Navigation />
     <Header />
     {/* <main>
       Main content

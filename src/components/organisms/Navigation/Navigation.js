@@ -1,19 +1,13 @@
+import React from "react";
+import { Link } from "gatsby";
+import styled, { css } from "styled-components";
+import Content from "components/atoms/Content/Content";
+import Links from "components/organisms/Navigation/Links";
+// import MobileNav from 'components/organisms/Navigation/MobileNav';
+// import Logo from 'components/atoms/Logo/Logo';
+import SEO from "components/atoms/SEO/SEO";
 
-  
-import React from 'react';
-import { Link } from 'gatsby';
-import styled, { css } from 'styled-components';
-import Content from 'components/atoms/Content/Content';
-import Links from 'components/organisms/Navigation/Links';
-import Fullnav from 'components/organisms/Navigation/Fullnav';
-import Logo from 'components/atoms/Logo/Logo';
-import SEO from 'components/atoms/SEO/SEO';
-
-interface Props {
-  readonly isActive: boolean;
-}
-
-const Wrapper = styled.nav<Props>`
+const Wrapper = styled.nav`
   position: absolute;
   top: 0;
   left: 0;
@@ -58,7 +52,6 @@ const List = styled.ul`
 `;
 
 const Navigation = () => {
-
   return (
     <>
       <Wrapper isActive={!isTransparent}>
@@ -71,7 +64,7 @@ const Navigation = () => {
               <Links />
             </List>
           </InnerWrapper>
-          <Fullnav />
+          {/* <MobileNav /> */}
         </Content>
       </Wrapper>
     </>
