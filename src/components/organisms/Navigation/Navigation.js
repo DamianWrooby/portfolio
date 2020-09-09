@@ -1,14 +1,13 @@
 import React from "react";
 import { Link } from "gatsby";
-import styled, { css } from "styled-components";
-import Content from "components/atoms/Content/Content";
-import Links from "components/organisms/Navigation/Links";
+import styled from "styled-components";
+import Content from "../../atoms/Content/Content";
+import Links from "../../organisms/Navigation/Links";
 // import MobileNav from 'components/organisms/Navigation/MobileNav';
 // import Logo from 'components/atoms/Logo/Logo';
-import SEO from "components/atoms/SEO/SEO";
 
 const Wrapper = styled.nav`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -17,15 +16,6 @@ const Wrapper = styled.nav`
   box-shadow: none;
   background-color: transparent;
   transition: 0.3s;
-  ${({ theme }) => theme.mq.md} {
-    position: fixed;
-    ${({ isActive }) =>
-      isActive &&
-      css`
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        background-color: ${({ theme }) => theme.dark100};
-      `}
-  }
 `;
 
 const LogoWrapper = styled(Link)`
@@ -38,7 +28,7 @@ const InnerWrapper = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   color: ${({ theme }) => theme.white};
 `;
 
@@ -46,21 +36,22 @@ const List = styled.ul`
   display: none;
   align-items: center;
   opacity: 0;
-  ${({ theme }) => theme.mq.md} {
+  ${({ theme }) => theme.mq.xs} {
     display: flex;
+    opacity: 1;
   }
 `;
 
 const Navigation = () => {
   return (
     <>
-      <Wrapper isActive={!isTransparent}>
+      <Wrapper>
         <Content>
           <InnerWrapper>
             {/* <LogoWrapper to="/">
               <Logo />
             </LogoWrapper> */}
-            <List ref={listRef}>
+            <List>
               <Links />
             </List>
           </InnerWrapper>

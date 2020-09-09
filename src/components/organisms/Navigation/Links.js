@@ -1,110 +1,51 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled, { css } from "styled-components";
-import { NavigationContext } from "contexts/NavigationContext";
+
 import { Link } from "react-scroll";
-import useMedia from "hooks/useMedia";
 
 const ListItem = styled.li`
   position: relative;
   margin-left: 35px;
+  color: ${({ theme }) => theme.gray};
   font-weight: ${({ theme }) => theme.medium};
   &:hover {
-    color: ${({ theme }) => theme.blue100};
+    color: ${({ theme }) => theme.white};
+  }
+  ${({ theme }) => theme.mq.s} {
+    font-size: ${({ theme }) => theme.fontSize.xs};
     &:after {
-      transform: scaleX(1);
+      width: 150px;
     }
   }
-  &:after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -10px;
-    width: 30px;
-    height: 2px;
-    background-color: ${({ theme }) => theme.blue100};
-    transition: 0.3s;
-    transform: scaleX(0);
-    transform-origin: 0 50%;
-  }
-  ${({ isActive }) =>
-    isActive &&
-    css`
-      color: ${({ theme }) => theme.blue100};
-      &:after {
-        transform: scaleX(1);
-      }
-    `}
-  ${({ big, isActive }) =>
-    big &&
-    css`
-      margin: 20px 0;
-      color: ${({ theme }) => theme.white};
-      font-size: ${({ theme }) => theme.fontSize.xl};
-      &:hover {
-        color: ${({ theme }) => theme.white};
-      }
-      &:after {
-        transform: ${isActive ? "scaleX(1)" : "scaleX(0.3)"};
-        bottom: -15px;
-        width: 100px;
-        height: 4px;
-        border-radius: 100px;
-        background-color: ${({ theme }) => theme.white};
-      }
-      ${({ theme }) => theme.mq.s} {
-        font-size: ${({ theme }) => theme.fontSize.xxl};
-        &:after {
-          width: 150px;
-        }
-      }
-    `}
 `;
 
 const StyledLink = styled(Link)`
   color: inherit;
   text-decoration: none;
-  transition: 0.3s;
+  transition: 0.2s;
   cursor: pointer;
 `;
 
-const Links = ({ big }: Props) => {
-  const { activeLink } = useContext(NavigationContext);
-  const matches = useMedia("(min-width: 800px)");
-
+const Links = () => {
   return (
     <>
-      <ListItem big={big || false} isActive={activeLink === "home"}>
-        <StyledLink duration={800} smooth={matches} to="home">
+      <ListItem>
+        <StyledLink duration={800} smooth={true} to="home">
           Home
         </StyledLink>
       </ListItem>
-      <ListItem big={big || false} isActive={activeLink === "technologies"}>
-        <StyledLink
-          duration={800}
-          offset={matches ? -130 : -50}
-          smooth={matches}
-          to="technologies"
-        >
+      <ListItem>
+        <StyledLink duration={800} smooth={true} to="technologies">
           Technologies
         </StyledLink>
       </ListItem>
-      <ListItem big={big || false} isActive={activeLink === "projects"}>
-        <StyledLink
-          duration={800}
-          offset={matches ? -130 : -50}
-          smooth={matches}
-          to="projects"
-        >
+      <ListItem>
+        <StyledLink duration={800} smooth={true} to="projects">
           Projects
         </StyledLink>
       </ListItem>
-      <ListItem big={big || false} isActive={activeLink === "contact"}>
-        <StyledLink
-          duration={800}
-          offset={matches ? -130 : -50}
-          smooth={matches}
-          to="contact"
-        >
+      <ListItem>
+        <StyledLink duration={800} smooth={true} to="contact">
           Contact
         </StyledLink>
       </ListItem>

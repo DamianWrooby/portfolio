@@ -7,7 +7,7 @@ const Content = styled.div`
   max-width: 1440px;
   padding: 0 10px;
   ${({ theme }) => theme.mq.xs} {
-    padding: 0 20px;
+    padding: 0 45px;
   }
 `;
 

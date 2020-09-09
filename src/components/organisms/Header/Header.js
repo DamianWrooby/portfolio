@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
 import ScrollMagic from "scrollmagic";
+import { Element } from "react-scroll";
 import styled from "styled-components";
 import headerBackground from "../../../images/header-background.jpg";
 import topLayerImg from "../../../images/header-top-layer.png";
@@ -203,27 +204,27 @@ const Header = () => {
       .addTo(controller)
       .setTween(tl2.resume())
       .setPin(wrapper);
-
-    console.log(scene);
   });
 
   return (
-    <Wrapper ref={wrapperRef}>
-      <StickyBackground>
-        <TopLayerImg ref={topLayerRef} />
-        <TopLayerBg ref={topLayerBgRef} />
-        <Title ref={titleRef}>
-          Hi, I am <ColorSpan>Damian</ColorSpan>
-        </Title>
-        <Subtitle ref={subtitleRef}>I am front-end web developer</Subtitle>
-        <SecondTitle ref={secondTitleRef}>
-          I will turn your <ColorSpan>ideas</ColorSpan>
-        </SecondTitle>
-        <SecondSubtitle ref={secondSubtitleRef}>
-          Into clean and effective <ColorSpan>code</ColorSpan>
-        </SecondSubtitle>
-      </StickyBackground>
-    </Wrapper>
+    <Element name="home">
+      <Wrapper ref={wrapperRef}>
+        <StickyBackground>
+          <TopLayerImg ref={topLayerRef} />
+          <TopLayerBg ref={topLayerBgRef} />
+          <Title ref={titleRef}>
+            Hi, I am <ColorSpan>Damian</ColorSpan>
+          </Title>
+          <Subtitle ref={subtitleRef}>I am front-end web developer</Subtitle>
+          <SecondTitle ref={secondTitleRef}>
+            I will turn your <ColorSpan>ideas</ColorSpan>
+          </SecondTitle>
+          <SecondSubtitle ref={secondSubtitleRef}>
+            Into clean and effective <ColorSpan>code</ColorSpan>
+          </SecondSubtitle>
+        </StickyBackground>
+      </Wrapper>
+    </Element>
   );
 };
 
