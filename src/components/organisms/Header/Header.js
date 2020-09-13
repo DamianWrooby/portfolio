@@ -3,7 +3,7 @@ import gsap from "gsap";
 import ScrollMagic from "scrollmagic";
 import { Element } from "react-scroll";
 import styled from "styled-components";
-import realFace from "../../../images/header-0.jpg";
+import realFace from "../../../images/first-layer.png";
 import robotFace from "../../../images/header-1.png";
 import codePattern from "../../../images/code-pattern.jpg";
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap";
@@ -256,9 +256,9 @@ const Header = () => {
           <SecondLayerBg ref={secondLayerBgRef} />
           <HeaderBackground />
           <Title ref={titleRef}>
-            Hi, I am <ColorSpan>Damian</ColorSpan>
+            Hi, I'm <ColorSpan>Damian</ColorSpan>
           </Title>
-          <Subtitle ref={subtitleRef}>I am front-end web developer</Subtitle>
+          <Subtitle ref={subtitleRef}>I'm a front-end web developer</Subtitle>
           <SecondTitle ref={secondTitleRef}>
             I will turn your <ColorSpan>ideas</ColorSpan>
           </SecondTitle>
