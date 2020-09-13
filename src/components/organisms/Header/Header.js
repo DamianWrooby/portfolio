@@ -3,8 +3,9 @@ import gsap from "gsap";
 import ScrollMagic from "scrollmagic";
 import { Element } from "react-scroll";
 import styled from "styled-components";
-import headerBackground from "../../../images/header-background.jpg";
-import topLayerImg from "../../../images/header-top-layer.png";
+import realFace from "../../../images/header-0.jpg";
+import robotFace from "../../../images/header-1.png";
+import codePattern from "../../../images/code-pattern.jpg";
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap";
 
 ScrollMagicPluginGsap(ScrollMagic, gsap);
@@ -13,9 +14,6 @@ const Wrapper = styled.header`
   position: relative;
   width: 100%;
   padding: 0;
-  @media (min-height: 620px) {
-    ${"" /* height: 100vh; */}
-  }
 `;
 
 const Title = styled.h1`
@@ -29,7 +27,7 @@ const Title = styled.h1`
 
 const SecondTitle = styled.p`
   position: absolute;
-  top: 34vh;
+  top: 39vh;
   left: 39vw;
   font-family: ${({ theme }) => theme.fonts.mainFont};
   font-size: ${({ theme }) => theme.fontSize.xxl};
@@ -40,7 +38,7 @@ const SecondTitle = styled.p`
 
 const SecondSubtitle = styled.p`
   position: absolute;
-  top: 42vh;
+  top: 47vh;
   left: 20vw;
   font-family: ${({ theme }) => theme.fonts.mainFont};
   font-size: ${({ theme }) => theme.fontSize.xxl};
@@ -51,7 +49,7 @@ const SecondSubtitle = styled.p`
 `;
 
 const ColorSpan = styled.span`
-  color: ${({ theme }) => theme.blue};
+  color: ${({ theme }) => theme.neonBlue};
 `;
 
 const Subtitle = styled.h2`
@@ -62,58 +60,87 @@ const Subtitle = styled.h2`
   z-index: 3;
 `;
 
-const StickyBackground = styled.div`
+const Container = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background: url(${headerBackground}) no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
+  z-index: 1;
 `;
-const TopLayerImg = styled.div`
+const FirsLayerImg = styled.div`
   position: absolute;
   width: 100%;
   height: 100vh;
-  background: url(${topLayerImg}) no-repeat;
-  background-size: cover;
+  background: url(${realFace}) no-repeat;
+  background-size: contain;
   background-attachment: fixed;
-  z-index: 3;
+  z-index: 1;
 `;
 
-const TopLayerBg = styled.div`
+const SecondLayerImg = styled.div`
   position: absolute;
   width: 100%;
   height: 100vh;
-  background: #000;
+  background: url(${robotFace}) no-repeat;
+  background-size: contain;
+  background-attachment: fixed;
   z-index: 2;
 `;
 
+const SecondLayerBg = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  background: url(${codePattern}) no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  z-index: 1;
+`;
+
+const HeaderBackground = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  background: ${({ theme }) => theme.darkBlue};
+  z-index: -1;
+`;
+
 const Header = () => {
-  const topLayerRef = useRef(null);
-  const topLayerBgRef = useRef(null);
+  const firstLayerRef = useRef(null);
+  const secondLayerRef = useRef(null);
+  const secondLayerBgRef = useRef(null);
   const titleRef = useRef(null);
   const subtitleRef = useRef(null);
   const secondTitleRef = useRef(null);
   const secondSubtitleRef = useRef(null);
   const wrapperRef = useRef(null);
 
+  const setOverflow = () => {
+    document.body.style.overflow = "auto";
+  };
+
+  const controller = new ScrollMagic.Controller();
+
   useEffect(() => {
-    const topLayer = topLayerRef.current;
-    const topLayerBg = topLayerBgRef.current;
+    const wrapper = wrapperRef.current;
+    const firstLayer = firstLayerRef.current;
+    const secondLayer = secondLayerRef.current;
+    const secondLayerBg = secondLayerBgRef.current;
     const title = titleRef.current;
     const subtitle = subtitleRef.current;
     const secondTitle = secondTitleRef.current;
     const secondSubtitle = secondSubtitleRef.current;
-    const wrapper = wrapperRef.current;
 
-    gsap.set([topLayer, title, subtitle], { autoAlpha: 0 });
-    const tl = gsap.timeline({ defaults: { ease: "power3.inOut" } });
+    document.body.style.overflow = "hidden";
+
+    gsap.set([secondLayer, title, subtitle], { autoAlpha: 0 });
+    const tl = gsap.timeline({
+      onComplete: setOverflow,
+      defaults: { ease: "power3.inOut" },
+    });
     const tl2 = gsap.timeline({ paused: true });
-
-    const controller = new ScrollMagic.Controller();
 
     tl.fromTo(
       title,
@@ -127,7 +154,7 @@ const Header = () => {
 
     tl2
       .fromTo(
-        topLayer,
+        secondLayer,
         {
           autoAlpha: 0,
         },
@@ -185,14 +212,28 @@ const Header = () => {
         "-=2"
       )
       .fromTo(
-        topLayerBg,
+        firstLayer,
+        {
+          autoAlpha: 1,
+        },
+        {
+          duration: 2,
+          ease: "power4.in",
+          autoAlpha: 0,
+        },
+        "-=2"
+      )
+      .fromTo(
+        secondLayerBg,
         {
           autoAlpha: 0,
         },
         {
-          duration: 3,
-          autoAlpha: 1,
-        }
+          duration: 1,
+          ease: "power4.in",
+          autoAlpha: 0.4,
+        },
+        "-=1"
       );
 
     const scene = new ScrollMagic.Scene({
@@ -209,9 +250,11 @@ const Header = () => {
   return (
     <Element name="home">
       <Wrapper ref={wrapperRef}>
-        <StickyBackground>
-          <TopLayerImg ref={topLayerRef} />
-          <TopLayerBg ref={topLayerBgRef} />
+        <Container>
+          <FirsLayerImg ref={firstLayerRef} />
+          <SecondLayerImg ref={secondLayerRef} />
+          <SecondLayerBg ref={secondLayerBgRef} />
+          <HeaderBackground />
           <Title ref={titleRef}>
             Hi, I am <ColorSpan>Damian</ColorSpan>
           </Title>
@@ -222,7 +265,7 @@ const Header = () => {
           <SecondSubtitle ref={secondSubtitleRef}>
             Into clean and effective <ColorSpan>code</ColorSpan>
           </SecondSubtitle>
-        </StickyBackground>
+        </Container>
       </Wrapper>
     </Element>
   );

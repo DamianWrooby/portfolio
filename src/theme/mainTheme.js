@@ -26,6 +26,8 @@ export const theme = {
   red: "hsla(348, 100%, 63%)",
   red100: "hsla(348, 100%, 63%, 0.8)",
   blue: "#2393FA",
+  neonBlue: "#16ffff",
+  darkBlue: "#16232e",
   blue50: "hsl(208, 73%, 63%)",
   blue100: "hsl(208, 100%, 74%)",
   blueGradient: "linear-gradient(45deg, #4c96d6 0%, #abd8ff 100%)",
