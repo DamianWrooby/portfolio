@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
+import styles from "./Links.css";
 
 import { Link } from "react-scroll";
 
@@ -80,7 +81,8 @@ const StyledSpan = styled.span`
   &:hover:before,
   &:hover:after,
   &:hover > span:before,
-  &:hover > span:after {
+  &:hover > span:after,
+  &.active {
     transform: translate(0, 0);
   }
 `;
@@ -89,22 +91,34 @@ const Links = () => {
   return (
     <>
       <ListItem>
-        <StyledLink duration={800} smooth={true} to="home">
+        <StyledLink
+          activeClass={styles.active}
+          duration={800}
+          smooth={true}
+          to="home"
+          spy={true}
+        >
           <StyledSpan>Home</StyledSpan>
         </StyledLink>
       </ListItem>
       <ListItem>
-        <StyledLink duration={800} smooth={true} to="technologies">
+        <StyledLink
+          activeClass={styles.active}
+          duration={800}
+          smooth={true}
+          to="technologies"
+          spy={true}
+        >
           <StyledSpan>Technologies</StyledSpan>
         </StyledLink>
       </ListItem>
       <ListItem>
-        <StyledLink duration={800} smooth={true} to="projects">
+        <StyledLink duration={800} smooth={true} to="projects" spy={true}>
           <StyledSpan>Projects</StyledSpan>
         </StyledLink>
       </ListItem>
       <ListItem>
-        <StyledLink duration={800} smooth={true} to="contact">
+        <StyledLink duration={800} smooth={true} to="contact" spy={true}>
           <StyledSpan>Contact</StyledSpan>
         </StyledLink>
       </ListItem>

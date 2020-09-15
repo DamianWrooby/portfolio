@@ -92,7 +92,7 @@ const SecondLayerImg = styled.div`
 const SecondLayerBg = styled.div`
   position: absolute;
   width: 100%;
-  height: 100vh;
+  height: 115vh;
   background: url(${codePattern}) no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -102,7 +102,7 @@ const SecondLayerBg = styled.div`
 const HeaderBackground = styled.div`
   position: absolute;
   width: 100%;
-  height: 100vh;
+  height: 115vh;
   background: ${({ theme }) => theme.darkBlue};
   z-index: -1;
 `;

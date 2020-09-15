@@ -3,15 +3,16 @@ import Layout from "../layouts/layout";
 import SEO from "../components/atoms/Seo/Seo";
 import Header from "../components/organisms/Header/Header";
 import Navigation from "../components/organisms/Navigation/Navigation";
+import Technologies from "../components/organisms/Technologies/Technologies";
 
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
     <Navigation />
     <Header />
-    {/* <main>
-      Main content
-    </main> */}
+    <main>
+      <Technologies />
+    </main>
     {/* <Footer /> */}
   </Layout>
 );

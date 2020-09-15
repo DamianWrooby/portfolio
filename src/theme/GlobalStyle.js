@@ -32,7 +32,7 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     color: ${({ theme }) => theme.dark};
-    background: ${({ theme }) => theme.dark200};
+    background: ${({ theme }) => theme.dark};
     font-family: ${({ theme }) => theme.fonts.mainFont};
     font-size: 1.6rem;
     overflow-x: hidden;
