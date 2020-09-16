@@ -3,6 +3,8 @@ import gsap from "gsap";
 import { Element } from "react-scroll";
 import styled from "styled-components";
 import SectionHeader from "../../molecules/SectionHeader/SectionHeader";
+import ListItem from "../../atoms/ListItem/ListItem";
+import htmlIcon from "../../../assets/icons/html-5.svg";
 
 const Technologies = () => {
   const Wrapper = styled.section`
@@ -50,59 +52,33 @@ const Technologies = () => {
     flex-direction: column;
   `;
 
-  const ListItem = styled.li`
-    display: flex;
-    align-items: center;
-    font-size: ${({ theme }) => theme.fontSize.lg};
-    font-weight: ${({ theme }) => theme.light};
-    margin: 8px 0;
-    ${"" /* &:before {
-      content: "";
-      display: block;
-      width: 22px;
-      height: 22px;
-      background: url(${checkmarkIcon}) no-repeat center;
-      background-size: 100%;
-      margin-right: 10px;
-    } */}
-    ${({ theme }) => theme.mq.s} {
-      font-size: ${({ theme }) => theme.fontSize.xlg};
-      &:before {
-        width: 28px;
-        height: 28px;
-      }
-    }
-  `;
+  const wavePath = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 1440 320"
+      style={{ marginTop: "-295px", zIndex: "2", position: "absolute" }}
+    >
+      <path
+        fill="#03131D"
+        fill-opacity="1"
+        d="M0,128L720,192L1440,128L1440,320L720,320L0,320Z"
+      ></path>
+    </svg>
+  );
 
   return (
     <>
       <Wrapper id="technologies">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1440 320"
-          style={{ marginTop: "-295px", zIndex: "2", position: "absolute" }}
-        >
-          <path
-            fill="#03131D"
-            fill-opacity="1"
-            d="M0,128L720,192L1440,128L1440,320L720,320L0,320Z"
-          ></path>
-        </svg>
+        {wavePath}
         <Element name="technologies">
           <Main>
             <SectionHeader header="Technologies" />
             <InnerWrapper>
               <ListsWrapper>
                 <List>
-                  <ListItem>HTML5</ListItem>
-                  <ListItem>CSS3</ListItem>
-                  <ListItem>JavaScritp ES6+</ListItem>
+                  <ListItem icon={htmlIcon}>HTML5</ListItem>
                 </List>
-                <List>
-                  <ListItem>HTML5</ListItem>
-                  <ListItem>CSS3</ListItem>
-                  <ListItem>JavaScritp ES6+</ListItem>
-                </List>
+                <List></List>
               </ListsWrapper>
             </InnerWrapper>
             {/* <TagCloud /> */}

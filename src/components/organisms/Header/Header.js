@@ -3,9 +3,9 @@ import gsap from "gsap";
 import ScrollMagic from "scrollmagic";
 import { Element } from "react-scroll";
 import styled from "styled-components";
-import realFace from "../../../images/first-layer.png";
-import robotFace from "../../../images/header-1.png";
-import codePattern from "../../../images/code-pattern.jpg";
+import realFace from "../../../assets/images/first-layer.png";
+import robotFace from "../../../assets/images/header-1.png";
+import codePattern from "../../../assets/images/code-pattern.jpg";
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap";
 
 ScrollMagicPluginGsap(ScrollMagic, gsap);
