@@ -3,8 +3,7 @@ import gsap from "gsap";
 import { Element } from "react-scroll";
 import styled from "styled-components";
 import SectionHeader from "../../molecules/SectionHeader/SectionHeader";
-import ListItem from "../../atoms/ListItem/ListItem";
-import htmlIcon from "../../../assets/icons/html-5.svg";
+import ItemList from "../../molecules/ItemList/ItemList";
 
 const Technologies = () => {
   const Wrapper = styled.section`
@@ -76,7 +75,7 @@ const Technologies = () => {
             <InnerWrapper>
               <ListsWrapper>
                 <List>
-                  <ListItem icon={htmlIcon}>HTML5</ListItem>
+                  <ItemList />
                 </List>
                 <List></List>
               </ListsWrapper>
