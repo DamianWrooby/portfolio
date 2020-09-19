@@ -1,18 +1,16 @@
+import PropTypes from "prop-types";
 import React from "react";
 import styled from "styled-components";
 
 const StyledItem = styled.li`
   display: flex;
+  min-height: 30px;
   align-items: center;
   font-size: ${({ theme }) => theme.fontSize.lg};
   font-weight: ${({ theme }) => theme.light};
   margin: 8px 0;
   &:before {
     content: "";
-    ${"" /* -webkit-mask: ${props => `url(${props.icon}) no-repeat 50% 50%`};
-    mask: ${props => `url(${props.icon}) no-repeat 50% 50%`};
-    -webkit-mask-size: contain;
-    mask-size: contain; */}
     display: inline-block;
     width: 22px;
     height: 22px;
@@ -24,14 +22,31 @@ const StyledItem = styled.li`
   ${({ theme }) => theme.mq.s} {
     font-size: ${({ theme }) => theme.fontSize.xlg};
     &:before {
-      width: 20px;
-      height: 28px;
+      width: ${props => `${props.width}px`};
+      height: ${props => `${props.height}px`};
     }
   }
 `;
 
-const ListItem = ({ icon, children }) => {
-  return <StyledItem icon={icon}>{children}</StyledItem>;
+const ListItem = ({ icon, width, height, children }) => {
+  return (
+    <StyledItem icon={icon} width={width} height={height}>
+      {children}
+    </StyledItem>
+  );
+};
+
+ListItem.defaultProps = {
+  children: "Text",
+  width: "20",
+  height: "20",
+};
+
+ListItem.propTypes = {
+  children: PropTypes.node,
+  height: PropTypes.string,
+  width: PropTypes.string,
+  icon: PropTypes.string.isRequired,
 };
 
 export default ListItem;
