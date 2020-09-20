@@ -52,7 +52,7 @@ const wavePath = (
   >
     <path
       fill="#03131D"
-      fill-opacity="1"
+      fillOpacity="1"
       d="M0,128L720,192L1440,128L1440,320L720,320L0,320Z"
     ></path>
   </svg>
@@ -66,13 +66,16 @@ const Technologies = () => {
         <Element name="technologies">
           <Content>
             <Main>
-              <SectionHeader header="Technologies" />
+              <SectionHeader
+                heading="Technologies"
+                paragraph="These are technologies, tools and methodologies I used to use in my projects. I'm currently improving my skills in the field of building and testing more complex React applications."
+              />
               <InnerWrapper>
                 <List />
                 <LottieAnimation
                   animationData={laptopAnimation}
-                  width={500}
-                  height={500}
+                  width={600}
+                  height={450}
                 />
               </InnerWrapper>
             </Main>

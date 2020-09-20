@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled, { css } from "styled-components";
-import styles from "./Links.css";
+import { NavigationContext } from "../../../contexts/NavigationContext";
 
 import { Link } from "react-scroll";
 
@@ -50,6 +50,15 @@ const StyledLink = styled(Link)`
   &:hover > span:after {
     transform: translate(0, 0);
   }
+  ${({ active }) =>
+    active &&
+    css`
+      color: ${({ theme }) => theme.neonBlue};
+      &:before,
+      &:after {
+        transform: translate(0, 0);
+      }
+    `}
 `;
 
 const StyledSpan = styled.span`
@@ -81,45 +90,74 @@ const StyledSpan = styled.span`
   &:hover:before,
   &:hover:after,
   &:hover > span:before,
-  &:hover > span:after,
-  &.active {
+  &:hover > span:after {
     transform: translate(0, 0);
   }
+  ${({ active }) =>
+    active &&
+    css`
+      color: ${({ theme }) => theme.neonBlue};
+      &:before,
+      &:after {
+        transform: translate(0, 0);
+      }
+    `}
 `;
 
 const Links = () => {
+  const { activeLink } = useContext(NavigationContext);
+
   return (
     <>
       <ListItem>
         <StyledLink
-          activeClass={styles.active}
+          active={activeLink === "home" ? 1 : 0}
           duration={800}
           smooth={true}
           to="home"
           spy={true}
         >
-          <StyledSpan>Home</StyledSpan>
+          <StyledSpan active={activeLink === "home" ? 1 : 0}>Home</StyledSpan>
         </StyledLink>
       </ListItem>
       <ListItem>
         <StyledLink
-          activeClass={styles.active}
+          active={activeLink === "technologies" ? 1 : 0}
           duration={800}
+          offset={-100}
           smooth={true}
           to="technologies"
           spy={true}
         >
-          <StyledSpan>Technologies</StyledSpan>
+          <StyledSpan active={activeLink === "technologies" ? 1 : 0}>
+            Technologies
+          </StyledSpan>
         </StyledLink>
       </ListItem>
       <ListItem>
-        <StyledLink duration={800} smooth={true} to="projects" spy={true}>
-          <StyledSpan>Projects</StyledSpan>
+        <StyledLink
+          active={activeLink === "projects" ? 1 : 0}
+          duration={800}
+          smooth={true}
+          to="projects"
+          spy={true}
+        >
+          <StyledSpan active={activeLink === "projects" ? 1 : 0}>
+            Projects
+          </StyledSpan>
         </StyledLink>
       </ListItem>
       <ListItem>
-        <StyledLink duration={800} smooth={true} to="contact" spy={true}>
-          <StyledSpan>Contact</StyledSpan>
+        <StyledLink
+          active={activeLink === "contact" ? 1 : 0}
+          duration={800}
+          smooth={true}
+          to="contact"
+          spy={true}
+        >
+          <StyledSpan active={activeLink === "contact" ? 1 : 0}>
+            Contact
+          </StyledSpan>
         </StyledLink>
       </ListItem>
     </>

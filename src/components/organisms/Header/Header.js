@@ -18,22 +18,46 @@ const Wrapper = styled.header`
 
 const Title = styled.h1`
   font-family: ${({ theme }) => theme.fonts.mainFont};
-  font-size: ${({ theme }) => theme.fontSize.xxxl};
+  font-size: ${({ theme }) => theme.fontSize.xxl};
+  margin-left: 100px;
+  text-align: center;
   font-weight: 700;
-  margin-left: 240px;
   color: white;
   z-index: 3;
+  ${({ theme }) => theme.mq.md} {
+    font-size: ${({ theme }) => theme.fontSize.xxxl};
+    margin-left: 240px;
+    text-align: left;
+  }
+`;
+
+const Subtitle = styled.h2`
+  font-family: ${({ theme }) => theme.fonts.mainFont};
+  font-size: ${({ theme }) => theme.fontSize.xl};
+  margin-left: 10px;
+  text-align: center;
+  color: white;
+  z-index: 3;
+  ${({ theme }) => theme.mq.md} {
+    font-size: ${({ theme }) => theme.fontSize.xxl};
+    margin-left: 250px;
+    text-align: left;
+  }
 `;
 
 const SecondTitle = styled.p`
   position: absolute;
-  top: 39vh;
-  left: 39vw;
   font-family: ${({ theme }) => theme.fonts.mainFont};
-  font-size: ${({ theme }) => theme.fontSize.xxl};
+  font-size: ${({ theme }) => theme.fontSize.xl};
   font-weight: 700;
   color: white;
   z-index: 3;
+  ${({ theme }) => theme.mq.md} {
+    font-family: ${({ theme }) => theme.fonts.mainFont};
+    font-size: ${({ theme }) => theme.fontSize.xxl};
+    top: 39vh;
+    left: 39vw;
+  }
 `;
 
 const SecondSubtitle = styled.p`
@@ -41,23 +65,18 @@ const SecondSubtitle = styled.p`
   top: 47vh;
   left: 20vw;
   font-family: ${({ theme }) => theme.fonts.mainFont};
-  font-size: ${({ theme }) => theme.fontSize.xxl};
+  font-size: ${({ theme }) => theme.fontSize.xl};
   font-weight: 700;
-  margin-left: 240px;
   color: white;
   z-index: 3;
+  ${({ theme }) => theme.mq.md} {
+    font-size: ${({ theme }) => theme.fontSize.xxl};
+    margin-left: 240px;
+  }
 `;
 
 const ColorSpan = styled.span`
   color: ${({ theme }) => theme.neonBlue};
-`;
-
-const Subtitle = styled.h2`
-  font-family: ${({ theme }) => theme.fonts.mainFont};
-  font-size: ${({ theme }) => theme.fontSize.xxl};
-  margin-left: 250px;
-  color: white;
-  z-index: 3;
 `;
 
 const Container = styled.div`
@@ -71,22 +90,34 @@ const Container = styled.div`
 `;
 const FirsLayerImg = styled.div`
   position: absolute;
+  left: -14%;
   width: 100%;
   height: 100vh;
   background: url(${realFace}) no-repeat;
-  background-size: contain;
-  background-attachment: fixed;
+  background-size: cover;
+  background-attachment: unset;
   z-index: 1;
+  ${({ theme }) => theme.mq.md} {
+    background-size: contain;
+    background-attachment: fixed;
+    left: 0;
+  }
 `;
 
 const SecondLayerImg = styled.div`
   position: absolute;
+  left: -14%;
   width: 100%;
   height: 100vh;
   background: url(${robotFace}) no-repeat;
-  background-size: contain;
-  background-attachment: fixed;
+  background-size: cover;
+  background-attachment: unset;
   z-index: 2;
+  ${({ theme }) => theme.mq.md} {
+    background-size: contain;
+    background-attachment: fixed;
+    left: 0;
+  }
 `;
 
 const SecondLayerBg = styled.div`
@@ -241,7 +272,6 @@ const Header = () => {
       duration: 1000,
       triggerHook: 0,
     })
-      .addIndicators()
       .addTo(controller)
       .setTween(tl2.resume())
       .setPin(wrapper);

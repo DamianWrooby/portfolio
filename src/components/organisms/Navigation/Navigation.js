@@ -1,8 +1,8 @@
-import React from "react";
-import { Link } from "gatsby";
-import styled from "styled-components";
+import React, { useContext } from "react";
+import styled, { css } from "styled-components";
 import Content from "../../atoms/Content/Content";
 import Links from "../../organisms/Navigation/Links";
+import { NavigationContext } from "../../../contexts/NavigationContext";
 // import MobileNav from 'components/organisms/Navigation/MobileNav';
 // import Logo from 'components/atoms/Logo/Logo';
 
@@ -16,12 +16,21 @@ const Wrapper = styled.nav`
   box-shadow: none;
   background-color: transparent;
   transition: 0.3s;
+  ${({ theme }) => theme.mq.md} {
+    position: fixed;
+    ${({ active }) =>
+      active &&
+      css`
+        box-shadow: 0 0 10px rgba(84, 227, 255, 0.7);
+        background-color: ${({ theme }) => theme.dark};
+      `}
+  }
 `;
 
-const LogoWrapper = styled(Link)`
-  display: block;
-  text-decoration: none;
-`;
+// const LogoWrapper = styled(Link)`
+//   display: block;
+//   text-decoration: none;
+// `;
 
 const InnerWrapper = styled.div`
   width: 100%;
@@ -35,17 +44,19 @@ const InnerWrapper = styled.div`
 const List = styled.ul`
   display: none;
   align-items: center;
-  opacity: 0;
-  ${({ theme }) => theme.mq.xs} {
+  opacity: 1;
+  ${"" /* ${({ theme }) => theme.mq.xs} {
     display: flex;
     opacity: 1;
-  }
+  } */}
 `;
 
 const Navigation = () => {
+  const { isTransparent } = useContext(NavigationContext);
+
   return (
     <>
-      <Wrapper>
+      <Wrapper active={!isTransparent}>
         <Content>
           <InnerWrapper>
             {/* <LogoWrapper to="/">

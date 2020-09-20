@@ -1,8 +1,14 @@
 import PropTypes from "prop-types";
 import React from "react";
+import styled from "styled-components";
 import Lottie from "react-lottie";
 
 const LottieAnimation = ({ animationData, width, height }) => {
+  const Wrapper = styled.div`
+    display: flex;
+    align-items: center;
+  `;
+
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -13,9 +19,9 @@ const LottieAnimation = ({ animationData, width, height }) => {
   };
 
   return (
-    <div>
+    <Wrapper>
       <Lottie options={defaultOptions} width={width} height={height} />
-    </div>
+    </Wrapper>
   );
 };
 

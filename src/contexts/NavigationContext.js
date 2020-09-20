@@ -4,12 +4,14 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export const NavigationContext = createContext({
+const defaultValues = {
   activeLink: "home",
   isTransparent: true,
   mobileNavVisible: false,
   handleMobileNav: () => null,
-});
+};
+
+export const NavigationContext = createContext(defaultValues);
 
 const NavigationProvider = ({ children }) => {
   const [activeLink, setActiveLink] = useState("home");
@@ -18,14 +20,16 @@ const NavigationProvider = ({ children }) => {
 
   const handleMobileNav = isVisible => {
     setIsFullNavVisible(isVisible);
-
     if (isVisible) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "auto";
   };
 
   useEffect(() => {
+    const sections = document.querySelectorAll("section");
+
     ScrollTrigger.create({
-      start: "50",
+      trigger: sections[0],
+      start: "top bottom",
       endTrigger: "footer",
       end: "bottom top",
       onToggle: ({ isActive }) => setIsTransparent(!isActive),
@@ -37,8 +41,6 @@ const NavigationProvider = ({ children }) => {
       end: "bottom 90%",
       onToggle: ({ isActive }) => isActive && setActiveLink("home"),
     });
-
-    const sections = document.querySelectorAll("section");
 
     sections.forEach(section => {
       ScrollTrigger.create({
@@ -54,7 +56,7 @@ const NavigationProvider = ({ children }) => {
     activeLink,
     isTransparent,
     isFullNavVisible,
-    handleFullNav,
+    handleMobileNav,
   };
 
   return (
