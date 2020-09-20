@@ -5,6 +5,8 @@ import styled from "styled-components";
 import Content from "../../atoms/Content/Content";
 import SectionHeader from "../../molecules/SectionHeader/SectionHeader";
 import List from "../../molecules/List/List";
+import LottieAnimation from "../../molecules/LottieAnimation/LottieAnimation";
+import laptopAnimation from "../../../assets/lotties/laptop.json";
 
 const Wrapper = styled.section`
   position: relative;
@@ -37,6 +39,9 @@ const Main = styled.div`
 const InnerWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  ${({ theme }) => theme.mq.md} {
+    flex-direction: row;
+  }
 `;
 
 const wavePath = (
@@ -64,8 +69,12 @@ const Technologies = () => {
               <SectionHeader header="Technologies" />
               <InnerWrapper>
                 <List />
+                <LottieAnimation
+                  animationData={laptopAnimation}
+                  width={500}
+                  height={500}
+                />
               </InnerWrapper>
-              {/* <TagCloud /> */}
             </Main>
           </Content>
         </Element>
