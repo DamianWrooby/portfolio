@@ -14,64 +14,93 @@ const Wrapper = styled.header`
   position: relative;
   width: 100%;
   padding: 0;
+  overflow: hidden;
+`;
+const Container = styled.div`
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1;
 `;
 
 const Title = styled.h1`
+  position: relative;
   font-family: ${({ theme }) => theme.fonts.mainFont};
   font-size: ${({ theme }) => theme.fontSize.xxl};
-  margin-left: 100px;
+  margin: 0 auto 20px auto;
   text-align: center;
   font-weight: 700;
   color: white;
   z-index: 3;
+  text-shadow: 1px 1px 8px black;
   ${({ theme }) => theme.mq.md} {
     font-size: ${({ theme }) => theme.fontSize.xxxl};
-    margin-left: 240px;
-    text-align: left;
+    text-shadow: none;
+    left: 8vw;
   }
 `;
 
 const Subtitle = styled.h2`
+  position: relative;
   font-family: ${({ theme }) => theme.fonts.mainFont};
   font-size: ${({ theme }) => theme.fontSize.xl};
-  margin-left: 10px;
+  margin: 0 auto;
   text-align: center;
   color: white;
   z-index: 3;
+  text-shadow: 1px 1px 8px black;
   ${({ theme }) => theme.mq.md} {
     font-size: ${({ theme }) => theme.fontSize.xxl};
-    margin-left: 250px;
-    text-align: left;
+    text-shadow: none;
+    left: 8vw;
   }
 `;
 
 const SecondTitle = styled.p`
   position: absolute;
   font-family: ${({ theme }) => theme.fonts.mainFont};
-  font-size: ${({ theme }) => theme.fontSize.xl};
+  font-size: ${({ theme }) => theme.fontSize.xxl};
+  text-align: center;
+  top: 40vh;
+  margin: 0 5%;
   font-weight: 700;
   color: white;
   z-index: 3;
+  text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1),
+    0px 18px 23px rgba(0, 0, 0, 0.1);
+  text-shadow: 1px 1px 8px black;
   ${({ theme }) => theme.mq.md} {
     font-family: ${({ theme }) => theme.fonts.mainFont};
     font-size: ${({ theme }) => theme.fontSize.xxl};
     top: 39vh;
-    left: 39vw;
+    left: 27vw;
+    text-align: left;
+    text-shadow: none;
   }
 `;
 
 const SecondSubtitle = styled.p`
   position: absolute;
-  top: 47vh;
-  left: 20vw;
   font-family: ${({ theme }) => theme.fonts.mainFont};
-  font-size: ${({ theme }) => theme.fontSize.xl};
+  font-size: ${({ theme }) => theme.fontSize.xxl};
+  text-align: center;
+  top: 58vh;
+  margin: 0 5%;
   font-weight: 700;
   color: white;
   z-index: 3;
+  text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1),
+    0px 18px 23px rgba(0, 0, 0, 0.1);
   ${({ theme }) => theme.mq.md} {
     font-size: ${({ theme }) => theme.fontSize.xxl};
-    margin-left: 240px;
+    top: 49vh;
+    left: 27vw;
+    text-align: left;
+    text-shadow: none;
   }
 `;
 
@@ -79,18 +108,9 @@ const ColorSpan = styled.span`
   color: ${({ theme }) => theme.neonBlue};
 `;
 
-const Container = styled.div`
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  z-index: 1;
-`;
 const FirsLayerImg = styled.div`
   position: absolute;
-  left: -14%;
+  left: -18%;
   width: 100%;
   height: 100vh;
   background: url(${realFace}) no-repeat;
@@ -98,15 +118,17 @@ const FirsLayerImg = styled.div`
   background-attachment: unset;
   z-index: 1;
   ${({ theme }) => theme.mq.md} {
+    left: 0;
+  }
+  ${({ theme }) => theme.mq.xl} {
     background-size: contain;
     background-attachment: fixed;
-    left: 0;
   }
 `;
 
 const SecondLayerImg = styled.div`
   position: absolute;
-  left: -14%;
+  left: -18%;
   width: 100%;
   height: 100vh;
   background: url(${robotFace}) no-repeat;
@@ -114,9 +136,11 @@ const SecondLayerImg = styled.div`
   background-attachment: unset;
   z-index: 2;
   ${({ theme }) => theme.mq.md} {
+    left: 0;
+  }
+  ${({ theme }) => theme.mq.xl} {
     background-size: contain;
     background-attachment: fixed;
-    left: 0;
   }
 `;
 

@@ -5,6 +5,7 @@ import Lottie from "react-lottie";
 
 const LottieAnimation = ({ animationData, width, height }) => {
   const Wrapper = styled.div`
+    max-width: 90vw;
     display: flex;
     align-items: center;
   `;

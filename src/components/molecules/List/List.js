@@ -26,8 +26,16 @@ import figmaIcon from "../../../assets/icons/figma.svg";
 const ListsWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   max-width: 720px;
+  ${({ theme }) => theme.mq.xs} {
+    flex-direction: row;
+  }
+  ${({ theme }) => theme.mq.xl} {
+    align-items: left;
+  }
 `;
 
 const List = styled.ul`

@@ -10,10 +10,13 @@ const Wrapper = styled.div`
 
 const Header = styled.h2`
   font-family: ${({ theme }) => theme.fonts.mainFont};
-  font-size: ${({ theme }) => theme.fontSize.xxxl};
+  font-size: ${({ theme }) => theme.fontSize.xxl};
   font-weight: ${({ theme }) => theme.bold};
   color: white;
   padding: 0 0 25px 0;
+  ${({ theme }) => theme.mq.md} {
+    font-size: ${({ theme }) => theme.fontSize.xxxl};
+  }
 `;
 const Paragraph = styled.p`
   font-family: ${({ theme }) => theme.fonts.mainFont};

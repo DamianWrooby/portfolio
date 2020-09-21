@@ -8,6 +8,7 @@ import { NavigationContext } from "../../../contexts/NavigationContext";
 
 const Wrapper = styled.nav`
   position: fixed;
+  max-width: 100vw;
   top: 0;
   left: 0;
   right: 0;
@@ -35,20 +36,25 @@ const Wrapper = styled.nav`
 const InnerWrapper = styled.div`
   width: 100%;
   height: 100%;
-  display: flex;
+  display: none;
+  opacity: 0;
   align-items: center;
   justify-content: flex-end;
   color: ${({ theme }) => theme.white};
+  ${({ theme }) => theme.mq.xs} {
+    display: flex;
+    opacity: 1;
+  }
 `;
 
 const List = styled.ul`
   display: none;
   align-items: center;
-  opacity: 1;
-  ${"" /* ${({ theme }) => theme.mq.xs} {
+  opacity: 0;
+  ${({ theme }) => theme.mq.xs} {
     display: flex;
     opacity: 1;
-  } */}
+  }
 `;
 
 const Navigation = () => {
