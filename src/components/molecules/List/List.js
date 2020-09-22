@@ -25,12 +25,12 @@ import figmaIcon from "../../../assets/icons/figma.svg";
 
 const ListsWrapper = styled.div`
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   max-width: 720px;
-  ${({ theme }) => theme.mq.xs} {
+  ${({ theme }) => theme.mq.s} {
+    justify-content: space-between;
     flex-direction: row;
   }
   ${({ theme }) => theme.mq.xl} {

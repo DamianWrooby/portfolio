@@ -138,6 +138,7 @@ const Links = () => {
         <StyledLink
           active={activeLink === "projects" ? 1 : 0}
           duration={800}
+          offset={-100}
           smooth={true}
           to="projects"
           spy={true}

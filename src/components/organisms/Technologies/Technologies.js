@@ -45,10 +45,13 @@ const WaveWrapper = styled.div`
   z-index: 2;
   margin-top: -180px;
   ${({ theme }) => theme.mq.md} {
-    margin-top: -230px;
+    margin-top: -250px;
   }
   ${({ theme }) => theme.mq.xl} {
-    margin-top: -295px;
+    margin-top: -270px;
+  }
+  ${({ theme }) => theme.mq.xxl} {
+    margin-top: -360px;
   }
 `;
 
@@ -66,29 +69,27 @@ const wavePath = (
 
 const Technologies = () => {
   return (
-    <>
-      <Wrapper id="technologies">
-        {wavePath}
-        <Element name="technologies">
-          <Content>
-            <Main>
-              <SectionHeader
-                heading="Technologies"
-                paragraph="These are technologies, tools and methodologies I used to use in my projects. I'm currently improving my skills in the field of building and testing more complex React applications."
+    <Wrapper id="technologies">
+      {wavePath}
+      <Element name="technologies">
+        <Content>
+          <Main>
+            <SectionHeader
+              heading="Technologies"
+              paragraph="These are technologies, tools and methodologies I used to use in my projects. I'm currently improving my skills in the field of building and testing more complex React applications."
+            />
+            <InnerWrapper>
+              <List />
+              <LottieAnimation
+                animationData={laptopAnimation}
+                width={600}
+                height={450}
               />
-              <InnerWrapper>
-                <List />
-                <LottieAnimation
-                  animationData={laptopAnimation}
-                  width={600}
-                  height={450}
-                />
-              </InnerWrapper>
-            </Main>
-          </Content>
-        </Element>
-      </Wrapper>
-    </>
+            </InnerWrapper>
+          </Main>
+        </Content>
+      </Element>
+    </Wrapper>
   );
 };
 

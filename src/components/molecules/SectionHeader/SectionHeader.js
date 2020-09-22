@@ -6,6 +6,7 @@ const Wrapper = styled.div`
   width: 100%;
   text-align: center;
   padding: 0 0 80px 0;
+  z-index: 3;
 `;
 
 const Header = styled.h2`

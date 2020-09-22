@@ -9,11 +9,12 @@ const StyledItem = styled.li`
   font-size: ${({ theme }) => theme.fontSize.lg};
   font-weight: ${({ theme }) => theme.light};
   margin: 8px 0;
+  min-width: 220px;
   &:before {
     content: "";
     display: inline-block;
-    width: 22px;
-    height: 22px;
+    width: ${props => `${props.width}px`};
+    height: ${props => `${props.height}px`};
     background: ${props => `url(${props.icon}) no-repeat top center`};
     background-size: 100%;
     margin-right: 10px;
@@ -21,10 +22,7 @@ const StyledItem = styled.li`
   }
   ${({ theme }) => theme.mq.s} {
     font-size: ${({ theme }) => theme.fontSize.xlg};
-    &:before {
-      width: ${props => `${props.width}px`};
-      height: ${props => `${props.height}px`};
-    }
+    min-width: 250px;
   }
 `;
 

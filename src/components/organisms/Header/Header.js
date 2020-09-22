@@ -31,6 +31,7 @@ const Title = styled.h1`
   position: relative;
   font-family: ${({ theme }) => theme.fonts.mainFont};
   font-size: ${({ theme }) => theme.fontSize.xxl};
+  left: 0;
   margin: 0 auto 20px auto;
   text-align: center;
   font-weight: 700;
@@ -39,6 +40,8 @@ const Title = styled.h1`
   text-shadow: 1px 1px 8px black;
   ${({ theme }) => theme.mq.md} {
     font-size: ${({ theme }) => theme.fontSize.xxxl};
+  }
+  ${({ theme }) => theme.mq.lg} {
     text-shadow: none;
     left: 8vw;
   }
@@ -48,6 +51,7 @@ const Subtitle = styled.h2`
   position: relative;
   font-family: ${({ theme }) => theme.fonts.mainFont};
   font-size: ${({ theme }) => theme.fontSize.xl};
+  left: 0;
   margin: 0 auto;
   text-align: center;
   color: white;
@@ -55,6 +59,8 @@ const Subtitle = styled.h2`
   text-shadow: 1px 1px 8px black;
   ${({ theme }) => theme.mq.md} {
     font-size: ${({ theme }) => theme.fontSize.xxl};
+  }
+  ${({ theme }) => theme.mq.lg} {
     text-shadow: none;
     left: 8vw;
   }
@@ -72,8 +78,7 @@ const SecondTitle = styled.p`
   z-index: 3;
   text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1),
     0px 18px 23px rgba(0, 0, 0, 0.1);
-  text-shadow: 1px 1px 8px black;
-  ${({ theme }) => theme.mq.md} {
+  ${({ theme }) => theme.mq.lg} {
     font-family: ${({ theme }) => theme.fonts.mainFont};
     font-size: ${({ theme }) => theme.fontSize.xxl};
     top: 39vh;
@@ -95,7 +100,7 @@ const SecondSubtitle = styled.p`
   z-index: 3;
   text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1),
     0px 18px 23px rgba(0, 0, 0, 0.1);
-  ${({ theme }) => theme.mq.md} {
+  ${({ theme }) => theme.mq.lg} {
     font-size: ${({ theme }) => theme.fontSize.xxl};
     top: 49vh;
     left: 27vw;
@@ -289,6 +294,28 @@ const Header = () => {
           autoAlpha: 0.4,
         },
         "-=1"
+      )
+      .to(secondTitle, {
+        autoAlpha: 1,
+        duration: 0.3,
+      })
+      .to(secondSubtitle, {
+        autoAlpha: 1,
+        duration: 0.3,
+      })
+      .to(secondTitle, {
+        y: "-=50",
+        autoAlpha: 0,
+        duration: 0.5,
+      })
+      .to(
+        secondSubtitle,
+        {
+          y: "-=50",
+          autoAlpha: 0,
+          duration: 0.5,
+        },
+        "-=0.5"
       );
 
     const scene = new ScrollMagic.Scene({
