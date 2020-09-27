@@ -10,13 +10,14 @@ const Wrapper = styled.article`
   }
 `;
 
-const Project = () => {
+const Project = ({ title }) => {
   return (
     <Wrapper>
+      <p>{title}</p>
       {/* <Image />
-    <Description />
-    <Technologies />
-    <Button /> */}
+      <Description />
+      <Technologies />
+      <Button />  */}
     </Wrapper>
   );
 };

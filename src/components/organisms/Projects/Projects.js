@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from "react";
+import { useStaticQuery, graphql } from "gatsby";
 import gsap from "gsap";
 import { Element } from "react-scroll";
 import styled from "styled-components";
@@ -38,6 +39,29 @@ const InnerWrapper = styled.div`
 `;
 
 const Projects = () => {
+  const data = useStaticQuery(graphql`
+    {
+      allContentfulProject {
+        edges {
+          node {
+            title
+            description {
+              description
+            }
+            technologies
+            codeUrl
+            liveDemoUrl
+            screenshot {
+              fluid {
+                src
+              }
+            }
+          }
+        }
+      }
+    }
+  `);
+
   return (
     <Wrapper id="projects">
       <Element name="projects">
@@ -48,7 +72,7 @@ const Projects = () => {
               paragraph="Let's take a look at latest projects. All of them are available on my GitHub profile."
             />
             <InnerWrapper>
-              <Project />
+              <Project title={data.allContentfulProject.edges[0].node.title} />
             </InnerWrapper>
           </Main>
         </Content>
