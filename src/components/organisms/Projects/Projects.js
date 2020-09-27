@@ -31,6 +31,7 @@ const Main = styled.div`
 `;
 
 const InnerWrapper = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   ${({ theme }) => theme.mq.xl} {
@@ -52,8 +53,8 @@ const Projects = () => {
             codeUrl
             liveDemoUrl
             screenshot {
-              fluid {
-                src
+              fluid(maxWidth: 1000) {
+                ...GatsbyContentfulFluid
               }
             }
           }
@@ -61,6 +62,23 @@ const Projects = () => {
       }
     }
   `);
+  console.log(data);
+  const {
+    allContentfulProject: {
+      edges: [...projects],
+    },
+  } = data;
+  console.log(projects);
+
+  const projectsList = projects.map(project => (
+    <Project
+      key={project.node.title}
+      title={project.node.title}
+      fluid={project.node.screenshot.fluid}
+      imgKey={project.node.screenshot.fluid.src}
+      imgAlt={project.node.screenshot.title}
+    />
+  ));
 
   return (
     <Wrapper id="projects">
@@ -71,9 +89,7 @@ const Projects = () => {
               heading="Projects"
               paragraph="Let's take a look at latest projects. All of them are available on my GitHub profile."
             />
-            <InnerWrapper>
-              <Project title={data.allContentfulProject.edges[0].node.title} />
-            </InnerWrapper>
+            <InnerWrapper>{projectsList}</InnerWrapper>
           </Main>
         </Content>
       </Element>
