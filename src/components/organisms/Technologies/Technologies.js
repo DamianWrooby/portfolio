@@ -4,7 +4,8 @@ import { Element } from "react-scroll";
 import styled from "styled-components";
 import Content from "../../atoms/Content/Content";
 import SectionHeader from "../../molecules/SectionHeader/SectionHeader";
-import List from "../../molecules/List/List";
+import Separator from "../../atoms/Separator/Separator";
+import TechnologiesList from "../../molecules/TechnologiesList/TechnologiesList";
 import LottieAnimation from "../../molecules/LottieAnimation/LottieAnimation";
 import laptopAnimation from "../../../assets/lotties/laptop.json";
 
@@ -74,12 +75,13 @@ const Technologies = () => {
       <Element name="technologies">
         <Content>
           <Main>
+            <Separator />
             <SectionHeader
               heading="Technologies"
               paragraph="These are technologies, tools and methodologies I used to use in my projects. I'm currently improving my skills in the field of building and testing more complex React applications."
             />
             <InnerWrapper>
-              <List />
+              <TechnologiesList />
               <LottieAnimation
                 animationData={laptopAnimation}
                 width={600}
