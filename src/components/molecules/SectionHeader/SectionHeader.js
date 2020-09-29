@@ -27,6 +27,9 @@ const Paragraph = styled.p`
   margin: auto;
   width: 90%;
   ${({ theme }) => theme.mq.md} {
+    width: 70%;
+  }
+  ${({ theme }) => theme.mq.xl} {
     width: 50%;
   }
 `;

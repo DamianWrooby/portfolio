@@ -38,9 +38,6 @@ const InnerWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  ${({ theme }) => theme.mq.xl} {
-    flex-direction: row;
-  }
 `;
 
 const Projects = () => {
@@ -66,13 +63,12 @@ const Projects = () => {
       }
     }
   `);
-  console.log(data);
+
   const {
     allContentfulProject: {
       edges: [...projects],
     },
   } = data;
-  console.log(projects);
 
   const projectsList = projects.map(project => (
     <Project
