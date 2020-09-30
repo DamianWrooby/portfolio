@@ -3,6 +3,7 @@ import gsap from "gsap";
 import styled from "styled-components";
 import Img from "gatsby-image";
 import listIcon from "../../../assets/images/favicon.png";
+import Button from "../../atoms/Button/Button";
 
 const Wrapper = styled.article`
   width: 100%;
@@ -74,6 +75,13 @@ const Item = styled.li`
   }
 `;
 
+const ButtonsWrapper = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 30px 0;
+  justify-content: flex-start;
+`;
+
 const Project = ({
   title,
   description,
@@ -85,7 +93,7 @@ const Project = ({
   imgAlt,
 }) => {
   const techList = technologies.map(el => {
-    return <Item>{el}</Item>;
+    return <Item key={el}>{el}</Item>;
   });
 
   return (
@@ -98,6 +106,15 @@ const Project = ({
         <Description>{description}</Description>
         <ListTitle>Technologies & Tools</ListTitle>
         <List>{techList}</List>
+        <ButtonsWrapper>
+          <Button renderAs="a" label="Code" link={codeUrl} animated={false} />
+          <Button
+            renderAs="a"
+            label="Live Demo"
+            link={liveDemoUrl}
+            animated={true}
+          />
+        </ButtonsWrapper>
       </ContentWrapper>
     </Wrapper>
   );

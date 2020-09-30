@@ -79,6 +79,8 @@ const Projects = () => {
       fluid={project.node.screenshot.fluid}
       imgKey={project.node.screenshot.fluid.src}
       imgAlt={project.node.screenshot.title}
+      liveDemoUrl={project.node.liveDemoUrl}
+      codeUrl={project.node.codeUrl}
     />
   ));
 
