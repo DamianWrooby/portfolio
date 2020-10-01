@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
 import styled from "styled-components";
@@ -118,6 +119,17 @@ const Project = ({
       </ContentWrapper>
     </Wrapper>
   );
+};
+
+Project.propTypes = {
+  codeUrl: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  fluid: PropTypes.object.isRequired,
+  imgAlt: PropTypes.string.isRequired,
+  imgKey: PropTypes.string.isRequired,
+  liveDemoUrl: PropTypes.any.isRequired,
+  technologies: PropTypes.array.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default Project;

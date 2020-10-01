@@ -1,19 +1,22 @@
+import PropTypes from "prop-types";
 import React from "react";
 import styled, { css, keyframes } from "styled-components";
 
 const StyledButton = styled.button`
   position: relative;
+  font-size: ${({ theme }) => theme.fontSize.xs};
+  text-align: center;
   background: #03e9f4;
   color: ${({ theme }) => theme.dark};
   display: inline-block;
   font-family: ${({ theme }) => theme.fonts.subFont};
-  padding: 20px;
+  padding: 20px 10px;
   text-decoration: none;
   text-transform: uppercase;
   transition: 0.5s;
   letter-spacing: 4px;
   overflow: hidden;
-  margin-right: 50px;
+  margin-right: 20px;
   &:hover {
     background: ${({ theme }) => theme.dark};
     color: ${({ theme }) => theme.neonBlue};
@@ -35,6 +38,11 @@ const StyledButton = styled.button`
       background: transparent;
       color: #16ffff;
     `}
+  ${({ theme }) => theme.mq.s} {
+    font-size: ${({ theme }) => theme.fontSize.lg};
+    padding: 20px;
+    margin-right: 50px;
+  }
 `;
 
 const animate1 = keyframes`
@@ -149,6 +157,19 @@ const Button = ({ label, link, animated, renderAs }) => {
       {label}
     </StyledButton>
   );
+};
+
+Button.defaultProps = {
+  animated: false,
+  link: "",
+  renderAs: "button",
+};
+
+Button.propTypes = {
+  animated: PropTypes.bool,
+  label: PropTypes.string.isRequired,
+  link: PropTypes.string,
+  renderAs: PropTypes.string,
 };
 
 export default Button;
