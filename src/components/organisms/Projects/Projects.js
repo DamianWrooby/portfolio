@@ -43,7 +43,7 @@ const InnerWrapper = styled.div`
 const Projects = () => {
   const data = useStaticQuery(graphql`
     {
-      allContentfulProject {
+      allContentfulProject(sort: { fields: contentfulid }) {
         edges {
           node {
             title

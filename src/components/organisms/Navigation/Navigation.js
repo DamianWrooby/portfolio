@@ -4,7 +4,6 @@ import Content from "../../atoms/Content/Content";
 import Links from "../../organisms/Navigation/Links";
 import { NavigationContext } from "../../../contexts/NavigationContext";
 // import MobileNav from 'components/organisms/Navigation/MobileNav';
-// import Logo from 'components/atoms/Logo/Logo';
 
 const Wrapper = styled.nav`
   position: fixed;
@@ -27,11 +26,6 @@ const Wrapper = styled.nav`
       `}
   }
 `;
-
-// const LogoWrapper = styled(Link)`
-//   display: block;
-//   text-decoration: none;
-// `;
 
 const InnerWrapper = styled.div`
   width: 100%;
@@ -65,9 +59,6 @@ const Navigation = () => {
       <Wrapper active={!isTransparent}>
         <Content>
           <InnerWrapper>
-            {/* <LogoWrapper to="/">
-              <Logo />
-            </LogoWrapper> */}
             <List>
               <Links />
             </List>

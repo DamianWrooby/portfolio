@@ -19,7 +19,7 @@ const Wrapper = styled.article`
 const ImageWrapper = styled.figure`
   width: 100%;
   ${({ theme }) => theme.mq.xl} {
-    margin: 0 60px;
+    margin: 25px 60px 0px 60px;
   }
 `;
 

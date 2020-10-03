@@ -16,10 +16,10 @@ export const NavigationContext = createContext(defaultValues);
 const NavigationProvider = ({ children }) => {
   const [activeLink, setActiveLink] = useState("home");
   const [isTransparent, setIsTransparent] = useState(true);
-  const [isFullNavVisible, setIsFullNavVisible] = useState(false);
+  const [isMobileNavVisible, setIsMobileNavVisible] = useState(false);
 
   const handleMobileNav = isVisible => {
-    setIsFullNavVisible(isVisible);
+    setIsMobileNavVisible(isVisible);
     if (isVisible) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "auto";
   };
@@ -55,7 +55,7 @@ const NavigationProvider = ({ children }) => {
   const context = {
     activeLink,
     isTransparent,
-    isFullNavVisible,
+    isMobileNavVisible,
     handleMobileNav,
   };
 
