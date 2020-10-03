@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import styled, { css } from "styled-components";
 import Content from "../../atoms/Content/Content";
 import Links from "../../organisms/Navigation/Links";
+import SEO from "../../atoms/Seo/Seo";
 import { NavigationContext } from "../../../contexts/NavigationContext";
 // import MobileNav from 'components/organisms/Navigation/MobileNav';
 
@@ -52,10 +53,14 @@ const List = styled.ul`
 `;
 
 const Navigation = () => {
-  const { isTransparent } = useContext(NavigationContext);
+  const { isTransparent, activeLink } = useContext(NavigationContext);
+
+  const currentSection =
+    activeLink.charAt(0).toUpperCase() + activeLink.slice(1);
 
   return (
     <>
+      <SEO title={currentSection} />
       <Wrapper active={!isTransparent}>
         <Content>
           <InnerWrapper>
