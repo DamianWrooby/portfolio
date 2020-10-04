@@ -7,7 +7,7 @@ import { Link } from "react-scroll";
 const ListItem = styled.li`
   position: relative;
   cursor: pointer;
-  margin-left: 35px;
+  margin-top: 15px;
   color: ${({ theme }) => theme.gray};
   font-weight: ${({ theme }) => theme.medium};
   &:hover {
@@ -18,6 +18,9 @@ const ListItem = styled.li`
     &:after {
       width: 150px;
     }
+  }
+  ${({ theme }) => theme.mq.md} {
+    margin-left: 35px;
   }
 `;
 

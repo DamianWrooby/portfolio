@@ -4,10 +4,10 @@ import Content from "../../atoms/Content/Content";
 import Links from "../../organisms/Navigation/Links";
 import SEO from "../../atoms/Seo/Seo";
 import { NavigationContext } from "../../../contexts/NavigationContext";
-// import MobileNav from 'components/organisms/Navigation/MobileNav';
+import MobileNav from "./MobileNav";
 
 const Wrapper = styled.nav`
-  position: fixed;
+  position: absolute;
   max-width: 100vw;
   top: 0;
   left: 0;
@@ -31,24 +31,17 @@ const Wrapper = styled.nav`
 const InnerWrapper = styled.div`
   width: 100%;
   height: 100%;
-  display: none;
-  opacity: 0;
+  display: flex;
   align-items: center;
   justify-content: flex-end;
   color: ${({ theme }) => theme.white};
-  ${({ theme }) => theme.mq.xs} {
-    display: flex;
-    opacity: 1;
-  }
 `;
 
 const List = styled.ul`
   display: none;
   align-items: center;
-  opacity: 0;
-  ${({ theme }) => theme.mq.xs} {
+  ${({ theme }) => theme.mq.md} {
     display: flex;
-    opacity: 1;
   }
 `;
 
@@ -68,7 +61,7 @@ const Navigation = () => {
               <Links />
             </List>
           </InnerWrapper>
-          {/* <MobileNav /> */}
+          <MobileNav />
         </Content>
       </Wrapper>
     </>
