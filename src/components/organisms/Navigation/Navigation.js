@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import styled, { css } from "styled-components";
-import Content from "../../atoms/Content/Content";
 import Links from "../../organisms/Navigation/Links";
 import SEO from "../../atoms/Seo/Seo";
 import { NavigationContext } from "../../../contexts/NavigationContext";
@@ -35,6 +34,17 @@ const InnerWrapper = styled.div`
   align-items: center;
   justify-content: flex-end;
   color: ${({ theme }) => theme.white};
+`;
+
+const Content = styled.div`
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  max-width: 1440px;
+  padding: 0;
+  ${({ theme }) => theme.mq.md} {
+    padding: 0 45px;
+  }
 `;
 
 const List = styled.ul`

@@ -1,14 +1,31 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
 import styled from "styled-components";
 import Lottie from "react-lottie";
 
+const Wrapper = styled.div`
+  max-width: 90vw;
+  display: flex;
+  align-items: center;
+`;
+
 const LottieAnimation = ({ animationData, width, height }) => {
-  const Wrapper = styled.div`
-    max-width: 90vw;
-    display: flex;
-    align-items: center;
-  `;
+  const AnimationRef = useRef(null);
+
+  useEffect(() => {
+    const Animation = AnimationRef.current;
+
+    gsap.from(Animation, {
+      autoAlpha: 0,
+      y: "-=50",
+      duration: 2,
+      scrollTrigger: {
+        trigger: Animation,
+        start: "top bottom-=300px",
+      },
+    });
+  }, []);
 
   const defaultOptions = {
     loop: true,
@@ -20,7 +37,7 @@ const LottieAnimation = ({ animationData, width, height }) => {
   };
 
   return (
-    <Wrapper>
+    <Wrapper ref={AnimationRef}>
       <Lottie options={defaultOptions} width={width} height={height} />
     </Wrapper>
   );

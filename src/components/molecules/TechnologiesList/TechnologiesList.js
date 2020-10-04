@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
+import gsap from "gsap";
 import ListItem from "../../atoms/ListItem/ListItem";
 import htmlIcon from "../../../assets/icons/html-5.svg";
 import cssIcon from "../../../assets/icons/css-3.svg";
@@ -46,9 +47,31 @@ const List = styled.ul`
 `;
 
 const ItemList = () => {
+  const list1Ref = useRef(null);
+  const list2Ref = useRef(null);
+
+  useEffect(() => {
+    const firstList = list1Ref.current;
+    const secondList = list2Ref.current;
+
+    if (firstList && secondList) {
+      [...firstList.children, ...secondList.children].map(child => {
+        gsap.from(child, {
+          autoAlpha: 0,
+          y: "-=20",
+          scrollTrigger: {
+            trigger: child,
+            start: "top bottom-=50px",
+          },
+        });
+      });
+    }
+  }, []);
+
+
   return (
     <ListsWrapper>
-      <List>
+      <List ref={list1Ref}>
         <ListItem icon={htmlIcon} height="28">
           HTML 5
         </ListItem>
@@ -73,7 +96,7 @@ const ItemList = () => {
           Styled Components
         </ListItem>
       </List>
-      <List>
+      <List ref={list2Ref}>
         <ListItem icon={gsapIcon} height="23">
           GSAP
         </ListItem>

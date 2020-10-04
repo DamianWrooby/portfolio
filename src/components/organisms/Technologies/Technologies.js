@@ -1,5 +1,4 @@
-import React, { useRef, useEffect } from "react";
-import gsap from "gsap";
+import React from "react";
 import { Element } from "react-scroll";
 import styled from "styled-components";
 import Content from "../../atoms/Content/Content";
@@ -71,8 +70,8 @@ const wavePath = (
 const Technologies = () => {
   return (
     <Wrapper id="technologies">
-      {wavePath}
       <Element name="technologies">
+        {wavePath}
         <Content>
           <Main>
             <Separator />

@@ -11,7 +11,7 @@ const Wrapper = styled.div`
 const Separator = () => {
   return (
     <Wrapper>
-      <img width="100px" src={separatorImg} />
+      <img width="100px" src={separatorImg} alt="" />
     </Wrapper>
   );
 };

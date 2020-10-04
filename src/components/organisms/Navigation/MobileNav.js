@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useContext } from "react";
 import gsap from "gsap";
 import Links from "./Links";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import MenuBtn from "../Navigation/MenuBtn";
 import { NavigationContext } from "../../../contexts/NavigationContext";
 
@@ -41,7 +41,7 @@ const InnerWrapper = styled.div`
 
 const Background = styled.div`
   position: fixed;
-  width: 100%;
+  width: 100vw;
   height: 105vh;
   z-index: -1;
   background: linear-gradient(
@@ -49,7 +49,7 @@ const Background = styled.div`
     rgba(22, 35, 46, 1) 6%,
     rgba(23, 29, 34, 1) 87%
   );
-  transform: translate(-20px, -115%);
+  transform: translate(0, -115%);
   will-change: transform;
 `;
 
@@ -94,7 +94,7 @@ const MobileNav = () => {
 
       tl.set(content, { visibility: "visible" });
       tl.to(background, {
-        transform: "translate(-20px,-11%)",
+        transform: "translate(0,-15%)",
         duration: 0.4,
         ease: " Circ.easeOut",
       });

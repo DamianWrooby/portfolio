@@ -16,6 +16,7 @@ const Wrapper = styled.header`
   padding: 0;
   overflow: hidden;
 `;
+
 const Container = styled.div`
   width: 100%;
   height: 100vh;

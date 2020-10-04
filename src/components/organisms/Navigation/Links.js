@@ -21,6 +21,7 @@ const ListItem = styled.li`
   }
   ${({ theme }) => theme.mq.md} {
     margin-left: 35px;
+    margin-top: 0;
   }
 `;
 

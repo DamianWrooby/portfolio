@@ -1,6 +1,5 @@
-import React, { useRef, useEffect } from "react";
+import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import gsap from "gsap";
 import { Element } from "react-scroll";
 import styled from "styled-components";
 import Content from "../../atoms/Content/Content";
@@ -23,14 +22,14 @@ const Main = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 0 80px;
+  padding: 0;
   flex-direction: column;
   color: ${({ theme }) => theme.white};
   ${({ theme }) => theme.mq.md} {
-    padding: 20px 0 80px;
+    padding: 20px 0 0;
   }
   ${({ theme }) => theme.mq.xxl} {
-    padding: 20px 0 60px;
+    padding: 20px 0 0;
   }
 `;
 
@@ -38,7 +37,27 @@ const InnerWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  margin-bottom: -25px;
 `;
+
+const WaveWrapper = styled.div`
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+  margin-top: 90px;
+`;
+
+const wavePath = (
+  <WaveWrapper>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      <path
+        fill="#03131D"
+        fill-opacity="1"
+        d="M0,64L720,96L1440,32L1440,0L720,0L0,0Z"
+      ></path>
+    </svg>
+  </WaveWrapper>
+);
 
 const Projects = () => {
   const data = useStaticQuery(graphql`
@@ -97,6 +116,7 @@ const Projects = () => {
             <InnerWrapper>{projectsList}</InnerWrapper>
           </Main>
         </Content>
+        {wavePath}
       </Element>
     </Wrapper>
   );

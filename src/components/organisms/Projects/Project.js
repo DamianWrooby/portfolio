@@ -93,16 +93,45 @@ const Project = ({
   imgKey,
   imgAlt,
 }) => {
+  const imageRef = useRef(null);
+  const contentRef = useRef(null);
+
+  useEffect(() => {
+    const image = imageRef.current;
+    const content = contentRef.current;
+
+    if (content && image) {
+      gsap.from(image, {
+        autoAlpha: 0,
+        x: "-=150",
+        scrollTrigger: {
+          trigger: image,
+          start: "top bottom-=200px",
+        },
+      });
+      gsap.from(content.children, {
+        autoAlpha: 0,
+        y: "-=50",
+        duration: 0.5,
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: image,
+          start: "top bottom-=200px",
+        },
+      });
+    }
+  }, []);
+
   const techList = technologies.map(el => {
     return <Item key={el}>{el}</Item>;
   });
 
   return (
     <Wrapper>
-      <ImageWrapper>
+      <ImageWrapper ref={imageRef}>
         <StyledImg fluid={fluid} key={imgKey} alt={imgAlt} />
       </ImageWrapper>
-      <ContentWrapper>
+      <ContentWrapper ref={contentRef}>
         <Title>{title}</Title>
         <Description>{description}</Description>
         <ListTitle>Technologies & Tools</ListTitle>
