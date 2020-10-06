@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "../layouts/layout";
+import Layout from "../layouts/Layout";
 import Header from "../components/organisms/Header/Header";
 import Navigation from "../components/organisms/Navigation/Navigation";
 import Technologies from "../components/organisms/Technologies/Technologies";
