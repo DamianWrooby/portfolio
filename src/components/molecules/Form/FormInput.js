@@ -36,7 +36,7 @@ const StyledInput = styled.input`
   font-family: ${({ theme }) => theme.fonts.mainFont};
   font-size: ${({ theme }) => theme.fontSize.xs};
   border: 2px solid ${({ theme }) => theme.dark150};
-  color: ${({ theme }) => theme.white};
+  color: ${({ theme }) => theme.dark};
   border-radius: 4px;
   padding-left: 15px;
   transition: 0.3s;
@@ -45,7 +45,7 @@ const StyledInput = styled.input`
     border-color: ${({ theme }) => theme.blue100};
   }
   &:focus + ${Label} {
-    color: ${({ theme }) => theme.white};
+    color: ${({ theme }) => theme.dark};
   }
   ${({ theme }) => theme.mq.xs} {
     font-size: ${({ theme }) => theme.fontSize.s};

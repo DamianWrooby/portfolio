@@ -9,7 +9,6 @@ import Recaptcha from "react-recaptcha";
 const StyledButton = styled(Button)`
   width: 100%;
   margin: 15px 0 30px;
-  border-radius: 4px;
   ${({ theme }) => theme.mq.s} {
     margin: 30px 0 50px;
   }
@@ -17,8 +16,8 @@ const StyledButton = styled(Button)`
     disabled &&
     css`
       content: "";
-      background-color: ${({ theme }) => theme.blue};
-      border-color: ${({ theme }) => theme.blue};
+      background-color: ${({ theme }) => theme.grey};
+      border-color: ${({ theme }) => theme.grey};
       cursor: default;
     `}
 `;
@@ -166,7 +165,7 @@ const ContactForm = () => {
             // }}
           />
           <StyledButton
-            label="SEND"
+            label={submitBtn.content}
             animated
             submit
             disabled={isSubmitting || submitBtn.color !== "blue"}
