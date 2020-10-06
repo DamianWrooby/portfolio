@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Content from "../../atoms/Content/Content";
 import SectionHeader from "../../molecules/SectionHeader/SectionHeader";
 import Separator from "../../atoms/Separator/Separator";
+import Form from "../../molecules/Form/Form";
 
 const Wrapper = styled.section`
   position: relative;
@@ -47,7 +48,9 @@ const Contact = () => {
               heading="Contact"
               paragraph="Do you have any questions? Feel free to contact me. I am also open to cooperation with back-end developers or UX/UI designer to gain more experience. Let's get in touch!"
             />
-            <InnerWrapper></InnerWrapper>
+            <InnerWrapper>
+              <Form />
+            </InnerWrapper>
           </Main>
         </Content>
       </Element>
