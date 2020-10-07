@@ -1,14 +1,22 @@
 import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
-import ScrollMagic from "scrollmagic";
+import loadable from "@loadable/component";
 import { Element } from "react-scroll";
 import styled from "styled-components";
 import realFace from "../../../assets/images/first-layer.png";
 import robotFace from "../../../assets/images/header-1.png";
 import codePattern from "../../../assets/images/code-pattern.jpg";
+import * as ScrollMagic from "scrollmagic-with-ssr";
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap";
 
-ScrollMagicPluginGsap(ScrollMagic, gsap);
+let controller = undefined;
+
+if (typeof window !== `undefined`) {
+  ScrollMagicPluginGsap(ScrollMagic, gsap);
+  controller = new ScrollMagic.Controller();
+}
+
+// const ScrollMagic = loadable.lib(() => import("scrollmagic-with-ssr"));
 
 const Wrapper = styled.header`
   position: relative;
@@ -182,8 +190,6 @@ const Header = () => {
     document.body.style.overflow = "auto";
   };
 
-  const controller = new ScrollMagic.Controller();
-
   useEffect(() => {
     const wrapper = wrapperRef.current;
     const firstLayer = firstLayerRef.current;
@@ -327,7 +333,7 @@ const Header = () => {
       .addTo(controller)
       .setTween(tl2.resume())
       .setPin(wrapper);
-  });
+  }, []);
 
   return (
     <Element name="home">
