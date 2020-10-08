@@ -26,7 +26,7 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   background-color: transparent;
-  transition: 0.3s;
+  transition: 0.1s;
   visibility: hidden;
   overflow: scroll;
 `;
