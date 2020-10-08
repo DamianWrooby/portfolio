@@ -45,7 +45,7 @@ const StyledInput = styled.input`
     border-color: ${({ theme }) => theme.blue100};
   }
   &:focus + ${Label} {
-    color: ${({ theme }) => theme.dark};
+    color: ${({ theme }) => theme.neonBlue};
   }
   ${({ theme }) => theme.mq.xs} {
     font-size: ${({ theme }) => theme.fontSize.s};

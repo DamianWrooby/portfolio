@@ -65,19 +65,51 @@ const Button = styled.button`
     `}
 `;
 
+const Background = styled.div`
+  position: fixed;
+  top: -32px;
+  right: -2%;
+  width: 100px;
+  height: 125px;
+  border-bottom-left-radius: 40px;
+  background-color: #16232d;
+  box-shadow: 0 0 10px rgba(84, 227, 255, 0.7);
+  opacity: 0;
+  transition: 0.3s;
+  ${({ theme }) => theme.mq.s} {
+    width: 117px;
+  }
+  }
+  ${({ visible }) =>
+    visible &&
+    css`
+      opacity: 1;
+    `}
+  ${({ inactive }) =>
+    inactive &&
+    css`
+      box-shadow: none;
+    `}
+`;
+
 const MenuBtn = () => {
-  const { isMobileNavVisible, handleMobileNav } = useContext(NavigationContext);
+  const { isMobileNavVisible, handleMobileNav, isTransparent } = useContext(
+    NavigationContext
+  );
 
   const toggleNav = () => {
     handleMobileNav(!isMobileNavVisible);
   };
 
   return (
-    <Button onClick={toggleNav} isActive={isMobileNavVisible}>
-      <TopLine isActive={isMobileNavVisible} />
-      <MiddleLine isActive={isMobileNavVisible} />
-      <BottomLine isActive={isMobileNavVisible} />
-    </Button>
+    <>
+      <Button onClick={toggleNav} isActive={isMobileNavVisible}>
+        <TopLine isActive={isMobileNavVisible} />
+        <MiddleLine isActive={isMobileNavVisible} />
+        <BottomLine isActive={isMobileNavVisible} />
+      </Button>
+      <Background visible={!isTransparent} inactive={isMobileNavVisible} />
+    </>
   );
 };
 

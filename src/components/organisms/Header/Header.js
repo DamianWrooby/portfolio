@@ -1,6 +1,5 @@
 import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
-import loadable from "@loadable/component";
 import { Element } from "react-scroll";
 import styled from "styled-components";
 import realFace from "../../../assets/images/first-layer.png";
@@ -15,8 +14,6 @@ if (typeof window !== `undefined`) {
   ScrollMagicPluginGsap(ScrollMagic, gsap);
   controller = new ScrollMagic.Controller();
 }
-
-// const ScrollMagic = loadable.lib(() => import("scrollmagic-with-ssr"));
 
 const Wrapper = styled.header`
   position: relative;
@@ -37,6 +34,7 @@ const Container = styled.div`
 `;
 
 const Title = styled.h1`
+  opacity: 0;
   position: relative;
   font-family: ${({ theme }) => theme.fonts.mainFont};
   font-size: ${({ theme }) => theme.fontSize.xxl};
@@ -57,6 +55,7 @@ const Title = styled.h1`
 `;
 
 const Subtitle = styled.h2`
+  opacity: 0;
   position: relative;
   font-family: ${({ theme }) => theme.fonts.mainFont};
   font-size: ${({ theme }) => theme.fontSize.xl};
@@ -141,6 +140,7 @@ const FirsLayerImg = styled.div`
 `;
 
 const SecondLayerImg = styled.div`
+  opacity: 0;
   position: absolute;
   left: -18%;
   width: 100%;
@@ -159,6 +159,7 @@ const SecondLayerImg = styled.div`
 `;
 
 const SecondLayerBg = styled.div`
+  opacity: 0;
   position: absolute;
   width: 100%;
   height: 115vh;

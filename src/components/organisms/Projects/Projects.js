@@ -52,7 +52,7 @@ const wavePath = (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
       <path
         fill="#03131D"
-        fill-opacity="1"
+        fillOpacity="1"
         d="M0,64L720,96L1440,32L1440,0L720,0L0,0Z"
       ></path>
     </svg>
@@ -76,6 +76,7 @@ const Projects = () => {
               fluid(maxWidth: 1000) {
                 ...GatsbyContentfulFluid
               }
+              title
             }
           }
         }

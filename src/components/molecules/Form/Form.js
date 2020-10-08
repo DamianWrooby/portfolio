@@ -7,6 +7,7 @@ import * as Yup from "yup";
 import Recaptcha from "react-recaptcha";
 
 const StyledButton = styled(Button)`
+  cursor: pointer;
   width: 100%;
   margin: 15px 0 30px;
   ${({ theme }) => theme.mq.s} {
@@ -166,7 +167,6 @@ const ContactForm = () => {
           />
           <StyledButton
             label={submitBtn.content}
-            animated
             submit
             disabled={isSubmitting || submitBtn.color !== "blue"}
             isSubmitting={isSubmitting}

@@ -95,18 +95,22 @@ const MobileNav = () => {
       tl.set(content, { visibility: "visible" });
       tl.to(background, {
         transform: "translate(0,-15%)",
-        duration: 0.4,
+        duration: 0.1,
         ease: " Circ.easeOut",
       });
       tl.addLabel("showItems");
-      tl.from(listItems, { x: -50, autoAlpha: 0, stagger: 0.1 }, "showItems");
+      tl.from(
+        listItems,
+        { x: -50, autoAlpha: 0, stagger: 0.1, duration: 0.2 },
+        "showItems"
+      );
     }
   }, []);
 
   return (
     <Wrapper>
       <div ref={btnRef}>
-        <MenuBtn />{" "}
+        <MenuBtn />
       </div>
       <Background ref={bgRef} />
       <Content ref={contentRef}>
