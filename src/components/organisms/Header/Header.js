@@ -75,6 +75,7 @@ const Subtitle = styled.h2`
 `;
 
 const SecondTitle = styled.p`
+  opacity: 0;
   position: absolute;
   font-family: ${({ theme }) => theme.fonts.mainFont};
   font-size: ${({ theme }) => theme.fontSize.xxl};
@@ -97,6 +98,7 @@ const SecondTitle = styled.p`
 `;
 
 const SecondSubtitle = styled.p`
+  opacity: 0;
   position: absolute;
   font-family: ${({ theme }) => theme.fonts.mainFont};
   font-size: ${({ theme }) => theme.fontSize.xxl};
