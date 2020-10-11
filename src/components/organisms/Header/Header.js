@@ -2,9 +2,9 @@ import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { Element } from "react-scroll";
 import styled from "styled-components";
-import realFace from "../../../assets/images/first-layer.png";
-import robotFace from "../../../assets/images/header-1.png";
-import codePattern from "../../../assets/images/code-pattern.jpg";
+import realFace from "../../../assets/images/first-layer-o.png";
+import robotFace from "../../../assets/images/header-1-o.png";
+import codePattern from "../../../assets/images/code-pattern-o.jpg";
 import * as ScrollMagic from "scrollmagic-with-ssr";
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap";
 
@@ -78,7 +78,7 @@ const SecondTitle = styled.p`
   opacity: 0;
   position: absolute;
   font-family: ${({ theme }) => theme.fonts.mainFont};
-  font-size: ${({ theme }) => theme.fontSize.xxl};
+  font-size: ${({ theme }) => theme.fontSize.xl};
   text-align: center;
   top: 40vh;
   margin: 0 5%;
@@ -101,7 +101,7 @@ const SecondSubtitle = styled.p`
   opacity: 0;
   position: absolute;
   font-family: ${({ theme }) => theme.fonts.mainFont};
-  font-size: ${({ theme }) => theme.fontSize.xxl};
+  font-size: ${({ theme }) => theme.fontSize.xl};
   text-align: center;
   top: 58vh;
   margin: 0 5%;
