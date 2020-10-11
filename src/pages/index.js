@@ -8,19 +8,21 @@ import Contact from "../components/organisms/Contact/Contact";
 import Footer from "../components/molecules/Footer/Footer";
 import NavigationProvider from "../contexts/NavigationContext";
 
-const IndexPage = () => (
-  <NavigationProvider>
-    <Layout>
-      <Navigation />
-      <Header />
-      <main>
-        <Technologies />
-        <Projects />
-        <Contact />
-      </main>
-      <Footer />
-    </Layout>
-  </NavigationProvider>
-);
+const IndexPage = () => {
+  return (
+    <NavigationProvider>
+      <Layout>
+        <Navigation />
+        <Header />
+        <main>
+          <Technologies />
+          <Projects />
+          <Contact />
+        </main>
+        <Footer />
+      </Layout>
+    </NavigationProvider>
+  );
+};
 
 export default IndexPage;

@@ -9,6 +9,14 @@ module.exports = {
     author: `@damianwrooby`,
     themeColor: `16FFFF`,
     language: "en",
+    keywords: [
+      "frontend developer",
+      "web developer",
+      "web design",
+      "react developer",
+      "react programming",
+    ],
+    siteUrl: "https://damianwroblewski.com/",
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

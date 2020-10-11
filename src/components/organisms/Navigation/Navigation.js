@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useStaticQuery, graphql } from "gatsby";
 import styled, { css } from "styled-components";
 import Links from "../../organisms/Navigation/Links";
 import SEO from "../../atoms/Seo/Seo";
@@ -61,9 +62,23 @@ const Navigation = () => {
   const currentSection =
     activeLink.charAt(0).toUpperCase() + activeLink.slice(1);
 
+  const { preview } = useStaticQuery(
+    graphql`
+      query {
+        preview: file(relativePath: { regex: "/preview/" }) {
+          childImageSharp {
+            fluid(maxWidth: 1280) {
+              src
+            }
+          }
+        }
+      }
+    `
+  );
+
   return (
     <>
-      <SEO title={currentSection} />
+      <SEO image={preview.childImageSharp.fluid} title={currentSection} />
       <Wrapper active={!isTransparent}>
         <Content>
           <InnerWrapper>
