@@ -32,6 +32,7 @@
     "scrollmagic-with-ssr": "^1.0.2",
     "styled-components": "^5.2.0",
     "styled-reset": "^4.2.3",
+    "use-media": "^1.4.0",
     "yup": "^0.29.3"
   },
   "devDependencies": {

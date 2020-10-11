@@ -2,13 +2,12 @@ import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { Element } from "react-scroll";
 import styled from "styled-components";
-import realFace from "../../../assets/images/first-layer.png";
-import robotFace from "../../../assets/images/header-1.png";
 import codePattern from "../../../assets/images/code-pattern.jpg";
 import * as ScrollMagic from "scrollmagic-with-ssr";
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap";
 import FirstLayerImg from "./BackgroundImages/FirstLayerImg";
 import SecondLayerImg from "./BackgroundImages/SecondLayerImg";
+import SecondLayerBg from "./BackgroundImages/SecondLayerBg";
 
 let controller = undefined;
 
@@ -125,71 +124,44 @@ const ColorSpan = styled.span`
   color: ${({ theme }) => theme.neonBlue};
 `;
 
-const StyledFirsLayerImg = styled(FirstLayerImg)`
-  && {
-    position: absolute !important;
-    left: -18%;
-    width: 100%;
-    height: 100vh;
-    ${"" /* background: url(${realFace}) no-repeat; */}
-    background-size: cover;
-    background-attachment: unset;
-    z-index: 1;
-    ${({ theme }) => theme.mq.md} {
-      left: 0;
-    }
-    ${({ theme }) => theme.mq.xl} {
-      background-size: contain;
-      background-attachment: fixed;
-    }
+const BackgroundWrapper = styled.div`
+  position: absolute !important;
+  left: -18%;
+  width: 100vh;
+  height: 100vh;
+  background-size: cover;
+  background-attachment: unset;
+  z-index: 1;
+  ${({ theme }) => theme.mq.md} {
+    left: 0;
+  }
+  ${({ theme }) => theme.mq.xl} {
+    background-size: contain;
+    background-attachment: fixed;
   }
 `;
 
-// const SecondLayerImg = styled.div`
-//   opacity: 0;
-//   position: absolute;
-//   left: -18%;
-//   width: 100%;
-//   height: 100vh;
-//   background: url(${robotFace}) no-repeat;
-//   background-size: cover;
-//   background-attachment: unset;
-//   z-index: 2;
-//   ${({ theme }) => theme.mq.md} {
-//     left: 0;
-//   }
-//   ${({ theme }) => theme.mq.xl} {
-//     background-size: contain;
-//     background-attachment: fixed;
-//   }
-// `;
+const StyledFirsLayerImg = styled(FirstLayerImg)`
+  && {
+    width: 100%;
+    height: 100%;
+  }
+`;
 
 const StyledSecondLayerImg = styled(SecondLayerImg)`
   && {
-    opacity: 0;
-    position: absolute !important;
-    left: -18%;
     width: 100%;
-    height: 100vh;
-    background-size: cover;
-    background-attachment: unset;
+    height: 100%;
+    opacity: 0;
     z-index: 2;
-    ${({ theme }) => theme.mq.md} {
-      left: 0;
-    }
-    ${({ theme }) => theme.mq.xl} {
-      background-size: contain;
-      background-attachment: fixed;
-    }
   }
 `;
 
-const SecondLayerBg = styled.div`
+const StyledSecondLayerBg = styled(SecondLayerBg)`
   opacity: 0;
   position: absolute;
   width: 100%;
   height: 115vh;
-  background: url(${codePattern}) no-repeat;
   background-size: cover;
   background-attachment: fixed;
   z-index: 1;
@@ -197,9 +169,9 @@ const SecondLayerBg = styled.div`
 
 const HeaderBackground = styled.div`
   position: absolute;
-  width: 100%;
+  width: 100vh;
   height: 115vh;
-  background: ${({ theme }) => theme.darkBlue};
+  background: "#040e18";
   z-index: -1;
 `;
 
@@ -367,9 +339,15 @@ const Header = () => {
     <Element name="home">
       <Wrapper ref={wrapperRef}>
         <Container>
-          <StyledFirsLayerImg ref={firstLayerRef} />
-          <StyledSecondLayerImg ref={secondLayerRef} />
-          <SecondLayerBg ref={secondLayerBgRef} />
+          <BackgroundWrapper ref={firstLayerRef}>
+            <StyledFirsLayerImg />
+          </BackgroundWrapper>
+          <BackgroundWrapper ref={secondLayerBgRef}>
+            <StyledSecondLayerBg />
+          </BackgroundWrapper>
+          <BackgroundWrapper ref={secondLayerRef}>
+            <StyledSecondLayerImg />
+          </BackgroundWrapper>
           <HeaderBackground />
           <Title ref={titleRef}>
             Hi, I'm <ColorSpan>Damian</ColorSpan>
