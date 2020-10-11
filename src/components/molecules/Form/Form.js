@@ -87,7 +87,7 @@ const ContactForm = () => {
               });
               setSubmitting(false);
               setSubmitBtn({
-                content: "All good! I'll respond as soon as possible!",
+                content: "Success!",
                 color: "green",
               });
               resetForm();
@@ -124,7 +124,7 @@ const ContactForm = () => {
           name="contact-form"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
-          data-netlify-recaptcha="true"
+          // data-netlify-recaptcha="true"
         >
           <Field type="hidden" name="form-name" />
           <Field type="hidden" name="bot-field" />
