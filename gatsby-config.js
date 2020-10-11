@@ -1,10 +1,13 @@
-require("dotenv").config();
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
 
 module.exports = {
   siteMetadata: {
     title: `Damian Wróblewski | Front End Developer`,
     description: `Front End Developer portfolio made with Gatsby by Damian Wróblewski`,
     author: `@damianwrooby`,
+    themeColor: `16FFFF`,
     language: "en",
   },
   plugins: [
@@ -43,7 +46,7 @@ module.exports = {
       options: {
         spaceId: `l8jq2db9qwuj`,
         // Learn about environment variables: https://gatsby.dev/env-vars
-        accessToken: `${process.env.GATSBY_CONTENTFUL_ACCESS_TOKEN}`,
+        accessToken: process.env.GATSBY_CONTENTFUL_ACCESS_TOKEN,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

@@ -73,7 +73,7 @@ const Background = styled.div`
   height: 125px;
   border-bottom-left-radius: 40px;
   background-color: #16232d;
-  box-shadow: 0 0 10px rgba(84, 227, 255, 0.7);
+  ${"" /* box-shadow: 0 0 10px rgba(84, 227, 255, 0.7); */}
   opacity: 0;
   transition: 0.3s;
   ${({ theme }) => theme.mq.s} {

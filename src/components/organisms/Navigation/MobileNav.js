@@ -44,11 +44,7 @@ const Background = styled.div`
   width: 100vw;
   height: 105vh;
   z-index: -1;
-  background: linear-gradient(
-    231deg,
-    rgba(22, 35, 46, 1) 6%,
-    rgba(23, 29, 34, 1) 87%
-  );
+  background: ${({ theme }) => theme.darkBlue};
   transform: translate(0, -115%);
   will-change: transform;
 `;

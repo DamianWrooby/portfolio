@@ -12,6 +12,7 @@ function SEO({ description, lang, meta, title }) {
             title
             description
             author
+            themeColor
           }
         }
       }
@@ -31,6 +32,10 @@ function SEO({ description, lang, meta, title }) {
         {
           name: `description`,
           content: metaDescription,
+        },
+        {
+          name: `theme-color`,
+          content: site.siteMetadata.themeColor,
         },
         {
           property: `og:title`,

@@ -351,10 +351,10 @@ const Header = () => {
           </Title>
           <Subtitle ref={subtitleRef}>I'm a front-end web developer</Subtitle>
           <SecondTitle ref={secondTitleRef}>
-            I will turn your <ColorSpan>ideas</ColorSpan>
+            I will turn your business <ColorSpan>ideas</ColorSpan>
           </SecondTitle>
           <SecondSubtitle ref={secondSubtitleRef}>
-            Into clean and effective <ColorSpan>code</ColorSpan>
+            Into computer-readable <ColorSpan>code</ColorSpan>
           </SecondSubtitle>
         </Container>
       </Wrapper>

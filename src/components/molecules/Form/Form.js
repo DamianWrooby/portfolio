@@ -6,19 +6,21 @@ import { Formik, Form, FormikHelpers, Field } from "formik";
 import * as Yup from "yup";
 import Recaptcha from "react-recaptcha";
 
-const StyledButton = styled(Button)`
-  cursor: pointer;
-  width: 100%;
-  margin: 15px 0 30px;
+const SubmitButton = styled(Button)`
+  && {
+    cursor: pointer;
+    width: 100%;
+    margin-top: 15px !important;
+  }
   ${({ theme }) => theme.mq.s} {
-    margin: 30px 0 50px;
+    margin-top: 30px;
   }
   ${({ disabled }) =>
     disabled &&
     css`
       content: "";
-      background-color: ${({ theme }) => theme.grey};
-      border-color: ${({ theme }) => theme.grey};
+      background: #03e9f4;
+      color: ${({ theme }) => theme.dark};
       cursor: default;
     `}
 `;
@@ -100,10 +102,10 @@ const ContactForm = () => {
         } else {
           setSubmitting(false);
           setSubmitBtn({
-            content: "You have to verify reCAPTCHA first!",
+            content: "Verify reCAPTCHA first!",
             color: "red",
           });
-          setTimeout(clearButton, 1000);
+          setTimeout(clearButton, 1500);
         }
       }}
     >
@@ -161,19 +163,19 @@ const ContactForm = () => {
             verifyCallback={response => {
               setToken(response);
             }}
-            // onloadCallback={() => {
-            //   clearButton();
-            // }}
+            onloadCallback={() => {
+              clearButton();
+            }}
           />
-          <StyledButton
+          <SubmitButton
+            color={submitBtn.color}
             label={submitBtn.content}
-            submit
             disabled={isSubmitting || submitBtn.color !== "blue"}
             isSubmitting={isSubmitting}
             type="submit"
           >
             {!isSubmitting && submitBtn.content}
-          </StyledButton>
+          </SubmitButton>
         </Form>
       )}
     </Formik>

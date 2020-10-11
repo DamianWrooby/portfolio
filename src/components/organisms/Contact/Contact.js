@@ -5,6 +5,7 @@ import Content from "../../atoms/Content/Content";
 import SectionHeader from "../../molecules/SectionHeader/SectionHeader";
 import Separator from "../../atoms/Separator/Separator";
 import Form from "../../molecules/Form/Form";
+import SocialLinks from "./SocialLinks";
 
 const Wrapper = styled.section`
   position: relative;
@@ -30,11 +31,20 @@ const Main = styled.div`
 `;
 
 const InnerWrapper = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   ${({ theme }) => theme.mq.xl} {
     flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-start;
   }
+`;
+
+const FormWrapper = styled.div`
+  width: 100%;
+  max-width: 500px;
 `;
 
 const Contact = () => {
@@ -46,10 +56,13 @@ const Contact = () => {
             <Separator />
             <SectionHeader
               heading="Contact"
-              paragraph="Do you have any questions? Feel free to contact me. I am also open to cooperation with back-end developers or UX/UI designer to gain more experience. Let's get in touch!"
+              paragraph="Do you have any questions? Feel free to contact me. I am also open to cooperation with back-end developers or UX/UI designers to gain more experience. Let's get in touch!"
             />
             <InnerWrapper>
-              <Form />
+              <SocialLinks />
+              <FormWrapper>
+                <Form />
+              </FormWrapper>
             </InnerWrapper>
           </Main>
         </Content>

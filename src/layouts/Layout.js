@@ -1,8 +1,8 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React from "react";
+import PropTypes from "prop-types";
 import { ThemeProvider } from "styled-components";
-import GlobalStyle from "../theme/GlobalStyle"
-import { theme } from "../theme/mainTheme"
+import GlobalStyle from "../theme/GlobalStyle";
+import { theme } from "../theme/mainTheme";
 
 // import { useStaticQuery, graphql } from "gatsby"
 
@@ -14,11 +14,11 @@ const Layout = ({ children }) => {
         {children}
       </>
     </ThemeProvider>
-  )
-}
+  );
+};
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-}
+};
 
-export default Layout
+export default Layout;

@@ -68,7 +68,6 @@ const ItemList = () => {
     }
   }, []);
 
-
   return (
     <ListsWrapper>
       <List ref={list1Ref}>

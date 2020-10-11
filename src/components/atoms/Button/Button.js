@@ -4,6 +4,7 @@ import styled, { css, keyframes } from "styled-components";
 
 const StyledButton = styled.button`
   position: relative;
+  cursor: pointer;
   font-size: ${({ theme }) => theme.fontSize.xs};
   text-align: center;
   background: #03e9f4;
@@ -38,14 +39,39 @@ const StyledButton = styled.button`
       background: transparent;
       color: #16ffff;
     `}
+  ${({ color }) =>
+    color === "blue" &&
+    css`
+      background: #03e9f4;
+      color: ${({ theme }) => theme.dark};
+    `}
+  ${({ color }) =>
+    color === "green" &&
+    css`
+      border-color: ${({ theme }) => theme.dark};
+      background: ${({ theme }) => theme.green};
+      &:hover {
+        background: ${({ theme }) => theme.green};
+        color: ${({ theme }) => theme.dark};
+      }
+    `}
+  ${({ color }) =>
+    color === "red" &&
+    css`
+      background: ${({ theme }) => theme.red};
+      &:hover {
+        background: ${({ theme }) => theme.red};
+        color: ${({ theme }) => theme.dark};
+      }
+    `}
   ${({ theme }) => theme.mq.s} {
-    font-size: ${({ theme }) => theme.fontSize.lg};
+  font-size: ${({ theme }) => theme.fontSize.lg};
     padding: 20px;
     margin-right: 50px;
-  }
+  } 
 `;
 
-const animate1 = keyframes`
+const animate1 = keyframes`  
     0%{
         left: -100%;
     }
@@ -93,6 +119,16 @@ const StyledSpan = styled.span`
         background: linear-gradient(90deg, transparent, #03e9f4);
         animation: ${animate1} 1s linear infinite;
       `}
+    ${({ color }) =>
+      color === "green" &&
+      css`
+        background: ${({ theme }) => theme.dark};
+      `}
+      ${({ color }) =>
+        color === "red" &&
+        css`
+          background: ${({ theme }) => theme.dark};
+        `}
   }
   &:nth-child(2) {
     top: 0;
@@ -108,6 +144,16 @@ const StyledSpan = styled.span`
         animation: ${animate2} 1s linear infinite;
         animation-delay: 0.25s;
       `}
+    ${({ color }) =>
+      color === "green" &&
+      css`
+        background: ${({ theme }) => theme.dark};
+      `}
+      ${({ color }) =>
+        color === "red" &&
+        css`
+          background: ${({ theme }) => theme.dark};
+        `}
   }
   &:nth-child(3) {
     bottom: 0;
@@ -122,6 +168,16 @@ const StyledSpan = styled.span`
         animation: ${animate3} 1s linear infinite;
         animation-delay: 0.5s;
       `}
+    ${({ color }) =>
+      color === "green" &&
+      css`
+        background: ${({ theme }) => theme.dark};
+      `}
+      ${({ color }) =>
+        color === "red" &&
+        css`
+          background: ${({ theme }) => theme.dark};
+        `}
   }
   &:nth-child(4) {
     bottom: 0;
@@ -137,12 +193,24 @@ const StyledSpan = styled.span`
         animation: ${animate4} 1s linear infinite;
         animation-delay: 0.75s;
       `}
+      ${({ color }) =>
+        color === "green" &&
+        css`
+          background: ${({ theme }) => theme.dark};
+        `}
+      ${({ color }) =>
+        color === "red" &&
+        css`
+          background: ${({ theme }) => theme.dark};
+        `}
   }
 `;
 
-const Button = ({ label, link, animated, renderAs }) => {
+const Button = ({ label, link, animated, renderAs, color, className }) => {
   return (
     <StyledButton
+      className={className}
+      color={color}
       href={link}
       role="link"
       target="_blank"
@@ -150,10 +218,10 @@ const Button = ({ label, link, animated, renderAs }) => {
       as={renderAs}
       animation={animated}
     >
-      <StyledSpan animation={animated}></StyledSpan>
-      <StyledSpan animation={animated}></StyledSpan>
-      <StyledSpan animation={animated}></StyledSpan>
-      <StyledSpan animation={animated}></StyledSpan>
+      <StyledSpan color={color} animation={animated}></StyledSpan>
+      <StyledSpan color={color} animation={animated}></StyledSpan>
+      <StyledSpan color={color} animation={animated}></StyledSpan>
+      <StyledSpan color={color} animation={animated}></StyledSpan>
       {label}
     </StyledButton>
   );

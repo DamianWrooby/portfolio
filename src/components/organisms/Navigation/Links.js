@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import styled, { css } from "styled-components";
 import { NavigationContext } from "../../../contexts/NavigationContext";
-
 import { Link } from "react-scroll";
 
 const ListItem = styled.li`
