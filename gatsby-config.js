@@ -30,6 +30,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-sharp`,
+    "gatsby-plugin-loadable-components-ssr",
     {
       resolve: `gatsby-plugin-gtag`,
       options: {

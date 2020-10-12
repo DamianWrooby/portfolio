@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
 import Button from "../../atoms/Button/Button";
 import FormInput from "./FormInput";
-import { Formik, Form, FormikHelpers, Field } from "formik";
+import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import Recaptcha from "react-recaptcha";
 

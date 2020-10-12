@@ -4,9 +4,13 @@ import styled from "styled-components";
 import Content from "../../atoms/Content/Content";
 import SectionHeader from "../../molecules/SectionHeader/SectionHeader";
 import Separator from "../../atoms/Separator/Separator";
-import TechnologiesList from "../../molecules/TechnologiesList/TechnologiesList";
 import LottieAnimation from "../../molecules/LottieAnimation/LottieAnimation";
 import laptopAnimation from "../../../assets/lotties/laptop.json";
+import loadable from "@loadable/component";
+
+const TechnologiesList = loadable(() =>
+  import("../../molecules/TechnologiesList/TechnologiesList")
+);
 
 const Wrapper = styled.section`
   position: relative;

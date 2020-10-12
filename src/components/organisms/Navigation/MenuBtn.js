@@ -103,7 +103,11 @@ const MenuBtn = () => {
 
   return (
     <>
-      <Button onClick={toggleNav} isActive={isMobileNavVisible}>
+      <Button
+        onClick={toggleNav}
+        isActive={isMobileNavVisible}
+        aria-label="Menu toggle button"
+      >
         <TopLine isActive={isMobileNavVisible} />
         <MiddleLine isActive={isMobileNavVisible} />
         <BottomLine isActive={isMobileNavVisible} />

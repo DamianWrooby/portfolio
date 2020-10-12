@@ -4,8 +4,10 @@ import styled from "styled-components";
 import Content from "../../atoms/Content/Content";
 import SectionHeader from "../../molecules/SectionHeader/SectionHeader";
 import Separator from "../../atoms/Separator/Separator";
-import Form from "../../molecules/Form/Form";
 import SocialLinks from "./SocialLinks";
+import loadable from "@loadable/component";
+
+const Form = loadable(() => import("../../molecules/Form/Form"));
 
 const Wrapper = styled.section`
   position: relative;

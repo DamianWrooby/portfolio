@@ -4,8 +4,10 @@ import { Element } from "react-scroll";
 import styled from "styled-components";
 import Content from "../../atoms/Content/Content";
 import SectionHeader from "../../molecules/SectionHeader/SectionHeader";
-import Project from "../Projects/Project";
 import Separator from "../../atoms/Separator/Separator";
+import loadable from "@loadable/component";
+
+const Project = loadable(() => import("../Projects/Project"));
 
 const Wrapper = styled.section`
   position: relative;

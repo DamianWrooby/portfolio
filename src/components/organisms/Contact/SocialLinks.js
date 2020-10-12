@@ -78,6 +78,7 @@ const ItemList = () => {
           href="mailto: dwroblewski89@gmail.com"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Email link"
         >
           <StyledListItem
             icon={emailIcon}
@@ -89,6 +90,7 @@ const ItemList = () => {
           href="https://github.com/DamianWrooby"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Github link"
         >
           <StyledListItem
             icon={githubIcon}
@@ -100,6 +102,7 @@ const ItemList = () => {
           href="https://twitter.com/DamianWrooby"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Twitter link"
         >
           <StyledListItem
             icon={twitterIcon}
