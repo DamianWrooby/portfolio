@@ -31,6 +31,7 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-sharp`,
     "gatsby-plugin-loadable-components-ssr",
+    "gatsby-plugin-netlify",
     {
       resolve: `gatsby-plugin-gtag`,
       options: {
