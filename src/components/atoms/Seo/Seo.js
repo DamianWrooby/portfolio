@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
 
 function SEO({ description, lang, meta, title, image: metaImage }) {
-  const { site, preview } = useStaticQuery(
+  const { site } = useStaticQuery(
     graphql`
       query {
         site {
@@ -22,6 +22,7 @@ function SEO({ description, lang, meta, title, image: metaImage }) {
   );
 
   const metaDescription = description || site.siteMetadata.description;
+
   const image =
     metaImage && metaImage.src
       ? `${site.siteMetadata.siteUrl}${metaImage.src}`

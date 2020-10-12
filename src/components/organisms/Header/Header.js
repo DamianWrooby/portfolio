@@ -2,7 +2,6 @@ import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { Element } from "react-scroll";
 import styled from "styled-components";
-import codePattern from "../../../assets/images/code-pattern.jpg";
 import * as ScrollMagic from "scrollmagic-with-ssr";
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap";
 import FirstLayerImg from "./BackgroundImages/FirstLayerImg";
@@ -94,6 +93,8 @@ const SecondTitle = styled.p`
   ${({ theme }) => theme.mq.lg} {
     font-family: ${({ theme }) => theme.fonts.mainFont};
     font-size: ${({ theme }) => theme.fontSize.xxl};
+  }
+  ${({ theme }) => theme.mq.lg} {
     top: 39vh;
     left: 27vw;
     text-align: left;
@@ -119,6 +120,8 @@ const SecondSubtitle = styled.p`
   }
   ${({ theme }) => theme.mq.lg} {
     font-size: ${({ theme }) => theme.fontSize.xxl};
+  }
+  ${({ theme }) => theme.mq.lg} {
     top: 49vh;
     left: 27vw;
     text-align: left;
