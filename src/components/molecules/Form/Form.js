@@ -156,7 +156,7 @@ const ContactForm = () => {
             touched={touched.message}
             errors={errors.message}
           />
-          {/* <Recaptcha
+          <Recaptcha
             sitekey={process.env.GATSBY_RECAPTCHA_SITE_KEY}
             render="explicit"
             theme="dark"
@@ -166,8 +166,7 @@ const ContactForm = () => {
             onloadCallback={() => {
               clearButton();
             }}
-          /> */}
-          <div data-netlify-recaptcha="true"></div>
+          />
           <SubmitButton
             color={submitBtn.color}
             label={submitBtn.content}

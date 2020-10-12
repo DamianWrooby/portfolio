@@ -11,7 +11,6 @@ const FirstLayerImg = ({ className }) => {
   useEffect(() => {
     const size = isWideScreen ? "contain" : "cover";
     setBgSize(size);
-    console.log(size);
   }, [bgSize]);
 
   return (
@@ -20,7 +19,7 @@ const FirstLayerImg = ({ className }) => {
         query {
           robotFace: file(relativePath: { eq: "header-1.png" }) {
             childImageSharp {
-              fluid(pngQuality: 50) {
+              fluid(pngQuality: 75) {
                 ...GatsbyImageSharpFluid_withWebp
               }
             }
