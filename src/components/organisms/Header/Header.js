@@ -2,11 +2,11 @@ import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { Element } from "react-scroll";
 import styled from "styled-components";
-import realFace from "../../../assets/images/first-layer-o.png";
-import robotFace from "../../../assets/images/header-1-o.png";
-import codePattern from "../../../assets/images/code-pattern-o.jpg";
 import * as ScrollMagic from "scrollmagic-with-ssr";
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap";
+import FirstLayerImg from "./BackgroundImages/FirstLayerImg";
+import SecondLayerImg from "./BackgroundImages/SecondLayerImg";
+import SecondLayerBg from "./BackgroundImages/SecondLayerBg";
 
 let controller = undefined;
 
@@ -91,6 +91,10 @@ const SecondTitle = styled.p`
     font-size: ${({ theme }) => theme.fontSize.xxl};
   }
   ${({ theme }) => theme.mq.lg} {
+    font-family: ${({ theme }) => theme.fonts.mainFont};
+    font-size: ${({ theme }) => theme.fontSize.xxl};
+  }
+  ${({ theme }) => theme.mq.lg} {
     top: 39vh;
     left: 27vw;
     text-align: left;
@@ -115,6 +119,9 @@ const SecondSubtitle = styled.p`
     font-size: ${({ theme }) => theme.fontSize.xxl};
   }
   ${({ theme }) => theme.mq.lg} {
+    font-size: ${({ theme }) => theme.fontSize.xxl};
+  }
+  ${({ theme }) => theme.mq.lg} {
     top: 49vh;
     left: 27vw;
     text-align: left;
@@ -126,16 +133,16 @@ const ColorSpan = styled.span`
   color: ${({ theme }) => theme.neonBlue};
 `;
 
-const FirsLayerImg = styled.div`
-  position: absolute;
+const BackgroundWrapper = styled.div`
+  position: absolute !important;
   left: -18%;
   width: 100%;
   height: 100vh;
-  background: url(${realFace}) no-repeat;
   background-size: cover;
   background-attachment: unset;
   z-index: 1;
-  ${({ theme }) => theme.mq.md} {
+  ${({ theme }) => theme.mq.s} {
+    width: 100%;
     left: 0;
   }
   ${({ theme }) => theme.mq.xl} {
@@ -144,17 +151,16 @@ const FirsLayerImg = styled.div`
   }
 `;
 
-const SecondLayerImg = styled.div`
-  opacity: 0;
-  position: absolute;
-  left: -18%;
+const BackgroundWrapperCenter = styled.div`
+  position: absolute !important;
+  left: 0;
   width: 100%;
   height: 100vh;
-  background: url(${robotFace}) no-repeat;
   background-size: cover;
   background-attachment: unset;
-  z-index: 2;
-  ${({ theme }) => theme.mq.md} {
+  z-index: 1;
+  ${({ theme }) => theme.mq.s} {
+    width: 100%;
     left: 0;
   }
   ${({ theme }) => theme.mq.xl} {
@@ -163,22 +169,39 @@ const SecondLayerImg = styled.div`
   }
 `;
 
-const SecondLayerBg = styled.div`
-  opacity: 0;
-  position: absolute;
-  width: 100%;
-  height: 115vh;
-  background: url(${codePattern}) no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  z-index: 1;
+const StyledFirsLayerImg = styled(FirstLayerImg)`
+  && {
+    width: 100%;
+    height: 100%;
+  }
+`;
+
+const StyledSecondLayerImg = styled(SecondLayerImg)`
+  && {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 2;
+  }
+`;
+
+const StyledSecondLayerBg = styled(SecondLayerBg)`
+  && {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 115vh;
+    background-size: cover;
+    background-attachment: fixed;
+    z-index: 1;
+  }
 `;
 
 const HeaderBackground = styled.div`
   position: absolute;
   width: 100%;
   height: 115vh;
-  background: ${({ theme }) => theme.darkBlue};
+  background: "#040e18";
   z-index: -1;
 `;
 
@@ -208,7 +231,8 @@ const Header = () => {
 
     document.body.style.overflow = "hidden";
 
-    gsap.set([secondLayer, title, subtitle], { autoAlpha: 0 });
+    gsap.set([title, subtitle], { autoAlpha: 0 });
+
     const tl = gsap.timeline({
       onComplete: setOverflow,
       defaults: { ease: "power3.inOut" },
@@ -345,9 +369,15 @@ const Header = () => {
     <Element name="home">
       <Wrapper ref={wrapperRef}>
         <Container>
-          <FirsLayerImg ref={firstLayerRef} />
-          <SecondLayerImg ref={secondLayerRef} />
-          <SecondLayerBg ref={secondLayerBgRef} />
+          <BackgroundWrapper ref={firstLayerRef}>
+            <StyledFirsLayerImg />
+          </BackgroundWrapper>
+          <BackgroundWrapperCenter ref={secondLayerBgRef}>
+            <StyledSecondLayerBg />
+          </BackgroundWrapperCenter>
+          <BackgroundWrapper ref={secondLayerRef}>
+            <StyledSecondLayerImg />
+          </BackgroundWrapper>
           <HeaderBackground />
           <Title ref={titleRef}>
             Hi, I'm <ColorSpan>Damian</ColorSpan>
