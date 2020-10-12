@@ -8,7 +8,7 @@ const SecondLayerBg = ({ className }) => (
       query {
         codePattern: file(relativePath: { eq: "code-pattern-o.jpg" }) {
           childImageSharp {
-            fluid(quality: 90) {
+            fluid(quality: 100) {
               ...GatsbyImageSharpFluid_withWebp
             }
           }

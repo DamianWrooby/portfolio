@@ -31,6 +31,12 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-sharp`,
     {
+      resolve: `gatsby-plugin-gtag`,
+      options: {
+        trackingId: `UA-180186424-1`,
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `gatsby-starter-default`,

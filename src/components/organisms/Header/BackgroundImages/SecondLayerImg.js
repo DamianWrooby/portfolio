@@ -19,7 +19,7 @@ const FirstLayerImg = ({ className }) => {
         query {
           robotFace: file(relativePath: { eq: "header-1.png" }) {
             childImageSharp {
-              fluid(pngQuality: 75) {
+              fluid(quality: 100) {
                 ...GatsbyImageSharpFluid_withWebp
               }
             }
