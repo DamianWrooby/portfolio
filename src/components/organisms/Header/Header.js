@@ -80,17 +80,13 @@ const SecondTitle = styled.p`
   font-family: ${({ theme }) => theme.fonts.mainFont};
   font-size: ${({ theme }) => theme.fontSize.xxl};
   text-align: center;
-  top: 40vh;
+  top: 30vh;
   margin: 0 5%;
   font-weight: 700;
   color: white;
   z-index: 3;
   text-shadow: 0px 4px 3px rgba(0, 0, 0, 1), 0px 8px 13px rgba(0, 0, 0, 1),
     0px 18px 23px rgba(0, 0, 0, 0.6);
-  ${({ theme }) => theme.mq.s} {
-  }
-  ${({ theme }) => theme.mq.lg} {
-  }
   ${({ theme }) => theme.mq.lg} {
     top: 39vh;
     left: 27vw;
