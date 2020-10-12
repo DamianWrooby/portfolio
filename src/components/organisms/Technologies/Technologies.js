@@ -81,7 +81,7 @@ const Technologies = () => {
             <Separator />
             <SectionHeader
               heading="Technologies"
-              paragraph="These are technologies, tools and methodologies I used to use in my projects. I'm currently improving my skills in the field of building and testing more complex React applications."
+              paragraph="These are technologies, tools and methodologies that I use in my projects. I'm currently improving my skills in the field of building and testing more complex React applications."
             />
             <InnerWrapper>
               <TechnologiesList />
