@@ -5,7 +5,7 @@ import { NavigationContext } from "../../../contexts/NavigationContext";
 const TopLine = styled.div`
   background-color: ${({ theme }) => theme.neonBlue};
   border-radius: 2px;
-  width: 50%;
+  width: 19px;
   height: 5px;
   transition: transform 330ms cubic-bezier(0.54, -0.81, 0.57, 0.57);
   transform-origin: right;
@@ -20,7 +20,7 @@ const TopLine = styled.div`
 const MiddleLine = styled.div`
   background-color: ${({ theme }) => theme.neonBlue};
   border-radius: 2px;
-  width: 100%;
+  width: 38px;
   height: 5px;
   ${({ isActive }) =>
     isActive &&
@@ -32,7 +32,7 @@ const MiddleLine = styled.div`
 const BottomLine = styled.div`
   background-color: ${({ theme }) => theme.neonBlue};
   border-radius: 2px;
-  width: 50%;
+  width: 19px;
   height: 5px;
   align-self: flex-end;
   transition: transform 330ms cubic-bezier(0.54, -0.81, 0.57, 0.57);
