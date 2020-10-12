@@ -20,7 +20,7 @@ const SecondLayerBg = ({ className }) => (
       const imageData = data.codePattern.childImageSharp.fluid;
       return (
         <BackgroundImage
-          style={{ backgroundSize: "cover", backgroundPosition: "left" }}
+          style={{ backgroundSize: "cover", backgroundPosition: "center" }}
           Tag="div"
           className={className}
           fluid={imageData}

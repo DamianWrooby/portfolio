@@ -36,7 +36,7 @@ const FirstLayerImg = ({ className }) => {
             Tag="div"
             className={className}
             fluid={imageData}
-            backgroundColor={`#040e18`}
+            backgroundColor={`transparent`}
           ></BackgroundImage>
         );
       }}

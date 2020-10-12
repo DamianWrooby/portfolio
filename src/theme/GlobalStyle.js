@@ -31,8 +31,8 @@ const GlobalStyle = createGlobalStyle`
     font-weight: ${({ theme }) => theme.medium}
   }
   body {
-    color: ${({ theme }) => theme.dark};
-    background: ${({ theme }) => theme.dark};
+    color: ${({ theme }) => theme.grey};
+    background-color: ${({ theme }) => theme.dark};
     font-family: ${({ theme }) => theme.fonts.mainFont};
     font-size: 1.6rem;
     overflow-x: hidden;

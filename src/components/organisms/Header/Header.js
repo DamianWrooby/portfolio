@@ -79,7 +79,7 @@ const SecondTitle = styled.p`
   opacity: 0;
   position: absolute;
   font-family: ${({ theme }) => theme.fonts.mainFont};
-  font-size: ${({ theme }) => theme.fontSize.xxl};
+  font-size: ${({ theme }) => theme.fontSize.xl};
   text-align: center;
   top: 40vh;
   margin: 0 5%;
@@ -88,6 +88,9 @@ const SecondTitle = styled.p`
   z-index: 3;
   text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1),
     0px 18px 23px rgba(0, 0, 0, 0.1);
+  ${({ theme }) => theme.mq.s} {
+    font-size: ${({ theme }) => theme.fontSize.xxl};
+  }
   ${({ theme }) => theme.mq.lg} {
     font-family: ${({ theme }) => theme.fonts.mainFont};
     font-size: ${({ theme }) => theme.fontSize.xxl};
@@ -102,7 +105,7 @@ const SecondSubtitle = styled.p`
   opacity: 0;
   position: absolute;
   font-family: ${({ theme }) => theme.fonts.mainFont};
-  font-size: ${({ theme }) => theme.fontSize.xxl};
+  font-size: ${({ theme }) => theme.fontSize.xl};
   text-align: center;
   top: 58vh;
   margin: 0 5%;
@@ -111,6 +114,9 @@ const SecondSubtitle = styled.p`
   z-index: 3;
   text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1),
     0px 18px 23px rgba(0, 0, 0, 0.1);
+  ${({ theme }) => theme.mq.s} {
+    font-size: ${({ theme }) => theme.fontSize.xxl};
+  }
   ${({ theme }) => theme.mq.lg} {
     font-size: ${({ theme }) => theme.fontSize.xxl};
     top: 49vh;
@@ -127,12 +133,31 @@ const ColorSpan = styled.span`
 const BackgroundWrapper = styled.div`
   position: absolute !important;
   left: -18%;
-  width: 100vh;
+  width: 100%;
   height: 100vh;
   background-size: cover;
   background-attachment: unset;
   z-index: 1;
-  ${({ theme }) => theme.mq.md} {
+  ${({ theme }) => theme.mq.s} {
+    width: 100%;
+    left: 0;
+  }
+  ${({ theme }) => theme.mq.xl} {
+    background-size: contain;
+    background-attachment: fixed;
+  }
+`;
+
+const BackgroundWrapperCenter = styled.div`
+  position: absolute !important;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-attachment: unset;
+  z-index: 1;
+  ${({ theme }) => theme.mq.s} {
+    width: 100%;
     left: 0;
   }
   ${({ theme }) => theme.mq.xl} {
@@ -158,18 +183,20 @@ const StyledSecondLayerImg = styled(SecondLayerImg)`
 `;
 
 const StyledSecondLayerBg = styled(SecondLayerBg)`
-  opacity: 0;
-  position: absolute;
-  width: 100%;
-  height: 115vh;
-  background-size: cover;
-  background-attachment: fixed;
-  z-index: 1;
+  && {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 115vh;
+    background-size: cover;
+    background-attachment: fixed;
+    z-index: 1;
+  }
 `;
 
 const HeaderBackground = styled.div`
   position: absolute;
-  width: 100vh;
+  width: 100%;
   height: 115vh;
   background: "#040e18";
   z-index: -1;
@@ -342,9 +369,9 @@ const Header = () => {
           <BackgroundWrapper ref={firstLayerRef}>
             <StyledFirsLayerImg />
           </BackgroundWrapper>
-          <BackgroundWrapper ref={secondLayerBgRef}>
+          <BackgroundWrapperCenter ref={secondLayerBgRef}>
             <StyledSecondLayerBg />
-          </BackgroundWrapper>
+          </BackgroundWrapperCenter>
           <BackgroundWrapper ref={secondLayerRef}>
             <StyledSecondLayerImg />
           </BackgroundWrapper>
