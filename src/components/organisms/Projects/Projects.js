@@ -5,9 +5,7 @@ import styled from "styled-components";
 import Content from "../../atoms/Content/Content";
 import SectionHeader from "../../molecules/SectionHeader/SectionHeader";
 import Separator from "../../atoms/Separator/Separator";
-import loadable from "@loadable/component";
-
-const Project = loadable(() => import("../Projects/Project"));
+import Project from "../Projects/Project";
 
 const Wrapper = styled.section`
   position: relative;

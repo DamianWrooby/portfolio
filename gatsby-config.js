@@ -51,22 +51,26 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-fonts`,
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {
-        fonts: [`Sarala:400,700`, "Timmana: 400,700"],
-        display: "swap",
+        fonts: [
+          {
+            family: `Sarala`,
+            variants: [`400`, `700`],
+          },
+          // {
+          //   family: `Open Sans`,
+          //   variants: [`400`, `700`]
+          // },
+        ],
       },
     },
     {
       resolve: `gatsby-source-contentful`,
       options: {
         spaceId: `l8jq2db9qwuj`,
-        // Learn about environment variables: https://gatsby.dev/env-vars
         accessToken: process.env.GATSBY_CONTENTFUL_ACCESS_TOKEN,
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
   ],
 };

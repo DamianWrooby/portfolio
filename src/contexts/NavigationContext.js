@@ -26,11 +26,12 @@ const NavigationProvider = ({ children }) => {
 
   useEffect(() => {
     const sections = document.querySelectorAll("section");
+    const footer = document.querySelector("footer");
 
     ScrollTrigger.create({
       trigger: sections[0],
       start: "top bottom",
-      endTrigger: "footer",
+      endTrigger: footer,
       end: "bottom top",
       onToggle: ({ isActive }) => setIsTransparent(!isActive),
     });

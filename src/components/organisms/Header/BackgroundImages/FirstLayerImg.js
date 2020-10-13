@@ -19,7 +19,7 @@ const FirstLayerImg = ({ className }) => {
         query {
           realFace: file(relativePath: { eq: "first-layer.png" }) {
             childImageSharp {
-              fluid(pngQuality: 75) {
+              fluid(quality: 90) {
                 ...GatsbyImageSharpFluid_withWebp
               }
             }
