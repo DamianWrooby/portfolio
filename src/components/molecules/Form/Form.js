@@ -4,7 +4,7 @@ import Button from "../../atoms/Button/Button";
 import FormInput from "./FormInput";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
-import Recaptcha from "react-recaptcha";
+// import Recaptcha from "react-recaptcha";
 
 const SubmitButton = styled(Button)`
   && {
@@ -71,42 +71,42 @@ const ContactForm = () => {
       initialValues={initialValues}
       validationSchema={ContactSchema}
       onSubmit={(values, { setSubmitting, resetForm }) => {
-        if (token) {
-          const sendMessage = async () => {
-            try {
-              await fetch("/", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/x-www-form-urlencoded",
-                },
-                body: encode({
-                  "form-name": "contact-form",
-                  ...values,
-                  "g-recaptcha-response": token,
-                }),
-              });
-              setSubmitting(false);
-              setSubmitBtn({
-                content: "Success!",
-                color: "green",
-              });
-              resetForm();
-              setTimeout(clearButton, 2500);
-            } catch (err) {
-              setSubmitting(false);
-              setSubmitBtn({ content: "Something went wrong!", color: "red" });
-              setTimeout(clearButton, 1500);
-            }
-          };
-          sendMessage();
-        } else {
-          setSubmitting(false);
-          setSubmitBtn({
-            content: "Verify reCAPTCHA first!",
-            color: "red",
-          });
-          setTimeout(clearButton, 1500);
-        }
+        // if (token) {
+        const sendMessage = async () => {
+          try {
+            await fetch("/", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+              },
+              body: encode({
+                "form-name": "contact-form",
+                ...values,
+                // "g-recaptcha-response": token,
+              }),
+            });
+            setSubmitting(false);
+            setSubmitBtn({
+              content: "Success!",
+              color: "green",
+            });
+            resetForm();
+            setTimeout(clearButton, 2500);
+          } catch (err) {
+            setSubmitting(false);
+            setSubmitBtn({ content: "Something went wrong!", color: "red" });
+            setTimeout(clearButton, 1500);
+          }
+        };
+        sendMessage();
+        // } else {
+        //   setSubmitting(false);
+        //   setSubmitBtn({
+        //     content: "Verify reCAPTCHA first!",
+        //     color: "red",
+        //   });
+        //   setTimeout(clearButton, 1500);
+        // }
       }}
     >
       {({
@@ -124,7 +124,7 @@ const ContactForm = () => {
           name="contact-form"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
-          data-netlify-recaptcha="true"
+          // data-netlify-recaptcha="true"
         >
           <Field type="hidden" name="form-name" />
           <Field type="hidden" name="bot-field" />
@@ -156,7 +156,7 @@ const ContactForm = () => {
             touched={touched.message}
             errors={errors.message}
           />
-          <Recaptcha
+          {/* <Recaptcha
             sitekey={process.env.GATSBY_RECAPTCHA_SITE_KEY}
             render="explicit"
             theme="dark"
@@ -166,7 +166,7 @@ const ContactForm = () => {
             onloadCallback={() => {
               clearButton();
             }}
-          />
+          /> */}
           <SubmitButton
             color={submitBtn.color}
             label={submitBtn.content}
