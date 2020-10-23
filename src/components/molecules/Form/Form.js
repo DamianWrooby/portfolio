@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import Button from "../../atoms/Button/Button";
 import FormInput from "./FormInput";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
-// import Recaptcha from "react-recaptcha";
 
 const SubmitButton = styled(Button)`
   && {
@@ -48,19 +47,10 @@ const encode = data => {
 };
 
 const ContactForm = () => {
-  const [token, setToken] = useState("");
   const [submitBtn, setSubmitBtn] = useState({
     content: "Send message",
     color: "blue",
   });
-
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://www.google.com/recaptcha/api.js";
-    script.async = true;
-    script.defer = true;
-    document.body.appendChild(script);
-  }, []);
 
   const clearButton = () => {
     setSubmitBtn({ content: "Send message", color: "blue" });
@@ -71,7 +61,6 @@ const ContactForm = () => {
       initialValues={initialValues}
       validationSchema={ContactSchema}
       onSubmit={(values, { setSubmitting, resetForm }) => {
-        // if (token) {
         const sendMessage = async () => {
           try {
             await fetch("/", {
@@ -82,7 +71,6 @@ const ContactForm = () => {
               body: encode({
                 "form-name": "contact-form",
                 ...values,
-                // "g-recaptcha-response": token,
               }),
             });
             setSubmitting(false);
@@ -99,14 +87,6 @@ const ContactForm = () => {
           }
         };
         sendMessage();
-        // } else {
-        //   setSubmitting(false);
-        //   setSubmitBtn({
-        //     content: "Verify reCAPTCHA first!",
-        //     color: "red",
-        //   });
-        //   setTimeout(clearButton, 1500);
-        // }
       }}
     >
       {({
