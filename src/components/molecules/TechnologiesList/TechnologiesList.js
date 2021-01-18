@@ -23,6 +23,7 @@ import psIcon from "../../../assets/icons/ps.svg";
 import aiIcon from "../../../assets/icons/ai.svg";
 import wpIcon from "../../../assets/icons/wp.svg";
 import figmaIcon from "../../../assets/icons/figma.svg";
+import nextIcon from "../../../assets/icons/next.svg";
 
 const ListsWrapper = styled.div`
   display: flex;
@@ -80,6 +81,7 @@ const ItemList = () => {
         <ListItem icon={javaScriptIcon}>JavaScript ES 6+</ListItem>
         <ListItem icon={reactIcon}>React & Hooks</ListItem>
         <ListItem icon={reduxIcon}>Redux</ListItem>
+        <ListItem icon={nextIcon}>Next.js</ListItem>
         <ListItem icon={gatsbyIcon}>Gatsby</ListItem>
         <ListItem icon={jestIcon} height="22">
           Jest
