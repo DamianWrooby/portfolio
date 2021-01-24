@@ -153,6 +153,20 @@ const Links = () => {
       </ListItem>
       <ListItem>
         <StyledLink
+          active={activeLink === "websites" ? 1 : 0}
+          duration={800}
+          offset={-100}
+          smooth={true}
+          to="websites"
+          spy={true}
+        >
+          <StyledSpan active={activeLink === "websites" ? 1 : 0}>
+            Websites
+          </StyledSpan>
+        </StyledLink>
+      </ListItem>
+      <ListItem>
+        <StyledLink
           active={activeLink === "contact" ? 1 : 0}
           duration={800}
           smooth={true}

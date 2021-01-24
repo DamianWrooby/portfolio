@@ -6,6 +6,7 @@ const Wrapper = styled.div`
   width: 100%;
   text-align: center;
   padding-bottom: 60px;
+  z-index: 2;
 `;
 
 const Separator = () => {

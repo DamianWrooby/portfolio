@@ -118,7 +118,7 @@ const Project = ({
           trigger: image,
           start: "top bottom-=200px",
         },
-      });
+      }); 
     }
   }, []);
 

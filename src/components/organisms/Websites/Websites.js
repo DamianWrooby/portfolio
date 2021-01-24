@@ -62,7 +62,7 @@ const wavePath = (
 const Websites = () => {
   const data = useStaticQuery(graphql`
     {
-      allContentfulProject(sort: { fields: contentfulid }) {
+      allContentfulWebsite(sort: { fields: contentfulid }) {
         edges {
           node {
             title
@@ -70,13 +70,17 @@ const Websites = () => {
               description
             }
             technologies
-            codeUrl
-            liveDemoUrl
+            scopeOfWork
+            websiteUrl
+            fullScreenshot {
+              file {
+                url
+              }
+            }
             screenshot {
               fluid(maxWidth: 1000) {
                 ...GatsbyContentfulFluid
               }
-              title
             }
           }
         }
@@ -85,8 +89,8 @@ const Websites = () => {
   `);
 
   const {
-    allContentfulProject: {
-      edges: [...projects],
+    allContentfulWebsite: {
+      edges: [...websites],
     },
   } = data;
 
@@ -94,13 +98,14 @@ const Websites = () => {
     <Website
       key={website.node.title}
       title={website.node.title}
-      technology={website.node.technology}
+      technologies={website.node.technologies}
       description={website.node.description.description}
-      fluid={projewebsite.screenshot.fluid}
+      fluid={website.node.screenshot.fluid}
       imgKey={website.node.screenshot.fluid.src}
       imgAlt={website.node.screenshot.title}
       websiteUrl={website.node.websiteUrl}
       scopeOfWork={website.node.scopeOfWork}
+      fullScreenshotUrl={website.node.fullScreenshot.file.url}
     />
   ));
 
@@ -112,7 +117,7 @@ const Websites = () => {
             <Separator />
             <SectionHeader
               heading="Websites"
-              paragraph="These are some fully created websites."
+              paragraph="Some of recently created websites for commercial clients"
             />
             <InnerWrapper>{websitesList}</InnerWrapper>
           </Main>

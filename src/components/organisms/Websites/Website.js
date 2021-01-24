@@ -48,6 +48,18 @@ const StyledImg = styled(Img)`
   border-radius: 20px;
 `;
 
+const ListsContainer = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  margin-bottom: 70px;
+`;
+
+const ListsWrapper = styled.div`
+  display: flex;
+  flex-flow: column wrap;
+  margin-right: 60px;
+`;
+
 const ListTitle = styled.h4`
   font-family: ${({ theme }) => theme.fonts.mainFont};
   font-size: ${({ theme }) => theme.fontSize.lg};
@@ -63,7 +75,15 @@ const List = styled.ul`
   color: ${({ theme }) => theme.white};
 `;
 
-const Item = styled.li`
+const ScopeList = styled.ul`
+  display: flex;
+  flex-flow: column wrap;
+  margin-left: 20px;
+  font-size: ${({ theme }) => theme.fontSize.xs};
+  color: ${({ theme }) => theme.gray};
+`;
+
+const TechItem = styled.li`
   padding: 10px 15px 10px 0;
   &:before {
     content: "";
@@ -76,6 +96,11 @@ const Item = styled.li`
   }
 `;
 
+const ScopeItem = styled.li`
+  padding: 5px 15px 5px 0;
+  list-style-type: initial;
+`;
+
 const ButtonsWrapper = styled.div`
   display: flex;
   flex-flow: row nowrap;
@@ -86,8 +111,10 @@ const ButtonsWrapper = styled.div`
 const Website = ({
   title,
   description,
+  technologies,
   scopeOfWork,
   websiteUrl,
+  fullScreenshotUrl,
   fluid,
   imgKey,
   imgAlt,
@@ -122,7 +149,11 @@ const Website = ({
   }, []);
 
   const scopeList = scopeOfWork.map(el => {
-    return <Item key={el}>{el}</Item>;
+    return <ScopeItem key={el}>{el}</ScopeItem>;
+  });
+
+  const techList = technologies.map(el => {
+    return <TechItem key={el}>{el}</TechItem>;
   });
 
   return (
@@ -133,16 +164,30 @@ const Website = ({
       <ContentWrapper ref={contentRef}>
         <Title>{title}</Title>
         <Description>{description}</Description>
-        <ListTitle>Technology</ListTitle>
+        <ListsContainer>
+        <ListsWrapper>
+        <ListTitle>Technologies</ListTitle>
         <List>{techList}</List>
+        </ListsWrapper>
+        <ListsWrapper>
         <ListTitle>Scope of work</ListTitle>
-        <List>{scopeList}</List>
+        <ScopeList>{scopeList}</ScopeList>
+        </ListsWrapper>
+        </ListsContainer>
         <ButtonsWrapper>
           <Button
             renderAs="a"
-            label="View"
-            link={websiteUrl}
+            label="Screenshot"
+            title="Screenshot"
+            link={fullScreenshotUrl}
             animated={false}
+          />
+          <Button
+            renderAs="a"
+            label="Website"
+            title="Website"
+            link={websiteUrl}
+            animated={true}
           />
         </ButtonsWrapper>
       </ContentWrapper>
@@ -150,7 +195,7 @@ const Website = ({
   );
 };
 
-Project.propTypes = {
+Website.propTypes = {
   websiteUrl: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   fluid: PropTypes.object.isRequired,

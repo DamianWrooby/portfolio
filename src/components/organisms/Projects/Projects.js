@@ -112,7 +112,7 @@ const Projects = () => {
             <Separator />
             <SectionHeader
               heading="Projects"
-              paragraph="Let's take a look at latest projects. All of them are available on my GitHub profile."
+              paragraph="JavaScript-based web applicaton projects. All of them are available on my GitHub profile."
             />
             <InnerWrapper>{projectsList}</InnerWrapper>
           </Main>
