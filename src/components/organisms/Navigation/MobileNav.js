@@ -42,11 +42,12 @@ const InnerWrapper = styled.div`
 const Background = styled.div`
   position: fixed;
   width: 100vw;
-  height: 105vh;
+  height: 118vh;
   z-index: -1;
   background: ${({ theme }) => theme.darkBlue};
   transform: translate(0, -115%);
   will-change: transform;
+  top: 0;
 `;
 
 const List = styled.ul`
