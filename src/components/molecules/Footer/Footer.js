@@ -17,7 +17,7 @@ const Text = styled.h3`
 
 const Footer = () => (
   <Wrapper>
-    <Text>&copy; 2020 Damian Wróblewski. All rights reserved.</Text>
+    <Text>&copy; 2021 Damian Wróblewski. All rights reserved.</Text>
   </Wrapper>
 );
 
