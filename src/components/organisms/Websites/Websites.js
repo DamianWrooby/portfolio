@@ -102,7 +102,7 @@ const Websites = () => {
       description={website.node.description.description}
       fluid={website.node.screenshot.fluid}
       imgKey={website.node.screenshot.fluid.src}
-      imgAlt={website.node.screenshot.title}
+      imgAlt={website.node.title}
       websiteUrl={website.node.websiteUrl}
       scopeOfWork={website.node.scopeOfWork}
       fullScreenshotUrl={website.node.fullScreenshot.file.url}
