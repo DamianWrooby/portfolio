@@ -75,15 +75,13 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
-          {
-            family: `Sarala`,
-            variants: [`400`, `700`],
-            subsets: [`latin-ext`],
-          },
+          `Sarala`,
+          `source sans pro\:400,700`
         ],
+        display: 'swap'
       }
     },
     {
