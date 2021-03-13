@@ -50,9 +50,16 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-gtag`,
+      resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: `UA-180186424-1`,
+        trackingId: "UA-180186424-1",
+        head: false,
+        anonymize: true,
+        respectDNT: true,
+        pageTransitionDelay: 0,
+        defer: true,
+        sampleRate: 5,
+        siteSpeedSampleRate: 10,
       },
     },
     {
@@ -68,13 +75,15 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-fonts`,
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {
         fonts: [
-          `Sarala`,
-          `source sans pro\:400,700` // you can also specify font weights and styles
+          {
+            family: `Sarala`,
+            variants: [`400`, `700`],
+            subsets: [`latin-ext`],
+          },
         ],
-        display: 'swap'
       }
     },
     {
