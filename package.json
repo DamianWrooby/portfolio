@@ -51,7 +51,7 @@
     "jest-styled-components": "^7.0.3",
     "prettier": "2.0.5",
     "react-refresh": "^0.8.3",
-    "react-test-renderer": "^16.13.1"
+    "react-test-renderer": "^16.13.1" 
   },
   "keywords": [
     "gatsby"

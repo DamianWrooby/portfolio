@@ -19,6 +19,14 @@ module.exports = {
     siteUrl: "https://damianwroblewski.com/",
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-180186424-1",
+        head: true,
+        defer: false,
+      },
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -47,19 +55,6 @@ module.exports = {
             "Cache-Control: max-age=604800",
           ],
         },
-      },
-    },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: "UA-180186424-1",
-        head: false,
-        anonymize: true,
-        respectDNT: true,
-        pageTransitionDelay: 0,
-        defer: true,
-        sampleRate: 5,
-        siteSpeedSampleRate: 10,
       },
     },
     {
