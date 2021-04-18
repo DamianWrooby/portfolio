@@ -67,7 +67,9 @@ const Projects = () => {
           node {
             title
             description {
-              description
+              childMdx {
+                body
+              }
             }
             technologies
             codeUrl
@@ -95,7 +97,7 @@ const Projects = () => {
       key={project.node.title}
       title={project.node.title}
       technologies={project.node.technologies}
-      description={project.node.description.description}
+      description={project.node.description.childMdx.body}
       fluid={project.node.screenshot.fluid}
       imgKey={project.node.screenshot.fluid.src}
       imgAlt={project.node.screenshot.title}

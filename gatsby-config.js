@@ -86,5 +86,9 @@ module.exports = {
         accessToken: process.env.GATSBY_CONTENTFUL_ACCESS_TOKEN,
       },
     },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {},
+    },
   ],
 };

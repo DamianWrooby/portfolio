@@ -37,6 +37,27 @@ const GlobalStyle = createGlobalStyle`
     font-size: 1.6rem;
     overflow-x: hidden;
   }
+  h3 {
+    font-family: ${({ theme }) => theme.fonts.mainFont};
+    font-size: ${({ theme }) => theme.fontSize.xlg};
+    font-weight: 900;
+    color: white;
+    padding: 15px 0 5px 0;
+  }
+  h4 {
+    font-family: ${({ theme }) => theme.fonts.mainFont};
+    font-size: ${({ theme }) => theme.fontSize.xlg};
+    font-weight: 900;
+    color: white;
+    padding: 15px 0 5px 0;
+  }
+  strong {
+    font-weight: 700;
+  }
+  article ul {
+    padding-left: 2rem;
+    list-style-type: circle;
+  }
 `;
 
 export default GlobalStyle;

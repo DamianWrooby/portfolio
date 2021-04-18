@@ -6,6 +6,8 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "@loadable/component": "^5.13.2",
+    "@mdx-js/mdx": "^1.6.22",
+    "@mdx-js/react": "^1.6.22",
     "babel-plugin-styled-components": "^1.11.1",
     "formik": "^2.1.7",
     "gatsby-background-image": "^1.1.2",
@@ -15,6 +17,7 @@
     "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-loadable-components-ssr": "^2.1.0",
     "gatsby-plugin-manifest": "^2.4.28",
+    "gatsby-plugin-mdx": "^2.3.0",
     "gatsby-plugin-netlify": "^2.3.17",
     "gatsby-plugin-offline": "^3.2.27",
     "gatsby-plugin-react-helmet": "^3.3.10",
@@ -51,7 +54,7 @@
     "jest-styled-components": "^7.0.3",
     "prettier": "2.0.5",
     "react-refresh": "^0.8.3",
-    "react-test-renderer": "^16.13.1" 
+    "react-test-renderer": "^16.13.1"
   },
   "keywords": [
     "gatsby"

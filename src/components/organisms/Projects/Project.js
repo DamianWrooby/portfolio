@@ -5,6 +5,8 @@ import styled from "styled-components";
 import Img from "gatsby-image";
 import listIcon from "../../../assets/images/favicon.png";
 import Button from "../../atoms/Button/Button";
+import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer"
+import { MDXProvider } from "@mdx-js/react"
 
 const Wrapper = styled.article`
   width: 100%;
@@ -38,7 +40,7 @@ const Title = styled.h3`
 
 const Description = styled.p`
   font-family: ${({ theme }) => theme.fonts.subFont};
-  font-size: ${({ theme }) => theme.fontSize.lg};
+  font-size: ${({ theme }) => theme.fontSize.md};
   font-weight: ${({ theme }) => theme.light};
   color: ${({ theme }) => theme.lightGray};
   line-height: 1.5;
@@ -61,6 +63,7 @@ const List = styled.ul`
   flex-flow: row wrap;
   font-size: ${({ theme }) => theme.fontSize.s};
   color: ${({ theme }) => theme.white};
+  list-style-type: none;
 `;
 
 const Item = styled.li`
@@ -133,7 +136,13 @@ const Project = ({
       </ImageWrapper>
       <ContentWrapper ref={contentRef}>
         <Title>{title}</Title>
-        <Description>{description}</Description>
+        <Description>
+          <MDXProvider>
+            <MDXRenderer>
+              {description}
+            </MDXRenderer>
+          </MDXProvider>
+        </Description>
         <ListTitle>Technologies & Tools</ListTitle>
         <List>{techList}</List>
         <ButtonsWrapper>
