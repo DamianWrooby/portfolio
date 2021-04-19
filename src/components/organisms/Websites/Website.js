@@ -81,6 +81,7 @@ const ScopeList = styled.ul`
   margin-left: 20px;
   font-size: ${({ theme }) => theme.fontSize.xs};
   color: ${({ theme }) => theme.gray};
+  list-style-type: none;
 `;
 
 const TechItem = styled.li`
