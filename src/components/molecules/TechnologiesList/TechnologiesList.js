@@ -6,7 +6,6 @@ import htmlIcon from "../../../assets/icons/html-5.svg";
 import cssIcon from "../../../assets/icons/css-3.svg";
 import javaScriptIcon from "../../../assets/icons/javascript.svg";
 import reactIcon from "../../../assets/icons/react.svg";
-import reduxIcon from "../../../assets/icons/redux.svg";
 import gatsbyIcon from "../../../assets/icons/gatsby.svg";
 import jestIcon from "../../../assets/icons/jest.svg";
 import rtlIcon from "../../../assets/icons/rtl.svg";
@@ -80,7 +79,6 @@ const ItemList = () => {
         </ListItem>
         <ListItem icon={javaScriptIcon}>JavaScript ES 6+</ListItem>
         <ListItem icon={reactIcon}>React & Hooks</ListItem>
-        <ListItem icon={reduxIcon}>Redux</ListItem>
         <ListItem icon={nextIcon}>Next.js</ListItem>
         <ListItem icon={gatsbyIcon}>Gatsby</ListItem>
         <ListItem icon={jestIcon} height="22">
