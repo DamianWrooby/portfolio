@@ -58,6 +58,9 @@ const GlobalStyle = createGlobalStyle`
     padding-left: 2rem;
     list-style-type: circle;
   }
+  article p {
+    padding-bottom: 5px;
+  }
 `;
 
 export default GlobalStyle;

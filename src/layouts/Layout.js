@@ -4,8 +4,6 @@ import { ThemeProvider } from "styled-components";
 import GlobalStyle from "../theme/GlobalStyle";
 import { theme } from "../theme/mainTheme";
 
-// import { useStaticQuery, graphql } from "gatsby"
-
 const Layout = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
