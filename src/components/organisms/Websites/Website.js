@@ -73,6 +73,7 @@ const List = styled.ul`
   flex-flow: row wrap;
   font-size: ${({ theme }) => theme.fontSize.s};
   color: ${({ theme }) => theme.white};
+  list-style-type: none;
 `;
 
 const ScopeList = styled.ul`

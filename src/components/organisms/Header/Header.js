@@ -80,7 +80,7 @@ const SecondTitle = styled.p`
   font-family: ${({ theme }) => theme.fonts.mainFont};
   font-size: ${({ theme }) => theme.fontSize.xxl};
   text-align: center;
-  top: 30vh;
+  top: 18vh;
   margin: 0 5%;
   font-weight: 700;
   color: white;
