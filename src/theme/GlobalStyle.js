@@ -26,6 +26,7 @@ const GlobalStyle = createGlobalStyle`
   
   html {
     font-size: 62.5%;
+    overflow-x: hidden;
   }
   b {
     font-weight: ${({ theme }) => theme.medium}
