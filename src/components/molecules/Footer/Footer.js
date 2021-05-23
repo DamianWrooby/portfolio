@@ -13,6 +13,7 @@ const Text = styled.h3`
   ${({ theme }) => theme.mq.md} {
     font-size: ${({ theme }) => theme.fontSize.s};
   }
+  font-weight: ${({theme}) => theme.regular};
 `;
 
 const Footer = () => (

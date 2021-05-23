@@ -75,10 +75,11 @@ const Projects = () => {
             codeUrl
             liveDemoUrl
             screenshot {
-              fluid(maxWidth: 1000) {
-                ...GatsbyContentfulFluid
+              file {
+                url
               }
               title
+              gatsbyImageData(layout: CONSTRAINED)
             }
           }
         }
@@ -98,8 +99,9 @@ const Projects = () => {
       title={project.node.title}
       technologies={project.node.technologies}
       description={project.node.description.childMdx.body}
-      fluid={project.node.screenshot.fluid}
-      imgKey={project.node.screenshot.fluid.src}
+      // fluid={project.node.screenshot.file.url}
+      image={project.node.screenshot.gatsbyImageData}
+      imgKey={project.node.screenshot.file.url}
       imgAlt={project.node.screenshot.title}
       liveDemoUrl={project.node.liveDemoUrl}
       codeUrl={project.node.codeUrl}

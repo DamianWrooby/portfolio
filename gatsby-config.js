@@ -15,7 +15,7 @@ module.exports = {
       "web design",
       "react developer",
       "react programming",
-    ],
+    ], 
     siteUrl: "https://damianwroblewski.com/",
   },
   plugins: [
@@ -38,7 +38,8 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-sharp`,
-    "gatsby-plugin-loadable-components-ssr",
+    `gatsby-plugin-image`,
+    // "gatsby-plugin-loadable-components-ssr",
     {
       resolve: "gatsby-plugin-netlify",
       options: {

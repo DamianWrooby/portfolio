@@ -2,7 +2,8 @@ import PropTypes from "prop-types";
 import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
 import styled from "styled-components";
-import Img from "gatsby-image";
+// import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image"
 import listIcon from "../../../assets/images/favicon.png";
 import Button from "../../atoms/Button/Button";
 
@@ -44,7 +45,7 @@ const Description = styled.p`
   line-height: 1.5;
 `;
 
-const StyledImg = styled(Img)`
+const StyledImg = styled(GatsbyImage)`
   border-radius: 20px;
 `;
 
@@ -117,7 +118,7 @@ const Website = ({
   scopeOfWork,
   websiteUrl,
   fullScreenshotUrl,
-  fluid,
+  image,
   imgKey,
   imgAlt,
 }) => {
@@ -161,7 +162,7 @@ const Website = ({
   return (
     <Wrapper>
       <ImageWrapper ref={imageRef}>
-        <StyledImg fluid={fluid} key={imgKey} alt={imgAlt} />
+        <StyledImg image={image} key={imgKey} alt={imgAlt} />
       </ImageWrapper>
       <ContentWrapper ref={contentRef}>
         <Title>{title}</Title>
@@ -200,7 +201,7 @@ const Website = ({
 Website.propTypes = {
   websiteUrl: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  fluid: PropTypes.object.isRequired,
+  image: PropTypes.object.isRequired,
   imgAlt: PropTypes.string.isRequired,
   imgKey: PropTypes.string.isRequired,
   technologies: PropTypes.array.isRequired,

@@ -78,9 +78,10 @@ const Websites = () => {
               }
             }
             screenshot {
-              fluid(maxWidth: 1000) {
-                ...GatsbyContentfulFluid
+              file {
+                url
               }
+              gatsbyImageData(layout: CONSTRAINED)
             }
           }
         }
@@ -96,12 +97,13 @@ const Websites = () => {
 
   const websitesList = websites.map(website => (
     <Website
-      key={website.node.title}
+      key={website.node.title} 
       title={website.node.title}
       technologies={website.node.technologies}
       description={website.node.description.description}
-      fluid={website.node.screenshot.fluid}
-      imgKey={website.node.screenshot.fluid.src}
+      // fluid={website.node.screenshot.file.url}
+      image={website.node.screenshot.gatsbyImageData}
+      imgKey={website.node.screenshot.file.url}
       imgAlt={website.node.title}
       websiteUrl={website.node.websiteUrl}
       scopeOfWork={website.node.scopeOfWork}
