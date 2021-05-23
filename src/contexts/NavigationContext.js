@@ -32,7 +32,7 @@ const NavigationProvider = ({ children }) => {
       trigger: sections[0],
       start: "top bottom",
       endTrigger: footer,
-      end: "bottom bottom",
+      end: "top top",
       onToggle: ({ isActive }) => setIsTransparent(!isActive),
     });
 
