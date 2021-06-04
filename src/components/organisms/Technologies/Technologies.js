@@ -50,7 +50,9 @@ const WaveWrapper = styled.div`
 	width: 100%;
 	z-index: 2;
 	margin-top: -180px;
+	display: none;
 	${({ theme }) => theme.mq.md} {
+		display: block;
 		margin-top: -250px;
 	}
 	${({ theme }) => theme.mq.xl} {
@@ -61,18 +63,11 @@ const WaveWrapper = styled.div`
 	}
 `;
 
-const CustomSvg = styled.svg`
-	min-height: 100px;
-	${({ theme }) => theme.mq.xxl} {
-		min-height: 200px;
-	}
-`;
-
 const wavePath = (
 	<WaveWrapper>
-		<CustomSvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
 			<path fill="#03131D" fillOpacity="1" d="M0,128L720,192L1440,128L1440,320L720,320L0,320Z" />
-		</CustomSvg>
+		</svg>
 	</WaveWrapper>
 );
 
