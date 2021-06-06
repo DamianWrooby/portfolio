@@ -9,9 +9,9 @@ const ImageWrapper = styled.figure`
 	}
 `;
 
-function PostElement({ key, title, author, excerpt, thumbnail, date }) {
+function PostElement({ title, author, excerpt, thumbnail, date }) {
 	return (
-		<article key={key}>
+		<article>
 			<ImageWrapper>
 				<GatsbyImage image={thumbnail} alt={title} />
 			</ImageWrapper>

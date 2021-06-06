@@ -22,8 +22,11 @@ const PostsWrapper = styled.section`
 const BlogHeader = styled(SectionHeader)`
 	&& {
 		padding: 120px 0 20px 0;
+		${({ theme }) => theme.mq.md} {
+			padding: 200px 0 20px 0;
+		}
 		${({ theme }) => theme.mq.xl} {
-			padding: 220px 0 80px 0;
+			padding: 250px 0 20px 0;
 		}
 	}
 `;
@@ -76,7 +79,7 @@ const BlogIndex = () => {
 		<NavigationProvider>
 			<Layout>
 				<Navigation />
-				<BlogHeader heading="Blog" paragraph="Loerm aofjaepofj ae fe pjeaf a jep avjop ve vopjv" />
+				<BlogHeader heading="Blog" />
 				<Separator />
 				<main>
 					<PostsWrapper>{postsList}</PostsWrapper>
