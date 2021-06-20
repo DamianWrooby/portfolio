@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components";
-import reset from "styled-reset";
+import { createGlobalStyle } from 'styled-components';
+import reset from 'styled-reset';
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -61,6 +61,13 @@ const GlobalStyle = createGlobalStyle`
   }
   article p {
     padding-bottom: 5px;
+  }
+  a {
+    text-decoration: none;
+    color: #16ffff;
+  }
+  a:hover {
+    color: #10caca;
   }
 `;
 

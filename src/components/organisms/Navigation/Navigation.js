@@ -56,7 +56,7 @@ const List = styled.ul`
   }
 `;
 
-const Navigation = () => {
+const Navigation = ({lang}) => {
   const { isTransparent, activeLink } = useContext(NavigationContext);
 
   const currentSection =
@@ -78,15 +78,16 @@ const Navigation = () => {
 
   return (
     <>
-      <SEO image={preview.childImageSharp.fluid} title={currentSection} />
+      {lang === "en" && <SEO image={preview.childImageSharp.fluid} title={currentSection} />}
+      {lang === "pl" && <SEO image={preview.childImageSharp.fluid} title="Strona główna" />}
       <Wrapper active={!isTransparent}>
         <Content>
           <InnerWrapper>
             <List>
-              <Links />
+              <Links lang={lang} />
             </List>
           </InnerWrapper>
-          <MobileNav />
+          <MobileNav lang={lang} />
         </Content>
       </Wrapper>
     </>

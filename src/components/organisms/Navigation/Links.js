@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import styled, { css } from "styled-components";
 import { NavigationContext } from "../../../contexts/NavigationContext";
 import { Link } from "react-scroll";
+import LanguageToggler from "../../atoms/LanguageToggler/LanguageToggler";
 
 const ListItem = styled.li`
   position: relative;
@@ -26,6 +27,7 @@ const ListItem = styled.li`
 
 const StyledLink = styled(Link)`
   position: relative;
+  color: #fff;
   display: inline-block;
   overflow: hidden;
   &:before,
@@ -46,6 +48,9 @@ const StyledLink = styled(Link)`
     width: 2px;
     height: 100%;
     transform: translateY(100%);
+  }
+  &:hover {
+    color: #16ffff;
   }
   &:hover:before,
   &:hover:after,
@@ -107,7 +112,7 @@ const StyledSpan = styled.span`
     `}
 `;
 
-const Links = () => {
+const Links = ({lang}) => {
   const { activeLink } = useContext(NavigationContext);
 
   return (
@@ -120,7 +125,8 @@ const Links = () => {
           to="home"
           spy={true}
         >
-          <StyledSpan active={activeLink === "home" ? 1 : 0}>Home</StyledSpan>
+          {lang === 'en' && <StyledSpan active={activeLink === "home" ? 1 : 0}>Home</StyledSpan>}
+          {lang === 'pl' && <StyledSpan active={activeLink === "home" ? 1 : 0}>Strona główna</StyledSpan>}
         </StyledLink>
       </ListItem>
       <ListItem>
@@ -132,9 +138,12 @@ const Links = () => {
           to="technologies"
           spy={true}
         >
-          <StyledSpan active={activeLink === "technologies" ? 1 : 0}>
+          {lang === 'en' && <StyledSpan active={activeLink === "technologies" ? 1 : 0}>
             Technologies
-          </StyledSpan>
+          </StyledSpan>}
+          {lang === 'pl' && <StyledSpan active={activeLink === "technologies" ? 1 : 0}>
+            Technologie
+          </StyledSpan>}
         </StyledLink>
       </ListItem>
       <ListItem>
@@ -146,9 +155,12 @@ const Links = () => {
           to="projects"
           spy={true}
         >
-          <StyledSpan active={activeLink === "projects" ? 1 : 0}>
+          {lang === 'en' && <StyledSpan active={activeLink === "projects" ? 1 : 0}>
             Projects
-          </StyledSpan>
+          </StyledSpan>}
+          {lang === 'pl' && <StyledSpan active={activeLink === "projects" ? 1 : 0}>
+            Projekty
+          </StyledSpan>}
         </StyledLink>
       </ListItem>
       <ListItem>
@@ -160,9 +172,12 @@ const Links = () => {
           to="websites"
           spy={true}
         >
-          <StyledSpan active={activeLink === "websites" ? 1 : 0}>
+          {lang === 'en' && <StyledSpan active={activeLink === "websites" ? 1 : 0}>
             Websites
-          </StyledSpan>
+          </StyledSpan>}
+          {lang === 'pl' && <StyledSpan active={activeLink === "websites" ? 1 : 0}>
+            Strony WWW
+          </StyledSpan>}
         </StyledLink>
       </ListItem>
       <ListItem>
@@ -173,10 +188,16 @@ const Links = () => {
           to="contact"
           spy={true}
         >
-          <StyledSpan active={activeLink === "contact" ? 1 : 0}>
+          {lang === 'en' && <StyledSpan active={activeLink === "contact" ? 1 : 0}>
             Contact
-          </StyledSpan>
+          </StyledSpan>}
+          {lang === 'pl' && <StyledSpan active={activeLink === "contact" ? 1 : 0}>
+            Kontakt
+          </StyledSpan>}
         </StyledLink>
+      </ListItem>
+      <ListItem>
+        <LanguageToggler lang={lang} />
       </ListItem>
     </>
   );
