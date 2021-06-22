@@ -79,6 +79,7 @@ const Websites = ({ lang }) => {
 							}
 							gatsbyImageData(layout: CONSTRAINED)
 						}
+						language
 					}
 				}
 			}
@@ -93,9 +94,9 @@ const Websites = ({ lang }) => {
 		}
 	} = data;
 
-	const websitesList = websites.map((website) => (
+	let websitesList = websites.filter((website) => website.node.language === lang);
+	websitesList = websitesList.map((website) => (
 		<Website
-			lang={lang}
 			key={website.node.title}
 			title={website.node.title}
 			technologies={website.node.technologies}

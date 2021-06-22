@@ -69,6 +69,21 @@ const GlobalStyle = createGlobalStyle`
   a:hover {
     color: #10caca;
   }
+  svg#poland_icon {
+  width: 20px;
+  transition: all .1s ease;
+  &:hover {
+    opacity: .8;
+    }
+  }
+  svg#gb_icon {
+  width: 20px;
+  transition: all .1s ease;
+  &:hover {
+    opacity: .8;
+    }
+  }
+
 `;
 
 export default GlobalStyle;

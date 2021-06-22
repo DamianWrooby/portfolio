@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Layout from '../layouts/layout';
 import Header from '../components/organisms/Header/Header';
 import Navigation from '../components/organisms/Navigation/Navigation';
@@ -10,6 +10,12 @@ import Footer from '../components/molecules/Footer/Footer';
 import NavigationProvider from '../contexts/NavigationContext';
 
 const IndexPage = () => {
+	useEffect(() => {
+		if (typeof window !== undefined) {
+			window.scrollTo(0, 0);
+		}
+	}, []);
+
 	return (
 		<NavigationProvider>
 			<Layout>
