@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import polandIcon from '../../../assets/icons/poland.svg';
 import britishIcon from '../../../assets/icons/united-kingdom.svg';
@@ -22,25 +22,26 @@ const Icon = styled.i`
 	}
 `;
 
-let path;
-
-if (typeof window !== 'undefined') {
-	path = window.location.pathname;
-} else {
-	path = '/';
-}
+let path = '/';
 
 const LanguageToggler = ({ lang }) => {
+	useEffect(() => {
+		if (typeof window !== 'undefined') {
+			path = window.location.pathname;
+		} else {
+			path = '/';
+		}
+	}, []);
 	return (
 		<Wrapper>
-			{lang === 'pl' && (
-				<Link to={`${path}`}>
-					<Icon icon={britishIcon} />
+			{lang === 'en' && (
+				<Link to={`/pl${path}`}>
+					<Icon icon={polandIcon} />
 				</Link>
 			)}
-			{lang === 'en' && (
-				<Link to={`pl/${path}`}>
-					<Icon icon={polandIcon} />
+			{lang === 'pl' && (
+				<Link to={path.replace('/pl/', '/')}>
+					<Icon icon={britishIcon} />
 				</Link>
 			)}
 		</Wrapper>

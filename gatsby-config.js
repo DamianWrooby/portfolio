@@ -39,7 +39,7 @@ module.exports = {
 		`gatsby-plugin-styled-components`,
 		`gatsby-plugin-sharp`,
 		`gatsby-plugin-image`,
-		// "gatsby-plugin-loadable-components-ssr",
+		`gatsby-plugin-force-trailing-slashes`,
 		{
 			resolve: 'gatsby-plugin-netlify',
 			options: {

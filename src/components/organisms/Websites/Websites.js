@@ -97,6 +97,7 @@ const Websites = ({ lang }) => {
 	let websitesList = websites.filter((website) => website.node.language === lang);
 	websitesList = websitesList.map((website) => (
 		<Website
+			lang={lang}
 			key={website.node.title}
 			title={website.node.title}
 			technologies={website.node.technologies}

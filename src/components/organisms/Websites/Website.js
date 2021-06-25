@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import styled from 'styled-components';
-// import Img from "gatsby-image";
 import { GatsbyImage } from 'gatsby-plugin-image';
 import listIcon from '../../../assets/images/favicon.png';
 import Button from '../../atoms/Button/Button';
@@ -179,14 +178,16 @@ const Website = ({
 					</ListsWrapper>
 				</ListsContainer>
 				<ButtonsWrapper>
-					<Button
-						renderAs="a"
-						label="Screenshot"
-						title="Screenshot"
-						link={fullScreenshotUrl}
-						animated={false}
-					/>
-					<Button renderAs="a" label="WWW" title="WWW" link={websiteUrl} animated={true} />
+					{fullScreenshotUrl && (
+						<Button
+							renderAs="a"
+							label="Screenshot"
+							title="Screenshot"
+							link={fullScreenshotUrl}
+							animated={false}
+						/>
+					)}
+					{websiteUrl && <Button renderAs="a" label="Live" title="Live" link={websiteUrl} animated={true} />}
 				</ButtonsWrapper>
 			</ContentWrapper>
 		</Wrapper>
@@ -194,14 +195,16 @@ const Website = ({
 };
 
 Website.propTypes = {
-	websiteUrl: PropTypes.string.isRequired,
+	websiteUrl: PropTypes.string,
 	description: PropTypes.string.isRequired,
 	image: PropTypes.object.isRequired,
 	imgAlt: PropTypes.string.isRequired,
 	imgKey: PropTypes.string.isRequired,
 	technologies: PropTypes.array.isRequired,
 	title: PropTypes.string.isRequired,
-	scopeOfWork: PropTypes.array.isRequired
+	scopeOfWork: PropTypes.array.isRequired,
+	lang: PropTypes.string.isRequired,
+	fullScreenshotUrl: PropTypes.string
 };
 
 export default Website;
