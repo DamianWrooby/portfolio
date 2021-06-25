@@ -187,7 +187,9 @@ const Website = ({
 							animated={false}
 						/>
 					)}
-					{websiteUrl && <Button renderAs="a" label="Live" title="Live" link={websiteUrl} animated={true} />}
+					{websiteUrl === ' ' ? null : (
+						<Button renderAs="a" label="Live" title="Live" link={websiteUrl} animated={true} />
+					)}
 				</ButtonsWrapper>
 			</ContentWrapper>
 		</Wrapper>
