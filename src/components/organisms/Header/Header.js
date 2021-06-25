@@ -196,7 +196,7 @@ const HeaderBackground = styled.div`
   z-index: -1;
 `;
 
-const Header = () => {
+const Header = ({lang}) => {
   const firstLayerRef = useRef(null);
   const secondLayerRef = useRef(null);
   const secondLayerBgRef = useRef(null);
@@ -371,15 +371,25 @@ const Header = () => {
           </BackgroundWrapper>
           <HeaderBackground />
           <Title ref={titleRef}>
-            Hi, I'm <ColorSpan>Damian</ColorSpan>
+          {lang === 'en' && <>Hi, I'm <ColorSpan>Damian</ColorSpan></>}
+          {lang === 'pl' && <>Cześć, jestem <ColorSpan>Damian</ColorSpan></>}
+            
           </Title>
-          <Subtitle ref={subtitleRef}>I'm a front-end web developer</Subtitle>
-          <SecondTitle ref={secondTitleRef}>
+          {lang === 'en' && <><Subtitle ref={subtitleRef}>I'm a front-end web developer</Subtitle></>}
+          {lang === 'pl' && <><Subtitle ref={subtitleRef}>Jestem front-end developerem</Subtitle></>}
+          {lang === 'en' && <><SecondTitle ref={secondTitleRef}>
             I will turn your business <ColorSpan>ideas</ColorSpan>
-          </SecondTitle>
-          <SecondSubtitle ref={secondSubtitleRef}>
+          </SecondTitle></>}
+          {lang === 'pl' && <><SecondTitle ref={secondTitleRef}>
+            Zamienię twoje biznesowe <ColorSpan>pomysły</ColorSpan>
+          </SecondTitle></>}
+          {lang === 'en' && <><SecondSubtitle ref={secondSubtitleRef}>
             Into computer-readable <ColorSpan>code</ColorSpan>
-          </SecondSubtitle>
+          </SecondSubtitle></>}
+          {lang === 'pl' && <><SecondSubtitle ref={secondSubtitleRef}>
+            W zrozumiały dla komputera <ColorSpan>kod</ColorSpan>
+          </SecondSubtitle></>}
+          
         </Container>
       </Wrapper>
     </Element>

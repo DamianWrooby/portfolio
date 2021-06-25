@@ -8,12 +8,6 @@ import LottieAnimation from '../../molecules/LottieAnimation/LottieAnimation';
 import laptopAnimation from '../../../assets/lotties/laptop.json';
 import TechnologiesList from '../../molecules/TechnologiesList/TechnologiesList';
 
-// import loadable from "@loadable/component";
-
-// const TechnologiesList = loadable(() =>
-//   import("../../molecules/TechnologiesList/TechnologiesList")
-// );
-
 const Wrapper = styled.section`
   position: relative;
   background-color: ${({ theme }) => theme.dark};
@@ -71,7 +65,7 @@ const wavePath = (
 	</WaveWrapper>
 );
 
-const Technologies = () => {
+const Technologies = ({ lang }) => {
 	return (
 		<Wrapper id="technologies">
 			<Element name="technologies">
@@ -79,10 +73,18 @@ const Technologies = () => {
 				<Content>
 					<Main>
 						<Separator />
-						<SectionHeader
-							heading="Technologies"
-							paragraph="These are technologies, tools and methodologies that I use in my projects. I'm currently improving my skills in the field of building and testing more complex React applications."
-						/>
+						{lang === 'en' && (
+							<SectionHeader
+								heading="Technologies"
+								paragraph="These are technologies, tools and solutions that I use in my projects. I'm currently improving my skills in the field of building and testing more complex React applications."
+							/>
+						)}
+						{lang === 'pl' && (
+							<SectionHeader
+								heading="Technologie"
+								paragraph="Technologie, narzędzia i rozwiązania, które wykorzystuję tworząc projekty. Obecnie skupiam się na nauce TypeScript'a i nabywaniu dobrych praktyk w budowaniu aplikacji React'owych."
+							/>
+						)}
 						<InnerWrapper>
 							<TechnologiesList />
 							<LottieAnimation animationData={laptopAnimation} width={600} height={450} />

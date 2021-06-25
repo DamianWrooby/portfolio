@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import styled, { css } from "styled-components";
 import Links from "../../organisms/Navigation/Links";
-import SEO from "../../atoms/Seo/Seo";
+import Seo from "../../atoms/Seo/Seo";
 import { NavigationContext } from "../../../contexts/NavigationContext";
 import MobileNav from "./MobileNav";
 
@@ -56,7 +56,7 @@ const List = styled.ul`
   }
 `;
 
-const Navigation = () => {
+const Navigation = ({lang}) => {
   const { isTransparent, activeLink } = useContext(NavigationContext);
 
   const currentSection =
@@ -78,15 +78,16 @@ const Navigation = () => {
 
   return (
     <>
-      <SEO image={preview.childImageSharp.fluid} title={currentSection} />
+      {lang === "en" && <Seo image={preview.childImageSharp.fluid} title={currentSection} />}
+      {lang === "pl" && <Seo image={preview.childImageSharp.fluid} title="Strona główna" />}
       <Wrapper active={!isTransparent}>
         <Content>
           <InnerWrapper>
             <List>
-              <Links />
+              <Links lang={lang} />
             </List>
           </InnerWrapper>
-          <MobileNav />
+          <MobileNav lang={lang} />
         </Content>
       </Wrapper>
     </>
