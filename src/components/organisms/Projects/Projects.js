@@ -55,7 +55,7 @@ const wavePath = (
 	</WaveWrapper>
 );
 
-const Projects = ({lang}) => {
+const Projects = ({ lang }) => {
 	const data = useStaticQuery(graphql`
 		{
 			allContentfulProject(sort: { fields: contentfulid }) {
@@ -92,11 +92,10 @@ const Projects = ({lang}) => {
 		}
 	} = data;
 
-	let projectsList = projects.filter(project => 
-		 project.node.language === lang
-	);
+	let projectsList = projects.filter((project) => project.node.language === lang);
 	projectsList = projectsList.map((project) => (
 		<Project
+			lang={lang}
 			key={project.node.title}
 			title={project.node.title}
 			technologies={project.node.technologies}
@@ -115,14 +114,37 @@ const Projects = ({lang}) => {
 				<Content>
 					<Main>
 						<Separator />
-						{lang === 'en' && <><SectionHeader
-							heading="Projects"
-							paragraph={<span>JavaScript-based web applicaton projects. All of them are available on my <a href="https://github.com/DamianWrooby" rel="nofollow">GitHub profile.</a></span>}
-						/></>}
-						{lang === 'pl' && <><SectionHeader
-							heading="Projekty"
-							paragraph={<span>Oparte o JavaScript projekty aplikacji webowych w kolejności od najnowszego.  Wszystkie są również dostępne na moim <a href="https://github.com/DamianWrooby" rel="nofollow">profilu GitHub</a>.</span>}
-						/></>}
+						{lang === 'en' && (
+							<React.Fragment>
+								<SectionHeader
+									heading="Projects"
+									paragraph={
+										<span>
+											JavaScript-based web applicaton projects. All of them are available on my{' '}
+											<a href="https://github.com/DamianWrooby" rel="nofollow">
+												GitHub profile.
+											</a>
+										</span>
+									}
+								/>
+							</React.Fragment>
+						)}
+						{lang === 'pl' && (
+							<React.Fragment>
+								<SectionHeader
+									heading="Projekty"
+									paragraph={
+										<span>
+											Oparte o JavaScript projekty aplikacji webowych w kolejności od najnowszego.
+											Wszystkie są również dostępne na moim{' '}
+											<a href="https://github.com/DamianWrooby" rel="nofollow">
+												profilu GitHub
+											</a>.
+										</span>
+									}
+								/>
+							</React.Fragment>
+						)}
 						<InnerWrapper>{projectsList}</InnerWrapper>
 					</Main>
 				</Content>

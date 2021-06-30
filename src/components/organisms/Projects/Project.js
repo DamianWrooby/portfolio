@@ -84,7 +84,7 @@ const ButtonsWrapper = styled.div`
 	justify-content: flex-start;
 `;
 
-const Project = ({ title, description, technologies, codeUrl, liveDemoUrl, image, imgKey, imgAlt }) => {
+const Project = ({ lang, title, description, technologies, codeUrl, liveDemoUrl, image, imgKey, imgAlt }) => {
 	const imageRef = useRef(null);
 	const contentRef = useRef(null);
 
@@ -130,10 +130,12 @@ const Project = ({ title, description, technologies, codeUrl, liveDemoUrl, image
 						<MDXRenderer>{description}</MDXRenderer>
 					</MDXProvider>
 				</Description>
-				<ListTitle>Technologies & Tools</ListTitle>
+				{lang === 'en' && <ListTitle>Technologies & Tools</ListTitle>}
+				{lang === 'pl' && <ListTitle>Technologie i narzędzia</ListTitle>}
 				<List>{techList}</List>
 				<ButtonsWrapper>
-					<Button renderAs="a" label="Code" link={codeUrl} animated={false} />
+					{lang === 'en' && <Button renderAs="a" label="Code" link={codeUrl} animated={false} />}
+					{lang === 'pl' && <Button renderAs="a" label="Kod" link={codeUrl} animated={false} />}
 					<Button renderAs="a" label="Live Demo" link={liveDemoUrl} animated={true} />
 				</ButtonsWrapper>
 			</ContentWrapper>

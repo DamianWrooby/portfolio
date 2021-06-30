@@ -31,6 +31,12 @@ const BlogHeader = styled(SectionHeader)`
 	}
 `;
 
+const InfoWrapper = styled.div`
+	width: 100%;
+	text-align: center;
+	color: ${({ theme }) => theme.lightGray};
+`;
+
 const BlogIndex = () => {
 	const data = useStaticQuery(graphql`
 		{
@@ -85,7 +91,13 @@ const BlogIndex = () => {
 				<Separator />
 				<main>
 					<PostsWrapper>
-						{postsList.length === 0 ? <p>There are no blog posts yet.</p> : postsList}
+						{postsList.length === 0 ? (
+							<InfoWrapper>
+								<p>There are no blog posts yet.</p>
+							</InfoWrapper>
+						) : (
+							postsList
+						)}
 					</PostsWrapper>
 				</main>
 				<Footer lang="pl" />
