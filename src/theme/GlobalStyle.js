@@ -77,9 +77,14 @@ const GlobalStyle = createGlobalStyle`
     }
   }
   article ol, article ul {
-    list-style: auto;
     padding-left: 30px;
     padding-bottom: 30px;
+  }
+  article ol {
+    list-style: decimal;
+  }
+  article ul {
+    list-style: auto;
   }
   .gatsby-highlight-code-line {
     display: block !important;
