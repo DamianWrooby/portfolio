@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import React, { useRef, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import gsap from 'gsap';
 import styled from 'styled-components';
 import { GatsbyImage } from 'gatsby-plugin-image';
@@ -52,7 +52,7 @@ const ListTitle = styled.h4`
 	font-family: ${({ theme }) => theme.fonts.mainFont};
 	font-size: ${({ theme }) => theme.fontSize.lg};
 	font-weight: ${({ theme }) => theme.bold};
-	color: white;
+	color: ${({ theme }) => theme.white};
 	padding: 40px 0 20px 0;
 `;
 

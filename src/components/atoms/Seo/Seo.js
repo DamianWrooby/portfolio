@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
 function Seo({ description, lang, meta, title, image: metaImage }) {
-	const { site } = useStaticQuery(
+	const { site, preview } = useStaticQuery(
 		graphql`
 			query {
 				site {
@@ -17,13 +17,25 @@ function Seo({ description, lang, meta, title, image: metaImage }) {
 						siteUrl
 					}
 				}
+				preview: file(relativePath: { regex: "/preview/" }) {
+					childImageSharp {
+						fluid(maxWidth: 1280) {
+							src
+						}
+					}
+				}
 			}
 		`
 	);
 
 	const metaDescription = description || site.siteMetadata.description;
 
-	const image = metaImage && metaImage.src ? `${site.siteMetadata.siteUrl}${metaImage.src}` : null;
+	const { childImageSharp: { fluid: defaultImage } } = preview;
+
+	const image =
+		metaImage && metaImage.src
+			? `${site.siteMetadata.siteUrl}${metaImage.src}`
+			: `${site.siteMetadata.siteUrl}${defaultImage.src}`;
 
 	return (
 		<Helmet

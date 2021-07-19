@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Layout from '../layouts/layout';
 import Header from '../components/organisms/Header/Header';
 import Navigation from '../components/organisms/Navigation/Navigation';
+import Seo from '../components/atoms/Seo/Seo';
 import Technologies from '../components/organisms/Technologies/Technologies';
 import Projects from '../components/organisms/Projects/Projects';
 import Websites from '../components/organisms/Websites/Websites';
@@ -19,6 +20,7 @@ const IndexPage = () => {
 	return (
 		<NavigationProvider>
 			<Layout>
+				<Seo title="Programming portfolio" />
 				<Navigation lang="en" />
 				<Header lang="en" />
 				<main>

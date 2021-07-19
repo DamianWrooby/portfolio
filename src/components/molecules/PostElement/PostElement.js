@@ -1,6 +1,7 @@
 import React from 'react';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const PostsContainer = styled.article`
 	display: flex;
@@ -15,27 +16,54 @@ const PostsContainer = styled.article`
 	}
 `;
 
-const ImageWrapper = styled.figure`
-	width: 100%;
-	object-fit: cover;
-	${({ theme }) => theme.mq.xl} {
-		margin: 25px 60px 0px 60px;
+const Header = styled.header`
+	max-height: 230px;
+	overflow: hidden;
+`;
+
+const PostContent = styled.section`
+	padding: 3rem;
+	&& h2 {
+		color: ${({ theme }) => theme.white};
+		font-size: ${({ theme }) => theme.fontSize.xl};
+		font-weight: ${({ theme }) => theme.bold};
+		padding-bottom: 2rem;
 	}
 `;
 
-function PostElement({ title, author, excerpt, thumbnail, date }) {
+const PostExcerpt = styled.p`
+	color: ${({ theme }) => theme.lightGray};
+	padding-bottom: 2rem;
+`;
+
+const PostMeta = styled.p`color: #16ffff;`;
+
+function PostElement({ title, author, excerpt, thumbnail, date, slug, language }) {
+	const formattedDate = date.charAt(0).toUpperCase() + date.slice(1);
+	const languagePart = language === 'en' ? '' : `/${language}`;
+
 	return (
 		<PostsContainer>
-			<ImageWrapper>
-				<GatsbyImage image={thumbnail} alt={title} />
-			</ImageWrapper>
-			<h2>{title}</h2>
-			<small>
-				{author}, {date}
-			</small>
-			<p>{excerpt}</p>
+			<a href={`${languagePart}/blog/${slug}`}>
+				<Header>
+					<GatsbyImage image={thumbnail} alt={title} />
+				</Header>
+				<PostContent>
+					<h2>{title}</h2>
+					<PostExcerpt>{excerpt}</PostExcerpt>
+					<PostMeta>{formattedDate}</PostMeta>
+				</PostContent>
+			</a>
 		</PostsContainer>
 	);
 }
+
+PostElement.propTypes = {
+	title: PropTypes.string.isRequired,
+	author: PropTypes.string,
+	excerpt: PropTypes.string.isRequired,
+	thumbnail: PropTypes.string.isRequired,
+	date: PropTypes.string.isRequired
+};
 
 export default PostElement;

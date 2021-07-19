@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import Layout from '../layouts/layout';
+import Seo from '../components/atoms/Seo/Seo';
 import Navigation from '../components/organisms/Navigation/Navigation';
 import SectionHeader from '../components/molecules/SectionHeader/SectionHeader';
 import Footer from '../components/molecules/Footer/Footer';
@@ -57,6 +58,7 @@ const BlogIndex = () => {
 						title
 						contentfulid
 						language
+						slug
 					}
 				}
 			}
@@ -80,12 +82,15 @@ const BlogIndex = () => {
 			excerpt={post.node.excerpt}
 			thumbnail={post.node.image.gatsbyImageData}
 			date={post.node.date}
+			slug={post.node.slug}
+			language={post.node.language}
 		/>
 	));
 
 	return (
 		<NavigationProvider>
 			<Layout>
+				<Seo title="Blog articles | Damian Wróblewski | Front-end Developer" />
 				<Navigation lang="en" />
 				<BlogHeader heading="Blog" />
 				<Separator />

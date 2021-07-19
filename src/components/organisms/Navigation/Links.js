@@ -214,7 +214,7 @@ const HomePageLinks = ({ lang, active }) => {
 					{lang === 'pl' && <StyledSpan active={active === 'contact' ? 1 : 0}>Kontakt</StyledSpan>}
 				</StyledLink>
 			</ListItem>
-			{/* <ListItem>
+			<ListItem>
 				{lang === 'en' && (
 					<StyledGatsbyLink active={active === '/blog/' ? 1 : 0} to="/blog/">
 						<StyledSpan active={active === '/blog/' ? 1 : 0}>Blog</StyledSpan>
@@ -225,7 +225,7 @@ const HomePageLinks = ({ lang, active }) => {
 						<StyledSpan active={active === '/pl/blog/' ? 1 : 0}>Blog</StyledSpan>
 					</StyledGatsbyLink>
 				)}
-			</ListItem> */}
+			</ListItem>
 			<ListItem>
 				<LanguageToggler lang={lang} />
 			</ListItem>
@@ -297,7 +297,7 @@ function BlogPageLinks({ lang, active }) {
 				)}
 			</ListItem>
 
-			{/* <ListItem>
+			<ListItem>
 				{lang === 'en' && (
 					<StyledGatsbyLink active={active === 'blog/' ? 1 : 0} to="/blog/">
 						<StyledSpan active={active === 'blog/' ? 1 : 0}>Blog</StyledSpan>
@@ -308,7 +308,7 @@ function BlogPageLinks({ lang, active }) {
 						<StyledSpan active={active === 'pl/blog/' ? 1 : 0}>Blog</StyledSpan>
 					</StyledGatsbyLink>
 				)}
-			</ListItem> */}
+			</ListItem>
 			<ListItem>
 				<LanguageToggler lang={lang} />
 			</ListItem>

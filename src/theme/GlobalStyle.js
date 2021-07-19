@@ -55,13 +55,6 @@ const GlobalStyle = createGlobalStyle`
   strong {
     font-weight: 700;
   }
-  article ul {
-    padding-left: 2rem;
-    list-style-type: circle;
-  }
-  article p {
-    padding-bottom: 5px;
-  }
   a {
     text-decoration: none;
     color: #16ffff;
@@ -82,6 +75,17 @@ const GlobalStyle = createGlobalStyle`
   &:hover {
     opacity: .8;
     }
+  }
+  article ol, article ul {
+    list-style: auto;
+    padding-left: 30px;
+    padding-bottom: 30px;
+  }
+  .gatsby-highlight-code-line {
+    display: block !important;
+    background-color: rgba(160, 160, 160, 0.1);
+    margin: 0 -0.75rem;
+    padding: 0 0.75rem;
   }
 
 `;
