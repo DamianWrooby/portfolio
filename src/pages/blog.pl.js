@@ -34,7 +34,7 @@ const PostsWrapper = styled.ul`
 	grid-template-columns: repeat(1, minmax(0, 1fr));
 	gap: 2rem;
 	grid-gap: 2rem;
-	padding: 2rem 3rem;
+	padding: 2rem 3rem 4rem 3rem;
 	${({ theme }) => theme.mq.md} {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
@@ -46,6 +46,13 @@ const InfoWrapper = styled.div`
 	color: ${({ theme }) => theme.lightGray};
 `;
 
+const PageTemplate = styled.div`
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+`;
+
 const BlogIndex = () => {
 	const data = useStaticQuery(graphql`
 		{
@@ -54,7 +61,7 @@ const BlogIndex = () => {
 					node {
 						author
 						excerpt
-						date(fromNow: true, locale: "pl")
+						date(formatString: "MMMM YYYY", locale: "pl")
 						image {
 							gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
 						}
@@ -104,20 +111,24 @@ const BlogIndex = () => {
 					lang="pl"
 				/>
 				<Navigation lang="pl" />
-				<BlogHeader heading="Blog" />
-				<Separator />
-				<main>
-					<PostsSection>
-						{postsList.length === 0 ? (
-							<InfoWrapper>
-								<p>Nie ma jeszcze żadnych wpisów blogowych.</p>
-							</InfoWrapper>
-						) : (
-							<PostsWrapper>{postsList}</PostsWrapper>
-						)}
-					</PostsSection>
-				</main>
-				<Footer lang="pl" />
+				<PageTemplate>
+					<div>
+						<BlogHeader heading="Blog" />
+						<Separator />
+						<main>
+							<PostsSection>
+								{postsList.length === 0 ? (
+									<InfoWrapper>
+										<p>Nie ma jeszcze żadnych wpisów blogowych.</p>
+									</InfoWrapper>
+								) : (
+									<PostsWrapper>{postsList}</PostsWrapper>
+								)}
+							</PostsSection>
+						</main>
+					</div>
+					<Footer lang="pl" />
+				</PageTemplate>
 			</Layout>
 		</NavigationProvider>
 	);

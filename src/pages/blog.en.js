@@ -10,16 +10,12 @@ import NavigationProvider from '../contexts/NavigationContext';
 import PostElement from '../components/molecules/PostElement/PostElement';
 import styled from 'styled-components';
 
-const PostsWrapper = styled.section`
+const PostsSection = styled.section`
+	color: ${({ theme }) => theme.lightGray};
 	max-width: 1200px;
 	margin: auto;
-	display: flex;
-	flex-direction: column;
-	padding: 100px;
-	${({ theme }) => theme.mq.xl} {
-		flex-direction: row;
-	}
 `;
+
 const BlogHeader = styled(SectionHeader)`
 	&& {
 		padding: 120px 0 20px 0;
@@ -32,10 +28,29 @@ const BlogHeader = styled(SectionHeader)`
 	}
 `;
 
+const PostsWrapper = styled.ul`
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(1, minmax(0, 1fr));
+	gap: 2rem;
+	grid-gap: 2rem;
+	padding: 2rem 3rem 4rem 3rem;
+	${({ theme }) => theme.mq.md} {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+`;
+
 const InfoWrapper = styled.div`
 	width: 100%;
 	text-align: center;
 	color: ${({ theme }) => theme.lightGray};
+`;
+
+const PageTemplate = styled.div`
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 `;
 
 const BlogIndex = () => {
@@ -46,7 +61,7 @@ const BlogIndex = () => {
 					node {
 						author
 						excerpt
-						date(fromNow: true)
+						date(formatString: "MMMM YYYY", locale: "en")
 						image {
 							gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED, width: 400)
 						}
@@ -92,20 +107,24 @@ const BlogIndex = () => {
 			<Layout>
 				<Seo title="Blog articles | Damian Wróblewski | Front-end Developer" />
 				<Navigation lang="en" />
-				<BlogHeader heading="Blog" />
-				<Separator />
-				<main>
-					<PostsWrapper>
-						{postsList.length === 0 ? (
-							<InfoWrapper>
-								<p>There are no blog posts yet.</p>
-							</InfoWrapper>
-						) : (
-							postsList
-						)}
-					</PostsWrapper>
-				</main>
-				<Footer lang="pl" />
+				<PageTemplate>
+					<div>
+						<BlogHeader heading="Blog" />
+						<Separator />
+						<main>
+							<PostsWrapper>
+								{postsList.length === 0 ? (
+									<InfoWrapper>
+										<p>There are no blog posts yet.</p>
+									</InfoWrapper>
+								) : (
+									postsList
+								)}
+							</PostsWrapper>
+						</main>
+					</div>
+					<Footer lang="pl" />
+				</PageTemplate>
 			</Layout>
 		</NavigationProvider>
 	);

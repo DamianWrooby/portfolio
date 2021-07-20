@@ -28,9 +28,11 @@ const GlobalStyle = createGlobalStyle`
     font-size: 62.5%;
     overflow-x: hidden;
   }
+
   b {
     font-weight: ${({ theme }) => theme.medium}
   }
+
   body {
     color: ${({ theme }) => theme.grey};
     background-color: ${({ theme }) => theme.dark};
@@ -38,6 +40,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 1.6rem;
     overflow-x: hidden;
   }
+
   h3 {
     font-family: ${({ theme }) => theme.fonts.mainFont};
     font-size: ${({ theme }) => theme.fontSize.xlg};
@@ -45,6 +48,7 @@ const GlobalStyle = createGlobalStyle`
     color: white;
     padding: 15px 0 5px 0;
   }
+
   h4 {
     font-family: ${({ theme }) => theme.fonts.mainFont};
     font-size: ${({ theme }) => theme.fontSize.xlg};
@@ -52,16 +56,20 @@ const GlobalStyle = createGlobalStyle`
     color: white;
     padding: 15px 0 5px 0;
   }
+
   strong {
     font-weight: 700;
   }
+
   a {
     text-decoration: none;
     color: #16ffff;
   }
+
   a:hover {
     color: #10caca;
   }
+
   svg#poland_icon {
   width: 20px;
   transition: all .1s ease;
@@ -76,16 +84,28 @@ const GlobalStyle = createGlobalStyle`
     opacity: .8;
     }
   }
+
   article ol, article ul {
     padding-left: 30px;
     padding-bottom: 30px;
   }
+
   article ol {
     list-style: decimal;
   }
+
   article ul {
     list-style: auto;
   }
+
+  pre {
+    overflow: scroll;
+    ${({ theme }) => theme.mq.md} {
+		  overflow: hidden;
+	  }
+  }
+  
+
   .gatsby-highlight-code-line {
     display: block !important;
     background-color: rgba(160, 160, 160, 0.1);
