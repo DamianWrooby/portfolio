@@ -5,8 +5,8 @@ import { NavigationContext } from "../../../contexts/NavigationContext";
 const TopLine = styled.div`
   background-color: ${({ theme }) => theme.neonBlue};
   border-radius: 2px;
-  width: 19px;
-  height: 5px;
+  width: 12px;
+  height: 4px;
   transition: transform 330ms cubic-bezier(0.54, -0.81, 0.57, 0.57);
   transform-origin: right;
   ${({ isActive }) =>
@@ -20,8 +20,8 @@ const TopLine = styled.div`
 const MiddleLine = styled.div`
   background-color: ${({ theme }) => theme.neonBlue};
   border-radius: 2px;
-  width: 38px;
-  height: 5px;
+  width: 25px;
+  height: 4px;
   ${({ isActive }) =>
     isActive &&
     css`
@@ -32,8 +32,8 @@ const MiddleLine = styled.div`
 const BottomLine = styled.div`
   background-color: ${({ theme }) => theme.neonBlue};
   border-radius: 2px;
-  width: 19px;
-  height: 5px;
+  width: 12px;
+  height: 4px;
   align-self: flex-end;
   transition: transform 330ms cubic-bezier(0.54, -0.81, 0.57, 0.57);
   transform-origin: left;
@@ -48,10 +48,10 @@ const BottomLine = styled.div`
 const Button = styled.button`
   position: fixed;
   top: 20px;
-  right: 5%;
+  right: 3%;
   z-index: 20;
-  width: 50px;
-  height: 45px;
+  width: 36px;
+  height: 26px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -69,8 +69,8 @@ const Background = styled.div`
   position: fixed;
   top: -32px;
   right: -2%;
-  width: 100px;
-  height: 125px;
+  width: 70px;
+  height: 95px;
   border-bottom-left-radius: 40px;
   background-color: #16232d;
   ${"" /* box-shadow: 0 0 10px rgba(84, 227, 255, 0.7); */}
