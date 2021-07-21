@@ -9,7 +9,7 @@ const Wrapper = styled.div`
 	z-index: 3;
 `;
 
-const Header = styled.h2`
+const Header = styled.div`
 	font-family: ${({ theme }) => theme.fonts.mainFont};
 	font-size: ${({ theme }) => theme.fontSize.xxl};
 	font-weight: ${({ theme }) => theme.bold};
@@ -34,17 +34,21 @@ const Paragraph = styled.p`
 	}
 `;
 
-const SectionHeader = ({ className, heading, paragraph }) => {
+const SectionHeader = ({ className, heading, paragraph, tag }) => {
+	const Tag = `${tag}`;
 	return (
 		<Wrapper className={className}>
-			<Header>{heading}</Header>
+			<Header>
+				<Tag>{heading}</Tag>
+			</Header>
 			<Paragraph>{paragraph}</Paragraph>
 		</Wrapper>
 	);
 };
 
 SectionHeader.defaultProps = {
-	paragraph: ''
+	paragraph: '',
+	tag: 'h2'
 };
 
 SectionHeader.propTypes = {
@@ -52,7 +56,8 @@ SectionHeader.propTypes = {
 	paragraph: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.object
-	])
+	]),
+	tag: PropTypes.string
 };
 
 export default SectionHeader;

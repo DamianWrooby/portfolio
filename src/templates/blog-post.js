@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
@@ -33,7 +33,7 @@ const PostHeader = styled(SectionHeader)`
       width: 100%;
       text-align: center;
     }
-    h2 {
+    h1 {
       font-size: ${({ theme }) => theme.fontSize.lg};
       ${({ theme }) => theme.mq.md} {
         font-size: ${({ theme }) => theme.fontSize.xxl};
@@ -54,30 +54,33 @@ const Text = styled(Content)`
   img {
     max-width: 100%;
   }
-  h2 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: "Sarala", sans-serif;
-    font-size: 3.2rem;
     font-weight: ${({ theme }) => theme.bold};
     color: ${({ theme }) => theme.white};
-	padding: 20px 0;
+    padding: 20px 0;
+  }
+  h2 {
+    font-size: 3.2rem;
   }
   h3 {
-    font-family: "Sarala", sans-serif;
     font-size: 2.8rem;
-    font-weight: ${({ theme }) => theme.bold};
-    color: ${({ theme }) => theme.white};
-	padding: 20px 0;
   }
-	ul {
+  ul {
     padding-left: 2rem;
     list-style-type: circle;
   }
-p {
+  p {
     padding-bottom: 30px;
     text-align: justify;
     line-height: 1.3;
   }
-em {
+  em {
     font-style: italic;
   }
 `;
@@ -97,15 +100,6 @@ const components = {
 };
 
 const BlogPost = ({ data }) => {
-	useEffect(
-		() => {
-			console.log(data);
-		},
-		[
-			data
-		]
-	);
-
 	const post = data.contentfulBlogPost;
 
 	return (
@@ -116,7 +110,7 @@ const BlogPost = ({ data }) => {
 				<main>
 					<ArticleContent>
 						<header>
-							<PostHeader heading={post.title} paragraph={`${post.author}`} />
+							<PostHeader heading={post.title} paragraph={`${post.author}`} tag="h1" />
 						</header>
 						<Separator />
 						<FeatureImageWrapper>

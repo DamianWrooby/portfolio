@@ -109,7 +109,7 @@ const BlogIndex = () => {
 				<Navigation lang="en" />
 				<PageTemplate>
 					<div>
-						<BlogHeader heading="Blog" />
+						<BlogHeader heading="Blog" tag="h1" />
 						<Separator />
 						<main>
 							<PostsWrapper>
