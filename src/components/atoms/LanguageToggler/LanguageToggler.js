@@ -30,7 +30,12 @@ const LanguageToggler = ({ lang }) => {
 
 	useEffect(() => {
 		if (typeof window !== 'undefined') {
-			setPath(window.location.pathname);
+			const regex = /\/blog\/[a-z0-9\-]/;
+			if (window.location.pathname.match(regex)) {
+				setPath('/blog');
+			} else {
+				setPath(window.location.pathname);
+			}
 		} else {
 			setPath('/');
 		}

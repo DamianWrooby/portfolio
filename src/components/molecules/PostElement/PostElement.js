@@ -62,7 +62,7 @@ PostElement.propTypes = {
 	title: PropTypes.string.isRequired,
 	author: PropTypes.string,
 	excerpt: PropTypes.string.isRequired,
-	thumbnail: PropTypes.string.isRequired,
+	thumbnail: PropTypes.object.isRequired,
 	date: PropTypes.string.isRequired
 };
 
