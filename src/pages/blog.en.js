@@ -112,15 +112,15 @@ const BlogIndex = () => {
 						<BlogHeader heading="Blog" tag="h1" />
 						<Separator />
 						<main>
-							<PostsWrapper>
+							<PostsSection>
 								{postsList.length === 0 ? (
 									<InfoWrapper>
 										<p>There are no blog posts yet.</p>
 									</InfoWrapper>
 								) : (
-									postsList
+									<PostsWrapper>{postsList}</PostsWrapper>
 								)}
-							</PostsWrapper>
+							</PostsSection>
 						</main>
 					</div>
 					<Footer lang="pl" />
