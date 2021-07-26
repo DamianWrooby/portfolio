@@ -89,7 +89,11 @@ module.exports = {
 		},
 		{
 			resolve: `gatsby-plugin-mdx`,
-			options: {}
+			options: {
+				rehypePlugins: [
+					require('rehype-slug')
+				]
+			}
 		},
 		{
 			resolve: 'gatsby-plugin-i18n',

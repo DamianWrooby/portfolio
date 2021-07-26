@@ -14,6 +14,7 @@ import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
 import { MDXProvider } from '@mdx-js/react';
 import CodeBlock from '../utils/CodeBlock';
 import { GatsbyImage } from 'gatsby-plugin-image';
+import ToC from '../components/molecules/ToC/ToC';
 
 const ArticleContent = styled.article`
 	max-width: 800px;
@@ -117,6 +118,7 @@ const BlogPost = ({ data }) => {
 							<GatsbyImage image={post.image.gatsbyImageData} alt={post.title} />
 						</FeatureImageWrapper>
 						<Text>
+							<ToC headings={post.text.childMdx.tableOfContents.items} lang={post.language} />
 							<MDXProvider components={components}>
 								<MDXRenderer>{post.text.childMdx.body}</MDXRenderer>
 							</MDXProvider>
@@ -144,6 +146,7 @@ export const pageQuery = graphql`
 			text {
 				childMdx {
 					body
+					tableOfContents
 				}
 			}
 		}
