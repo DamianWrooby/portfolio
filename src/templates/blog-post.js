@@ -15,6 +15,7 @@ import { MDXProvider } from '@mdx-js/react';
 import CodeBlock from '../utils/CodeBlock';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import ToC from '../components/molecules/ToC/ToC';
+import { Disqus } from 'gatsby-plugin-disqus';
 
 const ArticleContent = styled.article`
 	max-width: 800px;
@@ -102,6 +103,12 @@ const components = {
 
 const BlogPost = ({ data }) => {
 	const post = data.contentfulBlogPost;
+	const langUrlPart = post.language === 'pl' ? 'pl/' : '';
+	const disqusConfig = {
+		url: `https://damianwroblewski.com/${langUrlPart}${post.slug}`,
+		identifier: post.slug,
+		title: post.title
+	};
 
 	return (
 		<NavigationProvider>
@@ -122,6 +129,7 @@ const BlogPost = ({ data }) => {
 							<MDXProvider components={components}>
 								<MDXRenderer>{post.text.childMdx.body}</MDXRenderer>
 							</MDXProvider>
+							<Disqus config={disqusConfig} />
 						</Text>
 					</ArticleContent>
 					<Footer lang={post.language} />
@@ -143,6 +151,7 @@ export const pageQuery = graphql`
 			language
 			tags
 			title
+			slug
 			text {
 				childMdx {
 					body

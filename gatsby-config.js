@@ -103,6 +103,12 @@ module.exports = {
 				useLangKeyLayout: false,
 				prefixDefault: false
 			}
+		},
+		{
+			resolve: `gatsby-plugin-disqus`,
+			options: {
+				shortname: `damianwroblewski`
+			}
 		}
 	]
 };
