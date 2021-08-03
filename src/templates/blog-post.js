@@ -1,21 +1,22 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { graphql } from 'gatsby';
-import styled from 'styled-components';
-import Layout from '../layouts/layout';
-import Navigation from '../components/organisms/Navigation/Navigation';
-import Seo from '../components/atoms/Seo/Seo';
-import SectionHeader from '../components/molecules/SectionHeader/SectionHeader';
-import Footer from '../components/molecules/Footer/Footer';
-import Separator from '../components/atoms/Separator/Separator';
-import Content from '../components/atoms/Content/Content';
-import NavigationProvider from '../contexts/NavigationContext';
-import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
 import { MDXProvider } from '@mdx-js/react';
-import CodeBlock from '../utils/CodeBlock';
-import { GatsbyImage } from 'gatsby-plugin-image';
-import ToC from '../components/molecules/ToC/ToC';
+import { graphql } from 'gatsby';
 import { Disqus } from 'gatsby-plugin-disqus';
+import { GatsbyImage } from 'gatsby-plugin-image';
+import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
+import PropTypes from 'prop-types';
+import React from 'react';
+import styled from 'styled-components';
+
+import Content from '../components/atoms/Content/Content';
+import Seo from '../components/atoms/Seo/Seo';
+import Separator from '../components/atoms/Separator/Separator';
+import Footer from '../components/molecules/Footer/Footer';
+import SectionHeader from '../components/molecules/SectionHeader/SectionHeader';
+import ToC from '../components/molecules/ToC/ToC';
+import Navigation from '../components/organisms/Navigation/Navigation';
+import NavigationProvider from '../contexts/NavigationContext';
+import Layout from '../layouts/layout';
+import CodeBlock from '../utils/CodeBlock';
 
 const ArticleContent = styled.article`
 	max-width: 800px;

@@ -9,6 +9,12 @@ const Toc = styled.section`
 	${({ theme }) => theme.mq.md} {
 		padding: 2rem 4rem;
 	}
+	h2 {
+		font-size: ${({ theme }) => theme.fontSize.lg};
+		${({ theme }) => theme.mq.md} {
+			font-size: ${({ theme }) => theme.fontSize.xl};
+		}
+	}
 `;
 
 const ToC = ({ headings, lang }) => (

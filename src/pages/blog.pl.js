@@ -1,14 +1,15 @@
+import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
-import Layout from '../layouts/layout';
-import Seo from '../components/atoms/Seo/Seo';
-import Navigation from '../components/organisms/Navigation/Navigation';
-import SectionHeader from '../components/molecules/SectionHeader/SectionHeader';
-import Footer from '../components/molecules/Footer/Footer';
-import Separator from '../components/atoms/Separator/Separator';
-import NavigationProvider from '../contexts/NavigationContext';
-import PostElement from '../components/molecules/PostElement/PostElement';
 import styled from 'styled-components';
+
+import Seo from '../components/atoms/Seo/Seo';
+import Separator from '../components/atoms/Separator/Separator';
+import Footer from '../components/molecules/Footer/Footer';
+import PostElement from '../components/molecules/PostElement/PostElement';
+import SectionHeader from '../components/molecules/SectionHeader/SectionHeader';
+import Navigation from '../components/organisms/Navigation/Navigation';
+import NavigationProvider from '../contexts/NavigationContext';
+import Layout from '../layouts/layout';
 
 const PostsSection = styled.section`
 	color: ${({ theme }) => theme.lightGray};

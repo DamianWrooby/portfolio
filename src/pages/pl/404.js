@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Content from '../components/atoms/Content/Content';
-import Seo from '../components/atoms/Seo/Seo';
-import Navigation from '../components/organisms/Navigation/Navigation';
-import NavigationProvider from '../contexts/NavigationContext';
-import Layout from '../layouts/layout';
+import Content from '../../components/atoms/Content/Content';
+import Seo from '../../components/atoms/Seo/Seo';
+import Navigation from '../../components/organisms/Navigation/Navigation';
+import NavigationProvider from '../../contexts/NavigationContext';
+import Layout from '../../layouts/layout';
 
 const StyledContent = styled(Content)`
 && {
@@ -43,13 +43,13 @@ const FourtyFour = styled.div`
 const NotFoundPage = () => (
 	<NavigationProvider>
 		<Layout>
-			<Seo title="404: Not found" />
-			<Navigation lang="en" />
+			<Seo title="404: Nie znaleziono" />
+			<Navigation lang="pl" />
 			<PageTemplate>
 				<StyledContent>
 					<FourtyFour>404</FourtyFour>
-					<h1>Page not found</h1>
-					<p>Check if URL address is correct or use main navigation</p>
+					<h1>Strony nie znaleziono</h1>
+					<p>Sprawdź czy adres strony jest poprawny lub skorzystaj z nawigacji</p>
 				</StyledContent>
 			</PageTemplate>
 		</Layout>
