@@ -10,7 +10,7 @@ const Toc = styled.section`
 		padding: 2rem 4rem;
 	}
 	h2 {
-		font-size: ${({ theme }) => theme.fontSize.lg};
+		font-size: ${({ theme }) => theme.fontSize.xlg};
 		${({ theme }) => theme.mq.md} {
 			font-size: ${({ theme }) => theme.fontSize.xl};
 		}
