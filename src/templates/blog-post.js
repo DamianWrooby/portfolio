@@ -1,6 +1,5 @@
 import { MDXProvider } from '@mdx-js/react';
 import { graphql } from 'gatsby';
-import { Disqus } from 'gatsby-plugin-disqus';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
 import PropTypes from 'prop-types';
@@ -130,7 +129,6 @@ const BlogPost = ({ data }) => {
 							<MDXProvider components={components}>
 								<MDXRenderer>{post.text.childMdx.body}</MDXRenderer>
 							</MDXProvider>
-							<Disqus config={disqusConfig} />
 						</Text>
 					</ArticleContent>
 					<Footer lang={post.language} />
