@@ -76,13 +76,13 @@ const Technologies = ({ lang }) => {
 						{lang === 'en' && (
 							<SectionHeader
 								heading="Technologies"
-								paragraph="These are technologies, tools and solutions that I use in my projects. I'm currently improving my skills in the field of building and testing more complex React applications."
+								paragraph="These are technologies, tools and solutions that I use in my projects."
 							/>
 						)}
 						{lang === 'pl' && (
 							<SectionHeader
 								heading="Technologie"
-								paragraph="Technologie, narzędzia i rozwiązania, które wykorzystuję tworząc projekty. Obecnie skupiam się na nauce TypeScript'a i nabywaniu dobrych praktyk w budowaniu aplikacji React'owych."
+								paragraph="Technologie, narzędzia i rozwiązania, które wykorzystuję tworząc aplikacje webowe."
 							/>
 						)}
 						<InnerWrapper>
