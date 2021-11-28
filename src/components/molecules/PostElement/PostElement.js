@@ -40,11 +40,11 @@ const PostMeta = styled.p`color: #16ffff;`;
 
 function PostElement({ title, author, excerpt, thumbnail, date, slug, language }) {
 	const formattedDate = date.charAt(0).toUpperCase() + date.slice(1);
-	const languagePart = language === 'en' ? '' : `/${language}`;
+	const languagePath = `/${language}`;
 
 	return (
 		<PostsContainer>
-			<a href={`${languagePart}/blog/${slug}`}>
+			<a href={`${languagePath}/blog/${slug}`}>
 				<Header>
 					<GatsbyImage image={thumbnail} alt={title} />
 				</Header>

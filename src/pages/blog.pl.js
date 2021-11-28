@@ -89,7 +89,7 @@ const BlogIndex = () => {
 		}
 	} = data;
 
-	let postsList = posts.filter((post) => post.node.language === 'pl');
+	let postsList = posts.filter((post) => post.node.language === 'pl').reverse();
 	postsList = postsList.map((post) => (
 		<PostElement
 			key={post.node.contentfulid}

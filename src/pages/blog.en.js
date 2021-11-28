@@ -63,7 +63,7 @@ const BlogIndex = () => {
 						excerpt
 						date(formatString: "MMMM YYYY", locale: "en")
 						image {
-							gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED, width: 400)
+							gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
 						}
 						text {
 							childMdx {
@@ -88,7 +88,7 @@ const BlogIndex = () => {
 		}
 	} = data;
 
-	let postsList = posts.filter((post) => post.node.language === 'en');
+	let postsList = posts.filter((post) => post.node.language === 'en').reverse();
 	postsList = postsList.map((post) => (
 		<PostElement
 			key={post.node.contentfulid}

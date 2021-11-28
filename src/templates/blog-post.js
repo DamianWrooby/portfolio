@@ -103,22 +103,24 @@ const components = {
 
 const BlogPost = ({ data }) => {
 	const post = data.contentfulBlogPost;
-	const langUrlPart = post.language === 'pl' ? 'pl/' : '';
-	const disqusConfig = {
-		url: `https://damianwroblewski.com/${langUrlPart}${post.slug}`,
-		identifier: post.slug,
-		title: post.title
-	};
+
+	// DISQUS CONFIG
+	// const langUrlPart = post.language === 'pl' ? 'pl/' : '';
+	// const disqusConfig = {
+	// 	url: `https://damianwroblewski.com/${langUrlPart}${post.slug}`,
+	// 	identifier: post.slug,
+	// 	title: post.title
+	// };
 
 	return (
 		<NavigationProvider>
 			<Layout>
-				<Seo title={`${post.title} | Blog`} lang="pl" />
+				<Seo title={`${post.title} | Blog`} lang={post.language} />
 				<Navigation lang={post.language} />
 				<main>
 					<ArticleContent>
 						<header>
-							<PostHeader heading={post.title} paragraph={`${post.author}`} tag="h1" />
+							<PostHeader heading={post.title} paragraph={`${post.author} - ${post.date}`} tag="h1" />
 						</header>
 						<Separator />
 						<FeatureImageWrapper>
@@ -139,10 +141,10 @@ const BlogPost = ({ data }) => {
 };
 
 export const pageQuery = graphql`
-	query BlogPostBySlug($slug: String!) {
+	query BlogPostBySlug($slug: String!, $language: String!) {
 		contentfulBlogPost(slug: { eq: $slug }) {
 			author
-			date(formatString: "MMMM Do, YYYY")
+			date(formatString: "MMMM YYYY", locale: $language)
 			excerpt
 			image {
 				gatsbyImageData(layout: FULL_WIDTH, quality: 100)
