@@ -30,7 +30,7 @@ const ToC = ({ headings, lang }) => (
 							<ul>
 								{heading.items.map((nestedHeading) => {
 									return (
-										<li key={heading.title}>
+										<li key={nestedHeading.title}>
 											<a href={`${nestedHeading.url}`}>{nestedHeading.title}</a>
 										</li>
 									);
