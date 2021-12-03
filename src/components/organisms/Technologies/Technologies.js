@@ -1,19 +1,19 @@
-import React from 'react';
-import { Element } from 'react-scroll';
-import styled from 'styled-components';
-import Content from '../../atoms/Content/Content';
-import SectionHeader from '../../molecules/SectionHeader/SectionHeader';
-import Separator from '../../atoms/Separator/Separator';
-import LottieAnimation from '../../molecules/LottieAnimation/LottieAnimation';
-import laptopAnimation from '../../../assets/lotties/laptop.json';
-import TechnologiesList from '../../molecules/TechnologiesList/TechnologiesList';
+import React from "react";
+import { Element } from "react-scroll";
+import styled from "styled-components";
+
+import laptopAnimation from "../../../assets/lotties/laptop.json";
+import Content from "../../atoms/Content/Content";
+import Separator from "../../atoms/Separator/Separator";
+import LottieAnimation from "../../molecules/LottieAnimation/LottieAnimation";
+import SectionHeader from "../../molecules/SectionHeader/SectionHeader";
+import TechnologiesList from "../../molecules/TechnologiesList/TechnologiesList";
 
 const Wrapper = styled.section`
-  position: relative;
-  background-color: ${({ theme }) => theme.dark};
-  min-height: 100vh;
-  margin-top: 110px;
-  }
+	position: relative;
+	background-color: ${({ theme }) => theme.dark};
+	min-height: 100vh;
+	margin-top: 110px;
 `;
 
 const Main = styled.div`
@@ -60,7 +60,11 @@ const WaveWrapper = styled.div`
 const wavePath = (
 	<WaveWrapper>
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-			<path fill="#03131D" fillOpacity="1" d="M0,128L720,192L1440,128L1440,320L720,320L0,320Z" />
+			<path
+				fill="#03131D"
+				fillOpacity="1"
+				d="M0,128L720,192L1440,128L1440,320L720,320L0,320Z"
+			/>
 		</svg>
 	</WaveWrapper>
 );
@@ -73,13 +77,13 @@ const Technologies = ({ lang }) => {
 				<Content>
 					<Main>
 						<Separator />
-						{lang === 'en' && (
+						{lang === "en" && (
 							<SectionHeader
 								heading="Technologies"
 								paragraph="These are technologies, tools and solutions that I use in my projects."
 							/>
 						)}
-						{lang === 'pl' && (
+						{lang === "pl" && (
 							<SectionHeader
 								heading="Technologie"
 								paragraph="Technologie, narzędzia i rozwiązania, które wykorzystuję tworząc aplikacje webowe."
@@ -87,7 +91,11 @@ const Technologies = ({ lang }) => {
 						)}
 						<InnerWrapper>
 							<TechnologiesList />
-							<LottieAnimation animationData={laptopAnimation} width={600} height={450} />
+							<LottieAnimation
+								animationData={laptopAnimation}
+								width={600}
+								height={450}
+							/>
 						</InnerWrapper>
 					</Main>
 				</Content>

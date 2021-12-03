@@ -1,10 +1,11 @@
-import React, { useEffect, useRef } from 'react';
-import styled from 'styled-components';
-import gsap from 'gsap';
-import ListItem from '../../atoms/ListItem/ListItem';
-import twitterIcon from '../../../assets/icons/twitter.svg';
-import emailIcon from '../../../assets/icons/email.svg';
-import githubIcon from '../../../assets/icons/github.svg';
+import gsap from "gsap";
+import React, { useEffect, useRef } from "react";
+import styled from "styled-components";
+
+import emailIcon from "../../../assets/icons/email.svg";
+import githubIcon from "../../../assets/icons/github.svg";
+import twitterIcon from "../../../assets/icons/twitter.svg";
+import ListItem from "../../atoms/ListItem/ListItem";
 
 const Wrapper = styled.div`
 	display: flex;
@@ -30,12 +31,12 @@ const List = styled.ul`
 `;
 
 const StyledListItem = styled(ListItem)`
-  && {
-    min-width: unset;
-    &:hover {
-      filter: drop-shadow(0 0 10px rgba(84, 227, 255, 0.7));
-    }
-  }
+	&& {
+		min-width: unset;
+		&:hover {
+			filter: drop-shadow(0 0 10px rgba(84, 227, 255, 0.7));
+		}
+	}
 `;
 
 const StyledParagraph = styled.p`
@@ -54,16 +55,14 @@ const SocialLinks = ({ lang }) => {
 		const list = listRef.current;
 
 		if (list) {
-			[
-				...list.children
-			].map((child) => {
+			[...list.children].map(child => {
 				gsap.from(child, {
 					autoAlpha: 0,
-					y: '-=20',
+					y: "-=20",
 					scrollTrigger: {
 						trigger: child,
-						start: 'top bottom-=50px'
-					}
+						start: "top bottom-=50px",
+					},
 				});
 			});
 		}
@@ -71,16 +70,16 @@ const SocialLinks = ({ lang }) => {
 
 	return (
 		<Wrapper>
-			{lang === 'en' && (
+			{lang === "en" && (
 				<StyledParagraph>
-					Take a look at my latest project on GitHub or follow me on Twitter if you enjoying web devlopment
-					world stuff.
+					Take a look at my latest project on GitHub or follow me on Twitter if
+					you enjoying web devlopment world stuff.
 				</StyledParagraph>
 			)}
-			{lang === 'pl' && (
+			{lang === "pl" && (
 				<StyledParagraph>
-					Sprawdź moje projekty na GitHub lub śledź mnie na Twitterze jeśli interesują cię treści ze świata
-					web developmentu.
+					Sprawdź moje projekty na GitHub lub śledź mnie na Twitterze jeśli
+					interesują cię treści ze świata web developmentu.
 				</StyledParagraph>
 			)}
 			<List ref={listRef}>

@@ -1,29 +1,29 @@
-const path = require('path');
+const path = require("path");
 exports.createPages = async ({ graphql, actions }) => {
 	const { createPage, deletePage } = actions;
 
-	const blogPostTemplate = path.resolve('./src/templates/blog-post.js');
+	const blogPostTemplate = path.resolve("./src/templates/blog-post.js");
 	const res = await graphql(`
-    query {
-      allContentfulBlogPost {
-        edges {
-          node {
-            slug
-            language
-          }
-        }
-      }
-    }
-  `);
+		query {
+			allContentfulBlogPost {
+				edges {
+					node {
+						slug
+						language
+					}
+				}
+			}
+		}
+	`);
 
-	res.data.allContentfulBlogPost.edges.forEach((edge) => {
+	res.data.allContentfulBlogPost.edges.forEach(edge => {
 		createPage({
 			component: blogPostTemplate,
 			path: `/${edge.node.language}/blog/${edge.node.slug}`,
 			context: {
 				slug: edge.node.slug,
-				language: edge.node.language
-			}
+				language: edge.node.language,
+			},
 		});
 	});
 };

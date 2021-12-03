@@ -5,7 +5,7 @@ import Content from '../../atoms/Content/Content';
 import SectionHeader from '../../molecules/SectionHeader/SectionHeader';
 import Separator from '../../atoms/Separator/Separator';
 import SocialLinks from './SocialLinks';
-import Form from '../../molecules/Form/Form';
+import ContactForm from '../../molecules/Forms/ContactForm';
 
 const Wrapper = styled.section`
   position: relative;
@@ -70,7 +70,7 @@ const Contact = ({ lang }) => {
 						<InnerWrapper>
 							<SocialLinks lang={lang} />
 							<FormWrapper>
-								<Form lang={lang} />
+								<ContactForm lang={lang} />
 							</FormWrapper>
 						</InnerWrapper>
 					</Main>

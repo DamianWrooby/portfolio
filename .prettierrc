@@ -1,5 +1,7 @@
 {
 	"arrowParens": "avoid",
 	"semi": true,
-	"jsxBracketSameLine": false
+	"jsxBracketSameLine": false,
+	"bracketSameLine": true,
+	"useTabs": true
 }

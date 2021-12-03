@@ -1,7 +1,7 @@
-import React from 'react';
-import { GatsbyImage } from 'gatsby-plugin-image';
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
+import { GatsbyImage } from "gatsby-plugin-image";
+import PropTypes from "prop-types";
+import React from "react";
+import styled from "styled-components";
 
 const PostsContainer = styled.article`
 	display: flex;
@@ -11,14 +11,18 @@ const PostsContainer = styled.article`
 	border-radius: 20px;
 	transition: all 0.2s ease;
 	&&:hover {
-		border: 2px solid #16ffff;
-		transform: scale(1.02);
+		${({ theme }) => theme.mq.md} {
+			border: 2px solid #16ffff;
+			transform: scale(1.02);
+		}
 	}
 `;
 
 const Header = styled.header`
 	max-height: 230px;
 	overflow: hidden;
+	border-top-right-radius: 20px;
+	border-top-left-radius: 20px;
 `;
 
 const PostContent = styled.section`
@@ -36,9 +40,19 @@ const PostExcerpt = styled.p`
 	padding-bottom: 2rem;
 `;
 
-const PostMeta = styled.p`color: #16ffff;`;
+const PostMeta = styled.p`
+	color: #16ffff;
+`;
 
-function PostElement({ title, author, excerpt, thumbnail, date, slug, language }) {
+function PostElement({
+	title,
+	author,
+	excerpt,
+	thumbnail,
+	date,
+	slug,
+	language,
+}) {
 	const formattedDate = date.charAt(0).toUpperCase() + date.slice(1);
 	const languagePath = `/${language}`;
 
@@ -63,7 +77,7 @@ PostElement.propTypes = {
 	author: PropTypes.string,
 	excerpt: PropTypes.string.isRequired,
 	thumbnail: PropTypes.object.isRequired,
-	date: PropTypes.string.isRequired
+	date: PropTypes.string.isRequired,
 };
 
 export default PostElement;

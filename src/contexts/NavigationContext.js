@@ -39,14 +39,15 @@ const NavigationProvider = ({ children }) => {
 	};
 
 	useEffect(() => {
+		let isMounted = true;   
 		const sections = document.querySelectorAll('section');
 		const footer = document.querySelector('footer');
 		const url = typeof window !== 'undefined' ? window.location.pathname.replace('/', '') : '';
 
-		if (url === '') {
+		if (url === '' && isMounted) {
 			setCurrentPage('home');
 			setActiveLink('home');
-		} else {
+		} else if (isMounted) {
 			setCurrentPage(url);
 			setActiveLink(url);
 		}
@@ -74,6 +75,7 @@ const NavigationProvider = ({ children }) => {
 				onToggle: ({ isActive }) => isActive && setActiveLink(section.id)
 			});
 		});
+		return () => { isMounted = false };
 	}, []);
 
 	const context = {
