@@ -118,17 +118,17 @@ const StyledSpan = styled.span`
 			css`
 				background: linear-gradient(90deg, transparent, #03e9f4);
 				animation: ${animate1} 1s linear infinite;
-			`}
+			`};
 		${({ color }) =>
 			color === "green" &&
 			css`
 				background: ${({ theme }) => theme.dark};
-			`}
-      ${({ color }) =>
+			`};
+		${({ color }) =>
 			color === "red" &&
 			css`
 				background: ${({ theme }) => theme.dark};
-			`}
+			`};
 	}
 	&:nth-child(2) {
 		top: 0;
@@ -148,12 +148,12 @@ const StyledSpan = styled.span`
 			color === "green" &&
 			css`
 				background: ${({ theme }) => theme.dark};
-			`}
-      ${({ color }) =>
+			`};
+		${({ color }) =>
 			color === "red" &&
 			css`
 				background: ${({ theme }) => theme.dark};
-			`}
+			`};
 	}
 	&:nth-child(3) {
 		bottom: 0;
@@ -172,12 +172,12 @@ const StyledSpan = styled.span`
 			color === "green" &&
 			css`
 				background: ${({ theme }) => theme.dark};
-			`}
-      ${({ color }) =>
+			`};
+		${({ color }) =>
 			color === "red" &&
 			css`
 				background: ${({ theme }) => theme.dark};
-			`}
+			`};
 	}
 	&:nth-child(4) {
 		bottom: 0;
@@ -197,12 +197,12 @@ const StyledSpan = styled.span`
 			color === "green" &&
 			css`
 				background: ${({ theme }) => theme.dark};
-			`}
-      ${({ color }) =>
+			`};
+		${({ color }) =>
 			color === "red" &&
 			css`
 				background: ${({ theme }) => theme.dark};
-			`}
+			`};
 	}
 `;
 

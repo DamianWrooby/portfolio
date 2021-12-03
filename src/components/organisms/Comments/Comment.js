@@ -10,8 +10,8 @@ import CommentForm from "../../molecules/Forms/CommentForm";
 
 const ReplyButton = styled(Button)`
 	font-size: ${({ theme }) => theme.fontSize.s};
-	padding: 15px 10px;
-	cursor: pointer;
+	padding: 15px 10px !important;
+	cursor: pointer !important;
 	margin-top: 15px !important;
 	${({ theme }) => theme.mq.s} {
 		margin-top: 30px;
