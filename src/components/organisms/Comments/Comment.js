@@ -9,6 +9,9 @@ import Button from "../../atoms/Button/Button";
 import CommentForm from "../../molecules/Forms/CommentForm";
 
 const StyledButton = styled(Button)`
+	font-size: ${({ theme }) => theme.fontSize.s};
+	padding: 15px 10px;
+	margin-bottom: 3rem;
 	${({ theme }) => theme.mq.s} {
 		font-size: ${({ theme }) => theme.fontSize.s};
 		padding: 15px 10px;
