@@ -38,14 +38,14 @@ const StyledButton = styled.button`
 		css`
 			background: transparent;
 			color: #16ffff;
-		`}
+		`};
 	${({ color }) =>
 		color === "blue" &&
 		css`
 			background: #03e9f4;
 			color: ${({ theme }) => theme.dark};
-		`}
-  ${({ color }) =>
+		`};
+	${({ color }) =>
 		color === "green" &&
 		css`
 			border-color: ${({ theme }) => theme.dark};
@@ -54,8 +54,8 @@ const StyledButton = styled.button`
 				background: ${({ theme }) => theme.green};
 				color: ${({ theme }) => theme.dark};
 			}
-		`}
-  ${({ color }) =>
+		`};
+	${({ color }) =>
 		color === "red" &&
 		css`
 			background: ${({ theme }) => theme.red};
@@ -63,8 +63,8 @@ const StyledButton = styled.button`
 				background: ${({ theme }) => theme.red};
 				color: ${({ theme }) => theme.dark};
 			}
-		`}
-  ${({ theme }) => theme.mq.s} {
+		`};
+	${({ theme }) => theme.mq.s} {
 		font-size: ${({ theme }) => theme.fontSize.lg};
 		padding: 20px;
 		margin-right: 50px;
