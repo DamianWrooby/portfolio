@@ -8,24 +8,13 @@ import sortBy from "../../../utils/sortBy";
 import Button from "../../atoms/Button/Button";
 import CommentForm from "../../molecules/Forms/CommentForm";
 
-const StyledButton = styled(Button)`
+const ReplyButton = styled(Button)`
 	font-size: ${({ theme }) => theme.fontSize.s};
 	padding: 15px 10px;
-	margin-bottom: 3rem;
-	.small {
-		font-size: ${({ theme }) => theme.fontSize.s};
-		padding: 15px 10px;
-		margin-bottom: 3rem;
-	}
+	cursor: pointer;
+	margin-top: 15px !important;
 	${({ theme }) => theme.mq.s} {
-		font-size: ${({ theme }) => theme.fontSize.s};
-		padding: 15px 10px;
-		margin-bottom: 3rem;
-		.small {
-			font-size: ${({ theme }) => theme.fontSize.s};
-			padding: 15px 10px;
-			margin-bottom: 3rem;
-		}
+		margin-top: 30px;
 	}
 `;
 
@@ -114,8 +103,7 @@ const Comment = ({ lang, comment, children, postId }) => {
 			<div>
 				{showReplyBox ? (
 					<div>
-						<StyledButton
-							className="small"
+						<ReplyButton
 							renderAs="button"
 							label={lang === "en" ? "Cancel Reply" : "Anuluj"}
 							clickHandler={() => setShowReplyBox(false)}
@@ -124,8 +112,7 @@ const Comment = ({ lang, comment, children, postId }) => {
 						<CommentForm lang={lang} parentId={comment.id} postId={postId} />
 					</div>
 				) : (
-					<StyledButton
-						className="small"
+					<ReplyButton
 						renderAs="button"
 						label={lang === "en" ? "Reply" : "Odpowiedz"}
 						clickHandler={() => setShowReplyBox(true)}
