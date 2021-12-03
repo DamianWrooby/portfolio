@@ -12,10 +12,20 @@ const StyledButton = styled(Button)`
 	font-size: ${({ theme }) => theme.fontSize.s};
 	padding: 15px 10px;
 	margin-bottom: 3rem;
+	.small {
+		font-size: ${({ theme }) => theme.fontSize.s};
+		padding: 15px 10px;
+		margin-bottom: 3rem;
+	}
 	${({ theme }) => theme.mq.s} {
 		font-size: ${({ theme }) => theme.fontSize.s};
 		padding: 15px 10px;
 		margin-bottom: 3rem;
+		.small {
+			font-size: ${({ theme }) => theme.fontSize.s};
+			padding: 15px 10px;
+			margin-bottom: 3rem;
+		}
 	}
 `;
 
@@ -105,6 +115,7 @@ const Comment = ({ lang, comment, children, postId }) => {
 				{showReplyBox ? (
 					<div>
 						<StyledButton
+							className="small"
 							renderAs="button"
 							label={lang === "en" ? "Cancel Reply" : "Anuluj"}
 							clickHandler={() => setShowReplyBox(false)}
@@ -114,6 +125,7 @@ const Comment = ({ lang, comment, children, postId }) => {
 					</div>
 				) : (
 					<StyledButton
+						className="small"
 						renderAs="button"
 						label={lang === "en" ? "Reply" : "Odpowiedz"}
 						clickHandler={() => setShowReplyBox(true)}
