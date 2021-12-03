@@ -9,7 +9,7 @@ import Button from "../../atoms/Button/Button";
 import CommentForm from "../../molecules/Forms/CommentForm";
 
 const ReplyButton = styled(Button)`
-	font-size: ${({ theme }) => theme.fontSize.s};
+	font-size: ${({ theme }) => theme.fontSize.s} !important;
 	padding: 15px 10px !important;
 	cursor: pointer !important;
 	margin-top: 15px !important;
