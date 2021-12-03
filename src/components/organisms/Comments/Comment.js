@@ -12,7 +12,7 @@ const ReplyButton = styled(Button)`
 	font-size: ${({ theme }) => theme.fontSize.s} !important;
 	padding: 15px 10px !important;
 	cursor: pointer !important;
-	margin-top: 15px !important;
+	margin: 30px 0 !important;
 	${({ theme }) => theme.mq.s} {
 		margin-top: 30px;
 	}
