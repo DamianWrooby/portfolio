@@ -15,4 +15,5 @@
 - Scrollmagic
 - Formik & Yup
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
+## Status
+[![Netlify Status](https://api.netlify.com/api/v1/badges/3c5f514c-8e39-4de1-acb4-0c8d426c3dfb/deploy-status)](https://app.netlify.com/sites/hardcore-chandrasekhar-39aa85/deploys)
