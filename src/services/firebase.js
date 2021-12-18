@@ -13,7 +13,7 @@ export const firebaseConfig = {
 	measurementId: process.env.GATSBY_FIREBASE_MEASUREMENT_ID,
 };
 
-const app = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 
 if (typeof window !== "undefined") {
 	db = getFirestore();
