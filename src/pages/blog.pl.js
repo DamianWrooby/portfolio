@@ -57,7 +57,7 @@ const PageTemplate = styled.div`
 const BlogIndex = () => {
 	const data = useStaticQuery(graphql`
 		{
-			allContentfulBlogPost {
+			allContentfulBlogPost(sort: {fields: date, order: ASC}) {
 				edges {
 					node {
 						author
@@ -94,7 +94,7 @@ const BlogIndex = () => {
 		<PostElement
 			key={post.node.contentfulid}
 			title={post.node.title}
-			author={post.node.author}
+			author={post.node.author} 
 			excerpt={post.node.excerpt}
 			thumbnail={post.node.image.gatsbyImageData}
 			date={post.node.date}

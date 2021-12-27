@@ -121,6 +121,7 @@ const BlogPost = ({ data }) => {
 
 	useEffect(() => {
 		const q = query(collection(db, "comments"), where("postId", "==", id));
+		
 		const unsubscribe = onSnapshot(q, querySnapshot => {
 			const comments = [];
 			querySnapshot.forEach(doc => {
