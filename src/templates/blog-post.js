@@ -121,7 +121,7 @@ const BlogPost = ({ data }) => {
 
 	useEffect(() => {
 		const q = query(collection(db, "comments"), where("postId", "==", id));
-		
+
 		const unsubscribe = onSnapshot(q, querySnapshot => {
 			const comments = [];
 			querySnapshot.forEach(doc => {
@@ -137,7 +137,11 @@ const BlogPost = ({ data }) => {
 	return (
 		<NavigationProvider>
 			<Layout>
-				<Seo title={`${post.title} | Blog`} lang={post.language} />
+				<Seo
+					title={`${post.title} | Blog`}
+					lang={post.language}
+					image={post.image.fluid.src}
+				/>
 				<Navigation lang={post.language} />
 				<main>
 					<ArticleContent>
@@ -182,6 +186,9 @@ export const pageQuery = graphql`
 			date(formatString: "MMMM YYYY", locale: $language)
 			excerpt
 			image {
+				fluid {
+					src
+				}
 				gatsbyImageData(layout: FULL_WIDTH, quality: 100)
 			}
 			language

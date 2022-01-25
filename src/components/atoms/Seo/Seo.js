@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet';
-import { useStaticQuery, graphql } from 'gatsby';
+import { graphql, useStaticQuery } from "gatsby";
+import PropTypes from "prop-types";
+import React from "react";
+import { Helmet } from "react-helmet";
 
 function Seo({ description, lang, meta, title, image: metaImage }) {
 	const { site, preview } = useStaticQuery(
@@ -30,73 +30,71 @@ function Seo({ description, lang, meta, title, image: metaImage }) {
 
 	const metaDescription = description || site.siteMetadata.description;
 
-	const { childImageSharp: { fluid: defaultImage } } = preview;
+	const {
+		childImageSharp: { fluid: defaultImage },
+	} = preview;
 
-	const image =
-		metaImage && metaImage.src
-			? `${site.siteMetadata.siteUrl}${metaImage.src}`
-			: `${site.siteMetadata.siteUrl}${defaultImage.src}`;
+	const image = metaImage
+		? `${metaImage}`
+		: `${site.siteMetadata.siteUrl}${defaultImage.src}`;
 
 	return (
 		<Helmet
 			htmlAttributes={{
-				lang
+				lang,
 			}}
 			title={title}
 			titleTemplate={`%s | ${site.siteMetadata.title}`}
 			meta={[
 				{
 					name: `description`,
-					content: metaDescription
+					content: metaDescription,
 				},
 				{
 					name: `theme-color`,
-					content: site.siteMetadata.themeColor
+					content: site.siteMetadata.themeColor,
 				},
 				{
-					name: 'keywords',
-					content: site.siteMetadata.keywords.join(',')
+					name: "keywords",
+					content: site.siteMetadata.keywords.join(","),
 				},
 				{
 					property: `og:title`,
-					content: title
+					content: title,
 				},
 				{
-					property: 'og:image',
-					content: image
+					property: "og:image",
+					content: image,
 				},
 				{
 					property: `og:description`,
-					content: metaDescription
+					content: metaDescription,
 				},
 				{
 					property: `og:type`,
-					content: `website`
+					content: `website`,
 				},
-				{
-					property: `og:image`,
-					content: image
-				},
+
 				{
 					name: `twitter:card`,
-					content: `summary`
+					content: `summary`,
 				},
 				{
 					name: `twitter:creator`,
-					content: site.siteMetadata.author
+					content: site.siteMetadata.author,
 				},
 				{
 					name: `twitter:title`,
-					content: title
+					content: title,
 				},
 				{
 					name: `twitter:description`,
-					content: metaDescription
+					content: metaDescription,
 				},
 				{
 					name: `google-site-verification`,
-					content: `g8Rk4od0pwwvsr8uyAce569jOBDAjJZauJ-EhIP93s4`
-				}
+					content: `g8Rk4od0pwwvsr8uyAce569jOBDAjJZauJ-EhIP93s4`,
+				},
 			].concat(meta)}
 		/>
 	);
@@ -105,7 +103,7 @@ function Seo({ description, lang, meta, title, image: metaImage }) {
 Seo.defaultProps = {
 	lang: `en`,
 	meta: [],
-	description: ``
+	description: ``,
 };
 
 Seo.propTypes = {
@@ -113,9 +111,7 @@ Seo.propTypes = {
 	lang: PropTypes.string,
 	meta: PropTypes.arrayOf(PropTypes.object),
 	title: PropTypes.string.isRequired,
-	image: PropTypes.shape({
-		src: PropTypes.string.isRequired
-	})
+	image: PropTypes.string,
 };
 
 export default Seo;
