@@ -35,7 +35,7 @@ function Seo({ description, lang, meta, title, image: metaImage }) {
 	} = preview;
 
 	const image = metaImage
-		? `${metaImage}`
+		? `http:${metaImage}`
 		: `${site.siteMetadata.siteUrl}${defaultImage.src}`;
 
 	return (

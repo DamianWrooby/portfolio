@@ -140,7 +140,7 @@ const BlogPost = ({ data }) => {
 				<Seo
 					title={`${post.title} | Blog`}
 					lang={post.language}
-					image={post.image.fluid.src}
+					image={post.image.file.url}
 				/>
 				<Navigation lang={post.language} />
 				<main>
@@ -186,8 +186,8 @@ export const pageQuery = graphql`
 			date(formatString: "MMMM YYYY", locale: $language)
 			excerpt
 			image {
-				fluid {
-					src
+				file {
+					url
 				}
 				gatsbyImageData(layout: FULL_WIDTH, quality: 100)
 			}
