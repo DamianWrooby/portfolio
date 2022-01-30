@@ -44,7 +44,7 @@ const ItemList = () => {
 		const secondList = list2Ref.current;
 
 		if (firstList && secondList) {
-			[...firstList.children, ...secondList.children].map(child => {
+			[...firstList.children, ...secondList.children].forEach(child => {
 				gsap.from(child, {
 					autoAlpha: 0,
 					y: "-=20",

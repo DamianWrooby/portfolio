@@ -92,7 +92,7 @@ const CommentForm = ({ lang, postId, parentId = null }) => {
 	const sendForm = (values, { setSubmitting, resetForm }) => {
 		const sendComment = async () => {
 			try {
-				const docRef = await addDoc(collection(db, "comments"), {
+				await addDoc(collection(db, "comments"), {
 					author: values.author,
 					content: values.content,
 					postId,
