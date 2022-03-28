@@ -18,7 +18,7 @@ import Navigation from "../components/organisms/Navigation/Navigation";
 import NavigationProvider from "../contexts/NavigationContext";
 import Layout from "../layouts/layout";
 import { db } from "../services/firebase";
-import CodeBlock from "../utils/CodeBlock";
+import CodeBlock from "../utils/codeBlock";
 
 const ArticleContent = styled.article`
 	max-width: ${({ theme }) => theme.articleContainerWidth};
@@ -127,7 +127,6 @@ const BlogPost = ({ data }) => {
 			querySnapshot.forEach(doc => {
 				comments.push({ id: doc.id, ...doc.data() });
 			});
-			console.log(`All comments for post ID: ${id}`, comments);
 			setComments(comments);
 		});
 
