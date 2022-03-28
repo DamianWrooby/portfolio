@@ -18,7 +18,7 @@ import Navigation from "../components/organisms/Navigation/Navigation";
 import NavigationProvider from "../contexts/NavigationContext";
 import Layout from "../layouts/layout";
 import { db } from "../services/firebase";
-import CodeBlock from "../utils/codeBlock";
+import CodeBlock from "../utils/CodeBlock";
 
 const ArticleContent = styled.article`
 	max-width: ${({ theme }) => theme.articleContainerWidth};
