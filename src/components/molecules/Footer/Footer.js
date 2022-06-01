@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const Wrapper = styled.footer`
 	background: ${({ theme }) => theme.neonBlue};
@@ -18,8 +18,12 @@ const Text = styled.p`
 
 const Footer = ({ lang }) => (
 	<Wrapper>
-		{lang === 'en' && <Text>&copy; 2021 Damian Wróblewski. All rights reserved.</Text>}
-		{lang === 'pl' && <Text>&copy; 2021 Damian Wróblewski. Wszelkie prawa zastrzeżone.</Text>}
+		{lang === "en" && (
+			<Text>&copy; 2022 Damian Wróblewski. All rights reserved.</Text>
+		)}
+		{lang === "pl" && (
+			<Text>&copy; 2022 Damian Wróblewski. Wszelkie prawa zastrzeżone.</Text>
+		)}
 	</Wrapper>
 );
 
