@@ -10,7 +10,7 @@ const breakpoints = {
 export const theme = {
 	fonts: {
 		mainFont: `'Sarala', sans-serif`,
-		subFont: `'Open Sans', sans-serif;`,
+		subFont: `'Source Sans Pro', sans-serif;`,
 	},
 	white: "hsl(0, 0%, 100%)",
 	gray: "hsl(0, 0%, 72%)",

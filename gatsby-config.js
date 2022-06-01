@@ -1,5 +1,5 @@
-require('dotenv').config({
-	path: `.env.${process.env.NODE_ENV}`
+require("dotenv").config({
+	path: `.env.${process.env.NODE_ENV}`,
 });
 
 module.exports = {
@@ -8,32 +8,32 @@ module.exports = {
 		description: `Front-end Developer portfolio made with Gatsby by Damian Wróblewski`,
 		author: `@damianwrooby`,
 		themeColor: `#16FFFF`,
-		language: 'en',
+		language: "en",
 		keywords: [
-			'frontend developer',
-			'web developer',
-			'web design',
-			'react developer',
-			'react programming'
+			"frontend developer",
+			"web developer",
+			"web design",
+			"react developer",
+			"react programming",
 		],
-		siteUrl: 'https://damianwroblewski.com/'
+		siteUrl: "https://damianwroblewski.com/",
 	},
 	plugins: [
 		{
 			resolve: `gatsby-plugin-google-analytics`,
 			options: {
-				trackingId: 'UA-180186424-1',
+				trackingId: "UA-180186424-1",
 				head: true,
-				defer: false
-			}
+				defer: false,
+			},
 		},
 		`gatsby-plugin-react-helmet`,
 		{
 			resolve: `gatsby-source-filesystem`,
 			options: {
 				name: `images`,
-				path: `${__dirname}/src/assets/images`
-			}
+				path: `${__dirname}/src/assets/images`,
+			},
 		},
 		`gatsby-transformer-sharp`,
 		`gatsby-plugin-styled-components`,
@@ -41,22 +41,22 @@ module.exports = {
 		`gatsby-plugin-image`,
 		`gatsby-plugin-force-trailing-slashes`,
 		{
-			resolve: 'gatsby-plugin-netlify',
+			resolve: "gatsby-plugin-netlify",
 			options: {
 				headers: {
 					// Cache fonts forever
-					'/fonts/*': [
-						'Cache-Control: public',
-						'Cache-Control: max-age=365000000',
-						'Cache-Control: immutable'
+					"/fonts/*": [
+						"Cache-Control: public",
+						"Cache-Control: max-age=365000000",
+						"Cache-Control: immutable",
 					],
 					// Cache images for a week
-					'/images/*': [
-						'Cache-Control: public',
-						'Cache-Control: max-age=604800'
-					]
-				}
-			}
+					"/images/*": [
+						"Cache-Control: public",
+						"Cache-Control: max-age=604800",
+					],
+				},
+			},
 		},
 		{
 			resolve: `gatsby-plugin-manifest`,
@@ -67,48 +67,43 @@ module.exports = {
 				background_color: `#16FFFF`,
 				theme_color: `#16FFFF`,
 				display: `minimal-ui`,
-				icon: `src/assets/images/favicon.png`
-			}
+				icon: `src/assets/images/favicon.png`,
+			},
 		},
 		{
 			resolve: `gatsby-plugin-google-fonts`,
 			options: {
-				fonts: [
-					`Sarala`,
-					`source sans pro\:400,700`
-				],
-				display: 'swap'
-			}
+				fonts: [`Sarala`, `source sans pro\:200,300,400,700`],
+				display: "swap",
+			},
 		},
 		{
 			resolve: `gatsby-source-contentful`,
 			options: {
 				spaceId: `l8jq2db9qwuj`,
-				accessToken: process.env.GATSBY_CONTENTFUL_ACCESS_TOKEN
-			}
+				accessToken: process.env.GATSBY_CONTENTFUL_ACCESS_TOKEN,
+			},
 		},
 		{
 			resolve: `gatsby-plugin-mdx`,
 			options: {
-				rehypePlugins: [
-					require('rehype-slug')
-				]
-			}
+				rehypePlugins: [require("rehype-slug")],
+			},
 		},
 		{
-			resolve: 'gatsby-plugin-i18n',
+			resolve: "gatsby-plugin-i18n",
 			options: {
-				langKeyDefault: 'en',
-				langKeyForNull: 'en',
+				langKeyDefault: "en",
+				langKeyForNull: "en",
 				useLangKeyLayout: false,
-				prefixDefault: false
-			}
+				prefixDefault: false,
+			},
 		},
 		{
 			resolve: `gatsby-plugin-disqus`,
 			options: {
-				shortname: `damianwroblewski`
-			}
-		}
-	]
+				shortname: `damianwroblewski`,
+			},
+		},
+	],
 };
