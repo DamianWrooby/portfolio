@@ -1,12 +1,13 @@
-import React, { useRef, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import gsap from 'gsap';
-import styled from 'styled-components';
-import { GatsbyImage } from 'gatsby-plugin-image';
-import listIcon from '../../../assets/images/favicon.png';
-import Button from '../../atoms/Button/Button';
-import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
-import { MDXProvider } from '@mdx-js/react';
+import { MDXProvider } from "@mdx-js/react";
+import { GatsbyImage } from "gatsby-plugin-image";
+import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer";
+import gsap from "gsap";
+import PropTypes from "prop-types";
+import React, { useEffect, useRef } from "react";
+import styled from "styled-components";
+
+import listIcon from "../../../assets/images/favicon.png";
+import Button from "../../atoms/Button/Button";
 
 const Wrapper = styled.article`
 	width: 100%;
@@ -25,7 +26,9 @@ const ImageWrapper = styled.figure`
 	}
 `;
 
-const ContentWrapper = styled.div`width: 100%;`;
+const ContentWrapper = styled.div`
+	width: 100%;
+`;
 
 const Title = styled.h3`
 	font-family: ${({ theme }) => theme.fonts.mainFont};
@@ -38,14 +41,14 @@ const Title = styled.h3`
 
 const Description = styled.div`
 	font-family: ${({ theme }) => theme.fonts.subFont};
-	font-size: ${({ theme }) => theme.fontSize.md};
+	font-size: ${({ theme }) => theme.fontSize.m};
 	font-weight: ${({ theme }) => theme.light};
 	color: ${({ theme }) => theme.lightGray};
 	line-height: 1.5;
 `;
 
 const StyledImg = styled(GatsbyImage)`
-  border-radius: 20px;
+	border-radius: 20px;
 `;
 
 const ListTitle = styled.h4`
@@ -84,7 +87,17 @@ const ButtonsWrapper = styled.div`
 	justify-content: flex-start;
 `;
 
-const Project = ({ lang, title, description, technologies, codeUrl, liveDemoUrl, image, imgKey, imgAlt }) => {
+const Project = ({
+	lang,
+	title,
+	description,
+	technologies,
+	codeUrl,
+	liveDemoUrl,
+	image,
+	imgKey,
+	imgAlt,
+}) => {
 	const imageRef = useRef(null);
 	const contentRef = useRef(null);
 
@@ -95,26 +108,26 @@ const Project = ({ lang, title, description, technologies, codeUrl, liveDemoUrl,
 		if (content && image) {
 			gsap.from(image, {
 				autoAlpha: 0,
-				x: '-=150',
+				x: "-=150",
 				scrollTrigger: {
 					trigger: image,
-					start: 'top bottom-=200px'
-				}
+					start: "top bottom-=200px",
+				},
 			});
 			gsap.from(content.children, {
 				autoAlpha: 0,
-				y: '-=50',
+				y: "-=50",
 				duration: 0.5,
 				stagger: 0.1,
 				scrollTrigger: {
 					trigger: image,
-					start: 'top bottom-=200px'
-				}
+					start: "top bottom-=200px",
+				},
 			});
 		}
 	}, []);
 
-	const techList = technologies.map((el) => {
+	const techList = technologies.map(el => {
 		return <Item key={el}>{el}</Item>;
 	});
 
@@ -130,13 +143,22 @@ const Project = ({ lang, title, description, technologies, codeUrl, liveDemoUrl,
 						<MDXRenderer>{description}</MDXRenderer>
 					</MDXProvider>
 				</Description>
-				{lang === 'en' && <ListTitle>Technologies & Tools</ListTitle>}
-				{lang === 'pl' && <ListTitle>Technologie i narzędzia</ListTitle>}
+				{lang === "en" && <ListTitle>Technologies & Tools</ListTitle>}
+				{lang === "pl" && <ListTitle>Technologie i narzędzia</ListTitle>}
 				<List>{techList}</List>
 				<ButtonsWrapper>
-					{lang === 'en' && <Button renderAs="a" label="Code" link={codeUrl} animated={false} />}
-					{lang === 'pl' && <Button renderAs="a" label="Kod" link={codeUrl} animated={false} />}
-					<Button renderAs="a" label="Live Demo" link={liveDemoUrl} animated={true} />
+					{lang === "en" && (
+						<Button renderAs="a" label="Code" link={codeUrl} animated={false} />
+					)}
+					{lang === "pl" && (
+						<Button renderAs="a" label="Kod" link={codeUrl} animated={false} />
+					)}
+					<Button
+						renderAs="a"
+						label="Live Demo"
+						link={liveDemoUrl}
+						animated={true}
+					/>
 				</ButtonsWrapper>
 			</ContentWrapper>
 		</Wrapper>
@@ -151,7 +173,7 @@ Project.propTypes = {
 	imgKey: PropTypes.string.isRequired,
 	liveDemoUrl: PropTypes.any.isRequired,
 	technologies: PropTypes.array.isRequired,
-	title: PropTypes.string.isRequired
+	title: PropTypes.string.isRequired,
 };
 
 export default Project;

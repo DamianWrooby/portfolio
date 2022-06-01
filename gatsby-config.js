@@ -73,7 +73,7 @@ module.exports = {
 		{
 			resolve: `gatsby-plugin-google-fonts`,
 			options: {
-				fonts: [`Sarala`, `source sans pro\:200,300,400,700`],
+				fonts: [`Sarala`, `source sans pro\:300,700`],
 				display: "swap",
 			},
 		},
