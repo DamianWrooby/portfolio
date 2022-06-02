@@ -22,6 +22,21 @@ const LineContent = styled.span`
 	display: table-cell;
 `;
 
+const StyledPre = styled.pre`
+	font-size: ${({ theme }) => theme.fontSize.xs} !important;
+	${({ theme }) => theme.mq.md} {
+		font-size: ${({ theme }) => theme.fontSize.m} !important;
+	}
+	margin: 0 0 30px 0;
+	padding: 20px;
+	border: 1px solid #349898;
+	border-radius: 5px;
+	background-color: #001929 !important;
+	font-family: Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+	font-weight: 400;
+	white-space: pre-wrap;
+`;
+
 let highlightStart = false;
 const highlightClassName = "gatsby-highlight-code-line";
 
@@ -66,21 +81,7 @@ const CodeBlock = ({ children }) => {
 			theme={prismTheme}
 			language="javascript">
 			{({ className, style, tokens, getLineProps, getTokenProps }) => (
-				<pre
-					className={className}
-					style={{
-						...style,
-						margin: "0 0 30px 0",
-						padding: "20px",
-						border: "1px solid #349898",
-						borderRadius: "5px",
-						backgroundColor: "#05262f",
-						fontSize: "16px",
-						fontFamily:
-							"Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace",
-						fontWeight: "400",
-						whiteSpace: "pre-wrap",
-					}}>
+				<StyledPre className={className} style={{ ...style }}>
 					{tokens.map((line, i) => {
 						const lineProps = getLineProps({ line, key: i });
 						const shouldExclude = highlightLine(line, lineProps);
@@ -107,7 +108,7 @@ const CodeBlock = ({ children }) => {
 							</Line>
 						) : null;
 					})}
-				</pre>
+				</StyledPre>
 			)}
 		</Highlight>
 	);
