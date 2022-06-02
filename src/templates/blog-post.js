@@ -51,7 +51,7 @@ const Text = styled(Content)`
 	&& {
 		font-family: ${({ theme }) => theme.fonts.subFont};
 		font-size: ${({ theme }) => theme.fontSize.lg};
-		font-weight: ${({ theme }) => theme.regular};
+		font-weight: ${({ theme }) => theme.light};
 		color: ${({ theme }) => theme.lightGray};
 		line-height: 1.5;
 		margin: 7rem 0;
