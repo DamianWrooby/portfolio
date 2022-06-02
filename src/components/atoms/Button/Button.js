@@ -6,6 +6,7 @@ const StyledButton = styled.button`
 	position: relative;
 	cursor: pointer;
 	font-size: ${({ theme }) => theme.fontSize.xs};
+	font-weight: ${({ theme }) => theme.regular};
 	text-align: center;
 	background: #03e9f4;
 	color: ${({ theme }) => theme.dark};
@@ -227,8 +228,7 @@ const Button = ({
 			as={renderAs}
 			animation={animated}
 			onClick={clickHandler}
-			type={type}
-		>
+			type={type}>
 			<StyledSpan color={color} animation={animated}></StyledSpan>
 			<StyledSpan color={color} animation={animated}></StyledSpan>
 			<StyledSpan color={color} animation={animated}></StyledSpan>

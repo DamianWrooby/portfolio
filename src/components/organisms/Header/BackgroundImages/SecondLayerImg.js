@@ -1,47 +1,36 @@
-import React, { useEffect, useState } from "react";
-import { graphql, StaticQuery } from "gatsby";
+import { StaticQuery, graphql } from "gatsby";
 import BackgroundImage from "gatsby-background-image";
-import useMedia from "use-media";
+import React from "react";
 
-const FirstLayerImg = ({ className }) => {
-  const [bgSize, setBgSize] = useState("contain");
+const SecondLayerImg = ({ className }) => {
+	return (
+		<StaticQuery
+			query={graphql`
+				query {
+					robotFace: file(relativePath: { eq: "header-1.png" }) {
+						childImageSharp {
+							fluid(quality: 90) {
+								...GatsbyImageSharpFluid_withWebp
+							}
+						}
+					}
+				}
+			`}
+			render={data => {
+				// Set ImageData.
+				const imageData = data.robotFace.childImageSharp.fluid;
 
-  const isWideScreen = useMedia({ minWidth: "1200px" });
-
-  useEffect(() => {
-    const size = isWideScreen ? "contain" : "cover";
-    setBgSize(size);
-  }, [bgSize]);
-
-  return (
-    <StaticQuery
-      query={graphql`
-        query {
-          robotFace: file(relativePath: { eq: "header-1.png" }) {
-            childImageSharp {
-              fluid(quality: 90) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-          }
-        }
-      `}
-      render={data => {
-        // Set ImageData.
-        const imageData = data.robotFace.childImageSharp.fluid;
-
-        return (
-          <BackgroundImage
-            style={{ backgroundSize: `${bgSize}`, backgroundPosition: "left" }}
-            Tag="div"
-            className={className}
-            fluid={imageData}
-            backgroundColor="transparent"
-          ></BackgroundImage>
-        );
-      }}
-    />
-  );
+				return (
+					<BackgroundImage
+						style={{ backgroundPosition: "left" }}
+						Tag="div"
+						className={className}
+						fluid={imageData}
+						backgroundColor="transparent"></BackgroundImage>
+				);
+			}}
+		/>
+	);
 };
 
-export default FirstLayerImg;
+export default SecondLayerImg;

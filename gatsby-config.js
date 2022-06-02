@@ -5,7 +5,7 @@ require("dotenv").config({
 module.exports = {
 	siteMetadata: {
 		title: `Damian Wróblewski | Front-end Developer`,
-		description: `Front-end Developer portfolio made with Gatsby by Damian Wróblewski`,
+		description: `Tech blog and programming portfolio built with Gatsby`,
 		author: `@damianwrooby`,
 		themeColor: `#16FFFF`,
 		language: "en",
@@ -73,7 +73,7 @@ module.exports = {
 		{
 			resolve: `gatsby-plugin-google-fonts`,
 			options: {
-				fonts: [`Sarala`, `source sans pro\:300,700`],
+				fonts: [`Sarala`, `source sans pro\:300,400,700`],
 				display: "swap",
 			},
 		},

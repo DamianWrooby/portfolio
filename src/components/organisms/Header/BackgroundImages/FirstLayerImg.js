@@ -1,26 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { graphql, StaticQuery } from 'gatsby';
-import BackgroundImage from 'gatsby-background-image';
-import useMedia from 'use-media';
+import { StaticQuery, graphql } from "gatsby";
+import BackgroundImage from "gatsby-background-image";
+import React from "react";
 
 const FirstLayerImg = ({ className }) => {
-	const [
-		bgSize,
-		setBgSize
-	] = useState('contain');
-
-	const isWideScreen = useMedia({ minWidth: '1200px' });
-
-	useEffect(
-		() => {
-			const size = isWideScreen ? 'contain' : 'cover';
-			setBgSize(size);
-		},
-		[
-			bgSize
-		]
-	);
-
 	return (
 		<StaticQuery
 			query={graphql`
@@ -34,12 +16,12 @@ const FirstLayerImg = ({ className }) => {
 					}
 				}
 			`}
-			render={(data) => {
+			render={data => {
 				const imageData = data.realFace.childImageSharp.fluid;
 
 				return (
 					<BackgroundImage
-						style={{ backgroundSize: `${bgSize}`, backgroundPosition: 'left' }}
+						style={{ backgroundPosition: "left" }}
 						Tag="div"
 						className={className}
 						fluid={imageData}

@@ -153,12 +153,14 @@ const Project = ({
 					{lang === "pl" && (
 						<Button renderAs="a" label="Kod" link={codeUrl} animated={false} />
 					)}
-					<Button
-						renderAs="a"
-						label="Live Demo"
-						link={liveDemoUrl}
-						animated={true}
-					/>
+					{liveDemoUrl && (
+						<Button
+							renderAs="a"
+							label="Live Demo"
+							link={liveDemoUrl}
+							animated={true}
+						/>
+					)}
 				</ButtonsWrapper>
 			</ContentWrapper>
 		</Wrapper>
@@ -171,7 +173,7 @@ Project.propTypes = {
 	image: PropTypes.object.isRequired,
 	imgAlt: PropTypes.string.isRequired,
 	imgKey: PropTypes.string.isRequired,
-	liveDemoUrl: PropTypes.any.isRequired,
+	liveDemoUrl: PropTypes.string,
 	technologies: PropTypes.array.isRequired,
 	title: PropTypes.string.isRequired,
 };

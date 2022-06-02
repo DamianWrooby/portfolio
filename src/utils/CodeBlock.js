@@ -78,7 +78,7 @@ const CodeBlock = ({ children }) => {
 						fontSize: "16px",
 						fontFamily:
 							"Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace",
-						fontWeight: "600",
+						fontWeight: "400",
 						whiteSpace: "pre-wrap",
 					}}>
 					{tokens.map((line, i) => {
