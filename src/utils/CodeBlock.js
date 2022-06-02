@@ -23,7 +23,7 @@ const LineContent = styled.span`
 `;
 
 const StyledPre = styled.pre`
-	font-size: ${({ theme }) => theme.fontSize.xs} !important;
+	font-size: 12px !important;
 	${({ theme }) => theme.mq.md} {
 		font-size: ${({ theme }) => theme.fontSize.m} !important;
 	}
