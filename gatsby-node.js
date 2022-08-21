@@ -1,8 +1,11 @@
 const path = require("path");
+const { convertToPath } = require("./src/utils/convertTag");
 exports.createPages = async ({ graphql, actions }) => {
 	const { createPage, deletePage } = actions;
 
 	const blogPostTemplate = path.resolve("./src/templates/blog-post.js");
+	const tagsTemplate = path.resolve("./src/templates/tags.js");
+
 	const res = await graphql(`
 		query {
 			allContentfulBlogPost {
@@ -10,13 +13,22 @@ exports.createPages = async ({ graphql, actions }) => {
 					node {
 						slug
 						language
+						tags
 					}
 				}
 			}
 		}
 	`);
 
-	res.data.allContentfulBlogPost.edges.forEach(edge => {
+	if (res.errors) {
+		reporter.panicOnBuild(`Error while running GraphQL query.`);
+		return;
+	}
+
+	const posts = res.data.allContentfulBlogPost.edges;
+	const tags = [...new Set(posts.map(post => post.node.tags).flat())];
+
+	posts.forEach(edge => {
 		createPage({
 			component: blogPostTemplate,
 			path: `/${edge.node.language}/blog/${edge.node.slug}`,
@@ -24,6 +36,20 @@ exports.createPages = async ({ graphql, actions }) => {
 				slug: edge.node.slug,
 				language: edge.node.language,
 			},
+		});
+	});
+
+	tags.forEach(tag => {
+		const languages = ["pl", "en"];
+		languages.forEach(language => {
+			createPage({
+				component: tagsTemplate,
+				path: `/${language}/blog/tags/${convertToPath(tag)}`,
+				context: {
+					tag,
+					language,
+				},
+			});
 		});
 	});
 };
