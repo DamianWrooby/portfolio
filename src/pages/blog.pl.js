@@ -1,15 +1,15 @@
-import { graphql, useStaticQuery } from 'gatsby';
-import React from 'react';
-import styled from 'styled-components';
+import { graphql, useStaticQuery } from "gatsby";
+import React from "react";
+import styled from "styled-components";
 
-import Seo from '../components/atoms/Seo/Seo';
-import Separator from '../components/atoms/Separator/Separator';
-import Footer from '../components/molecules/Footer/Footer';
-import PostElement from '../components/molecules/PostElement/PostElement';
-import SectionHeader from '../components/molecules/SectionHeader/SectionHeader';
-import Navigation from '../components/organisms/Navigation/Navigation';
-import NavigationProvider from '../contexts/NavigationContext';
-import Layout from '../layouts/layout';
+import Seo from "../components/atoms/Seo/Seo";
+import Separator from "../components/atoms/Separator/Separator";
+import Footer from "../components/molecules/Footer/Footer";
+import PostElement from "../components/molecules/PostElement/PostElement";
+import SectionHeader from "../components/molecules/SectionHeader/SectionHeader";
+import Navigation from "../components/organisms/Navigation/Navigation";
+import NavigationProvider from "../contexts/NavigationContext";
+import Layout from "../layouts/layout";
 
 const PostsSection = styled.section`
 	color: ${({ theme }) => theme.lightGray};
@@ -57,7 +57,7 @@ const PageTemplate = styled.div`
 const BlogIndex = () => {
 	const data = useStaticQuery(graphql`
 		{
-			allContentfulBlogPost(sort: {fields: date, order: ASC}) {
+			allContentfulBlogPost(sort: { fields: date, order: ASC }) {
 				edges {
 					node {
 						author
@@ -75,6 +75,7 @@ const BlogIndex = () => {
 						contentfulid
 						language
 						slug
+						tags
 					}
 				}
 			}
@@ -83,23 +84,23 @@ const BlogIndex = () => {
 
 	const {
 		allContentfulBlogPost: {
-			edges: [
-				...posts
-			]
-		}
+			edges: [...posts],
+		},
 	} = data;
 
-	let postsList = posts.filter((post) => post.node.language === 'pl').reverse();
-	postsList = postsList.map((post) => (
+	let postsList = posts.reverse();
+	postsList = postsList.map(post => (
 		<PostElement
 			key={post.node.contentfulid}
 			title={post.node.title}
-			author={post.node.author} 
+			author={post.node.author}
 			excerpt={post.node.excerpt}
 			thumbnail={post.node.image.gatsbyImageData}
 			date={post.node.date}
 			slug={post.node.slug}
-			language={post.node.language}
+			language="pl"
+			postLanguage={post.node.language}
+			tags={post.node.tags}
 		/>
 	));
 

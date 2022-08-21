@@ -3,6 +3,9 @@ import PropTypes from "prop-types";
 import React from "react";
 import styled from "styled-components";
 
+import LanguageBadge from "./LanguageBadge/LanguageBadge";
+import Tags from "./Tags/Tags";
+
 const PostsContainer = styled.article`
 	display: flex;
 	flex-direction: column;
@@ -40,11 +43,17 @@ const PostExcerpt = styled.p`
 	padding-bottom: 2rem;
 `;
 
-const PostMeta = styled.p`
+const Date = styled.p`
 	color: #16ffff;
 `;
 
-function PostElement({
+const PostMeta = styled.div`
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+`;
+
+const PostElement = ({
 	title,
 	author,
 	excerpt,
@@ -52,25 +61,32 @@ function PostElement({
 	date,
 	slug,
 	language,
-}) {
+	postLanguage,
+	tags,
+}) => {
 	const formattedDate = date.charAt(0).toUpperCase() + date.slice(1);
-	const languagePath = `/${language}`;
+	const languagePath = `/${postLanguage}`;
+	const formatedTags = tags.map(tag => tag.toLowerCase());
 
 	return (
 		<PostsContainer>
 			<a href={`${languagePath}/blog/${slug}`}>
 				<Header>
+					<LanguageBadge lang={postLanguage || language} />
 					<GatsbyImage image={thumbnail} alt={title} />
 				</Header>
 				<PostContent>
 					<h2>{title}</h2>
 					<PostExcerpt>{excerpt}</PostExcerpt>
-					<PostMeta>{formattedDate}</PostMeta>
+					<PostMeta>
+						<Date>{formattedDate}</Date>
+						{tags && <Tags tags={formatedTags} lang={language} />}
+					</PostMeta>
 				</PostContent>
 			</a>
 		</PostsContainer>
 	);
-}
+};
 
 PostElement.propTypes = {
 	title: PropTypes.string.isRequired,
@@ -78,6 +94,9 @@ PostElement.propTypes = {
 	excerpt: PropTypes.string.isRequired,
 	thumbnail: PropTypes.object.isRequired,
 	date: PropTypes.string.isRequired,
+	slug: PropTypes.string.isRequired,
+	language: PropTypes.string.isRequired,
+	tags: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default PostElement;
