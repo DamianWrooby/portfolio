@@ -7,6 +7,7 @@ import Separator from "../components/atoms/Separator/Separator";
 import Footer from "../components/molecules/Footer/Footer";
 import PostElement from "../components/molecules/PostElement/PostElement";
 import SectionHeader from "../components/molecules/SectionHeader/SectionHeader";
+import TagCloud from "../components/molecules/TagCloud/TagCloud";
 import Navigation from "../components/organisms/Navigation/Navigation";
 import NavigationProvider from "../contexts/NavigationContext";
 import Layout from "../layouts/layout";
@@ -88,6 +89,8 @@ const BlogIndex = () => {
 		},
 	} = data;
 
+	const tags = [...new Set(posts.map(post => post.node.tags).flat())];
+
 	let postsList = posts.reverse();
 	postsList = postsList.map(post => (
 		<PostElement
@@ -113,6 +116,7 @@ const BlogIndex = () => {
 					<div>
 						<BlogHeader heading="Blog" tag="h1" />
 						<Separator />
+						<TagCloud tags={tags} lang="en" />
 						<main>
 							<PostsSection>
 								{postsList.length === 0 ? (

@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import React from "react";
 import styled from "styled-components";
 
+import Tags from "../Tags/Tags";
 import LanguageBadge from "./LanguageBadge/LanguageBadge";
-import Tags from "./Tags/Tags";
 
 const PostsContainer = styled.article`
 	display: flex;
@@ -29,6 +29,10 @@ const Header = styled.header`
 `;
 
 const PostContent = styled.section`
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	justify-content: space-between;
 	padding: 3rem;
 	&& h2 {
 		color: ${({ theme }) => theme.white};
@@ -70,20 +74,22 @@ const PostElement = ({
 
 	return (
 		<PostsContainer>
-			<a href={`${languagePath}/blog/${slug}`}>
-				<Header>
+			<Header>
+				<a href={`${languagePath}/blog/${slug}`}>
 					<LanguageBadge lang={postLanguage || language} />
 					<GatsbyImage image={thumbnail} alt={title} />
-				</Header>
-				<PostContent>
+				</a>
+			</Header>
+			<PostContent>
+				<a href={`${languagePath}/blog/${slug}`}>
 					<h2>{title}</h2>
 					<PostExcerpt>{excerpt}</PostExcerpt>
-					<PostMeta>
-						<Date>{formattedDate}</Date>
-						{tags && <Tags tags={formatedTags} lang={language} />}
-					</PostMeta>
-				</PostContent>
-			</a>
+				</a>
+				<PostMeta>
+					<Date>{formattedDate}</Date>
+					{tags && <Tags tags={formatedTags} lang={language} />}
+				</PostMeta>
+			</PostContent>
 		</PostsContainer>
 	);
 };

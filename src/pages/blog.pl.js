@@ -10,6 +10,7 @@ import SectionHeader from "../components/molecules/SectionHeader/SectionHeader";
 import Navigation from "../components/organisms/Navigation/Navigation";
 import NavigationProvider from "../contexts/NavigationContext";
 import Layout from "../layouts/layout";
+import TagCloud from "../components/molecules/TagCloud/TagCloud";
 
 const PostsSection = styled.section`
 	color: ${({ theme }) => theme.lightGray};
@@ -88,6 +89,8 @@ const BlogIndex = () => {
 		},
 	} = data;
 
+	const tags = [...new Set(posts.map(post => post.node.tags).flat())];
+
 	let postsList = posts.reverse();
 	postsList = postsList.map(post => (
 		<PostElement
@@ -117,6 +120,7 @@ const BlogIndex = () => {
 					<div>
 						<BlogHeader heading="Blog" tag="h1" />
 						<Separator />
+						<TagCloud tags={tags} lang="pl" />
 						<main>
 							<PostsSection>
 								{postsList.length === 0 ? (

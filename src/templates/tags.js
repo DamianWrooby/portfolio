@@ -5,6 +5,7 @@ import Seo from "../components/atoms/Seo/Seo";
 import Separator from "../components/atoms/Separator/Separator";
 import Footer from "../components/molecules/Footer/Footer";
 import PostElement from "../components/molecules/PostElement/PostElement";
+import TagCloud from "../components/molecules/TagCloud/TagCloud";
 import Navigation from "../components/organisms/Navigation/Navigation";
 import NavigationProvider from "../contexts/NavigationContext";
 import Layout from "../layouts/layout";
@@ -24,21 +25,25 @@ const Tags = ({ pageContext, data }) => {
 		},
 	} = data;
 
-	let postsList = posts.reverse();
-	postsList = postsList.map(post => (
-		<PostElement
-			key={post.node.contentfulid}
-			title={post.node.title}
-			author={post.node.author}
-			excerpt={post.node.excerpt}
-			thumbnail={post.node.image.gatsbyImageData}
-			date={post.node.date}
-			slug={post.node.slug}
-			language={language}
-			postLanguage={post.node.language}
-			tags={post.node.tags}
-		/>
-	));
+	const tags = [...new Set(posts.map(post => post.node.tags).flat())];
+
+	const postsList = posts
+		.reverse()
+		.filter(post => post.node.tags.includes(tag))
+		.map(post => (
+			<PostElement
+				key={post.node.contentfulid}
+				title={post.node.title}
+				author={post.node.author}
+				excerpt={post.node.excerpt}
+				thumbnail={post.node.image.gatsbyImageData}
+				date={post.node.date}
+				slug={post.node.slug}
+				language={language}
+				postLanguage={post.node.language}
+				tags={post.node.tags}
+			/>
+		));
 
 	const metaDescription =
 		language === "pl"
@@ -64,6 +69,7 @@ const Tags = ({ pageContext, data }) => {
 					<div>
 						<BlogHeader heading={`Tag: ${tag}`} tag="h1" />
 						<Separator />
+						<TagCloud tags={tags} lang={language} />
 						<main>
 							<PostsSection>
 								{postsList.length === 0 ? (
@@ -86,8 +92,8 @@ const Tags = ({ pageContext, data }) => {
 export default Tags;
 
 export const pageQuery = graphql`
-	query ($tag: String, $language: String) {
-		allContentfulBlogPost(filter: { tags: { eq: $tag } }) {
+	query ($language: String) {
+		allContentfulBlogPost {
 			edges {
 				node {
 					author
