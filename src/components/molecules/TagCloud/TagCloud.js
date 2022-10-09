@@ -10,9 +10,19 @@ const Wrapper = styled.div`
 	padding-bottom: 60px;
 `;
 
+const Label = styled.h2`
+	color: ${({ theme }) => theme.lightGray};
+	font-size: 1.5rem;
+	font-weight: 300;
+	margin-bottom: 1rem;
+`;
+
 const TagCloud = ({ tags, lang }) => {
 	return (
 		<Wrapper>
+			<Label>
+				{lang === "pl" ? "Szukaj wg tematów:" : "Search blog by topics:"}
+			</Label>
 			<Tags tags={tags} lang={lang} isAnimated />
 		</Wrapper>
 	);

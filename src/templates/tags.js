@@ -3,11 +3,14 @@ import React from "react";
 
 import Seo from "../components/atoms/Seo/Seo";
 import Separator from "../components/atoms/Separator/Separator";
+import Filters from "../components/molecules/Filters/Filters";
 import Footer from "../components/molecules/Footer/Footer";
 import PostElement from "../components/molecules/PostElement/PostElement";
 import TagCloud from "../components/molecules/TagCloud/TagCloud";
 import Navigation from "../components/organisms/Navigation/Navigation";
+import { initialFilters } from "../consts/filters";
 import NavigationProvider from "../contexts/NavigationContext";
+import useFilter from "../hooks/useFilter";
 import Layout from "../layouts/layout";
 import {
 	BlogHeader,
@@ -18,6 +21,8 @@ import {
 } from "../templates/styled-components";
 
 const Tags = ({ pageContext, data }) => {
+	const [filters, setFilters] = useFilter(initialFilters);
+
 	const { tag, language } = pageContext;
 	const {
 		allContentfulBlogPost: {
@@ -27,8 +32,7 @@ const Tags = ({ pageContext, data }) => {
 
 	const tags = [...new Set(posts.map(post => post.node.tags).flat())];
 
-	const postsList = posts
-		.reverse()
+	let postsList = posts
 		.filter(post => post.node.tags.includes(tag))
 		.map(post => (
 			<PostElement
@@ -44,6 +48,12 @@ const Tags = ({ pageContext, data }) => {
 				tags={post.node.tags}
 			/>
 		));
+
+	filters.language !== "all" &&
+		(postsList = postsList.filter(
+			post => post.props.postLanguage === filters.language
+		));
+	filters.sort === "newest" && (postsList = postsList.reverse());
 
 	const metaDescription =
 		language === "pl"
@@ -70,6 +80,11 @@ const Tags = ({ pageContext, data }) => {
 						<BlogHeader heading={`Tag: ${tag}`} tag="h1" />
 						<Separator />
 						<TagCloud tags={tags} lang={language} />
+						<Filters
+							lang={language}
+							onFiltersChange={setFilters}
+							filterValues={filters}
+						/>
 						<main>
 							<PostsSection>
 								{postsList.length === 0 ? (

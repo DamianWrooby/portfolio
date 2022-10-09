@@ -55,7 +55,7 @@ const SocialLinks = ({ lang }) => {
 		const list = listRef.current;
 
 		if (list) {
-			[...list.children].map(child => {
+			[...list.children].forEach(child => {
 				gsap.from(child, {
 					autoAlpha: 0,
 					y: "-=20",
@@ -87,24 +87,21 @@ const SocialLinks = ({ lang }) => {
 					href="mailto: dwroblewski89@gmail.com"
 					target="_blank"
 					rel="noopener noreferrer"
-					aria-label="Email link"
-				>
+					aria-label="Email link">
 					<StyledListItem icon={emailIcon} height="38" width="38" />
 				</a>
 				<a
 					href="https://github.com/DamianWrooby"
 					target="_blank"
 					rel="noopener noreferrer"
-					aria-label="Github link"
-				>
+					aria-label="Github link">
 					<StyledListItem icon={githubIcon} height="38" width="38" />
 				</a>
 				<a
 					href="https://twitter.com/DamianWrooby"
 					target="_blank"
 					rel="noopener noreferrer"
-					aria-label="Twitter link"
-				>
+					aria-label="Twitter link">
 					<StyledListItem icon={twitterIcon} height="38" width="38" />
 				</a>
 			</List>

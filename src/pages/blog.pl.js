@@ -4,13 +4,16 @@ import styled from "styled-components";
 
 import Seo from "../components/atoms/Seo/Seo";
 import Separator from "../components/atoms/Separator/Separator";
+import Filters from "../components/molecules/Filters/Filters";
 import Footer from "../components/molecules/Footer/Footer";
 import PostElement from "../components/molecules/PostElement/PostElement";
 import SectionHeader from "../components/molecules/SectionHeader/SectionHeader";
-import Navigation from "../components/organisms/Navigation/Navigation";
-import NavigationProvider from "../contexts/NavigationContext";
-import Layout from "../layouts/layout";
 import TagCloud from "../components/molecules/TagCloud/TagCloud";
+import Navigation from "../components/organisms/Navigation/Navigation";
+import { initialFilters } from "../consts/filters";
+import NavigationProvider from "../contexts/NavigationContext";
+import useFilter from "../hooks/useFilter";
+import Layout from "../layouts/layout";
 
 const PostsSection = styled.section`
 	color: ${({ theme }) => theme.lightGray};
@@ -56,6 +59,8 @@ const PageTemplate = styled.div`
 `;
 
 const BlogIndex = () => {
+	const [filters, setFilters] = useFilter(initialFilters);
+
 	const data = useStaticQuery(graphql`
 		{
 			allContentfulBlogPost(sort: { fields: date, order: ASC }) {
@@ -91,8 +96,7 @@ const BlogIndex = () => {
 
 	const tags = [...new Set(posts.map(post => post.node.tags).flat())];
 
-	let postsList = posts.reverse();
-	postsList = postsList.map(post => (
+	let postsList = posts.map(post => (
 		<PostElement
 			key={post.node.contentfulid}
 			title={post.node.title}
@@ -106,6 +110,12 @@ const BlogIndex = () => {
 			tags={post.node.tags}
 		/>
 	));
+
+	filters.language !== "all" &&
+		(postsList = postsList.filter(
+			post => post.props.postLanguage === filters.language
+		));
+	filters.sort === "newest" && (postsList = postsList.reverse());
 
 	return (
 		<NavigationProvider>
@@ -121,6 +131,11 @@ const BlogIndex = () => {
 						<BlogHeader heading="Blog" tag="h1" />
 						<Separator />
 						<TagCloud tags={tags} lang="pl" />
+						<Filters
+							lang="pl"
+							onFiltersChange={setFilters}
+							filterValues={filters}
+						/>
 						<main>
 							<PostsSection>
 								{postsList.length === 0 ? (
