@@ -10,5 +10,5 @@ export const tagColors = {
 	"next.js": "#fff",
 	wordpress: "#076FB6",
 	firebase: "#FFCC2F",
-	angular: "c30e2e",
+	angular: "#c30e2e",
 };
