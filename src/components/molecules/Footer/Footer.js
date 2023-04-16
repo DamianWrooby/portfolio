@@ -19,10 +19,10 @@ const Text = styled.p`
 const Footer = ({ lang }) => (
 	<Wrapper>
 		{lang === "en" && (
-			<Text>&copy; 2022 Damian Wróblewski. All rights reserved.</Text>
+			<Text>&copy; 2023 Damian Wróblewski. All rights reserved.</Text>
 		)}
 		{lang === "pl" && (
-			<Text>&copy; 2022 Damian Wróblewski. Wszelkie prawa zastrzeżone.</Text>
+			<Text>&copy; 2023 Damian Wróblewski. Wszelkie prawa zastrzeżone.</Text>
 		)}
 	</Wrapper>
 );
