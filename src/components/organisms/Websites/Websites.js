@@ -1,10 +1,11 @@
+import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
 import { Element } from 'react-scroll';
 import styled from 'styled-components';
+
 import Content from '../../atoms/Content/Content';
-import SectionHeader from '../../molecules/SectionHeader/SectionHeader';
 import Separator from '../../atoms/Separator/Separator';
+import SectionHeader from '../../molecules/SectionHeader/SectionHeader';
 import Website from '../Websites/Website';
 
 const Wrapper = styled.section`
@@ -50,7 +51,11 @@ const WaveWrapper = styled.div`
 const wavePath = (
 	<WaveWrapper>
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-			<path fill="#03131D" fillOpacity="1" d="M0,64L720,96L1440,32L1440,0L720,0L0,0Z" />
+			<path
+				fill="#03131D"
+				fillOpacity="1"
+				d="M0,64L720,96L1440,32L1440,0L720,0L0,0Z"
+			/>
 		</svg>
 	</WaveWrapper>
 );
@@ -88,14 +93,12 @@ const Websites = ({ lang }) => {
 
 	const {
 		allContentfulWebsite: {
-			edges: [
-				...websites
-			]
-		}
+			edges: [...websites],
+		},
 	} = data;
 
-	let websitesList = websites.filter((website) => website.node.language === lang);
-	websitesList = websitesList.map((website) => (
+	let websitesList = websites.filter(website => website.node.language === lang);
+	websitesList = websitesList.map(website => (
 		<Website
 			lang={lang}
 			key={website.node.title}
@@ -120,13 +123,20 @@ const Websites = ({ lang }) => {
 						{lang === 'en' && (
 							<SectionHeader
 								heading="Websites"
-								paragraph="Some of recently created websites for commercial clients"
+								paragraph={
+									<span>
+										In addition to web applications, I also create website
+										designs for companies.
+										<br />
+										Here are some of them.
+									</span>
+								}
 							/>
 						)}
 						{lang === 'pl' && (
 							<SectionHeader
-								heading="Strony WWW"
-								paragraph="Wybrane projekty stron internetowych zrealizowanych dla klientów komercyjnych."
+								heading="Strony internetowe"
+								paragraph="Poza aplikacjami webowymi, tworzę również projekty stron internetowych dla firm.<br/>Poniżej niektóre z nich."
 							/>
 						)}
 						<InnerWrapper>{websitesList}</InnerWrapper>

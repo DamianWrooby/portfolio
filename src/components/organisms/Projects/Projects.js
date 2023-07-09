@@ -1,10 +1,11 @@
+import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
 import { Element } from 'react-scroll';
 import styled from 'styled-components';
+
 import Content from '../../atoms/Content/Content';
-import SectionHeader from '../../molecules/SectionHeader/SectionHeader';
 import Separator from '../../atoms/Separator/Separator';
+import SectionHeader from '../../molecules/SectionHeader/SectionHeader';
 import Project from '../Projects/Project';
 
 const Wrapper = styled.section`
@@ -50,7 +51,11 @@ const WaveWrapper = styled.div`
 const wavePath = (
 	<WaveWrapper>
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-			<path fill="#03131D" fillOpacity="1" d="M0,64L720,96L1440,32L1440,0L720,0L0,0Z" />
+			<path
+				fill="#03131D"
+				fillOpacity="1"
+				d="M0,64L720,96L1440,32L1440,0L720,0L0,0Z"
+			/>
 		</svg>
 	</WaveWrapper>
 );
@@ -86,14 +91,12 @@ const Projects = ({ lang }) => {
 
 	const {
 		allContentfulProject: {
-			edges: [
-				...projects
-			]
-		}
+			edges: [...projects],
+		},
 	} = data;
 
-	let projectsList = projects.filter((project) => project.node.language === lang);
-	projectsList = projectsList.map((project) => (
+	let projectsList = projects.filter(project => project.node.language === lang);
+	projectsList = projectsList.map(project => (
 		<Project
 			lang={lang}
 			key={project.node.title}
@@ -117,10 +120,13 @@ const Projects = ({ lang }) => {
 						{lang === 'en' && (
 							<React.Fragment>
 								<SectionHeader
-									heading="Projects"
+									heading="Side projects"
 									paragraph={
 										<span>
-											JavaScript-based web applicaton projects. All of them are available on my{' '}
+											My side projects building which, I learned web development
+											and discovered new technologies.
+											<br />
+											All of them are also available on my{' '}
 											<a href="https://github.com/DamianWrooby" rel="nofollow">
 												GitHub profile.
 											</a>
@@ -132,14 +138,17 @@ const Projects = ({ lang }) => {
 						{lang === 'pl' && (
 							<React.Fragment>
 								<SectionHeader
-									heading="Projekty"
+									heading="Projekty poboczne"
 									paragraph={
 										<span>
-											Oparte o JavaScript projekty aplikacji webowych w kolejności od najnowszego.
-											Wszystkie są również dostępne na moim{' '}
+											Moje projekty poboczne budując które, uczyłem się web
+											developmentu i odkrywałem nowe technologie.
+											<br />
+											Pełna lista projektów dostępna na moim{' '}
 											<a href="https://github.com/DamianWrooby" rel="nofollow">
 												profilu GitHub
-											</a>.
+											</a>
+											.
 										</span>
 									}
 								/>
