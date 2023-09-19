@@ -1,19 +1,19 @@
-import { graphql, useStaticQuery } from "gatsby";
-import React from "react";
-import styled from "styled-components";
+import { graphql, useStaticQuery } from 'gatsby';
+import React from 'react';
+import styled from 'styled-components';
 
-import Seo from "../components/atoms/Seo/Seo";
-import Separator from "../components/atoms/Separator/Separator";
-import Filters from "../components/molecules/Filters/Filters";
-import Footer from "../components/molecules/Footer/Footer";
-import PostElement from "../components/molecules/PostElement/PostElement";
-import SectionHeader from "../components/molecules/SectionHeader/SectionHeader";
-import TagCloud from "../components/molecules/TagCloud/TagCloud";
-import Navigation from "../components/organisms/Navigation/Navigation";
-import { initialFilters } from "../consts/filters";
-import NavigationProvider from "../contexts/NavigationContext";
-import useFilter from "../hooks/useFilter";
-import Layout from "../layouts/layout";
+import Seo from '../components/atoms/Seo/Seo';
+import Separator from '../components/atoms/Separator/Separator';
+import Filters from '../components/molecules/Filters/Filters';
+import Footer from '../components/molecules/Footer/Footer';
+import PostElement from '../components/molecules/PostElement/PostElement';
+import SectionHeader from '../components/molecules/SectionHeader/SectionHeader';
+import TagCloud from '../components/molecules/TagCloud/TagCloud';
+import Navigation from '../components/organisms/Navigation/Navigation';
+import { initialFilters } from '../consts/filters';
+import NavigationProvider from '../contexts/NavigationContext';
+import useFilter from '../hooks/useFilter';
+import Layout from '../layouts/layout';
 
 const PostsSection = styled.section`
 	color: ${({ theme }) => theme.lightGray};
@@ -111,17 +111,17 @@ const BlogIndex = () => {
 		/>
 	));
 
-	filters.language !== "all" &&
+	filters.language !== 'all' &&
 		(postsList = postsList.filter(
 			post => post.props.postLanguage === filters.language
 		));
-	filters.sort === "newest" && (postsList = postsList.reverse());
+	filters.sort === 'newest' && (postsList = postsList.reverse());
 
 	return (
 		<NavigationProvider>
 			<Layout>
 				<Seo
-					title="Artykuły blogowe | Damian Wróblewski | Front-end Developer"
+					title="Artykuły blogowe | Damian Wróblewski | Frontend Developer"
 					description="Interesuje cię świat aplikacji webowych? Sprawdź co nowego na frontendowym blogu!"
 					lang="pl"
 				/>

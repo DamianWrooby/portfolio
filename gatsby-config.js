@@ -4,8 +4,8 @@ require("dotenv").config({
 
 module.exports = {
 	siteMetadata: {
-		title: `Damian Wróblewski | Front-end Developer`,
-		description: `Tech blog and programming portfolio built with Gatsby`,
+		title: `Damian Wróblewski | Frontend Developer`,
+		description: `Tech Blog, Coding Projects & Web Development Showcase`,
 		author: `@damianwrooby`,
 		themeColor: `#16FFFF`,
 		language: "en",

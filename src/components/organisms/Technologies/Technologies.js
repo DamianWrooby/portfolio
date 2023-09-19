@@ -1,13 +1,13 @@
-import React from "react";
-import { Element } from "react-scroll";
-import styled from "styled-components";
+import React from 'react';
+import { Element } from 'react-scroll';
+import styled from 'styled-components';
 
-import laptopAnimation from "../../../assets/lotties/laptop.json";
-import Content from "../../atoms/Content/Content";
-import Separator from "../../atoms/Separator/Separator";
-import LottieAnimation from "../../molecules/LottieAnimation/LottieAnimation";
-import SectionHeader from "../../molecules/SectionHeader/SectionHeader";
-import TechnologiesList from "../../molecules/TechnologiesList/TechnologiesList";
+import laptopAnimation from '../../../assets/lotties/laptop.json';
+import Content from '../../atoms/Content/Content';
+import Separator from '../../atoms/Separator/Separator';
+import LottieAnimation from '../../molecules/LottieAnimation/LottieAnimation';
+import SectionHeader from '../../molecules/SectionHeader/SectionHeader';
+import TechnologiesList from '../../molecules/TechnologiesList/TechnologiesList';
 
 const Wrapper = styled.section`
 	position: relative;
@@ -46,20 +46,20 @@ const Technologies = ({ lang }) => {
 				<Content>
 					<Main>
 						<Separator />
-						{lang === "en" && (
+						{lang === 'en' && (
 							<SectionHeader
 								heading="Technologies"
-								paragraph="These are frameworks, tools and solutions that I use in my projects."
+								paragraph="Frameworks and tools I use when building commercial and private projects"
 							/>
 						)}
-						{lang === "pl" && (
+						{lang === 'pl' && (
 							<SectionHeader
 								heading="Technologie"
-								paragraph="Framework'i, narzędzia i rozwiązania, które wykorzystuję tworząc aplikacje webowe."
+								paragraph="Frameworki, narzędzia i rozwiązania, które wykorzystuję w projektach komercyjnych i prywatnych"
 							/>
 						)}
 						<InnerWrapper>
-							<TechnologiesList />
+							<TechnologiesList lang={lang} />
 							<LottieAnimation
 								animationData={laptopAnimation}
 								width={600}

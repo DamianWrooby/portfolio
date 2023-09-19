@@ -1,6 +1,6 @@
-import React, { useState, useEffect, createContext } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import React, { createContext, useEffect, useState } from 'react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -9,40 +9,31 @@ const defaultValues = {
 	isTransparent: true,
 	mobileNavVisible: false,
 	handleMobileNav: () => null,
-	currentPage: 'home'
+	currentPage: 'home',
 };
 
 export const NavigationContext = createContext(defaultValues);
 
 const NavigationProvider = ({ children }) => {
-	const [
-		activeLink,
-		setActiveLink
-	] = useState('home');
-	const [
-		isTransparent,
-		setIsTransparent
-	] = useState(true);
-	const [
-		isMobileNavVisible,
-		setIsMobileNavVisible
-	] = useState(false);
-	const [
-		currentPage,
-		setCurrentPage
-	] = useState('home');
+	const [activeLink, setActiveLink] = useState('home');
+	const [isTransparent, setIsTransparent] = useState(true);
+	const [isMobileNavVisible, setIsMobileNavVisible] = useState(false);
+	const [currentPage, setCurrentPage] = useState('home');
 
-	const handleMobileNav = (isVisible) => {
+	const handleMobileNav = isVisible => {
 		setIsMobileNavVisible(isVisible);
 		if (isVisible) document.body.style.overflow = 'hidden';
 		else document.body.style.overflow = 'auto';
 	};
 
 	useEffect(() => {
-		let isMounted = true;   
+		let isMounted = true;
 		const sections = document.querySelectorAll('section');
 		const footer = document.querySelector('footer');
-		const url = typeof window !== 'undefined' ? window.location.pathname.replace('/', '') : '';
+		const url =
+			typeof window !== 'undefined'
+				? window.location.pathname.replace('/', '')
+				: '';
 
 		if (url === '' && isMounted) {
 			setCurrentPage('home');
@@ -57,25 +48,27 @@ const NavigationProvider = ({ children }) => {
 			start: 'top bottom',
 			endTrigger: footer,
 			end: 'top top',
-			onToggle: ({ isActive }) => setIsTransparent(!isActive)
+			onToggle: ({ isActive }) => setIsTransparent(!isActive),
 		});
 
 		ScrollTrigger.create({
 			trigger: 'header',
 			start: 'top center',
 			end: 'bottom 90%',
-			onToggle: ({ isActive }) => isActive && setActiveLink('home')
+			onToggle: ({ isActive }) => isActive && setActiveLink('home'),
 		});
 
-		sections.forEach((section) => {
+		sections.forEach(section => {
 			ScrollTrigger.create({
 				trigger: section,
 				start: 'top center',
 				end: 'bottom bottom',
-				onToggle: ({ isActive }) => isActive && setActiveLink(section.id)
+				onToggle: ({ isActive }) => isActive && setActiveLink(section.id),
 			});
 		});
-		return () => { isMounted = false };
+		return () => {
+			isMounted = false;
+		};
 	}, []);
 
 	const context = {
@@ -83,10 +76,14 @@ const NavigationProvider = ({ children }) => {
 		isTransparent,
 		isMobileNavVisible,
 		handleMobileNav,
-		currentPage
+		currentPage,
 	};
 
-	return <NavigationContext.Provider value={context}>{children}</NavigationContext.Provider>;
+	return (
+		<NavigationContext.Provider value={context}>
+			{children}
+		</NavigationContext.Provider>
+	);
 };
 
 export default NavigationProvider;

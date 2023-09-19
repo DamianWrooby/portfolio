@@ -1,24 +1,24 @@
-import { graphql } from "gatsby";
-import React from "react";
+import { graphql } from 'gatsby';
+import React from 'react';
 
-import Seo from "../components/atoms/Seo/Seo";
-import Separator from "../components/atoms/Separator/Separator";
-import Filters from "../components/molecules/Filters/Filters";
-import Footer from "../components/molecules/Footer/Footer";
-import PostElement from "../components/molecules/PostElement/PostElement";
-import TagCloud from "../components/molecules/TagCloud/TagCloud";
-import Navigation from "../components/organisms/Navigation/Navigation";
-import { initialFilters } from "../consts/filters";
-import NavigationProvider from "../contexts/NavigationContext";
-import useFilter from "../hooks/useFilter";
-import Layout from "../layouts/layout";
+import Seo from '../components/atoms/Seo/Seo';
+import Separator from '../components/atoms/Separator/Separator';
+import Filters from '../components/molecules/Filters/Filters';
+import Footer from '../components/molecules/Footer/Footer';
+import PostElement from '../components/molecules/PostElement/PostElement';
+import TagCloud from '../components/molecules/TagCloud/TagCloud';
+import Navigation from '../components/organisms/Navigation/Navigation';
+import { initialFilters } from '../consts/filters';
+import NavigationProvider from '../contexts/NavigationContext';
+import useFilter from '../hooks/useFilter';
+import Layout from '../layouts/layout';
 import {
 	BlogHeader,
 	InfoWrapper,
 	PageTemplate,
 	PostsSection,
 	PostsWrapper,
-} from "../templates/styled-components";
+} from '../templates/styled-components';
 
 const Tags = ({ pageContext, data }) => {
 	const [filters, setFilters] = useFilter(initialFilters);
@@ -49,26 +49,26 @@ const Tags = ({ pageContext, data }) => {
 			/>
 		));
 
-	filters.language !== "all" &&
+	filters.language !== 'all' &&
 		(postsList = postsList.filter(
 			post => post.props.postLanguage === filters.language
 		));
-	filters.sort === "newest" && (postsList = postsList.reverse());
+	filters.sort === 'newest' && (postsList = postsList.reverse());
 
 	const metaDescription =
-		language === "pl"
+		language === 'pl'
 			? 'Strona zawierająca wszystkie posty z tagiem "' + tag + '"'
 			: 'Page containing all posts tagged with "' + tag + '"';
 
 	const metaTitle =
-		language === "pl"
-			? `Tag: ${tag} | Damian Wróblewski | Front-end Developer`
-			: `Tag: ${tag} | Damian Wróblewski | Front-end Developer`;
+		language === 'pl'
+			? `Tag: ${tag} | Damian Wróblewski | Frontend Developer`
+			: `Tag: ${tag} | Damian Wróblewski | Frontend Developer`;
 
 	const noPostsInfo =
-		language === "pl"
-			? "Nie ma jeszcze żadnych wpisów blogowych z tym tagiem."
-			: "No posts with this tag yet.";
+		language === 'pl'
+			? 'Nie ma jeszcze żadnych wpisów blogowych z tym tagiem.'
+			: 'No posts with this tag yet.';
 
 	return (
 		<NavigationProvider>
