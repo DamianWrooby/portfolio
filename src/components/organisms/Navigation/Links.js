@@ -1,9 +1,9 @@
-import { Link as GatsbyLink } from "gatsby";
-import React, { useContext } from "react";
-import styled, { css } from "styled-components";
+import { Link as GatsbyLink } from 'gatsby';
+import React, { useContext } from 'react';
+import styled, { css } from 'styled-components';
 
-import { NavigationContext } from "../../../contexts/NavigationContext";
-import LanguageToggler from "../../atoms/LanguageToggler/LanguageToggler";
+import { NavigationContext } from '../../../contexts/NavigationContext';
+import LanguageToggler from '../../atoms/LanguageToggler/LanguageToggler';
 
 const ListItem = styled.li`
 	position: relative;
@@ -30,7 +30,7 @@ const StyledGatsbyLink = styled(GatsbyLink)`
 	position: relative;
 	display: inline-block;
 	overflow: hidden;
-	font-family: "Sarala", sans-serif;
+	font-family: 'Sarala', sans-serif;
 	text-decoration: none;
 	color: ${({ theme }) => theme.gray};
 	font-weight: ${({ theme }) => theme.medium};
@@ -39,7 +39,7 @@ const StyledGatsbyLink = styled(GatsbyLink)`
 	}
 	&:before,
 	&:after {
-		content: "";
+		content: '';
 		position: absolute;
 		transition: transform 0.5s ease;
 		right: 0;
@@ -82,7 +82,7 @@ const StyledSpan = styled.span`
 	padding: 8px;
 	&:before,
 	&:after {
-		content: "";
+		content: '';
 		position: absolute;
 		transition: transform 0.5s ease;
 		left: 0;
@@ -120,124 +120,136 @@ const LinkList = ({ lang, active }) => {
 	return (
 		<React.Fragment>
 			<ListItem>
-				{lang === "en" && (
-					<StyledGatsbyLink active={active === "home" ? 1 : 0} to="/">
-						<StyledSpan active={active === "home" ? 1 : 0}>Home</StyledSpan>
+				{lang === 'en' && (
+					<StyledGatsbyLink active={active === 'home' ? 1 : 0} to="/">
+						<StyledSpan active={active === 'home' ? 1 : 0}>Home</StyledSpan>
 					</StyledGatsbyLink>
 				)}
-				{lang === "pl" && (
-					<StyledGatsbyLink active={active === "home" ? 1 : 0} to="/pl/">
-						<StyledSpan active={active === "home" ? 1 : 0}>
+				{lang === 'pl' && (
+					<StyledGatsbyLink active={active === 'home' ? 1 : 0} to="/pl/">
+						<StyledSpan active={active === 'home' ? 1 : 0}>
 							Strona główna
 						</StyledSpan>
 					</StyledGatsbyLink>
 				)}
 			</ListItem>
 			<ListItem>
-				{lang === "en" && (
+				{lang === 'en' && (
 					<StyledGatsbyLink
-						active={active === "technologies" ? 1 : 0}
-						to="/#technologies"
-					>
-						<StyledSpan active={active === "technologies" ? 1 : 0}>
+						active={active === 'about-me' ? 1 : 0}
+						to="/#about-me">
+						<StyledSpan active={active === 'about-me' ? 1 : 0}>
+							About Me
+						</StyledSpan>
+					</StyledGatsbyLink>
+				)}
+				{lang === 'pl' && (
+					<StyledGatsbyLink
+						active={active === 'about-me' ? 1 : 0}
+						to="/pl/#about-me">
+						<StyledSpan active={active === 'about-me' ? 1 : 0}>
+							O mnie
+						</StyledSpan>
+					</StyledGatsbyLink>
+				)}
+			</ListItem>
+			<ListItem>
+				{lang === 'en' && (
+					<StyledGatsbyLink
+						active={active === 'technologies' ? 1 : 0}
+						to="/#technologies">
+						<StyledSpan active={active === 'technologies' ? 1 : 0}>
 							Technologies
 						</StyledSpan>
 					</StyledGatsbyLink>
 				)}
-				{lang === "pl" && (
+				{lang === 'pl' && (
 					<StyledGatsbyLink
-						active={active === "technologies" ? 1 : 0}
-						to="/pl/#technologies"
-					>
-						<StyledSpan active={active === "technologies" ? 1 : 0}>
+						active={active === 'technologies' ? 1 : 0}
+						to="/pl/#technologies">
+						<StyledSpan active={active === 'technologies' ? 1 : 0}>
 							Technologie
 						</StyledSpan>
 					</StyledGatsbyLink>
 				)}
 			</ListItem>
 			<ListItem>
-				{lang === "en" && (
+				{lang === 'en' && (
 					<StyledGatsbyLink
-						active={active === "projects" ? 1 : 0}
-						to="/#projects"
-					>
-						<StyledSpan active={active === "projects" ? 1 : 0}>
+						active={active.includes('blog') ? 1 : 0}
+						to="/#blog">
+						<StyledSpan active={active.includes('blog') ? 1 : 0}>
+							Blog
+						</StyledSpan>
+					</StyledGatsbyLink>
+				)}
+				{lang === 'pl' && (
+					<StyledGatsbyLink
+						active={active.includes('blog') ? 1 : 0}
+						to="/pl/#blog">
+						<StyledSpan active={active.includes('blog') ? 1 : 0}>
+							Blog
+						</StyledSpan>
+					</StyledGatsbyLink>
+				)}
+			</ListItem>
+			<ListItem>
+				{lang === 'en' && (
+					<StyledGatsbyLink
+						active={active === 'projects' ? 1 : 0}
+						to="/#projects">
+						<StyledSpan active={active === 'projects' ? 1 : 0}>
 							Projects
 						</StyledSpan>
 					</StyledGatsbyLink>
 				)}
-				{lang === "pl" && (
+				{lang === 'pl' && (
 					<StyledGatsbyLink
-						active={active === "projects" ? 1 : 0}
-						to="/pl/#projects"
-					>
-						<StyledSpan active={active === "projects" ? 1 : 0}>
+						active={active === 'projects' ? 1 : 0}
+						to="/pl/#projects">
+						<StyledSpan active={active === 'projects' ? 1 : 0}>
 							Projekty
 						</StyledSpan>
 					</StyledGatsbyLink>
 				)}
 			</ListItem>
 			<ListItem>
-				{lang === "en" && (
+				{lang === 'en' && (
 					<StyledGatsbyLink
-						active={active === "websites" ? 1 : 0}
-						to="/#websites"
-					>
-						<StyledSpan active={active === "websites" ? 1 : 0}>
+						active={active === 'websites' ? 1 : 0}
+						to="/#websites">
+						<StyledSpan active={active === 'websites' ? 1 : 0}>
 							Websites
 						</StyledSpan>
 					</StyledGatsbyLink>
 				)}
-				{lang === "pl" && (
+				{lang === 'pl' && (
 					<StyledGatsbyLink
-						active={active === "websites" ? 1 : 0}
-						to="/pl/#websites"
-					>
-						<StyledSpan active={active === "websites" ? 1 : 0}>
+						active={active === 'websites' ? 1 : 0}
+						to="/pl/#websites">
+						<StyledSpan active={active === 'websites' ? 1 : 0}>
 							Strony WWW
 						</StyledSpan>
 					</StyledGatsbyLink>
 				)}
 			</ListItem>
 			<ListItem>
-				{lang === "en" && (
+				{lang === 'en' && (
 					<StyledGatsbyLink
-						active={active === "contact" ? 1 : 0}
-						to="/#contact"
-					>
-						<StyledSpan active={active === "contact" ? 1 : 0}>
+						active={active === 'contact' ? 1 : 0}
+						to="/#contact">
+						<StyledSpan active={active === 'contact' ? 1 : 0}>
 							Contact
 						</StyledSpan>
 					</StyledGatsbyLink>
 				)}
-				{lang === "pl" && (
+				{lang === 'pl' && (
 					<StyledGatsbyLink
-						active={active === "contact" ? 1 : 0}
-						to="/pl/#contact"
-					>
-						<StyledSpan active={active === "contact" ? 1 : 0}>
+						active={active === 'contact' ? 1 : 0}
+						to="/pl/#contact">
+						<StyledSpan active={active === 'contact' ? 1 : 0}>
 							Kontakt
 						</StyledSpan>
-					</StyledGatsbyLink>
-				)}
-			</ListItem>
-			<ListItem>
-				{lang === "en" && (
-					<StyledGatsbyLink
-						active={active.includes("blog") ? 1 : 0}
-						to="/blog/"
-					>
-						<StyledSpan active={active.includes("blog") ? 1 : 0}>
-							Blog
-						</StyledSpan>
-					</StyledGatsbyLink>
-				)}
-				{lang === "pl" && (
-					<StyledGatsbyLink
-						active={active.includes("blog") ? 1 : 0}
-						to="/pl/blog/"
-					>
-						<StyledSpan active={active.includes("blog") ? 1 : 0}>Blog</StyledSpan>
 					</StyledGatsbyLink>
 				)}
 			</ListItem>
@@ -251,7 +263,7 @@ const LinkList = ({ lang, active }) => {
 const Links = ({ lang }) => {
 	const { activeLink, currentPage } = useContext(NavigationContext);
 
-	return currentPage.includes("blog") ? (
+	return currentPage.includes('blog') ? (
 		<LinkList lang={lang} active={currentPage} />
 	) : (
 		<LinkList lang={lang} active={activeLink} />

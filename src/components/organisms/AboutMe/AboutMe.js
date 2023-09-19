@@ -71,8 +71,10 @@ const wavePath = (
 
 const ImageWrapper = styled.figure`
 	${({ theme }) => theme.mq.xl} {
+		margin: 0;
 		padding: 25px 60px 0px 60px;
 	}
+	margin: auto;
 	border-radius: 50%;
 `;
 
@@ -102,6 +104,13 @@ const Link = styled.a`
 		color: #ff6d43;
 		opacity: 0.8;
 	}
+`;
+
+const Description = styled.div`
+	font-family: ${({ theme }) => theme.fonts.subFont};
+	font-size: ${({ theme }) => theme.fontSize.lg};
+	color: ${({ theme }) => theme.lightGray};
+	line-height: 1.5;
 `;
 
 const AboutMe = ({ lang }) => {
@@ -135,8 +144,8 @@ const AboutMe = ({ lang }) => {
 	}, []);
 
 	return (
-		<Wrapper id="aboutme">
-			<Element name="aboutme">
+		<Wrapper id="about-me">
+			<Element name="about-me">
 				{wavePath}
 				<Content>
 					<Main>
@@ -144,13 +153,13 @@ const AboutMe = ({ lang }) => {
 						{lang === 'en' && (
 							<SectionHeader
 								heading="About Me"
-								paragraph="This is how my programming journey looks like."
+								paragraph="Behind the Code: My Story and Expertise"
 							/>
 						)}
 						{lang === 'pl' && (
 							<SectionHeader
-								heading="O mnie"
-								paragraph="Poznaj moją historię"
+								heading="Kim jestem?"
+								paragraph="Poznaj moją historię i doświadczenie"
 							/>
 						)}
 						<InnerWrapper>
@@ -165,15 +174,111 @@ const AboutMe = ({ lang }) => {
 									}}
 								/>
 							</ImageWrapper>
-							<ContentWrapper ref={contentRef}>
-								<Heading>
-									<GrayText>Current:</GrayText>{' '}
-									<SkinnyText>
-										Application Developer at{' '}
-										<Link href="https://eviden.com/">Eviden</Link>
-									</SkinnyText>
-								</Heading>
-							</ContentWrapper>
+							{lang === 'pl' && (
+								<ContentWrapper ref={contentRef}>
+									<Heading>
+										<GrayText>Obecnie:</GrayText>{' '}
+										<SkinnyText>
+											Application Developer w{' '}
+											<Link href="https://eviden.com/">Eviden</Link>
+										</SkinnyText>
+									</Heading>
+									<Description>
+										<p>
+											Obecnie jestem częścią zespołu deweloperskiego w projekcie
+											dla instytucji europejskiej, gdzie pomagam rozwijać i
+											utrzymywać aplikację <strong>Angularową</strong> jako
+											Frontend Developer.
+										</p>
+									</Description>
+									<Description>
+										<h3>Moja kariera w świecie programowania</h3>
+										<p>
+											W wieku 28 lat, w poszukiwaniu satysfakcji z pracy,
+											postanowiłem kompletnie zmienić moją karierę i zostać
+											programistą frontendu. Na początku postawiłem na{' '}
+											<strong>Reacta</strong>, z pomocą którego po godzinach
+											stworzyłem kilka projektów, które później pomogły mi
+											trafić na programistyczny bootcamp organizowany w dużej
+											firmie, gdzie pracuję do dziś. W trakcie bootcampu jako
+											zespół tworzyliśmy aplikację której frontend oparty był o{' '}
+											<strong>Vue</strong>. Po bootcampie trafiłem do obecnego
+											projektu komercyjnego, gdzie z kolei frontend bazuje na
+											trzecim frontendowym frameworku z jakim miałem do
+											czynienia - <strong>Angularze</strong>.
+										</p>
+										<h3>Projekty poboczne</h3>
+										<p>
+											Poboczne projekty traktuję jako plac zabaw, gdzie mogę
+											testować nowe technologie i zgłębiać wiedzę związaną z już
+											poznanymi rozwiązaniami. W programowaniu, podobnie jak w
+											życiu prywatnym lubię różnorodność, która w połączeniu z
+											wrodzoną ciekawością sprawiają, że ciągle chcę odkrywać
+											nieznane.
+										</p>
+										<h3>Po godzinach</h3>
+										<p>
+											W czasie wolnym zajmuję się głównie aktywnościami
+											fizycznymi, jak piłka nożna, jazda na rowerze czy trening
+											na siłowni. Sport pełni ważną rolę w moim życiu już od
+											najmłodszych lat a obecnie pomaga mi zniwelować skutki
+											siedzenia przed komputerem.
+										</p>
+									</Description>
+								</ContentWrapper>
+							)}
+							{lang === 'en' && (
+								<ContentWrapper ref={contentRef}>
+									<Heading>
+										<GrayText>Currently:</GrayText>{' '}
+										<SkinnyText>
+											Application Developer at{' '}
+											<Link href="https://eviden.com/">Eviden</Link>
+										</SkinnyText>
+									</Heading>
+									<Description>
+										<p>
+											I am currently part of a development team in a project for
+											an European institution where I help develop and maintain
+											an enterprise <strong>Angular</strong> application as
+											Frontend Developer.
+										</p>
+									</Description>
+									<Description>
+										<h3>My career evolution</h3>
+										<p>
+											At the age of 28, in search of job satisfaction, I decided
+											to completely change my career and become a frontend
+											developer. At first I set my sights on{' '}
+											<strong>React</strong>, with the help of which I created
+											several projects after hours, which later helped me get to
+											a programming bootcamp held at a large company, where I
+											still work today. During the bootcamp, as a team we
+											created an application whose frontend was based on another
+											framework - <strong>Vue</strong>. After the bootcamp I
+											ended up in my current commercial project, where in turn
+											the frontend is based on the third frontend framework I
+											had to deal with - <strong>Angular</strong>.
+										</p>
+										<h3>Side projects</h3>
+										<p>
+											I treat side projects as a playground where I can test new
+											technologies and explore knowledge related to already
+											learned solutions. In programming, as in my personal life,
+											I like variety, which, combined with my innate curiosity,
+											makes me constantly want to explore the unknown.
+										</p>
+										<h3>Beyond programming</h3>
+										<p>
+											After hours, I am mainly involved in various sports, such
+											as soccer, cycling and training at the gym. Sports have
+											played an important role in my life since I was young and
+											are now helping me to offset the effects of sitting in
+											front of a computer.
+										</p>
+									</Description>
+								</ContentWrapper>
+							)}
 						</InnerWrapper>
 					</Main>
 				</Content>

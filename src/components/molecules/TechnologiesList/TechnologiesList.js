@@ -92,7 +92,7 @@ const TechnologiesList = ({ lang }) => {
 				<ListItem icon={icons.jest} height="23">
 					Jest
 				</ListItem>
-				{lang === 'en' && <ListTitle>Backend tools</ListTitle>}
+				{lang === 'en' && <ListTitle>Backend stuff</ListTitle>}
 				{lang === 'pl' && <ListTitle>Narzędzia backendowe</ListTitle>}
 				<ListItem icon={icons.nest} height="25" width="25">
 					Nest
