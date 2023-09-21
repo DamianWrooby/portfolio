@@ -221,8 +221,8 @@ const AboutMe = ({ lang }) => {
 											W czasie wolnym zajmuję się głównie aktywnościami
 											fizycznymi, jak piłka nożna, jazda na rowerze czy trening
 											na siłowni. Sport pełni ważną rolę w moim życiu już od
-											najmłodszych lat a obecnie pomaga mi zniwelować skutki
-											siedzenia przed komputerem.
+											najmłodszych lat, a obecnie pomaga mi zniwelować skutki
+											siedzenia przed komputerem :)
 										</p>
 									</Description>
 								</ContentWrapper>
@@ -271,10 +271,10 @@ const AboutMe = ({ lang }) => {
 										<h3>Beyond programming</h3>
 										<p>
 											After hours, I am mainly involved in various sports, such
-											as soccer, cycling and training at the gym. Sports have
+											as football, cycling and training at the gym. Sports have
 											played an important role in my life since I was young and
 											are now helping me to offset the effects of sitting in
-											front of a computer.
+											front of a computer :)
 										</p>
 									</Description>
 								</ContentWrapper>
