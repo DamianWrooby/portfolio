@@ -1,5 +1,6 @@
 import { Link } from 'gatsby';
-import React from 'react';
+import gsap from 'gsap';
+import React, { useEffect, useRef } from 'react';
 import { Element } from 'react-scroll';
 import styled from 'styled-components';
 
@@ -63,7 +64,23 @@ const LinkWrapper = styled.div`
 	}
 `;
 
-const Blog = ({ posts, lang }) => {
+const BlogTiles = ({ posts, lang }) => {
+	const TilesRef = useRef(null);
+
+	useEffect(() => {
+		const Tiles = TilesRef.current;
+
+		gsap.from(Tiles, {
+			autoAlpha: 0,
+			y: '-=50',
+			duration: 2,
+			scrollTrigger: {
+				trigger: Tiles,
+				start: 'top bottom-=300px',
+			},
+		});
+	}, []);
+
 	return (
 		<Wrapper id="blog">
 			<Element name="blog">
@@ -82,7 +99,7 @@ const Blog = ({ posts, lang }) => {
 								paragraph="Sprawdź ostatnie artykuły na blogu"
 							/>
 						)}
-						<PostsSection>
+						<PostsSection ref={TilesRef}>
 							{posts.length === 0 ? (
 								<InfoWrapper>
 									<p>There are no blog posts yet.</p>
@@ -104,4 +121,4 @@ const Blog = ({ posts, lang }) => {
 	);
 };
 
-export default Blog;
+export default BlogTiles;

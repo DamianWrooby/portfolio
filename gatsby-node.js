@@ -1,10 +1,11 @@
-const path = require("path");
-const { convertToPath } = require("./src/utils/convertTag");
+const path = require('path');
+const { convertToPath } = require('./src/utils/convertTag');
 exports.createPages = async ({ graphql, actions }) => {
 	const { createPage, deletePage } = actions;
 
-	const blogPostTemplate = path.resolve("./src/templates/blog-post.js");
-	const tagsTemplate = path.resolve("./src/templates/tags.js");
+	const blogPostTemplate = path.resolve('./src/templates/blog-post.js');
+	const tagsTemplate = path.resolve('./src/templates/tags.js');
+	const projectTemplate = path.resolve('./src/templates/project.js');
 
 	const res = await graphql(`
 		query {
@@ -17,6 +18,12 @@ exports.createPages = async ({ graphql, actions }) => {
 					}
 				}
 			}
+			allContentfulProject {
+				nodes {
+					language
+					slug
+				}
+			}
 		}
 	`);
 
@@ -26,6 +33,7 @@ exports.createPages = async ({ graphql, actions }) => {
 	}
 
 	const posts = res.data.allContentfulBlogPost.edges;
+	const projects = res.data.allContentfulProject.nodes;
 	const tags = [...new Set(posts.map(post => post.node.tags).flat())];
 
 	posts.forEach(edge => {
@@ -39,8 +47,19 @@ exports.createPages = async ({ graphql, actions }) => {
 		});
 	});
 
+	projects.forEach(project => {
+		createPage({
+			component: projectTemplate,
+			path: `/${project.language}/projects/${project.slug}`,
+			context: {
+				slug: project.slug,
+				language: project.language,
+			},
+		});
+	});
+
 	tags.forEach(tag => {
-		const languages = ["pl", "en"];
+		const languages = ['pl', 'en'];
 		languages.forEach(language => {
 			createPage({
 				component: tagsTemplate,

@@ -3,10 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 
-import Tags from '../Tags/Tags';
-import LanguageBadge from './LanguageBadge/LanguageBadge';
-
-const PostsContainer = styled.article`
+const ProjectContainer = styled.article`
 	display: flex;
 	flex-direction: column;
 	overflow: hidden;
@@ -28,7 +25,7 @@ const Header = styled.header`
 	border-top-left-radius: 20px;
 `;
 
-const PostContent = styled.section`
+const ProjectContent = styled.section`
 	display: flex;
 	flex-direction: column;
 	flex-grow: 1;
@@ -42,68 +39,38 @@ const PostContent = styled.section`
 	}
 `;
 
-const PostExcerpt = styled.p`
+const ProjectExcerpt = styled.p`
 	color: ${({ theme }) => theme.lightGray};
 	padding-bottom: 2rem;
 	line-height: 1.5;
 `;
 
-const Date = styled.p`
-	color: #16ffff;
-`;
-
-const PostMeta = styled.div`
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-`;
-
-const PostElement = ({
-	title,
-	author,
-	excerpt,
-	thumbnail,
-	date,
-	slug,
-	language,
-	postLanguage,
-	tags,
-}) => {
-	const formattedDate = date.charAt(0).toUpperCase() + date.slice(1);
-	const languagePath = `/${postLanguage}`;
-	const formatedTags = tags.map(tag => tag.toLowerCase());
+const ProjectElement = ({ title, excerpt, thumbnail, slug, language }) => {
+	const languagePath = `/${language}`;
 
 	return (
-		<PostsContainer>
+		<ProjectContainer>
 			<Header>
-				<a href={`${languagePath}/blog/${slug}`}>
-					<LanguageBadge lang={postLanguage || language} />
+				<a href={`${languagePath}/projects/${slug}`}>
 					<GatsbyImage image={thumbnail} alt={title} />
 				</a>
 			</Header>
-			<PostContent>
-				<a href={`${languagePath}/blog/${slug}`}>
+			<ProjectContent>
+				<a href={`${languagePath}/projects/${slug}`}>
 					<h2>{title}</h2>
-					<PostExcerpt>{excerpt}</PostExcerpt>
+					<ProjectExcerpt>{excerpt}</ProjectExcerpt>
 				</a>
-				<PostMeta>
-					<Date>{formattedDate}</Date>
-					{tags && <Tags tags={formatedTags} lang={language} />}
-				</PostMeta>
-			</PostContent>
-		</PostsContainer>
+			</ProjectContent>
+		</ProjectContainer>
 	);
 };
 
-PostElement.propTypes = {
+ProjectElement.propTypes = {
 	title: PropTypes.string.isRequired,
-	author: PropTypes.string,
 	excerpt: PropTypes.string.isRequired,
 	thumbnail: PropTypes.object.isRequired,
-	date: PropTypes.string.isRequired,
 	slug: PropTypes.string.isRequired,
 	language: PropTypes.string.isRequired,
-	tags: PropTypes.arrayOf(PropTypes.string),
 };
 
-export default PostElement;
+export default ProjectElement;
