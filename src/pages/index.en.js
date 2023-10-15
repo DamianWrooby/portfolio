@@ -4,12 +4,13 @@ import React, { useEffect } from 'react';
 import Seo from '../components/atoms/Seo/Seo';
 import Footer from '../components/molecules/Footer/Footer';
 import PostElement from '../components/molecules/PostElement/PostElement';
+import ProjectElement from '../components/molecules/ProjectElement/ProjectElement';
 import AboutMe from '../components/organisms/AboutMe/AboutMe';
-import Blog from '../components/organisms/Blog/Blog';
+import BlogTiles from '../components/organisms/Blog/BlogTiles';
 import Contact from '../components/organisms/Contact/Contact';
 import Header from '../components/organisms/Header/Header';
 import Navigation from '../components/organisms/Navigation/Navigation';
-import Projects from '../components/organisms/Projects/Projects';
+import ProjectTiles from '../components/organisms/Projects/ProjectTiles';
 import Technologies from '../components/organisms/Technologies/Technologies';
 import Websites from '../components/organisms/Websites/Websites';
 import NavigationProvider from '../contexts/NavigationContext';
@@ -23,12 +24,13 @@ const IndexPage = ({ data }) => {
 	}, []);
 
 	const {
-		allContentfulBlogPost: {
-			edges: [...posts],
-		},
+		allContentfulBlogPost: { edges: posts },
+		allContentfulProject: { nodes: projects },
 	} = data;
 
 	let postsList = posts
+		.filter(post => post.node.language === 'en')
+		.slice(0, 2)
 		.map(post => (
 			<PostElement
 				key={post.node.contentfulid}
@@ -42,9 +44,21 @@ const IndexPage = ({ data }) => {
 				postLanguage={post.node.language}
 				tags={post.node.tags}
 			/>
-		))
-		.filter(post => post.props.postLanguage === 'en')
-		.slice(0, 2);
+		));
+
+	let projectList = projects
+		.filter(project => project.language === 'en')
+		.slice(0, 2)
+		.map(project => (
+			<ProjectElement
+				key={project.contentfulid}
+				title={project.title}
+				excerpt={project.excerpt.excerpt}
+				thumbnail={project.screenshot.gatsbyImageData}
+				slug={project.slug}
+				language={project.language}
+			/>
+		));
 
 	return (
 		<NavigationProvider>
@@ -55,8 +69,8 @@ const IndexPage = ({ data }) => {
 				<main>
 					<AboutMe lang="en" />
 					<Technologies lang="en" />
-					<Blog posts={postsList} lang="en" />
-					<Projects lang="en" />
+					<BlogTiles posts={postsList} lang="en" />
+					<ProjectTiles projects={projectList} lang="en" />
 					<Websites lang="en" />
 					<Contact lang="en" />
 				</main>
@@ -77,17 +91,27 @@ export const pageQuery = graphql`
 					image {
 						gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
 					}
-					text {
-						childMdx {
-							body
-						}
-					}
 					title
 					contentfulid
 					language
 					slug
 					tags
 				}
+			}
+		}
+		allContentfulProject(sort: { fields: contentfulid }) {
+			nodes {
+				contentfulid
+				language
+				technologies
+				title
+				screenshot {
+					gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
+				}
+				excerpt {
+					excerpt
+				}
+				slug
 			}
 		}
 	}
