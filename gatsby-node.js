@@ -6,19 +6,24 @@ exports.createPages = async ({ graphql, actions }) => {
 	const blogPostTemplate = path.resolve('./src/templates/blog-post.js');
 	const tagsTemplate = path.resolve('./src/templates/tags.js');
 	const projectTemplate = path.resolve('./src/templates/project.js');
+	const websiteTemplate = path.resolve('./src/templates/website.js');
 
 	const res = await graphql(`
 		query {
 			allContentfulBlogPost {
-				edges {
-					node {
-						slug
-						language
-						tags
-					}
+				nodes {
+					slug
+					language
+					tags
 				}
 			}
 			allContentfulProject {
+				nodes {
+					language
+					slug
+				}
+			}
+			allContentfulWebsite {
 				nodes {
 					language
 					slug
@@ -32,17 +37,18 @@ exports.createPages = async ({ graphql, actions }) => {
 		return;
 	}
 
-	const posts = res.data.allContentfulBlogPost.edges;
+	const posts = res.data.allContentfulBlogPost.nodes;
 	const projects = res.data.allContentfulProject.nodes;
-	const tags = [...new Set(posts.map(post => post.node.tags).flat())];
+	const websites = res.data.allContentfulWebsite.nodes;
+	const tags = [...new Set(posts.map(post => post.tags).flat())];
 
 	posts.forEach(edge => {
 		createPage({
 			component: blogPostTemplate,
-			path: `/${edge.node.language}/blog/${edge.node.slug}`,
+			path: `/${edge.language}/blog/${edge.slug}`,
 			context: {
-				slug: edge.node.slug,
-				language: edge.node.language,
+				slug: edge.slug,
+				language: edge.language,
 			},
 		});
 	});
@@ -54,6 +60,17 @@ exports.createPages = async ({ graphql, actions }) => {
 			context: {
 				slug: project.slug,
 				language: project.language,
+			},
+		});
+	});
+
+	websites.forEach(website => {
+		createPage({
+			component: websiteTemplate,
+			path: `/${website.language}/websites/${website.slug}`,
+			context: {
+				slug: website.slug,
+				language: website.language,
 			},
 		});
 	});

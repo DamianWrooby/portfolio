@@ -16,6 +16,7 @@ export const theme = {
 	gray: "hsl(0, 0%, 72%)",
 	lightGray: "hsl(0, 0%, 82%)",
 	dark: "#03131D",
+	darker: "#020d14",
 	red100: "hsla(348, 100%, 63%, 0.8)",
 	neonBlue: "#16ffff",
 	darkBlue: "#16232e",

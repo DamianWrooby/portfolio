@@ -15,10 +15,10 @@ const defaultValues = {
 export const NavigationContext = createContext(defaultValues);
 
 const NavigationProvider = ({ children }) => {
-	const [activeLink, setActiveLink] = useState('home');
+	const [activeLink, setActiveLink] = useState('home-page');
 	const [isTransparent, setIsTransparent] = useState(true);
 	const [isMobileNavVisible, setIsMobileNavVisible] = useState(false);
-	const [currentPage, setCurrentPage] = useState('home');
+	const [currentPage, setCurrentPage] = useState('home-page');
 
 	const handleMobileNav = isVisible => {
 		setIsMobileNavVisible(isVisible);
@@ -35,12 +35,12 @@ const NavigationProvider = ({ children }) => {
 				? window.location.pathname.replace('/', '')
 				: '';
 
-		if (url === '' && isMounted) {
-			setCurrentPage('home');
-			setActiveLink('home');
+		if ((url === '' || url === 'pl/') && isMounted) {
+			setCurrentPage('home-page');
+			setActiveLink('home-page');
 		} else if (isMounted) {
-			setCurrentPage(url);
-			setActiveLink(url);
+			setCurrentPage(`${url}-page`);
+			setActiveLink(`${url}-page`);
 		}
 
 		ScrollTrigger.create({
@@ -55,7 +55,7 @@ const NavigationProvider = ({ children }) => {
 			trigger: 'header',
 			start: 'top center',
 			end: 'bottom 90%',
-			onToggle: ({ isActive }) => isActive && setActiveLink('home'),
+			onToggle: ({ isActive }) => isActive && setActiveLink('home-page'),
 		});
 
 		sections.forEach(section => {
@@ -63,7 +63,12 @@ const NavigationProvider = ({ children }) => {
 				trigger: section,
 				start: 'top center',
 				end: 'bottom bottom',
-				onToggle: ({ isActive }) => isActive && setActiveLink(section.id),
+				onToggle: ({ isActive }) => {
+					if (isActive && section.id === 'contact') {
+						setActiveLink(section.id);
+					}
+				},
+				// change active section only for contact in home page
 			});
 		});
 		return () => {

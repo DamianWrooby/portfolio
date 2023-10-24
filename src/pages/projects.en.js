@@ -5,8 +5,8 @@ import styled from 'styled-components';
 import Seo from '../components/atoms/Seo/Seo';
 import Separator from '../components/atoms/Separator/Separator';
 import Footer from '../components/molecules/Footer/Footer';
-import ProjectElement from '../components/molecules/ProjectElement/ProjectElement';
 import SectionHeader from '../components/molecules/SectionHeader/SectionHeader';
+import TileElement from '../components/molecules/TileElement/TileElement';
 import Navigation from '../components/organisms/Navigation/Navigation';
 import NavigationProvider from '../contexts/NavigationContext';
 import Layout from '../layouts/layout';
@@ -79,15 +79,16 @@ const ProjectsIndex = () => {
 		allContentfulProject: { nodes: projects },
 	} = data;
 
+	// ! duplicated fullProjectList
 	let fullProjectList = projects
 		.filter(project => project.language === 'en')
 		.map(project => (
-			<ProjectElement
+			<TileElement
 				key={project.contentfulid}
 				title={project.title}
 				excerpt={project.excerpt.excerpt}
 				thumbnail={project.screenshot.gatsbyImageData}
-				slug={project.slug}
+				url={`/${project.language}/projects/${project.slug}`}
 				language={project.language}
 			/>
 		));

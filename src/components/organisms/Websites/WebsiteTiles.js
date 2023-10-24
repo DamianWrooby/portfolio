@@ -10,9 +10,9 @@ import SectionHeader from '../../molecules/SectionHeader/SectionHeader';
 
 const Wrapper = styled.section`
 	position: relative;
-	background-color: ${({ theme }) => theme.darker};
+	background-color: ${({ theme }) => theme.dark};
 	min-height: 100vh;
-	padding: 110px 0;
+	margin-top: 110px;
 `;
 
 const Main = styled.div`
@@ -30,13 +30,13 @@ const Main = styled.div`
 	}
 `;
 
-const ProjectSection = styled.section`
+const WebsiteSection = styled.section`
 	color: ${({ theme }) => theme.lightGray};
 	max-width: 1200px;
 	margin: auto;
 `;
 
-const ProjectsWrapper = styled.ul`
+const WebsitesWrapper = styled.ul`
 	width: 100%;
 	display: grid;
 	grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -64,7 +64,26 @@ const LinkWrapper = styled.div`
 	}
 `;
 
-const ProjectTiles = ({ projects, lang }) => {
+const WaveWrapper = styled.div`
+	position: absolute;
+	width: 100%;
+	z-index: 2;
+	margin-top: 90px;
+`;
+
+const wavePath = (
+	<WaveWrapper>
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+			<path
+				fill="#03131D"
+				fillOpacity="1"
+				d="M0,64L720,96L1440,32L1440,0L720,0L0,0Z"
+			/>
+		</svg>
+	</WaveWrapper>
+);
+
+const WebsiteTiles = ({ websites, lang }) => {
 	const TilesRef = useRef(null);
 
 	useEffect(() => {
@@ -82,24 +101,21 @@ const ProjectTiles = ({ projects, lang }) => {
 	}, []);
 
 	return (
-		<Wrapper id="projects">
-			<Element name="projects">
+		<Wrapper id="websites">
+			<Element name="websites">
 				<Content>
 					<Main>
 						<Separator />
 						{lang === 'en' && (
 							<React.Fragment>
 								<SectionHeader
-									heading="Side projects"
+									heading="Web design"
 									paragraph={
 										<span>
-											My side projects building which, I learned web development
-											and discovered new technologies.
+											In addition to web applications, I also create website
+											designs for companies.
 											<br />
-											All of them are also available on my{' '}
-											<a href="https://github.com/DamianWrooby" rel="nofollow">
-												GitHub profile.
-											</a>
+											Here are some of them.
 										</span>
 									}
 								/>
@@ -108,44 +124,43 @@ const ProjectTiles = ({ projects, lang }) => {
 						{lang === 'pl' && (
 							<React.Fragment>
 								<SectionHeader
-									heading="Projekty poboczne"
+									heading="Strony internetowe"
 									paragraph={
 										<span>
-											Moje projekty poboczne budując które, uczyłem się web
-											developmentu i odkrywałem nowe technologie.
+											Poza aplikacjami webowymi, tworzę również projekty stron
+											internetowych dla firm.
 											<br />
-											Pełna lista projektów dostępna na moim{' '}
-											<a href="https://github.com/DamianWrooby" rel="nofollow">
-												profilu GitHub
-											</a>
-											.
+											Poniżej niektóre z nich.
 										</span>
 									}
 								/>
 							</React.Fragment>
 						)}
-						<ProjectSection ref={TilesRef}>
-							{projects.length === 0 ? (
+						<WebsiteSection ref={TilesRef}>
+							{websites.length === 0 ? (
 								<InfoWrapper>
-									<p>There are no blog projects yet.</p>
+									<p>There are no projects yet.</p>
 								</InfoWrapper>
 							) : (
-								<ProjectsWrapper>{projects}</ProjectsWrapper>
+								<WebsitesWrapper>{websites}</WebsitesWrapper>
 							)}
 							<LinkWrapper>
 								{lang === 'en' && (
-									<Link to="/projects">→ See all projects</Link>
+									<Link to="/websites">→ See all web design projects</Link>
 								)}
 								{lang === 'pl' && (
-									<Link to="/pl/projects">→ Zobacz wszystkie projekty</Link>
+									<Link to="/pl/websites">
+										→ Zobacz wszystkie projekty stron
+									</Link>
 								)}
 							</LinkWrapper>
-						</ProjectSection>
+						</WebsiteSection>
 					</Main>
 				</Content>
+				{wavePath}
 			</Element>
 		</Wrapper>
 	);
 };
 
-export default ProjectTiles;
+export default WebsiteTiles;
