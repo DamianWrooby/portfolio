@@ -12,7 +12,7 @@ const Wrapper = styled.section`
 	position: relative;
 	background-color: ${({ theme }) => theme.dark};
 	min-height: 100vh;
-	margin-top: 110px;
+	padding: 110px 0;
 `;
 
 const Main = styled.div`

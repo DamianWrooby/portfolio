@@ -11,7 +11,7 @@ import Navigation from '../components/organisms/Navigation/Navigation';
 import NavigationProvider from '../contexts/NavigationContext';
 import Layout from '../layouts/layout';
 
-const ProjectsSection = styled.section`
+const WebsitesSection = styled.section`
 	color: ${({ theme }) => theme.lightGray};
 	max-width: 1200px;
 	margin: auto;
@@ -29,7 +29,7 @@ const PageHeader = styled(SectionHeader)`
 	}
 `;
 
-const ProjectsWrapper = styled.ul`
+const WebsitesWrapper = styled.ul`
 	width: 100%;
 	display: grid;
 	grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -54,21 +54,22 @@ const PageTemplate = styled.div`
 	justify-content: space-between;
 `;
 
-const ProjectsIndex = () => {
+const WebsitesIndex = () => {
 	const data = useStaticQuery(graphql`
 		{
-			allContentfulProject(sort: { fields: contentfulid }) {
+			allContentfulWebsite(sort: { fields: contentfulid }) {
 				nodes {
-					contentfulid
-					language
-					technologies
 					title
+					description {
+						description
+					}
 					screenshot {
-						gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
+						file {
+							url
+						}
+						gatsbyImageData(layout: CONSTRAINED)
 					}
-					excerpt {
-						excerpt
-					}
+					language
 					slug
 				}
 			}
@@ -76,42 +77,41 @@ const ProjectsIndex = () => {
 	`);
 
 	const {
-		allContentfulProject: { nodes: projects },
+		allContentfulWebsite: { nodes: websites },
 	} = data;
 
-	// ! duplicated fullProjectList
-	let fullProjectList = projects
-		.filter(project => project.language === 'pl')
-		.map(project => (
+	let websiteList = websites
+		.filter(website => website.language === 'pl')
+		.map(website => (
 			<TileElement
-				key={project.contentfulid}
-				title={project.title}
-				excerpt={project.excerpt.excerpt}
-				thumbnail={project.screenshot.gatsbyImageData}
-				url={`/${project.language}/projects/${project.slug}`}
-				language={project.language}
+				key={website.contentfulid}
+				title={website.title}
+				excerpt={website.description.description}
+				thumbnail={website.screenshot.gatsbyImageData}
+				url={`/${website.language}/websites/${website.slug}`}
+				language={website.language}
 			/>
 		));
 
 	return (
 		<NavigationProvider>
 			<Layout>
-				<Seo title="Side projects | Damian Wróblewski | Frontend Developer" />
+				<Seo title="Projekty stron internetowych | Damian Wróblewski | Frontend Developer" />
 				<Navigation lang="pl" />
 				<PageTemplate>
 					<div>
-						<PageHeader heading="Projekty poboczne" tag="h1" />
+						<PageHeader heading="Strony internetowe" tag="h1" />
 						<Separator />
 						<main>
-							<ProjectsSection>
-								{fullProjectList.length === 0 ? (
+							<WebsitesSection>
+								{websiteList.length === 0 ? (
 									<InfoWrapper>
 										<p>Brak projektów do wyświetlenia</p>
 									</InfoWrapper>
 								) : (
-									<ProjectsWrapper>{fullProjectList}</ProjectsWrapper>
+									<WebsitesWrapper>{websiteList}</WebsitesWrapper>
 								)}
-							</ProjectsSection>
+							</WebsitesSection>
 						</main>
 					</div>
 					<Footer lang="pl" />
@@ -121,4 +121,4 @@ const ProjectsIndex = () => {
 	);
 };
 
-export default ProjectsIndex;
+export default WebsitesIndex;

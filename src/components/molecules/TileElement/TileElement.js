@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 
+import LanguageBadge from '../LanguageBadge/LanguageBadge';
 import Tags from '../Tags/Tags';
-import LanguageBadge from './LanguageBadge/LanguageBadge';
 
-const PostsContainer = styled.article`
+const Container = styled.article`
 	display: flex;
 	flex-direction: column;
 	overflow: hidden;
@@ -28,7 +28,7 @@ const Header = styled.header`
 	border-top-left-radius: 20px;
 `;
 
-const PostContent = styled.section`
+const TileContent = styled.section`
 	display: flex;
 	flex-direction: column;
 	flex-grow: 1;
@@ -42,7 +42,7 @@ const PostContent = styled.section`
 	}
 `;
 
-const PostExcerpt = styled.p`
+const Excerpt = styled.p`
 	color: ${({ theme }) => theme.lightGray};
 	padding-bottom: 2rem;
 	line-height: 1.5;
@@ -52,58 +52,66 @@ const Date = styled.p`
 	color: #16ffff;
 `;
 
-const PostMeta = styled.div`
+const Meta = styled.div`
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 `;
 
-const PostElement = ({
+const TileElement = ({
 	title,
-	author,
 	excerpt,
 	thumbnail,
-	date,
-	slug,
+	url,
 	language,
+	date,
 	postLanguage,
+	author,
 	tags,
 }) => {
-	const formattedDate = date.charAt(0).toUpperCase() + date.slice(1);
-	const languagePath = `/${postLanguage}`;
-	const formatedTags = tags.map(tag => tag.toLowerCase());
+	const showMeta = tags && date;
+	const showLanguageBadge = !!postLanguage;
+	const formattedDate = date
+		? date.charAt(0).toUpperCase() + date.slice(1)
+		: null;
+	const formattedTags = tags?.map(tag => tag.toLowerCase());
 
 	return (
-		<PostsContainer>
+		<Container>
 			<Header>
-				<a href={`${languagePath}/blog/${slug}`}>
-					<LanguageBadge lang={postLanguage || language} />
+				<a href={url}>
+					{showLanguageBadge && (
+						<LanguageBadge lang={postLanguage || language} />
+					)}
 					<GatsbyImage image={thumbnail} alt={title} />
 				</a>
 			</Header>
-			<PostContent>
-				<a href={`${languagePath}/blog/${slug}`}>
+			<TileContent>
+				<a href={url}>
 					<h2>{title}</h2>
-					<PostExcerpt>{excerpt}</PostExcerpt>
+					<Excerpt>{excerpt}</Excerpt>
 				</a>
-				<PostMeta>
-					<Date>{formattedDate}</Date>
-					{tags && <Tags tags={formatedTags} lang={language} />}
-				</PostMeta>
-			</PostContent>
-		</PostsContainer>
+				{showMeta && (
+					<Meta>
+						<Date>{formattedDate}</Date>
+						<Tags tags={formattedTags} lang={language} />
+					</Meta>
+				)}
+			</TileContent>
+		</Container>
 	);
 };
 
-PostElement.propTypes = {
+TileElement.propTypes = {
 	title: PropTypes.string.isRequired,
-	author: PropTypes.string,
 	excerpt: PropTypes.string.isRequired,
 	thumbnail: PropTypes.object.isRequired,
-	date: PropTypes.string.isRequired,
-	slug: PropTypes.string.isRequired,
+	url: PropTypes.string.isRequired,
 	language: PropTypes.string.isRequired,
+	date: PropTypes.string,
+	postLanguage: PropTypes.string,
+	author: PropTypes.string,
 	tags: PropTypes.arrayOf(PropTypes.string),
 };
 
-export default PostElement;
+export default TileElement;

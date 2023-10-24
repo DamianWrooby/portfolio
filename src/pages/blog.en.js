@@ -6,9 +6,9 @@ import Seo from '../components/atoms/Seo/Seo';
 import Separator from '../components/atoms/Separator/Separator';
 import Filters from '../components/molecules/Filters/Filters';
 import Footer from '../components/molecules/Footer/Footer';
-import PostElement from '../components/molecules/PostElement/PostElement';
 import SectionHeader from '../components/molecules/SectionHeader/SectionHeader';
 import TagCloud from '../components/molecules/TagCloud/TagCloud';
+import TileElement from '../components/molecules/TileElement/TileElement';
 import Navigation from '../components/organisms/Navigation/Navigation';
 import { initialFilters } from '../consts/filters';
 import NavigationProvider from '../contexts/NavigationContext';
@@ -64,50 +64,46 @@ const BlogIndex = () => {
 	const data = useStaticQuery(graphql`
 		{
 			allContentfulBlogPost(sort: { fields: date, order: ASC }) {
-				edges {
-					node {
-						author
-						excerpt
-						date(formatString: "MMMM YYYY", locale: "en")
-						image {
-							gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
-						}
-						text {
-							childMdx {
-								body
-							}
-						}
-						title
-						contentfulid
-						language
-						slug
-						tags
+				nodes {
+					author
+					excerpt
+					date(formatString: "MMMM YYYY", locale: "en")
+					image {
+						gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
 					}
+					text {
+						childMdx {
+							body
+						}
+					}
+					title
+					contentfulid
+					language
+					slug
+					tags
 				}
 			}
 		}
 	`);
 
 	const {
-		allContentfulBlogPost: {
-			edges: [...posts],
-		},
+		allContentfulBlogPost: { nodes: posts },
 	} = data;
 
-	const tags = [...new Set(posts.map(post => post.node.tags).flat())];
+	const tags = [...new Set(posts.map(post => post.tags).flat())];
 
 	let postsList = posts.map(post => (
-		<PostElement
-			key={post.node.contentfulid}
-			title={post.node.title}
-			author={post.node.author}
-			excerpt={post.node.excerpt}
-			thumbnail={post.node.image.gatsbyImageData}
-			date={post.node.date}
-			slug={post.node.slug}
+		<TileElement
+			key={post.contentfulid}
+			title={post.title}
+			author={post.author}
+			excerpt={post.excerpt}
+			thumbnail={post.image.gatsbyImageData}
+			date={post.date}
+			url={`/${post.language}/blog/${post.slug}`}
 			language="en"
-			postLanguage={post.node.language}
-			tags={post.node.tags}
+			postLanguage={post.language}
+			tags={post.tags}
 		/>
 	));
 

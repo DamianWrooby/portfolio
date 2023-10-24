@@ -11,9 +11,9 @@ import TechnologiesList from '../../molecules/TechnologiesList/TechnologiesList'
 
 const Wrapper = styled.section`
 	position: relative;
-	background-color: ${({ theme }) => theme.dark};
+	background-color: ${({ theme }) => theme.darker};
 	min-height: 100vh;
-	margin-top: 110px;
+	padding: 110px 0;
 `;
 
 const Main = styled.div`

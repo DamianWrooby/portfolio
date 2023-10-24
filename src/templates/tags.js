@@ -5,8 +5,8 @@ import Seo from '../components/atoms/Seo/Seo';
 import Separator from '../components/atoms/Separator/Separator';
 import Filters from '../components/molecules/Filters/Filters';
 import Footer from '../components/molecules/Footer/Footer';
-import PostElement from '../components/molecules/PostElement/PostElement';
 import TagCloud from '../components/molecules/TagCloud/TagCloud';
+import TileElement from '../components/molecules/TileElement/TileElement';
 import Navigation from '../components/organisms/Navigation/Navigation';
 import { initialFilters } from '../consts/filters';
 import NavigationProvider from '../contexts/NavigationContext';
@@ -25,27 +25,25 @@ const Tags = ({ pageContext, data }) => {
 
 	const { tag, language } = pageContext;
 	const {
-		allContentfulBlogPost: {
-			edges: [...posts],
-		},
+		allContentfulBlogPost: { nodes: posts },
 	} = data;
 
-	const tags = [...new Set(posts.map(post => post.node.tags).flat())];
+	const tags = [...new Set(posts.map(post => post.tags).flat())];
 
 	let postsList = posts
-		.filter(post => post.node.tags.includes(tag))
+		.filter(post => post.tags.includes(tag))
 		.map(post => (
-			<PostElement
-				key={post.node.contentfulid}
-				title={post.node.title}
-				author={post.node.author}
-				excerpt={post.node.excerpt}
-				thumbnail={post.node.image.gatsbyImageData}
-				date={post.node.date}
-				slug={post.node.slug}
+			<TileElement
+				key={post.contentfulid}
+				title={post.title}
+				author={post.author}
+				excerpt={post.excerpt}
+				thumbnail={post.image.gatsbyImageData}
+				date={post.date}
+				url={`/${post.language}/blog/${post.slug}`}
 				language={language}
-				postLanguage={post.node.language}
-				tags={post.node.tags}
+				postLanguage={post.language}
+				tags={post.tags}
 			/>
 		));
 
@@ -109,25 +107,23 @@ export default Tags;
 export const pageQuery = graphql`
 	query ($language: String) {
 		allContentfulBlogPost {
-			edges {
-				node {
-					author
-					excerpt
-					date(formatString: "MMMM YYYY", locale: $language)
-					image {
-						gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
-					}
-					text {
-						childMdx {
-							body
-						}
-					}
-					title
-					contentfulid
-					language
-					slug
-					tags
+			nodes {
+				author
+				excerpt
+				date(formatString: "MMMM YYYY", locale: $language)
+				image {
+					gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
 				}
+				text {
+					childMdx {
+						body
+					}
+				}
+				title
+				contentfulid
+				language
+				slug
+				tags
 			}
 		}
 	}

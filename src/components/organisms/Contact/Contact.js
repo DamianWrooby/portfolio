@@ -1,15 +1,16 @@
 import React from 'react';
 import { Element } from 'react-scroll';
 import styled from 'styled-components';
+
 import Content from '../../atoms/Content/Content';
-import SectionHeader from '../../molecules/SectionHeader/SectionHeader';
 import Separator from '../../atoms/Separator/Separator';
-import SocialLinks from './SocialLinks';
 import ContactForm from '../../molecules/Forms/ContactForm';
+import SectionHeader from '../../molecules/SectionHeader/SectionHeader';
+import SocialLinks from './SocialLinks';
 
 const Wrapper = styled.section`
   position: relative;
-  background-color: #16232e;
+  background-color: ${({ theme }) => theme.darker};
   min-height: 100vh;
   margin-top: 100px;
   }
