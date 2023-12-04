@@ -1,7 +1,5 @@
-import { MDXProvider } from '@mdx-js/react';
 import { graphql } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
 import gsap from 'gsap';
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef } from 'react';
@@ -181,7 +179,7 @@ const WebsiteTemplate = ({ data }) => {
 								<StyledImg
 									image={website.screenshot.gatsbyImageData}
 									key={website.screenshot.file.url}
-									alt={website.screenshot.title}
+									alt={website.description.description}
 								/>
 							</ImageWrapper>
 							<ContentWrapper ref={contentRef}>

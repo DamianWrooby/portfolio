@@ -80,11 +80,11 @@ const WebsitesIndex = () => {
 		allContentfulWebsite: { nodes: websites },
 	} = data;
 
-	let websiteList = websites
+	const websiteList = websites
 		.filter(website => website.language === 'en')
 		.map(website => (
 			<TileElement
-				key={website.contentfulid}
+				key={website.slug}
 				title={website.title}
 				excerpt={website.description.description}
 				thumbnail={website.screenshot.gatsbyImageData}

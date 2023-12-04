@@ -30,14 +30,20 @@ const LanguageToggler = ({ lang }) => {
 
 	useEffect(() => {
 		if (typeof window !== 'undefined') {
+			const pathName = window.location.pathname;
 			const blogRegex = /\/blog\/[a-z0-9\-]/;
 			const projectRegex = /\/projects\/[a-z0-9\-]/;
-			if (window.location.pathname.match(blogRegex)) {
+			const websiteRegex = /\/websites\/[a-z0-9\-]/;
+			if (pathName.match(blogRegex)) {
 				setPath('/blog');
-			} else if (window.location.pathname.match(projectRegex)) {
-				setPath(`/projects`);
+			} else if (pathName.match(websiteRegex) || pathName.match(projectRegex)) {
+				if (lang === 'en') {
+					setPath(pathName.replace('en/', ''));
+				} else {
+					setPath(pathName.replace('pl/', 'en/'));
+				}
 			} else {
-				setPath(window.location.pathname);
+				setPath(pathName);
 			}
 		} else {
 			setPath('/');
