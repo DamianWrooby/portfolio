@@ -145,9 +145,9 @@ const LinkList = ({ lang, active }) => {
 				)}
 				{lang === 'pl' && (
 					<StyledGatsbyLink
-						active={active === 'blog-page' ? 1 : 0}
+						active={active === 'pl/blog-page' ? 1 : 0}
 						to="/pl/blog">
-						<StyledSpan active={active === 'blog-page' ? 1 : 0}>
+						<StyledSpan active={active === 'pl/blog-page' ? 1 : 0}>
 							Blog
 						</StyledSpan>
 					</StyledGatsbyLink>
@@ -165,9 +165,9 @@ const LinkList = ({ lang, active }) => {
 				)}
 				{lang === 'pl' && (
 					<StyledGatsbyLink
-						active={active === 'projects-page' ? 1 : 0}
+						active={active === 'pl/projects-page' ? 1 : 0}
 						to="/pl/projects">
-						<StyledSpan active={active === 'projects-page' ? 1 : 0}>
+						<StyledSpan active={active === 'pl/projects-page' ? 1 : 0}>
 							Projekty
 						</StyledSpan>
 					</StyledGatsbyLink>
@@ -185,9 +185,9 @@ const LinkList = ({ lang, active }) => {
 				)}
 				{lang === 'pl' && (
 					<StyledGatsbyLink
-						active={active === 'websites-page' ? 1 : 0}
+						active={active === 'pl/websites-page' ? 1 : 0}
 						to="/pl/websites">
-						<StyledSpan active={active === 'websites-page' ? 1 : 0}>
+						<StyledSpan active={active === 'pl/websites-page' ? 1 : 0}>
 							Strony internetowe
 						</StyledSpan>
 					</StyledGatsbyLink>
@@ -222,8 +222,6 @@ const LinkList = ({ lang, active }) => {
 
 const Links = ({ lang }) => {
 	const { activeLink, currentPage } = useContext(NavigationContext);
-	console.log({ activeLink });
-	console.log({ currentPage });
 
 	return currentPage === 'home-page' ? (
 		<LinkList lang={lang} active={activeLink} />
