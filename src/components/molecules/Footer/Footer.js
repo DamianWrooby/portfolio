@@ -16,13 +16,17 @@ const Text = styled.p`
 	font-weight: ${({ theme }) => theme.regular};
 `;
 
+const currentYear = new Date().getFullYear();
+const textPl = `${currentYear} Damian Wróblewski. Wszelkie prawa zastrzeżone.`;
+const textEn = `${currentYear} Damian Wróblewski. All rights reserved.`;
+
 const Footer = ({ lang }) => (
 	<Wrapper>
 		{lang === "en" && (
-			<Text>&copy; 2023 Damian Wróblewski. All rights reserved.</Text>
+			<Text>&copy; {textEn}</Text>
 		)}
 		{lang === "pl" && (
-			<Text>&copy; 2023 Damian Wróblewski. Wszelkie prawa zastrzeżone.</Text>
+			<Text>&copy; {textPl}</Text>
 		)}
 	</Wrapper>
 );
