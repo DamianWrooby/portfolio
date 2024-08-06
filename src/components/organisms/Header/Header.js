@@ -381,12 +381,12 @@ const Header = ({ lang }) => {
 					</Title>
 					{lang === 'en' && (
 						<>
-							<Subtitle ref={subtitleRef}>I'm a Frontend Developer</Subtitle>
+							<Subtitle ref={subtitleRef}>I'm a Software Developer</Subtitle>
 						</>
 					)}
 					{lang === 'pl' && (
 						<>
-							<Subtitle ref={subtitleRef}>Jestem Frontend Developerem</Subtitle>
+							<Subtitle ref={subtitleRef}>Jestem Software Developerem</Subtitle>
 						</>
 					)}
 					{lang === 'en' && (
@@ -413,7 +413,7 @@ const Header = ({ lang }) => {
 					{lang === 'pl' && (
 						<>
 							<SecondSubtitle ref={secondSubtitleRef}>
-								W gotowe <ColorSpan>aplikacje webowe</ColorSpan>
+								W skuteczne <ColorSpan>aplikacje webowe</ColorSpan>
 							</SecondSubtitle>
 						</>
 					)}
