@@ -58,14 +58,13 @@ const Contact = ({ lang }) => {
 						{lang === 'en' && (
 							<SectionHeader
 								heading="Contact"
-								paragraph="Do you have any questions? Feel free to contact me. I am also open to cooperation with back-end developers or UX/UI designers to gain more experience. Let's get in touch!"
+								paragraph="Do you have any questions? Feel free to contact me."
 							/>
 						)}
 						{lang === 'pl' && (
 							<SectionHeader
 								heading="Kontakt"
-								paragraph="Masz pytania lub sugestie odnośnie moich projektów lub chcesz porozmawiać na
-										temat web developmentu? Zapraszam do kontaktu :)"
+								paragraph="Chcesz nawiązać współpracę? Zapraszam do kontaktu"
 							/>
 						)}
 						<InnerWrapper>
