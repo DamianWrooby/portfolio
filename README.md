@@ -6,7 +6,7 @@
 
 - Gatsby.js
 - Contentful
-- React v16.13.1
+- React
 - React Hooks
 - PropTypes
 - Styled Components
