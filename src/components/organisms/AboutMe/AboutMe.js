@@ -99,9 +99,9 @@ const GrayText = styled.span`
 `;
 
 const Link = styled.a`
-	color: #ff6d43;
+	color: #0073e6;
 	&:hover {
-		color: #ff6d43;
+		color: #0073e6;
 		opacity: 0.8;
 	}
 `;
@@ -180,7 +180,7 @@ const AboutMe = ({ lang }) => {
 										<GrayText>Obecnie:</GrayText>{' '}
 										<SkinnyText>
 											Application Developer w{' '}
-											<Link href="https://eviden.com/">Eviden</Link>
+											<Link href="https://atos.net/">Atos</Link>
 										</SkinnyText>
 									</Heading>
 									<Description>
@@ -233,7 +233,7 @@ const AboutMe = ({ lang }) => {
 										<GrayText>Currently:</GrayText>{' '}
 										<SkinnyText>
 											Application Developer at{' '}
-											<Link href="https://eviden.com/">Eviden</Link>
+											<Link href="https://atos.net/">Atos</Link>
 										</SkinnyText>
 									</Heading>
 									<Description>
