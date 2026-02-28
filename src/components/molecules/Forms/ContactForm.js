@@ -25,7 +25,7 @@ const SubmitButton = styled(Button)`
 		`}
 `;
 
-const ContactSchemaEn = Yup.object().shape({
+export const ContactSchemaEn = Yup.object().shape({
 	name: Yup.string().required("Your name is required!"),
 	email: Yup.string()
 		.email("Email address is invalid!")
@@ -34,7 +34,7 @@ const ContactSchemaEn = Yup.object().shape({
 		.min(10, "Message is too short!")
 		.required("Message is required!"),
 });
-const ContactSchemaPl = Yup.object().shape({
+export const ContactSchemaPl = Yup.object().shape({
 	name: Yup.string().required("Podaj swoje imię"),
 	email: Yup.string()
 		.email("Adres email jest niepoprawny")
