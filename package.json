@@ -47,7 +47,7 @@
 		"scrollmagic": "^2.0.9",
 		"scrollmagic-plugin-gsap": "^1.0.4",
 		"scrollmagic-with-ssr": "^1.0.2",
-		"styled-components": "^5.3.11",
+		"styled-components": "^6.3.11",
 		"styled-reset": "^5.0.0",
 		"use-media": "^1.5.0",
 		"yup": "^1.7.1"
