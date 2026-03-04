@@ -1,5 +1,4 @@
-import Highlight, { defaultProps } from "prism-react-renderer";
-import prismTheme from "prism-react-renderer/themes/nightOwl";
+import { Highlight, themes } from "prism-react-renderer";
 import React from "react";
 import styled from "styled-components";
 
@@ -76,9 +75,8 @@ const highlightLine = (lineArray, lineProps) => {
 const CodeBlock = ({ children }) => {
 	return (
 		<Highlight
-			{...defaultProps}
 			code={children}
-			theme={prismTheme}
+			theme={themes.nightOwl}
 			language="javascript">
 			{({ className, style, tokens, getLineProps, getTokenProps }) => (
 				<StyledPre className={className} style={{ ...style }}>
