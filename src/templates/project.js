@@ -1,10 +1,10 @@
-import { MDXProvider } from '@mdx-js/react';
 import { graphql } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
 import gsap from 'gsap';
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef } from 'react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import styled from 'styled-components';
 
 import listIcon from '../assets/images/favicon.png';
@@ -164,11 +164,9 @@ const ProjectTemplate = ({ data }) => {
 							<ContentWrapper ref={contentRef}>
 								<Title>{project.title}</Title>
 								<Description>
-									<MDXProvider>
-										<MDXRenderer>
-											{project.description.childMdx.body}
-										</MDXRenderer>
-									</MDXProvider>
+									<ReactMarkdown remarkPlugins={[remarkGfm]}>
+										{project.description.description}
+									</ReactMarkdown>
 								</Description>
 								{language === 'en' && (
 									<ListTitle>Technologies & Tools</ListTitle>
@@ -233,9 +231,7 @@ export const pageQuery = graphql`
 			}
 			language
 			description {
-				childMdx {
-					body
-				}
+				description
 			}
 		}
 	}

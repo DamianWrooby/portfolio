@@ -114,11 +114,6 @@ export const pageQuery = graphql`
 				image {
 					gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
 				}
-				text {
-					childMdx {
-						body
-					}
-				}
 				title
 				contentfulid
 				language

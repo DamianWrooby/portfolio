@@ -57,7 +57,7 @@ const PageTemplate = styled.div`
 const WebsitesIndex = () => {
 	const data = useStaticQuery(graphql`
 		{
-			allContentfulWebsite(sort: { fields: contentfulid }) {
+			allContentfulWebsite(sort: { contentfulid: ASC }) {
 				nodes {
 					title
 					description {

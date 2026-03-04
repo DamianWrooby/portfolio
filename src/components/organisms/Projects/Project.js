@@ -1,9 +1,9 @@
-import { MDXProvider } from "@mdx-js/react";
 import { GatsbyImage } from "gatsby-plugin-image";
-import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer";
 import gsap from "gsap";
 import PropTypes from "prop-types";
 import React, { useEffect, useRef } from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import styled from "styled-components";
 
 import listIcon from "../../../assets/images/favicon.png";
@@ -139,9 +139,7 @@ const Project = ({
 			<ContentWrapper ref={contentRef}>
 				<Title>{title}</Title>
 				<Description>
-					<MDXProvider>
-						<MDXRenderer>{description}</MDXRenderer>
-					</MDXProvider>
+					<ReactMarkdown remarkPlugins={[remarkGfm]}>{description}</ReactMarkdown>
 				</Description>
 				{lang === "en" && <ListTitle>Technologies & Tools</ListTitle>}
 				{lang === "pl" && <ListTitle>Technologie i narzędzia</ListTitle>}

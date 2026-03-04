@@ -63,14 +63,12 @@ const wavePath = (
 const Projects = ({ lang }) => {
 	const data = useStaticQuery(graphql`
 		{
-			allContentfulProject(sort: { fields: contentfulid }) {
+			allContentfulProject(sort: { contentfulid: ASC }) {
 				edges {
 					node {
 						title
 						description {
-							childMdx {
-								body
-							}
+							description
 						}
 						technologies
 						codeUrl
@@ -102,7 +100,7 @@ const Projects = ({ lang }) => {
 			key={project.node.title}
 			title={project.node.title}
 			technologies={project.node.technologies}
-			description={project.node.description.childMdx.body}
+			description={project.node.description.description}
 			image={project.node.screenshot.gatsbyImageData}
 			imgKey={project.node.screenshot.file.url}
 			imgAlt={project.node.screenshot.title}

@@ -57,7 +57,7 @@ const PageTemplate = styled.div`
 const ProjectsIndex = () => {
 	const data = useStaticQuery(graphql`
 		{
-			allContentfulProject(sort: { fields: contentfulid }) {
+			allContentfulProject(sort: { contentfulid: ASC }) {
 				nodes {
 					contentfulid
 					language

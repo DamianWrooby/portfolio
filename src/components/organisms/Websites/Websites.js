@@ -63,7 +63,7 @@ const wavePath = (
 const Websites = ({ lang }) => {
 	const data = useStaticQuery(graphql`
 		{
-			allContentfulWebsite(sort: { fields: contentfulid }) {
+			allContentfulWebsite(sort: { contentfulid: ASC }) {
 				edges {
 					node {
 						title
