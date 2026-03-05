@@ -26,18 +26,12 @@ const StyledItem = styled.li`
 	}
 `;
 
-const ListItem = ({ icon, width, height, children, className }) => {
+const ListItem = ({ icon, width = "20", height = "20", children = "", className }) => {
 	return (
 		<StyledItem className={className} icon={icon} width={width} height={height}>
 			{children}
 		</StyledItem>
 	);
-};
-
-ListItem.defaultProps = {
-	children: '',
-	width: '20',
-	height: '20',
 };
 
 ListItem.propTypes = {
