@@ -4,9 +4,6 @@ import styled from "styled-components";
 
 const Line = styled.div`
 	display: table-row;
-	&&:last-child {
-		display: none;
-	}
 `;
 
 const LineNo = styled.span`
@@ -83,17 +80,16 @@ const CodeBlock = ({ children }) => {
 					{tokens.map((line, i) => {
 						const lineProps = getLineProps({ line, key: i });
 						const shouldExclude = highlightLine(line, lineProps);
-						let lineNumberElem;
 
 						if (
 							line.length === 1 &&
 							line[0].empty === true &&
 							i === tokens.length - 1
 						) {
-							lineNumberElem = null;
-						} else {
-							lineNumberElem = <LineNo>{i + 1}</LineNo>;
+							return null;
 						}
+
+						const lineNumberElem = <LineNo>{i + 1}</LineNo>;
 
 						return !shouldExclude ? (
 							<Line key={i} {...lineProps}>
