@@ -5,6 +5,7 @@
 	"version": "0.1.0",
 	"author": "Damian Wróblewski <dwroblewski89@gmail.com>",
 	"dependencies": {
+		"ajv": "^8.0.0",
 		"babel-plugin-styled-components": "^2.1.4",
 		"caniuse-lite": "^1.0.30001776",
 		"deepmerge": "^4.3.1",
@@ -92,5 +93,8 @@
 		".js, .jsx, .ts, .tsx": {
 			"style": "module"
 		}
+	},
+	"overrides": {
+		"punycode": "^2.3.1"
 	}
 }
