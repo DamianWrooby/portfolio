@@ -85,12 +85,6 @@ module.exports = {
 			},
 		},
 		{
-			resolve: `gatsby-plugin-mdx`,
-			options: {
-				rehypePlugins: [require("rehype-slug")],
-			},
-		},
-		{
 			resolve: "gatsby-plugin-i18n",
 			options: {
 				langKeyDefault: "en",

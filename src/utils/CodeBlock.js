@@ -1,13 +1,9 @@
-import Highlight, { defaultProps } from "prism-react-renderer";
-import prismTheme from "prism-react-renderer/themes/nightOwl";
+import { Highlight, themes } from "prism-react-renderer";
 import React from "react";
 import styled from "styled-components";
 
 const Line = styled.div`
 	display: table-row;
-	&&:last-child {
-		display: none;
-	}
 `;
 
 const LineNo = styled.span`
@@ -76,26 +72,24 @@ const highlightLine = (lineArray, lineProps) => {
 const CodeBlock = ({ children }) => {
 	return (
 		<Highlight
-			{...defaultProps}
 			code={children}
-			theme={prismTheme}
+			theme={themes.nightOwl}
 			language="javascript">
 			{({ className, style, tokens, getLineProps, getTokenProps }) => (
 				<StyledPre className={className} style={{ ...style }}>
 					{tokens.map((line, i) => {
 						const lineProps = getLineProps({ line, key: i });
 						const shouldExclude = highlightLine(line, lineProps);
-						let lineNumberElem;
 
 						if (
 							line.length === 1 &&
 							line[0].empty === true &&
 							i === tokens.length - 1
 						) {
-							lineNumberElem = null;
-						} else {
-							lineNumberElem = <LineNo>{i + 1}</LineNo>;
+							return null;
 						}
+
+						const lineNumberElem = <LineNo>{i + 1}</LineNo>;
 
 						return !shouldExclude ? (
 							<Line key={i} {...lineProps}>

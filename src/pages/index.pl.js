@@ -95,7 +95,7 @@ const IndexPage = ({ data }) => {
 
 export const pageQuery = graphql`
 	query {
-		allContentfulBlogPost(sort: { fields: date, order: DESC }) {
+		allContentfulBlogPost(sort: { date: DESC }) {
 			nodes {
 				author
 				excerpt
@@ -110,7 +110,7 @@ export const pageQuery = graphql`
 				tags
 			}
 		}
-		allContentfulProject(sort: { fields: contentfulid }) {
+		allContentfulProject(sort: { contentfulid: ASC }) {
 			nodes {
 				contentfulid
 				language
@@ -125,7 +125,7 @@ export const pageQuery = graphql`
 				slug
 			}
 		}
-		allContentfulWebsite(sort: { fields: contentfulid }) {
+		allContentfulWebsite(sort: { contentfulid: ASC }) {
 			nodes {
 				title
 				description {

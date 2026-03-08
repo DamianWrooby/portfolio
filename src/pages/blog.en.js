@@ -63,18 +63,13 @@ const BlogIndex = () => {
 
 	const data = useStaticQuery(graphql`
 		{
-			allContentfulBlogPost(sort: { fields: date, order: ASC }) {
+			allContentfulBlogPost(sort: { date: ASC }) {
 				nodes {
 					author
 					excerpt
 					date(formatString: "MMMM YYYY", locale: "en")
 					image {
 						gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
-					}
-					text {
-						childMdx {
-							body
-						}
 					}
 					title
 					contentfulid

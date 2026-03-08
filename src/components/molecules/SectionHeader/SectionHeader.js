@@ -34,7 +34,7 @@ const Paragraph = styled.p`
 	}
 `;
 
-const SectionHeader = ({ className, heading, paragraph, tag }) => {
+const SectionHeader = ({ className, heading, paragraph = '', tag = 'h2' }) => {
 	const Tag = `${tag}`;
 	return (
 		<Wrapper className={className}>
@@ -44,11 +44,6 @@ const SectionHeader = ({ className, heading, paragraph, tag }) => {
 			<Paragraph>{paragraph}</Paragraph>
 		</Wrapper>
 	);
-};
-
-SectionHeader.defaultProps = {
-	paragraph: '',
-	tag: 'h2'
 };
 
 SectionHeader.propTypes = {

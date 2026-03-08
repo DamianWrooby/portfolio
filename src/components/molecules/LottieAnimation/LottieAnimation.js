@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-const LottieAnimation = ({ animationData, width, height }) => {
+const LottieAnimation = ({ animationData, width = 400, height = 400 }) => {
   const AnimationRef = useRef(null);
 
   useEffect(() => {
@@ -41,11 +41,6 @@ const LottieAnimation = ({ animationData, width, height }) => {
       <Lottie options={defaultOptions} width={width} height={height} />
     </Wrapper>
   );
-};
-
-LottieAnimation.defaultProps = {
-  width: 400,
-  height: 400,
 };
 
 LottieAnimation.propTypes = {

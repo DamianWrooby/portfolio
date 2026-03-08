@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import { Helmet } from "react-helmet";
 
-function Seo({ description, lang, meta, title, image: metaImage }) {
+function Seo({ description = "", lang = "en", meta = [], title, image: metaImage }) {
 	const { site, preview } = useStaticQuery(
 		graphql`
 			query {
@@ -99,12 +99,6 @@ function Seo({ description, lang, meta, title, image: metaImage }) {
 		/>
 	);
 }
-
-Seo.defaultProps = {
-	lang: `en`,
-	meta: [],
-	description: ``,
-};
 
 Seo.propTypes = {
 	description: PropTypes.string,

@@ -3,4 +3,5 @@ const babelOptions = {
   plugins: ["@babel/plugin-syntax-jsx"],
 };
 
-module.exports = require("babel-jest").createTransformer(babelOptions);
+const babelJest = require("babel-jest");
+module.exports = (babelJest.default || babelJest).createTransformer(babelOptions);

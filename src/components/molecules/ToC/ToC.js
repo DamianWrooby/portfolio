@@ -26,7 +26,7 @@ const ToC = ({ headings, lang }) => (
 				return (
 					<li key={heading.title}>
 						<a href={`${heading.url}`}>{heading.title}</a>
-						{heading.items && (
+						{heading.items && heading.items.length > 0 && (
 							<ul>
 								{heading.items.map((nestedHeading) => {
 									return (

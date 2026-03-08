@@ -209,9 +209,9 @@ const StyledSpan = styled.span`
 
 const Button = ({
 	label,
-	link,
-	animated,
-	renderAs,
+	link = "",
+	animated = false,
+	renderAs = "button",
 	color,
 	className,
 	clickHandler = null,
@@ -236,12 +236,6 @@ const Button = ({
 			{label}
 		</StyledButton>
 	);
-};
-
-Button.defaultProps = {
-	animated: false,
-	link: "",
-	renderAs: "button",
 };
 
 Button.propTypes = {
