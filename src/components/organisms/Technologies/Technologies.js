@@ -7,7 +7,7 @@ import Content from '../../atoms/Content/Content';
 import Separator from '../../atoms/Separator/Separator';
 import LottieAnimation from '../../molecules/LottieAnimation/LottieAnimation';
 import SectionHeader from '../../molecules/SectionHeader/SectionHeader';
-import TechnologiesList from '../../molecules/TechnologiesList/TechnologiesList';
+import SkillCards from '../../molecules/SkillCards/SkillCards';
 
 const Wrapper = styled.section`
 	position: relative;
@@ -31,12 +31,10 @@ const Main = styled.div`
 	}
 `;
 
-const InnerWrapper = styled.div`
+const LottieWrapper = styled.div`
 	display: flex;
-	flex-direction: column;
-	${({ theme }) => theme.mq.xl} {
-		flex-direction: row;
-	}
+	justify-content: center;
+	margin-top: 60px;
 `;
 
 const Technologies = ({ lang }) => {
@@ -48,24 +46,24 @@ const Technologies = ({ lang }) => {
 						<Separator />
 						{lang === 'en' && (
 							<SectionHeader
-								heading="Technologies"
-								paragraph="Frameworks and tools I use when building commercial and private projects"
+								heading="How I Build Software"
+								paragraph="Frontend-focused product engineer with fullstack and AI integration experience."
 							/>
 						)}
 						{lang === 'pl' && (
 							<SectionHeader
-								heading="Technologie"
-								paragraph="Frameworki, narzędzia i rozwiązania, które wykorzystuję w projektach komercyjnych i prywatnych"
+								heading="Jak buduję oprogramowanie"
+								paragraph="Inżynier produktu z doświadczeniem we frontendzie, fullstack i integracji AI."
 							/>
 						)}
-						<InnerWrapper>
-							<TechnologiesList lang={lang} />
+						<SkillCards lang={lang} />
+						<LottieWrapper>
 							<LottieAnimation
 								animationData={laptopAnimation}
 								width={600}
 								height={450}
 							/>
-						</InnerWrapper>
+						</LottieWrapper>
 					</Main>
 				</Content>
 			</Element>
