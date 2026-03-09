@@ -63,7 +63,7 @@ const wavePath = (
 const Projects = ({ lang }) => {
 	const data = useStaticQuery(graphql`
 		{
-			allContentfulProject(sort: { contentfulid: ASC }) {
+			allContentfulProject(sort: { createdAt: DESC }) {
 				edges {
 					node {
 						title
