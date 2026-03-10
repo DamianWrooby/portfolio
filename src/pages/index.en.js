@@ -111,7 +111,7 @@ export const pageQuery = graphql`
 				tags
 			}
 		}
-		allContentfulProject(sort: { contentfulid: ASC }) {
+		allContentfulProject(sort: { createdAt: DESC }) {
 			nodes {
 				contentfulid
 				language
