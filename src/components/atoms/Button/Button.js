@@ -1,6 +1,45 @@
-import PropTypes from "prop-types";
-import React from "react";
-import styled, { css, keyframes } from "styled-components";
+import PropTypes from 'prop-types';
+import React from 'react';
+import styled, { css, keyframes } from 'styled-components';
+
+const isExternalLink = url =>
+	typeof url === 'string' && /^(https?:)?\/\//.test(url);
+
+const neonGlow = color => css`
+	box-shadow:
+		0 0 5px ${color},
+		0 0 25px ${color},
+		0 0 50px ${color},
+		0 0 200px ${color};
+	-webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+`;
+
+const variantStyles = {
+	blue: css`
+		background: ${({ theme }) => theme.neonBlue};
+		color: ${({ theme }) => theme.dark};
+		&:hover {
+			background: ${({ theme }) => theme.dark};
+			color: ${({ theme }) => theme.neonBlue};
+		}
+	`,
+	green: css`
+		background: ${({ theme }) => theme.green};
+		color: ${({ theme }) => theme.dark};
+		&:hover {
+			background: ${({ theme }) => theme.green};
+			color: ${({ theme }) => theme.dark};
+		}
+	`,
+	red: css`
+		background: ${({ theme }) => theme.red};
+		color: ${({ theme }) => theme.dark};
+		&:hover {
+			background: ${({ theme }) => theme.red};
+			color: ${({ theme }) => theme.dark};
+		}
+	`,
+};
 
 const StyledButton = styled.button`
 	position: relative;
@@ -8,7 +47,7 @@ const StyledButton = styled.button`
 	font-size: ${({ theme }) => theme.fontSize.xs};
 	font-weight: ${({ theme }) => theme.regular};
 	text-align: center;
-	background: #03e9f4;
+	background: ${({ theme }) => theme.neonBlue};
 	color: ${({ theme }) => theme.dark};
 	display: inline-block;
 	font-family: ${({ theme }) => theme.fonts.subFont};
@@ -18,231 +57,189 @@ const StyledButton = styled.button`
 	transition: 0.5s;
 	letter-spacing: 4px;
 	overflow: hidden;
-	margin-right: 20px;
+	border: none;
+
 	&:hover {
 		background: ${({ theme }) => theme.dark};
 		color: ${({ theme }) => theme.neonBlue};
-		${({ animation }) =>
-			animation &&
-			css`
-				&:hover {
-					background: #03e9f4;
-					color: ${({ theme }) => theme.dark};
-					box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4,
-						0 0 200px #03e9f4;
-					-webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
-				}
-			`}
 	}
-	${({ animation }) =>
-		animation &&
+
+	${({ $animated, theme }) =>
+		$animated &&
 		css`
 			background: transparent;
-			color: #16ffff;
-		`};
-	${({ color }) =>
-		color === "blue" &&
-		css`
-			background: #03e9f4;
-			color: ${({ theme }) => theme.dark};
-		`};
-	${({ color }) =>
-		color === "green" &&
-		css`
-			border-color: ${({ theme }) => theme.dark};
-			background: ${({ theme }) => theme.green};
+			color: ${theme.neonBlue};
 			&:hover {
-				background: ${({ theme }) => theme.green};
-				color: ${({ theme }) => theme.dark};
+				background: ${theme.neonBlue};
+				color: ${theme.dark};
+				${neonGlow(theme.neonBlue)};
 			}
 		`};
-	${({ color }) =>
-		color === "red" &&
-		css`
-			background: ${({ theme }) => theme.red};
-			&:hover {
-				background: ${({ theme }) => theme.red};
-				color: ${({ theme }) => theme.dark};
-			}
-		`};
+
+	${({ $color }) => $color && variantStyles[$color]};
+
+	&:disabled,
+	&[aria-disabled='true'] {
+		cursor: not-allowed;
+		opacity: 0.6;
+	}
+
 	${({ theme }) => theme.mq.s} {
 		font-size: ${({ theme }) => theme.fontSize.lg};
 		padding: 20px;
-		margin-right: 50px;
 	}
 `;
 
-const animate1 = keyframes`  
-    0%{
-        left: -100%;
-    }
-    50%,100%{
-        left: 100%;
-    }
+const animate1 = keyframes`
+	0% { left: -100%; }
+	50%, 100% { left: 100%; }
 `;
 const animate2 = keyframes`
-    0%{
-        top: -100%;
-    }
-    50%,100%{
-        top: 100%;
-    }
+	0% { top: -100%; }
+	50%, 100% { top: 100%; }
 `;
 const animate3 = keyframes`
-    0%{
-        right: -100%;
-    }
-    50%,100%{
-        right: 100%;
-    }
+	0% { right: -100%; }
+	50%, 100% { right: 100%; }
 `;
 const animate4 = keyframes`
-    0%{
-        bottom: -100%;
-    }
-    50%,100%{
-        bottom: 100%;
-    }
+	0% { bottom: -100%; }
+	50%, 100% { bottom: 100%; }
 `;
 
 const StyledSpan = styled.span`
 	position: absolute;
 	display: block;
+	background: ${({ $color, theme }) =>
+		$color === 'green' || $color === 'red' ? theme.dark : theme.neonBlue};
+
 	&:nth-child(1) {
 		top: 0;
 		left: 0;
 		width: 100%;
 		height: 2px;
-		background: #03e9f4;
-		${({ animation }) =>
-			animation &&
+		${({ $animated, theme }) =>
+			$animated &&
 			css`
-				background: linear-gradient(90deg, transparent, #03e9f4);
+				background: linear-gradient(90deg, transparent, ${theme.neonBlue});
 				animation: ${animate1} 1s linear infinite;
-			`};
-		${({ color }) =>
-			color === "green" &&
-			css`
-				background: ${({ theme }) => theme.dark};
-			`};
-		${({ color }) =>
-			color === "red" &&
-			css`
-				background: ${({ theme }) => theme.dark};
-			`};
+			`}
 	}
 	&:nth-child(2) {
 		top: 0;
 		right: 0;
 		width: 2px;
 		height: 100%;
-		background: #03e9f4;
-		${({ animation }) =>
-			animation &&
+		${({ $animated, theme }) =>
+			$animated &&
 			css`
 				top: -100%;
-				background: linear-gradient(180deg, transparent, #03e9f4);
+				background: linear-gradient(180deg, transparent, ${theme.neonBlue});
 				animation: ${animate2} 1s linear infinite;
 				animation-delay: 0.25s;
 			`}
-		${({ color }) =>
-			color === "green" &&
-			css`
-				background: ${({ theme }) => theme.dark};
-			`};
-		${({ color }) =>
-			color === "red" &&
-			css`
-				background: ${({ theme }) => theme.dark};
-			`};
 	}
 	&:nth-child(3) {
 		bottom: 0;
 		right: 0;
 		width: 100%;
 		height: 2px;
-		background: #03e9f4;
-		${({ animation }) =>
-			animation &&
+		${({ $animated, theme }) =>
+			$animated &&
 			css`
-				background: linear-gradient(270deg, transparent, #03e9f4);
+				background: linear-gradient(270deg, transparent, ${theme.neonBlue});
 				animation: ${animate3} 1s linear infinite;
 				animation-delay: 0.5s;
 			`}
-		${({ color }) =>
-			color === "green" &&
-			css`
-				background: ${({ theme }) => theme.dark};
-			`};
-		${({ color }) =>
-			color === "red" &&
-			css`
-				background: ${({ theme }) => theme.dark};
-			`};
 	}
 	&:nth-child(4) {
 		bottom: 0;
 		left: 0;
 		width: 2px;
 		height: 100%;
-		background: #03e9f4;
-		${({ animation }) =>
-			animation &&
+		${({ $animated, theme }) =>
+			$animated &&
 			css`
 				bottom: -100%;
-				background: linear-gradient(360deg, transparent, #03e9f4);
+				background: linear-gradient(360deg, transparent, ${theme.neonBlue});
 				animation: ${animate4} 1s linear infinite;
 				animation-delay: 0.75s;
 			`}
-		${({ color }) =>
-			color === "green" &&
-			css`
-				background: ${({ theme }) => theme.dark};
-			`};
-		${({ color }) =>
-			color === "red" &&
-			css`
-				background: ${({ theme }) => theme.dark};
-			`};
+	}
+
+	[disabled] &,
+	[aria-disabled='true'] & {
+		animation: none;
 	}
 `;
 
 const Button = ({
 	label,
-	link = "",
+	link = '',
 	animated = false,
-	renderAs = "button",
+	renderAs = 'button',
 	color,
 	className,
-	clickHandler = null,
-	type = undefined,
+	onClick,
+	type,
+	disabled = false,
+	title,
+	target,
+	rel,
 }) => {
+	const renderAsAnchor = renderAs === 'a' && Boolean(link);
+	const tag = renderAsAnchor ? 'a' : 'button';
+	const external = isExternalLink(link);
+
+	const anchorProps = renderAsAnchor
+		? {
+				href: link,
+				target: target ?? (external ? '_blank' : undefined),
+				rel: rel ?? (external ? 'noopener noreferrer' : undefined),
+			}
+		: {};
+
+	const buttonProps =
+		tag === 'button'
+			? {
+					type: type ?? 'button',
+					disabled,
+				}
+			: {};
+
 	return (
 		<StyledButton
+			as={tag}
 			className={className}
-			color={color}
-			href={link || undefined}
-			role={renderAs === "a" ? "link" : "button"}
-			target={renderAs === "a" ? "_blank" : undefined}
-			rel={renderAs === "a" ? "noopener noreferrer" : undefined}
-			as={renderAs}
-			animation={animated}
-			onClick={clickHandler}
-			type={type}>
-			<StyledSpan color={color} animation={animated}></StyledSpan>
-			<StyledSpan color={color} animation={animated}></StyledSpan>
-			<StyledSpan color={color} animation={animated}></StyledSpan>
-			<StyledSpan color={color} animation={animated}></StyledSpan>
+			$color={color}
+			$animated={animated}
+			title={title}
+			onClick={disabled ? undefined : onClick}
+			aria-disabled={disabled || undefined}
+			{...anchorProps}
+			{...buttonProps}>
+			<StyledSpan aria-hidden="true" $color={color} $animated={animated} />
+			<StyledSpan aria-hidden="true" $color={color} $animated={animated} />
+			<StyledSpan aria-hidden="true" $color={color} $animated={animated} />
+			<StyledSpan aria-hidden="true" $color={color} $animated={animated} />
 			{label}
 		</StyledButton>
 	);
 };
 
 Button.propTypes = {
-	animated: PropTypes.bool,
 	label: PropTypes.string.isRequired,
 	link: PropTypes.string,
-	renderAs: PropTypes.string,
+	animated: PropTypes.bool,
+	renderAs: PropTypes.oneOf(['button', 'a']),
+	color: PropTypes.oneOf(['blue', 'green', 'red']),
+	className: PropTypes.string,
+	onClick: PropTypes.func,
+	type: PropTypes.oneOf(['button', 'submit', 'reset']),
+	disabled: PropTypes.bool,
+	title: PropTypes.string,
+	target: PropTypes.string,
+	rel: PropTypes.string,
 };
 
 export default Button;
