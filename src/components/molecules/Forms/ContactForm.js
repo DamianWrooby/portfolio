@@ -1,85 +1,74 @@
-import { Field, Form, Formik } from "formik";
-import React, { useState } from "react";
-import styled, { css } from "styled-components";
-import * as Yup from "yup";
+import { Field, Form, Formik } from 'formik';
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import * as Yup from 'yup';
 
-import Button from "../../atoms/Button/Button";
-import FormInput from "./FormInput";
+import Button from '../../atoms/Button/Button';
+import FormInput from './FormInput';
 
 const SubmitButton = styled(Button)`
-	&& {
-		cursor: pointer;
-		width: 100%;
-		margin-top: 15px !important;
-	}
+	width: 100%;
+	margin-top: 15px;
 	${({ theme }) => theme.mq.s} {
 		margin-top: 30px;
 	}
-	${({ disabled }) =>
-		disabled &&
-		css`
-			content: "";
-			background: #03e9f4;
-			color: ${({ theme }) => theme.dark};
-			cursor: default;
-		`}
 `;
 
 export const ContactSchemaEn = Yup.object().shape({
-	name: Yup.string().required("Your name is required!"),
+	name: Yup.string().required('Your name is required!'),
 	email: Yup.string()
-		.email("Email address is invalid!")
-		.required("Email address is required!"),
+		.email('Email address is invalid!')
+		.required('Email address is required!'),
 	message: Yup.string()
-		.min(10, "Message is too short!")
-		.required("Message is required!"),
+		.min(10, 'Message is too short!')
+		.required('Message is required!'),
 });
 export const ContactSchemaPl = Yup.object().shape({
-	name: Yup.string().required("Podaj swoje imię"),
+	name: Yup.string().required('Podaj swoje imię'),
 	email: Yup.string()
-		.email("Adres email jest niepoprawny")
-		.required("Wpisz swój adres email"),
+		.email('Adres email jest niepoprawny')
+		.required('Wpisz swój adres email'),
 	message: Yup.string()
-		.min(10, "Wiadomość jest za krótka")
-		.required("Podaj treść wiadomości"),
+		.min(10, 'Wiadomość jest za krótka')
+		.required('Podaj treść wiadomości'),
 });
 
 const initialValues = {
-	name: "",
-	email: "",
-	message: "",
+	name: '',
+	email: '',
+	message: '',
 };
 
 const encode = data => {
 	return Object.keys(data)
-		.map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-		.join("&");
+		.map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+		.join('&');
 };
 
 const ContactForm = ({ lang }) => {
 	let initialSubmitBtnContent, successSubmitBtnContent, errorSubmitBtnContent;
-	if (lang === "en") {
+	if (lang === 'en') {
 		initialSubmitBtnContent = {
-			content: "Send message",
-			color: "blue",
+			content: 'Send message',
+			color: 'blue',
 		};
 		successSubmitBtnContent = {
-			content: "Success!",
-			color: "green",
+			content: 'Success!',
+			color: 'green',
 		};
-		errorSubmitBtnContent = { content: "Something went wrong!", color: "red" };
-	} else if (lang === "pl") {
+		errorSubmitBtnContent = { content: 'Something went wrong!', color: 'red' };
+	} else if (lang === 'pl') {
 		initialSubmitBtnContent = {
-			content: "Wyślij",
-			color: "blue",
+			content: 'Wyślij',
+			color: 'blue',
 		};
 		successSubmitBtnContent = {
-			content: "Wysłano!",
-			color: "green",
+			content: 'Wysłano!',
+			color: 'green',
 		};
 		errorSubmitBtnContent = {
-			content: "Coś poszło nie tak :(",
-			color: "red",
+			content: 'Coś poszło nie tak :(',
+			color: 'red',
 		};
 	}
 	const [submitBtn, setSubmitBtn] = useState(initialSubmitBtnContent);
@@ -91,13 +80,13 @@ const ContactForm = ({ lang }) => {
 	const sendForm = (values, { setSubmitting, resetForm }) => {
 		const sendMessage = async () => {
 			try {
-				await fetch("/", {
-					method: "POST",
+				await fetch('/', {
+					method: 'POST',
 					headers: {
-						"Content-Type": "application/x-www-form-urlencoded",
+						'Content-Type': 'application/x-www-form-urlencoded',
 					},
 					body: encode({
-						"form-name": "contact-form",
+						'form-name': 'contact-form',
 						...values,
 					}),
 				});
@@ -114,13 +103,12 @@ const ContactForm = ({ lang }) => {
 		sendMessage();
 	};
 
-	if (lang === "en") {
+	if (lang === 'en') {
 		return (
 			<Formik
 				initialValues={initialValues}
 				validationSchema={ContactSchemaEn}
-				onSubmit={sendForm}
-			>
+				onSubmit={sendForm}>
 				{({
 					values,
 					errors,
@@ -135,8 +123,7 @@ const ContactForm = ({ lang }) => {
 						autoComplete="off"
 						name="contact-form"
 						data-netlify="true"
-						data-netlify-honeypot="bot-field"
-					>
+						data-netlify-honeypot="bot-field">
 						<Field type="hidden" name="form-name" />
 						<Field type="hidden" name="bot-field" />
 						<FormInput
@@ -170,23 +157,19 @@ const ContactForm = ({ lang }) => {
 						<SubmitButton
 							color={submitBtn.color}
 							label={submitBtn.content}
-							disabled={isSubmitting || submitBtn.color !== "blue"}
-							isSubmitting={isSubmitting}
+							disabled={isSubmitting || submitBtn.color !== 'blue'}
 							type="submit"
-						>
-							{!isSubmitting && submitBtn.content}
-						</SubmitButton>
+						/>
 					</Form>
 				)}
 			</Formik>
 		);
-	} else if (lang === "pl") {
+	} else if (lang === 'pl') {
 		return (
 			<Formik
 				initialValues={initialValues}
 				validationSchema={ContactSchemaPl}
-				onSubmit={sendForm}
-			>
+				onSubmit={sendForm}>
 				{({
 					values,
 					errors,
@@ -201,8 +184,7 @@ const ContactForm = ({ lang }) => {
 						autoComplete="off"
 						name="contact-form"
 						data-netlify="true"
-						data-netlify-honeypot="bot-field"
-					>
+						data-netlify-honeypot="bot-field">
 						<Field type="hidden" name="form-name" />
 						<Field type="hidden" name="bot-field" />
 						<FormInput
@@ -236,12 +218,9 @@ const ContactForm = ({ lang }) => {
 						<SubmitButton
 							color={submitBtn.color}
 							label={submitBtn.content}
-							disabled={isSubmitting || submitBtn.color !== "blue"}
-							isSubmitting={isSubmitting}
+							disabled={isSubmitting || submitBtn.color !== 'blue'}
 							type="submit"
-						>
-							{!isSubmitting && submitBtn.content}
-						</SubmitButton>
+						/>
 					</Form>
 				)}
 			</Formik>
