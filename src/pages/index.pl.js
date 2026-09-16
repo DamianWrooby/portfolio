@@ -80,7 +80,7 @@ const IndexPage = ({ data }) => {
 				<Navigation lang="pl" />
 				<Header lang="pl" />
 				<main>
-					<AboutMe lang="pl" />
+					{/* <AboutMe lang="pl" /> */}
 					<Technologies lang="pl" />
 					<BlogTiles posts={postsList} lang="pl" />
 					<ProjectTiles projects={projectList} lang="pl" />
