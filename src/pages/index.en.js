@@ -81,7 +81,7 @@ const IndexPage = ({ data }) => {
 				<Navigation lang="en" />
 				<Header lang="en" />
 				<main>
-					<AboutMe lang="en" />
+					{/* <AboutMe lang="en" /> */}
 					<Technologies lang="en" />
 					<BlogTiles posts={postsList} lang="en" />
 					<ProjectTiles projects={projectList} lang="en" />
