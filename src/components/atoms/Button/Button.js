@@ -16,7 +16,7 @@ const neonGlow = color => css`
 
 const variantStyles = {
 	blue: css`
-		background: ${({ theme }) => theme.neonBlue};
+		background: ${({ theme }) => theme.neonBlueDeep};
 		color: ${({ theme }) => theme.dark};
 		&:hover {
 			background: ${({ theme }) => theme.dark};
@@ -47,7 +47,7 @@ const StyledButton = styled.button`
 	font-size: ${({ theme }) => theme.fontSize.xs};
 	font-weight: ${({ theme }) => theme.regular};
 	text-align: center;
-	background: ${({ theme }) => theme.neonBlue};
+	background: ${({ theme }) => theme.neonBlueDeep};
 	color: ${({ theme }) => theme.dark};
 	display: inline-block;
 	font-family: ${({ theme }) => theme.fonts.subFont};
@@ -70,9 +70,9 @@ const StyledButton = styled.button`
 			background: transparent;
 			color: ${theme.neonBlue};
 			&:hover {
-				background: ${theme.neonBlue};
+				background: ${theme.neonBlueDeep};
 				color: ${theme.dark};
-				${neonGlow(theme.neonBlue)};
+				${neonGlow(theme.neonBlueDeep)};
 			}
 		`};
 
@@ -111,7 +111,7 @@ const StyledSpan = styled.span`
 	position: absolute;
 	display: block;
 	background: ${({ $color, theme }) =>
-		$color === 'green' || $color === 'red' ? theme.dark : theme.neonBlue};
+		$color === 'green' || $color === 'red' ? theme.dark : theme.neonBlueDeep};
 
 	&:nth-child(1) {
 		top: 0;
@@ -121,7 +121,7 @@ const StyledSpan = styled.span`
 		${({ $animated, theme }) =>
 			$animated &&
 			css`
-				background: linear-gradient(90deg, transparent, ${theme.neonBlue});
+				background: linear-gradient(90deg, transparent, ${theme.neonBlueDeep});
 				animation: ${animate1} 1s linear infinite;
 			`}
 	}
@@ -134,7 +134,7 @@ const StyledSpan = styled.span`
 			$animated &&
 			css`
 				top: -100%;
-				background: linear-gradient(180deg, transparent, ${theme.neonBlue});
+				background: linear-gradient(180deg, transparent, ${theme.neonBlueDeep});
 				animation: ${animate2} 1s linear infinite;
 				animation-delay: 0.25s;
 			`}
@@ -147,7 +147,7 @@ const StyledSpan = styled.span`
 		${({ $animated, theme }) =>
 			$animated &&
 			css`
-				background: linear-gradient(270deg, transparent, ${theme.neonBlue});
+				background: linear-gradient(270deg, transparent, ${theme.neonBlueDeep});
 				animation: ${animate3} 1s linear infinite;
 				animation-delay: 0.5s;
 			`}
@@ -161,7 +161,7 @@ const StyledSpan = styled.span`
 			$animated &&
 			css`
 				bottom: -100%;
-				background: linear-gradient(360deg, transparent, ${theme.neonBlue});
+				background: linear-gradient(360deg, transparent, ${theme.neonBlueDeep});
 				animation: ${animate4} 1s linear infinite;
 				animation-delay: 0.75s;
 			`}

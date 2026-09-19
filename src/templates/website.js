@@ -119,6 +119,10 @@ const ButtonsWrapper = styled.div`
 	flex-flow: row nowrap;
 	margin: 30px 0;
 	justify-content: flex-start;
+	gap: 20px;
+	${({ theme }) => theme.mq.s} {
+		gap: 50px;
+	}
 `;
 
 const WebsiteTemplate = ({ data }) => {

@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
+import 'jest-styled-components';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 
@@ -110,5 +111,29 @@ describe('Button', () => {
 	it('uses the submit type when requested', () => {
 		renderWithTheme(<Button label="Send" type="submit" />);
 		expect(screen.getByRole('button')).toHaveAttribute('type', 'submit');
+	});
+
+	it('uses the deep neon cyan for its default background', () => {
+		renderWithTheme(<Button label="Click me" />);
+		expect(screen.getByRole('button')).toHaveStyleRule(
+			'background',
+			theme.neonBlueDeep,
+		);
+	});
+
+	it('uses the bright neon cyan for animated label text', () => {
+		renderWithTheme(<Button label="Click me" animated />);
+		expect(screen.getByRole('button')).toHaveStyleRule(
+			'color',
+			theme.neonBlue,
+		);
+	});
+
+	it('keeps its variant colour while disabled', () => {
+		renderWithTheme(<Button label="Success!" color="green" disabled />);
+		expect(screen.getByRole('button')).toHaveStyleRule(
+			'background',
+			theme.green,
+		);
 	});
 });
