@@ -1,21 +1,17 @@
-import gsap from "gsap";
-import React, { useEffect, useRef, useState } from "react";
-import styled from "styled-components";
+import gsap from 'gsap';
+import React, { useEffect, useRef, useState } from 'react';
+import styled from 'styled-components';
 
-import userIcon from "../../../assets/icons/user.svg";
-import getDate from "../../../utils/getDate";
-import sortBy from "../../../utils/sortBy";
-import Button from "../../atoms/Button/Button";
-import CommentForm from "../../molecules/Forms/CommentForm";
+import userIcon from '../../../assets/icons/user.svg';
+import getDate from '../../../utils/getDate';
+import sortBy from '../../../utils/sortBy';
+import Button from '../../atoms/Button/Button';
+import CommentForm from '../../molecules/Forms/CommentForm';
 
 const ReplyButton = styled(Button)`
-	font-size: ${({ theme }) => theme.fontSize.s} !important;
-	padding: 15px 10px !important;
-	cursor: pointer !important;
-	margin: 30px 0 !important;
-	${({ theme }) => theme.mq.s} {
-		margin-top: 30px;
-	}
+	font-size: ${({ theme }) => theme.fontSize.s};
+	padding: 15px 10px;
+	margin: 30px 0;
 `;
 
 const StyledSingleComment = styled.div`
@@ -25,7 +21,7 @@ const StyledSingleComment = styled.div`
 const CommentContainer = styled.article`
 	border: 1px solid ${({ theme }) => theme.gray};
 	border-radius: 10px;
-	margin: 2rem 0 0 ${props => (props.child ? "20px" : "0")};
+	margin: 2rem 0 0 ${props => (props.child ? '20px' : '0')};
 	padding: 3rem;
 	.flex-container {
 		display: flex;
@@ -51,8 +47,8 @@ const CommentContainer = styled.article`
 
 const SingleComment = ({ comment, lang }) => {
 	const dateObj = comment.timestamp ? new Date(comment.timestamp) : undefined;
-	const time = dateObj ? getDate(dateObj, lang) : "";
-	const timeString = time ? `${time.date} ${time.month} ${time.year}` : "";
+	const time = dateObj ? getDate(dateObj, lang) : '';
+	const timeString = time ? `${time.date} ${time.month} ${time.year}` : '';
 
 	return (
 		<StyledSingleComment>
@@ -79,17 +75,17 @@ const Comment = ({ lang, comment, children, postId }) => {
 			[...commentList.children].map(child => {
 				gsap.from(child, {
 					autoAlpha: 0,
-					y: "-=20",
+					y: '-=20',
 					scrollTrigger: {
 						trigger: child,
-						start: "top bottom-=50px",
+						start: 'top bottom-=50px',
 					},
 				});
 			});
 		}
 	}, []);
 
-	const nestedCommentList = sortBy(children, "timestamp").map(comment => (
+	const nestedCommentList = sortBy(children, 'timestamp').map(comment => (
 		<CommentContainer child className="comment-reply" key={comment.id}>
 			<SingleComment comment={comment} lang={lang} />
 		</CommentContainer>
@@ -104,19 +100,15 @@ const Comment = ({ lang, comment, children, postId }) => {
 				{showReplyBox ? (
 					<div>
 						<ReplyButton
-							renderAs="button"
-							label={lang === "en" ? "Cancel Reply" : "Anuluj"}
-							clickHandler={() => setShowReplyBox(false)}
-							animated={false}
+							label={lang === 'en' ? 'Cancel Reply' : 'Anuluj'}
+							onClick={() => setShowReplyBox(false)}
 						/>
 						<CommentForm lang={lang} parentId={comment.id} postId={postId} />
 					</div>
 				) : (
 					<ReplyButton
-						renderAs="button"
-						label={lang === "en" ? "Reply" : "Odpowiedz"}
-						clickHandler={() => setShowReplyBox(true)}
-						animated={false}
+						label={lang === 'en' ? 'Reply' : 'Odpowiedz'}
+						onClick={() => setShowReplyBox(true)}
 					/>
 				)}
 			</div>

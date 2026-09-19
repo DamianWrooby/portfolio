@@ -4,15 +4,15 @@ import {
 	doc,
 	increment,
 	updateDoc,
-} from "firebase/firestore";
-import { Field, Form, Formik } from "formik";
-import React, { useState } from "react";
-import styled, { css } from "styled-components";
-import * as Yup from "yup";
+} from 'firebase/firestore';
+import { Field, Form, Formik } from 'formik';
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import * as Yup from 'yup';
 
-import { db } from "../../../services/firebase";
-import Button from "../../atoms/Button/Button";
-import FormInput from "./FormInput";
+import { db } from '../../../services/firebase';
+import Button from '../../atoms/Button/Button';
+import FormInput from './FormInput';
 
 const StyledFormInput = styled(FormInput)`
 	padding: 0.5rem 1rem;
@@ -25,61 +25,52 @@ const Honeypot = styled(Field)`
 const SubmitButton = styled(Button)`
 	font-size: ${({ theme }) => theme.fontSize.s};
 	padding: 15px 10px;
-	cursor: pointer;
-	margin-top: 15px !important;
+	margin-top: 15px;
 	${({ theme }) => theme.mq.s} {
 		margin-top: 30px;
 	}
-	${({ disabled }) =>
-		disabled &&
-		css`
-			content: "";
-			background: #03e9f4;
-			color: ${({ theme }) => theme.dark};
-			cursor: default;
-		`}
 `;
 
 const CommentSchemaEn = Yup.object().shape({
-	author: Yup.string().required("Your name is required!"),
-	content: Yup.string().required("Provide comment message!"),
+	author: Yup.string().required('Your name is required!'),
+	content: Yup.string().required('Provide comment message!'),
 });
 const CommentSchemaPl = Yup.object().shape({
-	author: Yup.string().required("Podaj swoje imię"),
-	content: Yup.string().required("Wpisz treść komentarza"),
+	author: Yup.string().required('Podaj swoje imię'),
+	content: Yup.string().required('Wpisz treść komentarza'),
 });
 
 const initialValues = {
-	author: "",
-	content: "",
+	author: '',
+	content: '',
 	honeypot: false,
 };
 
 const CommentForm = ({ lang, postId, parentId = null }) => {
 	let initialSubmitBtnContent, successSubmitBtnContent, errorSubmitBtnContent;
 
-	if (lang === "en") {
+	if (lang === 'en') {
 		initialSubmitBtnContent = {
-			content: "Submit",
-			color: "blue",
+			content: 'Submit',
+			color: 'blue',
 		};
 		successSubmitBtnContent = {
-			content: "Success!",
-			color: "green",
+			content: 'Success!',
+			color: 'green',
 		};
-		errorSubmitBtnContent = { content: "Something went wrong!", color: "red" };
-	} else if (lang === "pl") {
+		errorSubmitBtnContent = { content: 'Something went wrong!', color: 'red' };
+	} else if (lang === 'pl') {
 		initialSubmitBtnContent = {
-			content: "Wyślij",
-			color: "blue",
+			content: 'Wyślij',
+			color: 'blue',
 		};
 		successSubmitBtnContent = {
-			content: "Wysłano!",
-			color: "green",
+			content: 'Wysłano!',
+			color: 'green',
 		};
 		errorSubmitBtnContent = {
-			content: "Coś poszło nie tak :(",
-			color: "red",
+			content: 'Coś poszło nie tak :(',
+			color: 'red',
 		};
 	}
 
@@ -92,7 +83,7 @@ const CommentForm = ({ lang, postId, parentId = null }) => {
 	const sendForm = (values, { setSubmitting, resetForm }) => {
 		const sendComment = async () => {
 			try {
-				await addDoc(collection(db, "comments"), {
+				await addDoc(collection(db, 'comments'), {
 					author: values.author,
 					content: values.content,
 					postId,
@@ -107,13 +98,13 @@ const CommentForm = ({ lang, postId, parentId = null }) => {
 				setSubmitting(false);
 				setSubmitBtn(errorSubmitBtnContent);
 				setTimeout(clearButton, 1500);
-				console.warn("Error adding document: ", e);
+				console.warn('Error adding document: ', e);
 			}
 		};
 
 		const sendBotInfo = async () => {
 			try {
-				const counterRef = doc(db, "bot-info", "counter");
+				const counterRef = doc(db, 'bot-info', 'counter');
 
 				await updateDoc(counterRef, {
 					value: increment(1),
@@ -126,20 +117,19 @@ const CommentForm = ({ lang, postId, parentId = null }) => {
 				setSubmitting(false);
 				setSubmitBtn(errorSubmitBtnContent);
 				setTimeout(clearButton, 1500);
-				console.warn("Error adding document: ", e);
+				console.warn('Error adding document: ', e);
 			}
 		};
 
 		values.honeypot ? sendBotInfo() : sendComment();
 	};
 
-	if (lang === "en") {
+	if (lang === 'en') {
 		return (
 			<Formik
 				initialValues={initialValues}
 				validationSchema={CommentSchemaEn}
-				onSubmit={sendForm}
-			>
+				onSubmit={sendForm}>
 				{({
 					values,
 					errors,
@@ -173,23 +163,19 @@ const CommentForm = ({ lang, postId, parentId = null }) => {
 						<SubmitButton
 							color={submitBtn.color}
 							label={submitBtn.content}
-							disabled={isSubmitting || submitBtn.color !== "blue"}
-							isSubmitting={isSubmitting}
+							disabled={isSubmitting || submitBtn.color !== 'blue'}
 							type="submit"
-						>
-							{!isSubmitting && submitBtn.content}
-						</SubmitButton>
+						/>
 					</Form>
 				)}
 			</Formik>
 		);
-	} else if (lang === "pl") {
+	} else if (lang === 'pl') {
 		return (
 			<Formik
 				initialValues={initialValues}
 				validationSchema={CommentSchemaPl}
-				onSubmit={sendForm}
-			>
+				onSubmit={sendForm}>
 				{({
 					values,
 					errors,
@@ -223,12 +209,9 @@ const CommentForm = ({ lang, postId, parentId = null }) => {
 						<SubmitButton
 							color={submitBtn.color}
 							label={submitBtn.content}
-							disabled={isSubmitting || submitBtn.color !== "blue"}
-							isSubmitting={isSubmitting}
+							disabled={isSubmitting || submitBtn.color !== 'blue'}
 							type="submit"
-						>
-							{!isSubmitting && submitBtn.content}
-						</SubmitButton>
+						/>
 					</Form>
 				)}
 			</Formik>

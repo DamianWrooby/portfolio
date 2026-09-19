@@ -19,6 +19,7 @@ export const theme = {
 	darker: "#020d14",
 	red100: "hsla(348, 100%, 63%, 0.8)",
 	neonBlue: "#16ffff",
+	neonBlueDeep: "#03e9f4",
 	darkBlue: "#16232e",
 	green: "#41ff40",
 	red: "#d43227",
