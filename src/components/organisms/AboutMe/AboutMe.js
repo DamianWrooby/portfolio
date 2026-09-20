@@ -14,13 +14,21 @@ const content = {
 			heading: 'About Me',
 			paragraph: 'Behind the Code: My Story and Expertise',
 		},
-		role: 'Frontend Engineer',
-		facts: ['4+ years commercial experience', 'Angular', 'TypeScript'],
+		role: 'Frontend Engineer | Angular',
+		facts: [
+			'Angular expert',
+			'Microfrontends',
+			'TypeScript',
+			'RxJS & NgRx',
+			'Node.js & NestJS',
+			'AI integrations',
+		],
 		intro: (
 			<>
-				I enjoy working on complex applications where architecture,
-				maintainability, and a thoughtful user experience matter as much as
-				getting the feature to work.
+				Angular is my home ground - 4+ years of enterprise-scale microfrontends
+				for international clients. Around it I keep building out backend, data
+				and AI skills, because the interesting problems rarely stop at the
+				browser.
 			</>
 		),
 		tabsLabel: 'About me sections',
@@ -32,21 +40,23 @@ const content = {
 					<>
 						Most of my professional experience comes from large-scale enterprise
 						applications, including <strong>Angular</strong> microfrontend
-						architectures, state management with <strong>NgRx</strong> and{' '}
-						<strong>RxJS</strong>, Java-based backends, and event-driven
-						systems. I&apos;ve worked on applications that have to stay
-						maintainable for years, modernize in steps rather than rewrites, and
-						absorb changes without breaking the rest of a large codebase.
+						architectures, state management with <strong>NgRx</strong>,{' '}
+						<strong>RxJS</strong> and the <strong>signals</strong> API,
+						Java-based backends, and event-driven systems. I&apos;ve led
+						framework migrations across 8+ microfrontends, cut bundle sizes,
+						mentored junior developers, and worked on applications that have to
+						stay maintainable for years, modernize in steps rather than
+						rewrites, and absorb changes without breaking the rest of a large
+						codebase.
 					</>,
 					<>
 						I&apos;m particularly interested in the engineering side of frontend
 						development: designing clear boundaries, reducing unnecessary
 						complexity, improving performance, and finding pragmatic solutions
-						that remain understandable months or years later. Recently,
-						I&apos;ve also been expanding toward backend development with{' '}
-						<strong>Java</strong>, <strong>Spring Boot</strong>,{' '}
-						<strong>Node.js</strong>, and databases, with the goal of becoming a
-						more versatile full-stack engineer.
+						that remain understandable months or years later. I also work beyond
+						the frontend - <strong>Node.js</strong>, <strong>NestJS</strong>,
+						REST API design and relational databases - because understanding the
+						whole stack makes the frontend decisions better ones.
 					</>,
 				],
 			},
@@ -56,17 +66,21 @@ const content = {
 				paragraphs: [
 					<>
 						Outside of my professional work, I like building things from
-						scratch. One example is <strong>GymCraft</strong>, a personal
-						project combining training analytics, Garmin data, AI-generated
-						insights, and workout planning. It lets me experiment with product
-						development, AI, APIs, data processing, and everything else that
-						comes with turning an idea into a working application.
+						scratch. One example is <strong>GymCraft</strong>, a{' '}
+						<strong>SvelteKit</strong> project combining training analytics,
+						Garmin data, AI-generated insights, and workout planning. Another is{' '}
+						<strong>MC Booking</strong>, an Angular + Supabase PWA for managing
+						bookings and crew assignments in live-event production. They let me
+						experiment with product development, AI, APIs, data processing, and
+						everything else that comes with turning an idea into a working
+						application.
 					</>,
 					<>
 						I&apos;m curious about new technologies, particularly AI-assisted
-						software development, and I experiment with tools and workflows that
-						can make development more efficient without sacrificing code
-						quality.
+						software development. I set up workflows for AI coding agents such
+						as <strong>Claude Code</strong> at work as well, and I keep
+						experimenting with tools that make development more efficient
+						without sacrificing code quality.
 					</>,
 				],
 			},
@@ -93,13 +107,21 @@ const content = {
 			heading: 'Kim jestem?',
 			paragraph: 'Poznaj moją historię i doświadczenie',
 		},
-		role: 'Frontend Engineer',
-		facts: ['4+ lata doświadczenia komercyjnego', 'Angular', 'TypeScript'],
+		role: 'Frontend Engineer | Angular',
+		facts: [
+			'Angular Expert',
+			'Mikrofrontendy',
+			'TypeScript',
+			'RxJS i NgRx',
+			'Node.js i NestJS',
+			'Integracje AI',
+		],
 		intro: (
 			<>
-				Lubię pracować nad złożonymi aplikacjami, w których równie ważne jak
-				samo dostarczenie funkcjonalności są architektura, łatwość utrzymania i
-				przemyślany interfejs użytkownika.
+				Angular to mój główny obszar - ponad 4 lata pracy przy mikrofrontendach
+				klasy enterprise dla klientów międzynarodowych. Wokół niego rozwijam
+				kompetencje backendowe, bazodanowe i AI, bo ciekawe problemy rzadko
+				kończą się na przeglądarce.
 			</>
 		),
 		tabsLabel: 'Sekcje o mnie',
@@ -112,22 +134,23 @@ const content = {
 						Większość mojego doświadczenia zawodowego zdobyłem przy dużych
 						aplikacjach enterprise, pracując m.in. z architekturą
 						mikrofrontendów w <strong>Angularze</strong>, <strong>NgRx</strong>,{' '}
-						<strong>RxJS</strong>, backendem opartym o Javę oraz systemami
-						wykorzystującymi komunikację zdarzeniową. Pracowałem przy
-						projektach, które muszą pozostać utrzymywalne przez lata,
-						modernizować się etapami zamiast przepisywania od zera i przyjmować
-						zmiany bez rozbijania reszty dużej bazy kodu.
+						<strong>RxJS</strong> i <strong>signals</strong> API, backendem
+						opartym o Javę oraz systemami wykorzystującymi komunikację
+						zdarzeniową. Prowadziłem migracje frameworka w 8+ mikrofrontendach,
+						optymalizowałem rozmiar bundla, mentorowałem młodszych programistów.
+						Pracowałem przy projektach, które muszą pozostać utrzymywalne przez
+						lata, modernizować się etapami zamiast przepisywania od zera i
+						przyjmować zmiany bez rozbijania reszty dużej bazy kodu.
 					</>,
 					<>
 						Szczególnie interesuje mnie inżynierska strona frontend
 						developmentu: projektowanie czytelnych granic między elementami
 						systemu, ograniczanie niepotrzebnej złożoności, poprawa wydajności
 						oraz szukanie pragmatycznych rozwiązań, które pozostają zrozumiałe
-						również wiele miesięcy czy lat później. Rozwijam również kompetencje
-						backendowe, pracując z <strong>Javą</strong>,{' '}
-						<strong>Spring Bootem</strong>, <strong>Node.js</strong> i bazami
-						danych, ponieważ docelowo chcę być bardziej wszechstronnym
-						inżynierem full-stack.
+						również wiele miesięcy czy lat później. Pracuję też poza samym
+						frontendem - <strong>Node.js</strong>, <strong>NestJS</strong>,
+						projektowanie REST API i bazy relacyjne - ponieważ rozumienie całego
+						stacku pozwala podejmować lepsze decyzje po stronie frontendu.
 					</>,
 				],
 			},
@@ -137,18 +160,22 @@ const content = {
 				paragraphs: [
 					<>
 						Poza pracą zawodową lubię budować własne projekty od podstaw. Jednym
-						z nich jest <strong>GymCraft</strong> — aplikacja łącząca analizę
-						treningów, dane z Garmina, generowane przez AI analizy oraz
-						planowanie treningów. To dla mnie okazja do eksperymentowania nie
+						z nich jest <strong>GymCraft</strong> - aplikacja w{' '}
+						<strong>SvelteKicie</strong> łącząca analizę treningów, dane z
+						Garmina, generowane przez AI analizy oraz planowanie treningów.
+						Drugim jest <strong>MC Booking</strong> - PWA na Angularze i
+						Supabase do zarządzania rezerwacjami i przydziałami zespołu przy
+						produkcjach eventowych. To dla mnie okazja do eksperymentowania nie
 						tylko z programowaniem, ale również z projektowaniem produktu, AI,
 						API, przetwarzaniem danych i wszystkimi problemami, które pojawiają
 						się przy zamienianiu pomysłu w działającą aplikację.
 					</>,
 					<>
 						Interesuję się nowymi technologiami, szczególnie wykorzystaniem AI w
-						procesie tworzenia oprogramowania. Eksperymentuję z narzędziami i
-						workflow, które pozwalają zwiększać produktywność bez rezygnowania z
-						jakości kodu.
+						procesie tworzenia oprogramowania. W pracy konfiguruję również
+						workflow dla agentów AI takich jak <strong>Claude Code</strong> i
+						nieustannie eksperymentuję z narzędziami, które pozwalają zwiększać
+						produktywność bez rezygnowania z jakości kodu.
 					</>,
 				],
 			},
@@ -201,6 +228,8 @@ const InnerWrapper = styled.div`
 	align-items: center;
 	gap: 30px;
 	width: 100%;
+	max-width: 1000px;
+	margin: 0 auto;
 	${({ theme }) => theme.mq.lg} {
 		flex-direction: row;
 		align-items: center;
@@ -293,13 +322,15 @@ const Intro = styled.p`
 	max-width: 60ch;
 	margin: 0 auto;
 	${({ theme }) => theme.mq.lg} {
+		max-width: none;
 		margin: 0;
 	}
 `;
 
 const TabsWrapper = styled.div`
 	width: 100%;
-	margin-top: 50px;
+	max-width: 1000px;
+	margin: 50px auto 0;
 `;
 
 const TabList = styled.div`
@@ -357,7 +388,7 @@ const Panel = styled.div`
 		font-size: ${({ theme }) => theme.fontSize.lg};
 		color: ${({ theme }) => theme.lightGray};
 		line-height: 1.6;
-		max-width: 75ch;
+		max-width: 100%;
 		animation: fade-in 0.4s ease both;
 	}
 	p + p {
