@@ -1,21 +1,13 @@
-# FROM node:16-bullseye
-# EXPOSE 8000
+# See Dockerfile for why Node 22.
+FROM node:22-alpine
 
-# RUN npm install -g gatsby-cli
-# WORKDIR /app
-# COPY ./package.json /app
-# RUN npm cache clean --force
-# RUN npm install --legacy-peer-deps
-# COPY . /app
-
-# CMD ["gatsby", "develop", "-H", "0.0.0.0" ]
-
-FROM node:14-alpine
 EXPOSE 8000
-RUN npm install -g gatsby-cli
 WORKDIR /app
-COPY ./package.json /app
-RUN npm cache clean --force
-RUN npm install
-COPY . /app
-CMD ["gatsby", "develop", "-H", "0.0.0.0" ]
+
+COPY package.json package-lock.json ./
+RUN npm ci
+
+COPY . .
+
+# -H 0.0.0.0 so the dev server is reachable from outside the container.
+CMD ["npx", "gatsby", "develop", "-H", "0.0.0.0"]
