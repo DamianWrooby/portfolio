@@ -96,7 +96,6 @@ const WebsitesIndex = () => {
 	return (
 		<NavigationProvider>
 			<Layout>
-				<Seo title="Projekty stron internetowych | Damian Wróblewski | Frontend Developer" />
 				<Navigation lang="pl" />
 				<PageTemplate>
 					<div>
@@ -122,3 +121,5 @@ const WebsitesIndex = () => {
 };
 
 export default WebsitesIndex;
+
+export const Head = () => <Seo title="Projekty stron internetowych" lang="pl" />;

@@ -126,8 +126,6 @@ const WebsiteTemplate = ({ data }) => {
 	const contentRef = useRef(null);
 	const website = data.contentfulWebsite;
 	const language = website.language;
-	const titleSufix =
-		language === 'en' ? ' | Web design' : ` | Projekt strony internetowej`;
 
 	const scopeList = website.scopeOfWork.map(el => {
 		return <ScopeItem key={el}>{el}</ScopeItem>;
@@ -166,11 +164,6 @@ const WebsiteTemplate = ({ data }) => {
 	return (
 		<NavigationProvider>
 			<Layout>
-				<Seo
-					title={`${website.title}${titleSufix}`}
-					lang={language}
-					image={website.screenshot.file.url}
-				/>
 				<Navigation lang={website.language} />
 				<main>
 					<ArticleContent>
@@ -258,3 +251,17 @@ WebsiteTemplate.propTypes = {
 };
 
 export default WebsiteTemplate;
+
+export const Head = ({ data }) => {
+	const website = data.contentfulWebsite;
+	const language = website.language;
+	const titleSufix =
+		language === 'en' ? ' | Web design' : ' | Projekt strony internetowej';
+	return (
+		<Seo
+			title={`${website.title}${titleSufix}`}
+			lang={language}
+			image={website.screenshot.file.url}
+		/>
+	);
+};

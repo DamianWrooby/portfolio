@@ -86,11 +86,6 @@ const BlogPost = ({ data }) => {
 	return (
 		<NavigationProvider>
 			<Layout>
-				<Seo
-					title={`${post.title} | Blog`}
-					lang={post.language}
-					image={post.image.file.url}
-				/>
 				<Navigation lang={post.language} />
 				<main>
 					<ArticleContent>
@@ -159,3 +154,15 @@ BlogPost.propTypes = {
 };
 
 export default BlogPost;
+
+export const Head = ({ data }) => {
+	const post = data.contentfulBlogPost;
+	return (
+		<Seo
+			title={`${post.title} | Blog`}
+			description={post.excerpt}
+			lang={post.language}
+			image={post.image.file.url}
+		/>
+	);
+};

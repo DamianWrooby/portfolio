@@ -53,16 +53,6 @@ const Tags = ({ pageContext, data }) => {
 		));
 	filters.sort === 'newest' && (postsList = postsList.reverse());
 
-	const metaDescription =
-		language === 'pl'
-			? 'Strona zawierająca wszystkie posty z tagiem "' + tag + '"'
-			: 'Page containing all posts tagged with "' + tag + '"';
-
-	const metaTitle =
-		language === 'pl'
-			? `Tag: ${tag} | Damian Wróblewski | Frontend Developer`
-			: `Tag: ${tag} | Damian Wróblewski | Frontend Developer`;
-
 	const noPostsInfo =
 		language === 'pl'
 			? 'Nie ma jeszcze żadnych wpisów blogowych z tym tagiem.'
@@ -71,7 +61,6 @@ const Tags = ({ pageContext, data }) => {
 	return (
 		<NavigationProvider>
 			<Layout>
-				<Seo title={metaTitle} description={metaDescription} lang={language} />
 				<Navigation lang={language} />
 				<PageTemplate>
 					<div>
@@ -123,3 +112,12 @@ export const pageQuery = graphql`
 		}
 	}
 `;
+
+export const Head = ({ pageContext }) => {
+	const { tag, language } = pageContext;
+	const description =
+		language === 'pl'
+			? `Strona zawierająca wszystkie posty z tagiem "${tag}"`
+			: `Page containing all posts tagged with "${tag}"`;
+	return <Seo title={`Tag: ${tag}`} description={description} lang={language} />;
+};

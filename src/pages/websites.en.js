@@ -96,7 +96,6 @@ const WebsitesIndex = () => {
 	return (
 		<NavigationProvider>
 			<Layout>
-				<Seo title="Website designs | Damian Wróblewski | Frontend Developer" />
 				<Navigation lang="en" />
 				<PageTemplate>
 					<div>
@@ -122,3 +121,5 @@ const WebsitesIndex = () => {
 };
 
 export default WebsitesIndex;
+
+export const Head = () => <Seo title="Website designs" />;

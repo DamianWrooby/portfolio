@@ -96,7 +96,6 @@ const ProjectsIndex = () => {
 	return (
 		<NavigationProvider>
 			<Layout>
-				<Seo title="Side projects | Damian Wróblewski | Frontend Developer" />
 				<Navigation lang="pl" />
 				<PageTemplate>
 					<div>
@@ -122,3 +121,5 @@ const ProjectsIndex = () => {
 };
 
 export default ProjectsIndex;
+
+export const Head = () => <Seo title="Side projects" lang="pl" />;

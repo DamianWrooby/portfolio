@@ -111,7 +111,6 @@ const BlogIndex = () => {
 	return (
 		<NavigationProvider>
 			<Layout>
-				<Seo title="Blog articles | Damian Wróblewski | Frontend Developer" />
 				<Navigation lang="en" />
 				<PageTemplate>
 					<div>
@@ -143,3 +142,5 @@ const BlogIndex = () => {
 };
 
 export default BlogIndex;
+
+export const Head = () => <Seo title="Blog articles" />;

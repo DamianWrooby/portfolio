@@ -1,102 +1,57 @@
-import { graphql, useStaticQuery } from "gatsby";
-import PropTypes from "prop-types";
-import React from "react";
-import { Helmet } from "react-helmet";
+import PropTypes from 'prop-types';
+import React from 'react';
 
-function Seo({ description = "", lang = "en", meta = [], title, image: metaImage }) {
-	const { site, preview } = useStaticQuery(
-		graphql`
-			query {
-				site {
-					siteMetadata {
-						title
-						description
-						author
-						themeColor
-						keywords
-						siteUrl
-					}
-				}
-				preview: file(relativePath: { regex: "/preview/" }) {
-					childImageSharp {
-						fluid(maxWidth: 1280) {
-							src
-						}
-					}
-				}
-			}
-		`
-	);
+import siteMetadata from '../../../consts/siteMetadata';
 
-	const metaDescription = description || site.siteMetadata.description;
+// Renders document metadata as plain elements, for use inside a Gatsby `Head`
+// export:
+//
+//   export const Head = () => <Seo title="Blog" />;
+//
+// Gatsby hoists whatever `Head` returns into `<head>`, so this component
+// deliberately uses no wrapper, no Helmet and no GraphQL query — `Head` runs
+// outside the page render and cannot call `useStaticQuery`.
+//
+// `<html lang>` is NOT set here; the Head API cannot set html attributes, so
+// gatsby-ssr.js owns it via `setHtmlAttributes`.
+function Seo({ description = '', lang = 'en', meta = [], title, image: metaImage }) {
+	const metaDescription = description || siteMetadata.description;
 
-	const {
-		childImageSharp: { fluid: defaultImage },
-	} = preview;
+	// Contentful returns protocol-relative URLs (`//images.ctfassets.net/...`),
+	// which are invalid in og:image — crawlers need an absolute URL.
+	const absoluteImage = metaImage
+		? metaImage.startsWith('//')
+			? `https:${metaImage}`
+			: metaImage
+		: `${siteMetadata.siteUrl}${siteMetadata.previewImage}`;
 
-	const image = metaImage
-		? `http:${metaImage}`
-		: `${site.siteMetadata.siteUrl}${defaultImage.src}`;
+	// Replaces react-helmet's `titleTemplate`, which the Head API has no
+	// equivalent for. Pages pass the page-specific part only.
+	const fullTitle = title ? `${title} | ${siteMetadata.title}` : siteMetadata.title;
 
 	return (
-		<Helmet
-			htmlAttributes={{
-				lang,
-			}}
-			title={title}
-			titleTemplate={`%s | ${site.siteMetadata.title}`}
-			meta={[
-				{
-					name: `description`,
-					content: metaDescription,
-				},
-				{
-					name: `theme-color`,
-					content: site.siteMetadata.themeColor,
-				},
-				{
-					name: "keywords",
-					content: site.siteMetadata.keywords.join(","),
-				},
-				{
-					property: `og:title`,
-					content: title,
-				},
-				{
-					property: "og:image",
-					content: image,
-				},
-				{
-					property: `og:description`,
-					content: metaDescription,
-				},
-				{
-					property: `og:type`,
-					content: `website`,
-				},
-
-				{
-					name: `twitter:card`,
-					content: `summary`,
-				},
-				{
-					name: `twitter:creator`,
-					content: site.siteMetadata.author,
-				},
-				{
-					name: `twitter:title`,
-					content: title,
-				},
-				{
-					name: `twitter:description`,
-					content: metaDescription,
-				},
-				{
-					name: `google-site-verification`,
-					content: `g8Rk4od0pwwvsr8uyAce569jOBDAjJZauJ-EhIP93s4`,
-				},
-			].concat(meta)}
-		/>
+		<>
+			<title>{fullTitle}</title>
+			<meta name="description" content={metaDescription} />
+			<meta name="theme-color" content={siteMetadata.themeColor} />
+			<meta name="keywords" content={siteMetadata.keywords.join(',')} />
+			<meta property="og:title" content={fullTitle} />
+			<meta property="og:image" content={absoluteImage} />
+			<meta property="og:description" content={metaDescription} />
+			<meta property="og:type" content="website" />
+			<meta property="og:locale" content={lang === 'pl' ? 'pl_PL' : 'en_US'} />
+			<meta name="twitter:card" content="summary" />
+			<meta name="twitter:creator" content={siteMetadata.author} />
+			<meta name="twitter:title" content={fullTitle} />
+			<meta name="twitter:description" content={metaDescription} />
+			<meta
+				name="google-site-verification"
+				content={siteMetadata.googleSiteVerification}
+			/>
+			{meta.map(({ name, property, content }) => (
+				<meta key={name || property} name={name} property={property} content={content} />
+			))}
+		</>
 	);
 }
 

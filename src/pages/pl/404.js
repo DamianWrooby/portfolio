@@ -43,7 +43,6 @@ const FourtyFour = styled.div`
 const NotFoundPage = () => (
 	<NavigationProvider>
 		<Layout>
-			<Seo title="404: Nie znaleziono" />
 			<Navigation lang="pl" />
 			<PageTemplate>
 				<StyledContent>
@@ -57,3 +56,5 @@ const NotFoundPage = () => (
 );
 
 export default NotFoundPage;
+
+export const Head = () => <Seo title="404: Nie znaleziono" lang="pl" />;
