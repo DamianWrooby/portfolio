@@ -6,6 +6,12 @@ import useMedia from 'use-media';
 import debounce from '../../../../utils/debounce';
 
 // Hero layer, so it is the LCP element: loaded eagerly and never lazy.
+// Unlike the other two layers this uses a BLURRED placeholder: GatsbyImage
+// ships the real <img> at opacity 0 and reveals it from JS, so with
+// placeholder: NONE nothing at all painted here until hydration. The blurred
+// base64 is inlined in the SSR HTML and paints with no JS. The other layers
+// keep NONE because GSAP holds them at opacity 0 until the scroll scene runs,
+// long after JS has loaded, so a placeholder there is only wasted bytes.
 // Migrated off gatsby-background-image (unmaintained, declares gatsby ^2-^4).
 // The old `backgroundSize` now drives `objectFit` on the underlying <img>.
 const FirstLayerImg = ({ className }) => {
@@ -35,7 +41,7 @@ const FirstLayerImg = ({ className }) => {
 					gatsbyImageData(
 						quality: 90
 						layout: FULL_WIDTH
-						placeholder: NONE
+						placeholder: BLURRED
 						formats: [AUTO, WEBP, AVIF]
 					)
 				}
