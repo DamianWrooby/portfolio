@@ -47,13 +47,13 @@ const Technologies = ({ lang }) => {
 						{lang === 'en' && (
 							<SectionHeader
 								heading="How I Build Software"
-								paragraph="Frontend-focused product engineer with fullstack and AI integration experience."
+								paragraph="Angular specialist at enterprise scale, with backend, database and AI integration experience around it."
 							/>
 						)}
 						{lang === 'pl' && (
 							<SectionHeader
 								heading="Jak buduję oprogramowanie"
-								paragraph="Inżynier produktu z doświadczeniem we frontendzie, fullstack i integracji AI."
+								paragraph="Specjalista Angulara w skali enterprise, z doświadczeniem backendowym, bazodanowym i w integracjach AI."
 							/>
 						)}
 						<SkillCards lang={lang} />

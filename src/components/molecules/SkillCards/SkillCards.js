@@ -9,31 +9,33 @@ const cards = {
 	en: [
 		{
 			number: '01',
-			title: 'Enterprise Frontend Engineering',
+			title: 'Angular at Enterprise Scale',
 			description:
-				'Building scalable, production-ready SPAs with appropriate state management and performance focus.',
+				'My core specialization — 4+ years of microfrontend systems built to stay maintainable for years.',
 			bullets: [
-				'Angular (enterprise scale)',
-				'RxJS / signal based state',
-				'NgRx / service based state management',
+				'Angular microfrontends (led 8+ migrations, v10 → v21)',
+				'State management - NgRx, RxJS, signals API',
 				'Composition based architecture (interfaces + strategy pattern)',
-				'Performance optimization - bundle size reduction, DOM improvements, performant CSS',
+				'Performance optimization - bundle size reduction, OnPush, performant CSS',
 				'Refactoring - module decoupling, segregation of concerns, cohesion enhancement',
-				'Unit & integration testing (Jasmine, Jest)',
-				'E2E testing (Cypress)'
+				'Unit & integration testing (Jasmine/Karma, Jest)',
+				'E2E testing (Cypress), CI/CD quality gates',
+				'PWA, WCAG accessibility, i18n',
+				'Also productive in React, Vue and SvelteKit',
 			],
 		},
 		{
 			number: '02',
-			title: 'Fullstack & APIs',
+			title: 'Backend, APIs & Data',
 			description:
 				'Designing clean APIs and backend services that integrate seamlessly with frontend layers.',
 			bullets: [
 				'Node.js (Express, NestJS)',
-				'REST API design',
-				'Prisma ORM + PostgreSQL',
+				'REST API design & integration with Java based services',
+				'PostgreSQL, Oracle DB, Prisma ORM',
 				'Backend as a service - Firebase / Supabase',
 				'Auth flows & session handling',
+				'Python microservice design',
 			],
 		},
 		{
@@ -42,55 +44,59 @@ const cards = {
 			description:
 				'Integrating AI capabilities into real-world products — from API wiring to structured output pipelines.',
 			bullets: [
-				'OpenAI API integrations (GymCraft)',
+				'LLM API integrations (GymCraft)',
 				'Prompt engineering for structured JSON outputs',
+				'AI coding agent workflows (Claude Code, Kiro)',
 				'PDF generation & export pipelines',
 				'Garmin Connect integration',
-				'Python microservice design',
+				'Full-stack side projects end to end (SvelteKit, Angular + Supabase)',
 			],
 		},
 	],
 	pl: [
 		{
 			number: '01',
-			title: 'Enterprise Frontend Engineering',
+			title: 'Angular w skali enterprise',
 			description:
-				'Tworzenie skalowalnych aplikacji SPA dla enterprise.',
+				'Moja główna specjalizacja — ponad 4 lata przy mikrofrontendach, które muszą pozostać utrzymywalne przez lata.',
 			bullets: [
-				'Angular (skala enterprise)',
-				'Zarządzanie stanem lokalnym - RxJS / signals',
-				'Zarządzanie stanem aplikacji - NgRx / serwisy',
+				'Mikrofrontendy w Angularze (8+ migracji, v10 → v21)',
+				'Zarządzanie stanem – NgRx, RxJS, signals API',
 				'Architektura oparta na kompozycji (interfejsy + wzorzec strategii)',
-				'Optymalizacja wydajności – redukcja rozmiaru bundla, usprawnienia DOM, wydajny CSS',
-				'Refactoring – zmniejszanie coupling\'u w modułach, rozdzielenie odpowiedzialności, poprawa spójności',
-				'Testy jednostkowe i integracyjne (Jasmine, Jest)',
-				'Testy E2E (Cypress)',
+				'Optymalizacja wydajności – redukcja rozmiaru bundla, OnPush, wydajny CSS',
+				"Refactoring – zmniejszanie coupling'u w modułach, rozdzielenie odpowiedzialności, poprawa spójności",
+				'Testy jednostkowe i integracyjne (Jasmine/Karma, Jest)',
+				'Testy E2E (Cypress), bramki jakości w CI/CD',
+				'PWA, dostępność WCAG, i18n',
+				'Pracuję również w React, Vue i SvelteKicie',
 			],
 		},
 		{
 			number: '02',
-			title: 'Fullstack i API',
+			title: 'Backend, API i dane',
 			description:
 				'Projektowanie przewidywalnych API i serwisów backendowych zintegrowanych z warstwą frontend.',
 			bullets: [
 				'Node.js (Express, NestJS)',
-				'Projektowanie REST API',
-				'Prisma ORM + PostgreSQL',
+				'Projektowanie REST API i integracja z serwisami w Javie',
+				'PostgreSQL, Oracle DB, Prisma ORM',
 				'Backend as a service – Firebase / Supabase',
 				'Uwierzytelnianie i zarządzanie sesjami',
+				'Projektowanie mikroserwisów w Pythonie',
 			],
 		},
 		{
 			number: '03',
 			title: 'AI i Product Engineering',
 			description:
-				'Integrowanie możliwości AI w rzeczywistych produktach — od podłączenia API po pipeline\'y ustrukturyzowanych odpowiedzi.',
+				"Integrowanie możliwości AI w rzeczywistych produktach — od podłączenia API po pipeline'y ustrukturyzowanych odpowiedzi.",
 			bullets: [
-				'Integracje OpenAI API (GymCraft)',
+				'Integracje z API modeli językowych (GymCraft)',
 				'Prompt engineering dla ustrukturyzowanych odpowiedzi JSON',
+				'Workflow dla agentów AI (Claude Code, Kiro)',
 				'Generowanie i eksport PDF',
 				'Integracja Garmin Connect',
-				'Projektowanie mikroserwisów w Pythonie',
+				'Własne projekty full-stack od zera (SvelteKit, Angular + Supabase)',
 			],
 		},
 	],
@@ -116,11 +122,16 @@ const Card = styled.article`
 	border: 1px solid rgba(22, 255, 255, 0.12);
 	border-radius: 12px;
 	padding: 32px 28px;
-	transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+	transition:
+		transform 0.3s ease,
+		box-shadow 0.3s ease,
+		border-color 0.3s ease;
 	&:hover {
 		transform: scale(1.02);
 		border-color: rgba(22, 255, 255, 0.45);
-		box-shadow: 0 0 20px rgba(22, 255, 255, 0.12), 0 0 40px rgba(22, 255, 255, 0.06);
+		box-shadow:
+			0 0 20px rgba(22, 255, 255, 0.12),
+			0 0 40px rgba(22, 255, 255, 0.06);
 	}
 `;
 
