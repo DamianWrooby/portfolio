@@ -54,13 +54,6 @@ module.exports = {
 			},
 		},
 		{
-			resolve: `gatsby-plugin-google-fonts`,
-			options: {
-				fonts: [`Sarala`, `source sans pro\:300,400,700`],
-				display: "swap",
-			},
-		},
-		{
 			resolve: `gatsby-source-contentful`,
 			options: {
 				spaceId: `l8jq2db9qwuj`,
