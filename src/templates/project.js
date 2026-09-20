@@ -114,7 +114,6 @@ const ProjectTemplate = ({ data }) => {
 	const contentRef = useRef(null);
 	const project = data.contentfulProject;
 	const language = data.contentfulProject.language;
-	const titleSufix = language === 'en' ? ' | Project' : ` | Projekt`;
 	const technologies = project.technologies;
 	const techList = technologies.map(el => {
 		return <Item key={el}>{el}</Item>;
@@ -149,11 +148,6 @@ const ProjectTemplate = ({ data }) => {
 	return (
 		<NavigationProvider>
 			<Layout>
-				<Seo
-					title={`${project.title}${titleSufix}`}
-					lang={language}
-					image={project.screenshot.file.url}
-				/>
 				<Navigation lang={project.language} />
 				<main>
 					<ArticleContent>
@@ -246,3 +240,16 @@ ProjectTemplate.propTypes = {
 };
 
 export default ProjectTemplate;
+
+export const Head = ({ data }) => {
+	const project = data.contentfulProject;
+	const language = project.language;
+	const titleSufix = language === 'en' ? ' | Project' : ' | Projekt';
+	return (
+		<Seo
+			title={`${project.title}${titleSufix}`}
+			lang={language}
+			image={project.screenshot.file.url}
+		/>
+	);
+};

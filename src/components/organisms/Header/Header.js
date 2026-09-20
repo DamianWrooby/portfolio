@@ -1,20 +1,14 @@
 import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 import React, { useEffect, useRef } from 'react';
 import { Element } from 'react-scroll';
-import { ScrollMagicPluginGsap } from 'scrollmagic-plugin-gsap';
-import * as ScrollMagic from 'scrollmagic-with-ssr';
 import styled from 'styled-components';
 
 import FirstLayerImg from './BackgroundImages/FirstLayerImg';
 import SecondLayerBg from './BackgroundImages/SecondLayerBg';
 import SecondLayerImg from './BackgroundImages/SecondLayerImg';
 
-let controller = undefined;
-
-if (typeof window !== `undefined`) {
-	ScrollMagicPluginGsap(ScrollMagic, gsap);
-	controller = new ScrollMagic.Controller();
-}
+gsap.registerPlugin(ScrollTrigger);
 
 const Wrapper = styled.header`
 	position: relative;
@@ -168,19 +162,15 @@ const StyledSecondLayerImg = styled(SecondLayerImg)`
 	&& {
 		width: 100%;
 		height: 100%;
-		opacity: 0;
 		z-index: 2;
 	}
 `;
 
 const StyledSecondLayerBg = styled(SecondLayerBg)`
 	&& {
-		opacity: 0;
 		position: absolute;
 		width: 100%;
 		height: 115vh;
-		background-size: cover;
-		background-attachment: fixed;
 		z-index: 1;
 	}
 `;
@@ -343,14 +333,28 @@ const Header = ({ lang }) => {
 				'-=0.5'
 			);
 
-		const scene = new ScrollMagic.Scene({
-			triggerElement: wrapper,
-			duration: 1000,
-			triggerHook: 0,
-		})
-			.addTo(controller)
-			.setTween(tl2.resume())
-			.setPin(wrapper);
+		// Replaces the ScrollMagic scene:
+		//   triggerHook: 0  -> start: 'top top'
+		//   duration: 1000  -> end: '+=1000' (both are pixels of scroll)
+		//   setTween(tl2)   -> scrub, which ties the playhead to scroll position
+		//   setPin(wrapper) -> pin
+		const trigger = ScrollTrigger.create({
+			trigger: wrapper,
+			start: 'top top',
+			end: '+=1000',
+			pin: wrapper,
+			scrub: true,
+			animation: tl2,
+		});
+
+		// ScrollMagic was never torn down here, so a remount left the old scene
+		// pinning a detached node and body overflow could stay 'hidden'.
+		return () => {
+			trigger.kill();
+			tl.kill();
+			tl2.kill();
+			document.body.style.overflow = 'auto';
+		};
 	}, []);
 
 	return (

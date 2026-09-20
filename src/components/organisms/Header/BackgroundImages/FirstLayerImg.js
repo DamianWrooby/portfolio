@@ -1,57 +1,60 @@
-import { StaticQuery, graphql } from "gatsby";
-import BackgroundImage from "gatsby-background-image";
-import React, { useCallback, useEffect, useState } from "react";
-import useMedia from "use-media";
+import { graphql, useStaticQuery } from 'gatsby';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import React, { useCallback, useEffect, useState } from 'react';
+import useMedia from 'use-media';
 
-import debounce from "../../../../utils/debounce";
+import debounce from '../../../../utils/debounce';
 
+// Hero layer, so it is the LCP element: loaded eagerly and never lazy.
+// Migrated off gatsby-background-image (unmaintained, declares gatsby ^2-^4).
+// The old `backgroundSize` now drives `objectFit` on the underlying <img>.
 const FirstLayerImg = ({ className }) => {
-	const [bgSize, setBgSize] = useState("contain");
-	const isWideScreen = useMedia({ minWidth: "1200px" });
+	const [objectFit, setObjectFit] = useState('contain');
+	const isWideScreen = useMedia({ minWidth: '1200px' });
 
 	const setBackground = useCallback(
 		debounce(() => {
-			const size = isWideScreen ? "contain" : "cover";
-			setBgSize(size);
+			setObjectFit(isWideScreen ? 'contain' : 'cover');
 		}, 100),
 		[isWideScreen]
 	);
 
 	useEffect(() => {
 		setBackground();
-	}, [bgSize]);
+	}, [objectFit]);
 
 	useEffect(() => {
-		window.addEventListener("resize", setBackground);
-		return () => window.removeEventListener("resize", setBackground);
+		window.addEventListener('resize', setBackground);
+		return () => window.removeEventListener('resize', setBackground);
 	}, [setBackground]);
 
-	return (
-		<StaticQuery
-			query={graphql`
-				query {
-					realFace: file(relativePath: { eq: "first-layer.png" }) {
-						childImageSharp {
-							fluid(quality: 90) {
-								...GatsbyImageSharpFluid_withWebp
-							}
-						}
-					}
+	const data = useStaticQuery(graphql`
+		query {
+			realFace: file(relativePath: { eq: "first-layer.png" }) {
+				childImageSharp {
+					gatsbyImageData(
+						quality: 90
+						layout: FULL_WIDTH
+						placeholder: NONE
+						formats: [AUTO, WEBP, AVIF]
+					)
 				}
-			`}
-			render={data => {
-				const imageData = data.realFace.childImageSharp.fluid;
+			}
+		}
+	`);
 
-				return (
-					<BackgroundImage
-						style={{ backgroundSize: `${bgSize}`, backgroundPosition: "left" }}
-						Tag="div"
-						className={className}
-						fluid={imageData}
-						backgroundColor={`transparent`}
-					/>
-				);
-			}}
+	const image = getImage(data.realFace);
+
+	return (
+		<GatsbyImage
+			className={className}
+			image={image}
+			alt=""
+			role="presentation"
+			loading="eager"
+			objectFit={objectFit}
+			objectPosition="left"
+			style={{ width: '100%', height: '100%' }}
 		/>
 	);
 };

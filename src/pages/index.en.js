@@ -77,7 +77,6 @@ const IndexPage = ({ data }) => {
 	return (
 		<NavigationProvider>
 			<Layout>
-				<Seo title="Programming portfolio" />
 				<Navigation lang="en" />
 				<Header lang="en" />
 				<main>
@@ -146,3 +145,5 @@ export const pageQuery = graphql`
 `;
 
 export default IndexPage;
+
+export const Head = () => <Seo title="Programming portfolio" />;

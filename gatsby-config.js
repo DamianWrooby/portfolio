@@ -2,32 +2,16 @@ require("dotenv").config({
 	path: `.env.${process.env.NODE_ENV}`,
 });
 
+// Shared with src/components/atoms/Seo/Seo.js, which cannot query GraphQL
+// because it renders inside a Gatsby Head export.
+const siteMetadata = require("./src/consts/siteMetadata");
+
 module.exports = {
-	siteMetadata: {
-		title: `Damian Wróblewski | Frontend Developer`,
-		description: `Tech Blog, Coding Projects & Web Development Showcase`,
-		author: `@damianwrooby`,
-		themeColor: `#16FFFF`,
-		language: "en",
-		keywords: [
-			"frontend developer",
-			"web developer",
-			"web design",
-			"react developer",
-			"react programming",
-		],
-		siteUrl: "https://damianwroblewski.com/",
-	},
+	siteMetadata,
+	// Gatsby 5 default; set explicitly now that
+	// gatsby-plugin-force-trailing-slashes is gone.
+	trailingSlash: `always`,
 	plugins: [
-		{
-			resolve: `gatsby-plugin-google-analytics`,
-			options: {
-				trackingId: "UA-180186424-1",
-				head: true,
-				defer: false,
-			},
-		},
-		`gatsby-plugin-react-helmet`,
 		{
 			resolve: `gatsby-source-filesystem`,
 			options: {
@@ -39,7 +23,6 @@ module.exports = {
 		`gatsby-plugin-styled-components`,
 		`gatsby-plugin-sharp`,
 		`gatsby-plugin-image`,
-		`gatsby-plugin-force-trailing-slashes`,
 		{
 			resolve: "gatsby-plugin-netlify",
 			options: {
@@ -91,12 +74,6 @@ module.exports = {
 				langKeyForNull: "en",
 				useLangKeyLayout: false,
 				prefixDefault: false,
-			},
-		},
-		{
-			resolve: `gatsby-plugin-disqus`,
-			options: {
-				shortname: `damianwroblewski`,
 			},
 		},
 	],

@@ -111,11 +111,6 @@ const BlogIndex = () => {
 	return (
 		<NavigationProvider>
 			<Layout>
-				<Seo
-					title="Artykuły blogowe | Damian Wróblewski | Frontend Developer"
-					description="Interesuje cię świat aplikacji webowych? Sprawdź co nowego na frontendowym blogu!"
-					lang="pl"
-				/>
 				<Navigation lang="pl" />
 				<PageTemplate>
 					<div>
@@ -147,3 +142,11 @@ const BlogIndex = () => {
 };
 
 export default BlogIndex;
+
+export const Head = () => (
+	<Seo
+		title="Artykuły blogowe"
+		description="Interesuje cię świat aplikacji webowych? Sprawdź co nowego na frontendowym blogu!"
+		lang="pl"
+	/>
+);

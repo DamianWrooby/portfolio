@@ -1,57 +1,59 @@
-import { StaticQuery, graphql } from "gatsby";
-import BackgroundImage from "gatsby-background-image";
-import React, { useCallback, useEffect, useState } from "react";
-import useMedia from "use-media";
+import { graphql, useStaticQuery } from 'gatsby';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import React, { useCallback, useEffect, useState } from 'react';
+import useMedia from 'use-media';
 
-import debounce from "../../../../utils/debounce";
+import debounce from '../../../../utils/debounce';
 
+// Revealed by the header scroll timeline, so it must be decoded before the
+// animation runs rather than lazily on scroll.
 const SecondLayerImg = ({ className }) => {
-	const [bgSize, setBgSize] = useState("contain");
-	const isWideScreen = useMedia({ minWidth: "1200px" });
+	const [objectFit, setObjectFit] = useState('contain');
+	const isWideScreen = useMedia({ minWidth: '1200px' });
 
 	const setBackground = useCallback(
 		debounce(() => {
-			const size = isWideScreen ? "contain" : "cover";
-			setBgSize(size);
+			setObjectFit(isWideScreen ? 'contain' : 'cover');
 		}, 100),
 		[isWideScreen]
 	);
 
 	useEffect(() => {
 		setBackground();
-	}, [bgSize]);
+	}, [objectFit]);
 
 	useEffect(() => {
-		window.addEventListener("resize", setBackground);
-		return () => window.removeEventListener("resize", setBackground);
+		window.addEventListener('resize', setBackground);
+		return () => window.removeEventListener('resize', setBackground);
 	}, [setBackground]);
 
-	return (
-		<StaticQuery
-			query={graphql`
-				query {
-					robotFace: file(relativePath: { eq: "header-1.png" }) {
-						childImageSharp {
-							fluid(quality: 90) {
-								...GatsbyImageSharpFluid_withWebp
-							}
-						}
-					}
+	const data = useStaticQuery(graphql`
+		query {
+			robotFace: file(relativePath: { eq: "header-1.png" }) {
+				childImageSharp {
+					gatsbyImageData(
+						quality: 90
+						layout: FULL_WIDTH
+						placeholder: NONE
+						formats: [AUTO, WEBP, AVIF]
+					)
 				}
-			`}
-			render={data => {
-				// Set ImageData.
-				const imageData = data.robotFace.childImageSharp.fluid;
+			}
+		}
+	`);
 
-				return (
-					<BackgroundImage
-						style={{ backgroundSize: `${bgSize}`, backgroundPosition: "left" }}
-						Tag="div"
-						className={className}
-						fluid={imageData}
-						backgroundColor="transparent"></BackgroundImage>
-				);
-			}}
+	const image = getImage(data.robotFace);
+
+	return (
+		<GatsbyImage
+			className={className}
+			image={image}
+			alt=""
+			role="presentation"
+			loading="eager"
+			objectFit={objectFit}
+			objectPosition="left"
+			style={{ width: '100%', height: '100%' }}
 		/>
 	);
 };
