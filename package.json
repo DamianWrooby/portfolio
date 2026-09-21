@@ -8,7 +8,6 @@
 		"firebase": "^12.10.0",
 		"formik": "^2.4.9",
 		"gatsby": "^5.16.1",
-		"gatsby-plugin-google-fonts": "^1.0.1",
 		"gatsby-plugin-i18n": "^1.0.1",
 		"gatsby-plugin-image": "^3.16.0",
 		"gatsby-plugin-manifest": "^5.16.0",
@@ -35,7 +34,7 @@
 	},
 	"devDependencies": {
 		"@testing-library/dom": "^10.4.2",
-		"@testing-library/jest-dom": "^6.9.1",
+		"@testing-library/jest-dom": "^7.0.1",
 		"@testing-library/react": "^16.3.3",
 		"babel-jest": "^30.5.2",
 		"babel-plugin-styled-components": "^2.3.0",
@@ -53,6 +52,9 @@
 		"gatsby"
 	],
 	"license": "0BSD",
+	"engines": {
+		"node": ">=22"
+	},
 	"scripts": {
 		"build": "gatsby build",
 		"develop": "gatsby develop",
