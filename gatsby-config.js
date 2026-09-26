@@ -60,14 +60,5 @@ module.exports = {
 				accessToken: process.env.GATSBY_CONTENTFUL_ACCESS_TOKEN,
 			},
 		},
-		{
-			resolve: "gatsby-plugin-i18n",
-			options: {
-				langKeyDefault: "en",
-				langKeyForNull: "en",
-				useLangKeyLayout: false,
-				prefixDefault: false,
-			},
-		},
 	],
 };

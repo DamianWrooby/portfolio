@@ -90,17 +90,44 @@ exports.createPages = async ({ graphql, actions }) => {
 	});
 };
 
+const DEFAULT_LANGUAGE = 'en';
+const PAGES_DIR = path.resolve('./src/pages');
+
+const getLocalizedRoute = componentPath => {
+	const relative = path.relative(PAGES_DIR, componentPath).split(path.sep).join('/');
+	const [name, ...rest] = relative.split('.');
+	const route = `/${name.replace(/(^|\/)index$/, '')}/`.replace(/\/+/g, '/');
+
+	if (rest.length === 2) {
+		const language = rest[0];
+		const prefix = language === DEFAULT_LANGUAGE ? '' : `/${language}`;
+		return { path: `${prefix}${route}`, language };
+	}
+
+	const [firstSegment] = name.split('/');
+	const language = /^[a-z]{2}$/.test(firstSegment) && name.includes('/') ? firstSegment : DEFAULT_LANGUAGE;
+	return { path: route, language };
+};
+
+const isOwnPage = componentPath => !path.relative(PAGES_DIR, componentPath).startsWith('..');
+
 exports.onCreatePage = async ({ page, actions }) => {
 	const { createPage, deletePage } = actions;
-	// Check if the page is a localized 404
-	if (page.path.match(/^\/[a-z]{2}\/404\/$/)) {
-		const oldPage = { ...page };
-		// Get the language code from the path, and match all paths
-		// starting with this code (apart from other valid paths)
-		const langCode = page.path.split(`/`)[1];
-		page.matchPath = `/${langCode}/*`;
-		// Recreate the modified page
-		deletePage(oldPage);
-		createPage(page);
+
+	if (page.context.slug || !isOwnPage(page.componentPath)) return;
+
+	const { path: localizedPath, language } = getLocalizedRoute(page.componentPath);
+	const newPage = {
+		...page,
+		path: page.path === '/404.html' ? '/404.html' : localizedPath,
+		context: { ...page.context, slug: localizedPath, langKey: language },
+	};
+
+	if (newPage.path.match(/^\/[a-z]{2}\/404\/$/)) {
+		const langCode = newPage.path.split(`/`)[1];
+		newPage.matchPath = `/${langCode}/*`;
 	}
+
+	deletePage(page);
+	createPage(newPage);
 };
