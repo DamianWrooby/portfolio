@@ -2,7 +2,6 @@ import React from 'react';
 import { Element } from 'react-scroll';
 import styled from 'styled-components';
 
-import laptopAnimation from '../../../assets/lotties/laptop.json';
 import Content from '../../atoms/Content/Content';
 import Separator from '../../atoms/Separator/Separator';
 import LottieAnimation from '../../molecules/LottieAnimation/LottieAnimation';
@@ -37,6 +36,8 @@ const LottieWrapper = styled.div`
 	margin-top: 60px;
 `;
 
+const loadLaptopAnimation = () => import('../../../assets/lotties/laptop.json');
+
 const Technologies = ({ lang }) => {
 	return (
 		<Wrapper id="technologies">
@@ -59,7 +60,7 @@ const Technologies = ({ lang }) => {
 						<SkillCards lang={lang} />
 						<LottieWrapper>
 							<LottieAnimation
-								animationData={laptopAnimation}
+								loadAnimationData={loadLaptopAnimation}
 								width={600}
 								height={450}
 							/>
