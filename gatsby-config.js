@@ -1,10 +1,10 @@
-require("dotenv").config({
+require('dotenv').config({
 	path: `.env.${process.env.NODE_ENV}`,
 });
 
 // Shared with src/components/atoms/Seo/Seo.js, which cannot query GraphQL
 // because it renders inside a Gatsby Head export.
-const siteMetadata = require("./src/consts/siteMetadata");
+const siteMetadata = require('./src/consts/siteMetadata');
 
 module.exports = {
 	siteMetadata,
@@ -24,19 +24,19 @@ module.exports = {
 		`gatsby-plugin-sharp`,
 		`gatsby-plugin-image`,
 		{
-			resolve: "gatsby-plugin-netlify",
+			resolve: 'gatsby-plugin-netlify',
 			options: {
 				headers: {
 					// Cache fonts forever
-					"/fonts/*": [
-						"Cache-Control: public",
-						"Cache-Control: max-age=365000000",
-						"Cache-Control: immutable",
+					'/fonts/*': [
+						'Cache-Control: public',
+						'Cache-Control: max-age=365000000',
+						'Cache-Control: immutable',
 					],
 					// Cache images for a week
-					"/images/*": [
-						"Cache-Control: public",
-						"Cache-Control: max-age=604800",
+					'/images/*': [
+						'Cache-Control: public',
+						'Cache-Control: max-age=604800',
 					],
 				},
 			},

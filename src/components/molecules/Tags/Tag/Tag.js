@@ -1,8 +1,8 @@
-import { Link } from "gatsby";
-import React from "react";
-import styled from "styled-components";
+import { Link } from 'gatsby';
+import React from 'react';
+import styled from 'styled-components';
 
-import { tagColors } from "../../../../consts/tag-colors";
+import { tagColors } from '../../../../consts/tag-colors';
 
 const TagElement = styled.p`
 	display: inline-block;
@@ -20,7 +20,7 @@ const TagElement = styled.p`
 `;
 
 const Tag = ({ label, lang }) => {
-	const formatedTag = label.replace(" ", "-").replace(".", "_");
+	const formatedTag = label.replace(' ', '-').replace('.', '_');
 
 	return (
 		<Link to={`/${lang}/blog/tags/${formatedTag}`}>

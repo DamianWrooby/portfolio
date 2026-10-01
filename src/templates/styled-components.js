@@ -1,6 +1,7 @@
-import styled from "styled-components";
-import SectionHeader from "../components/molecules/SectionHeader/SectionHeader";
-import Content from "../components/atoms/Content/Content";
+import styled from 'styled-components';
+
+import Content from '../components/atoms/Content/Content';
+import SectionHeader from '../components/molecules/SectionHeader/SectionHeader';
 
 export const PostsSection = styled.section`
 	color: ${({ theme }) => theme.lightGray};
@@ -90,7 +91,7 @@ export const Text = styled(Content)`
 	h4,
 	h5,
 	h6 {
-		font-family: "Sarala", sans-serif;
+		font-family: 'Sarala', sans-serif;
 		font-weight: ${({ theme }) => theme.bold};
 		color: ${({ theme }) => theme.white};
 		padding: 20px 0;

@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useContext } from 'react';
 import gsap from 'gsap';
-import Links from './Links';
+import React, { useContext, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import MenuBtn from '../Navigation/MenuBtn';
+
 import { NavigationContext } from '../../../contexts/NavigationContext';
+import MenuBtn from '../Navigation/MenuBtn';
+import Links from './Links';
 
 const Wrapper = styled.div`
 	position: relative;
@@ -69,12 +70,8 @@ const MobileNav = ({ lang }) => {
 		const content = contentRef.current;
 
 		if (list && btn && background && content) {
-			const [
-				button
-			] = btn.children;
-			const listItems = [
-				...list.children
-			];
+			const [button] = btn.children;
+			const listItems = [...list.children];
 
 			const close = () => {
 				tl.reverse();
@@ -85,22 +82,26 @@ const MobileNav = ({ lang }) => {
 				tl.reversed() ? tl.play() : tl.reverse();
 			};
 
-			listItems.forEach((item) => item.addEventListener('click', close));
+			listItems.forEach(item => item.addEventListener('click', close));
 			button.addEventListener('click', handleClick);
 
 			const tl = gsap.timeline({
 				defaults: { ease: 'Power3.easeOut' },
-				reversed: true
+				reversed: true,
 			});
 
 			tl.set(content, { visibility: 'visible' });
 			tl.to(background, {
 				transform: 'translate(0,-15%)',
 				duration: 0.1,
-				ease: ' Circ.easeOut'
+				ease: ' Circ.easeOut',
 			});
 			tl.addLabel('showItems');
-			tl.from(listItems, { x: -50, autoAlpha: 0, stagger: 0.1, duration: 0.2 }, 'showItems');
+			tl.from(
+				listItems,
+				{ x: -50, autoAlpha: 0, stagger: 0.1, duration: 0.2 },
+				'showItems',
+			);
 		}
 	}, []);
 

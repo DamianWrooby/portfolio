@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 const useFilter = initialValues => {
 	const [filters, setFilters] = useState(initialValues);

@@ -48,11 +48,8 @@ const SectionHeader = ({ className, heading, paragraph = '', tag = 'h2' }) => {
 
 SectionHeader.propTypes = {
 	heading: PropTypes.string.isRequired,
-	paragraph: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.object
-	]),
-	tag: PropTypes.string
+	paragraph: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+	tag: PropTypes.string,
 };
 
 export default SectionHeader;

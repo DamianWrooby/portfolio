@@ -49,7 +49,7 @@ const Tags = ({ pageContext, data }) => {
 
 	filters.language !== 'all' &&
 		(postsList = postsList.filter(
-			post => post.props.postLanguage === filters.language
+			post => post.props.postLanguage === filters.language,
 		));
 	filters.sort === 'newest' && (postsList = postsList.reverse());
 
@@ -119,5 +119,7 @@ export const Head = ({ pageContext }) => {
 		language === 'pl'
 			? `Strona zawierająca wszystkie posty z tagiem "${tag}"`
 			: `Page containing all posts tagged with "${tag}"`;
-	return <Seo title={`Tag: ${tag}`} description={description} lang={language} />;
+	return (
+		<Seo title={`Tag: ${tag}`} description={description} lang={language} />
+	);
 };

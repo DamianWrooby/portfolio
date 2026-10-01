@@ -1,11 +1,11 @@
-import gsap from "gsap";
-import React, { useEffect, useRef } from "react";
-import styled from "styled-components";
+import gsap from 'gsap';
+import React, { useEffect, useRef } from 'react';
+import styled from 'styled-components';
 
-import emailIcon from "../../../assets/icons/email.svg";
-import githubIcon from "../../../assets/icons/github.svg";
-import twitterIcon from "../../../assets/icons/twitter.svg";
-import ListItem from "../../atoms/ListItem/ListItem";
+import emailIcon from '../../../assets/icons/email.svg';
+import githubIcon from '../../../assets/icons/github.svg';
+import twitterIcon from '../../../assets/icons/twitter.svg';
+import ListItem from '../../atoms/ListItem/ListItem';
 
 const Wrapper = styled.div`
 	display: flex;
@@ -58,10 +58,10 @@ const SocialLinks = ({ lang }) => {
 			[...list.children].forEach(child => {
 				gsap.from(child, {
 					autoAlpha: 0,
-					y: "-=20",
+					y: '-=20',
 					scrollTrigger: {
 						trigger: child,
-						start: "top bottom-=50px",
+						start: 'top bottom-=50px',
 					},
 				});
 			});
@@ -70,13 +70,13 @@ const SocialLinks = ({ lang }) => {
 
 	return (
 		<Wrapper>
-			{lang === "en" && (
+			{lang === 'en' && (
 				<StyledParagraph>
 					Take a look at my latest project on GitHub or follow me on Twitter if
 					you enjoying web devlopment world stuff.
 				</StyledParagraph>
 			)}
-			{lang === "pl" && (
+			{lang === 'pl' && (
 				<StyledParagraph>
 					Sprawdź moje projekty na GitHub lub śledź mnie na Twitterze jeśli
 					interesują cię treści ze świata web developmentu.

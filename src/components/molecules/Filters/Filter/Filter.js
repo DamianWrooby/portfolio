@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
-import React from "react";
-import styled from "styled-components";
+import PropTypes from 'prop-types';
+import React from 'react';
+import styled from 'styled-components';
 
 const Wrapper = styled.div`
 	color: ${({ theme }) => theme.lightGray};
@@ -42,7 +42,7 @@ const Filter = ({ name, type, label, options, value, onValueChange }) => {
 	);
 
 	switch (type) {
-		case "option":
+		case 'option':
 			return SelectFilter;
 		default:
 			return null;
@@ -57,7 +57,7 @@ Filter.propTypes = {
 		PropTypes.shape({
 			value: PropTypes.string.isRequired,
 			label: PropTypes.string,
-		})
+		}),
 	),
 	defaultValue: PropTypes.string,
 	value: PropTypes.string.isRequired,

@@ -1,5 +1,6 @@
-import { fireEvent, render, screen } from '@testing-library/react';
 import 'jest-styled-components';
+
+import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 
@@ -123,10 +124,7 @@ describe('Button', () => {
 
 	it('uses the bright neon cyan for animated label text', () => {
 		renderWithTheme(<Button label="Click me" animated />);
-		expect(screen.getByRole('button')).toHaveStyleRule(
-			'color',
-			theme.neonBlue,
-		);
+		expect(screen.getByRole('button')).toHaveStyleRule('color', theme.neonBlue);
 	});
 
 	it('keeps its variant colour while disabled', () => {

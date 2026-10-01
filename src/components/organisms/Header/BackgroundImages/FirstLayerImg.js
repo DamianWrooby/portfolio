@@ -22,7 +22,7 @@ const FirstLayerImg = ({ className }) => {
 		debounce(() => {
 			setObjectFit(isWideScreen ? 'contain' : 'cover');
 		}, 100),
-		[isWideScreen]
+		[isWideScreen],
 	);
 
 	useEffect(() => {

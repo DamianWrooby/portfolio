@@ -1,5 +1,5 @@
-import React from "react";
-import styled, { css } from "styled-components";
+import React from 'react';
+import styled, { css } from 'styled-components';
 
 const InputItem = styled.div`
 	width: 100%;
@@ -76,8 +76,8 @@ const FormInput = ({
 	<InputItem>
 		<StyledInput
 			type="text"
-			as={textarea ? "textarea" : "input"}
-			rows={textarea ? "6" : undefined}
+			as={textarea ? 'textarea' : 'input'}
+			rows={textarea ? '6' : undefined}
 			id={id}
 			name={id}
 			placeholder=" "

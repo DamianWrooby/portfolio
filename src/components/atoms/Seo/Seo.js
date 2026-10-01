@@ -14,7 +14,13 @@ import siteMetadata from '../../../consts/siteMetadata';
 //
 // `<html lang>` is NOT set here; the Head API cannot set html attributes, so
 // gatsby-ssr.js owns it via `setHtmlAttributes`.
-function Seo({ description = '', lang = 'en', meta = [], title, image: metaImage }) {
+function Seo({
+	description = '',
+	lang = 'en',
+	meta = [],
+	title,
+	image: metaImage,
+}) {
 	const metaDescription = description || siteMetadata.description;
 
 	// Contentful returns protocol-relative URLs (`//images.ctfassets.net/...`),
@@ -27,7 +33,9 @@ function Seo({ description = '', lang = 'en', meta = [], title, image: metaImage
 
 	// Replaces react-helmet's `titleTemplate`, which the Head API has no
 	// equivalent for. Pages pass the page-specific part only.
-	const fullTitle = title ? `${title} | ${siteMetadata.title}` : siteMetadata.title;
+	const fullTitle = title
+		? `${title} | ${siteMetadata.title}`
+		: siteMetadata.title;
 
 	return (
 		<>
@@ -49,7 +57,12 @@ function Seo({ description = '', lang = 'en', meta = [], title, image: metaImage
 				content={siteMetadata.googleSiteVerification}
 			/>
 			{meta.map(({ name, property, content }) => (
-				<meta key={name || property} name={name} property={property} content={content} />
+				<meta
+					key={name || property}
+					name={name}
+					property={property}
+					content={content}
+				/>
 			))}
 		</>
 	);

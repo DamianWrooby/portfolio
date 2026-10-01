@@ -22,13 +22,13 @@ const ToC = ({ headings, lang }) => (
 		{lang === 'en' && <h2>Table of contents</h2>}
 		{lang === 'pl' && <h2>Spis treści</h2>}
 		<ol>
-			{headings.map((heading) => {
+			{headings.map(heading => {
 				return (
 					<li key={heading.title}>
 						<a href={`${heading.url}`}>{heading.title}</a>
 						{heading.items && heading.items.length > 0 && (
 							<ul>
-								{heading.items.map((nestedHeading) => {
+								{heading.items.map(nestedHeading => {
 									return (
 										<li key={nestedHeading.title}>
 											<a href={`${nestedHeading.url}`}>{nestedHeading.title}</a>

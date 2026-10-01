@@ -1,6 +1,6 @@
-import { Highlight, themes } from "prism-react-renderer";
-import React from "react";
-import styled from "styled-components";
+import { Highlight, themes } from 'prism-react-renderer';
+import React from 'react';
+import styled from 'styled-components';
 
 const Line = styled.div`
 	display: table-row;
@@ -28,13 +28,19 @@ const StyledPre = styled.pre`
 	border: 1px solid #349898;
 	border-radius: 5px;
 	background-color: #001929 !important;
-	font-family: Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+	font-family:
+		Menlo,
+		Monaco,
+		Consolas,
+		Liberation Mono,
+		Courier New,
+		monospace;
 	font-weight: 400;
 	white-space: pre-wrap;
 `;
 
 let highlightStart = false;
-const highlightClassName = "gatsby-highlight-code-line";
+const highlightClassName = 'gatsby-highlight-code-line';
 
 const highlightLine = (lineArray, lineProps) => {
 	let shouldExclude = false;
@@ -43,19 +49,19 @@ const highlightLine = (lineArray, lineProps) => {
 		const content = line.content;
 
 		// Highlight lines with "// highlight-line"
-		if (content.replace(/\s/g, "").includes("highlightLine")) {
+		if (content.replace(/\s/g, '').includes('highlightLine')) {
 			lineProps.className = `${lineProps.className} ${highlightClassName}`;
-			line.content = content.replace("highlightLine", "");
+			line.content = content.replace('highlightLine', '');
 		}
 
 		// Stop highlighting
-		if (!!highlightStart && content.replace(/\s/g, "") === "highlightLineEnd") {
+		if (!!highlightStart && content.replace(/\s/g, '') === 'highlightLineEnd') {
 			highlightStart = false;
 			shouldExclude = true;
 		}
 
 		// Start highlighting after "//highlight-start"
-		if (content.replace(/\s/g, "") === "highlightLineStart") {
+		if (content.replace(/\s/g, '') === 'highlightLineStart') {
 			highlightStart = true;
 			shouldExclude = true;
 		}
@@ -71,10 +77,7 @@ const highlightLine = (lineArray, lineProps) => {
 
 const CodeBlock = ({ children }) => {
 	return (
-		<Highlight
-			code={children}
-			theme={themes.nightOwl}
-			language="javascript">
+		<Highlight code={children} theme={themes.nightOwl} language="javascript">
 			{({ className, style, tokens, getLineProps, getTokenProps }) => (
 				<StyledPre className={className} style={{ ...style }}>
 					{tokens.map((line, i) => {
