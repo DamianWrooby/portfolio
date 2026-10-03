@@ -1,4 +1,4 @@
 export const initialFilters = {
-	language: "all",
-	sort: "newest",
+	language: 'all',
+	sort: 'newest',
 };

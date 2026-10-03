@@ -1,9 +1,9 @@
-import PropTypes from "prop-types";
-import React from "react";
-import styled from "styled-components";
+import PropTypes from 'prop-types';
+import React from 'react';
+import styled from 'styled-components';
 
-import { languages } from "../../../consts/languages";
-import Filter from "./Filter/Filter";
+import { languages } from '../../../consts/languages';
+import Filter from './Filter/Filter';
 
 const FiltersWrapper = styled.div`
 	margin: auto;
@@ -23,12 +23,12 @@ const Filters = ({ lang, filterValues, onFiltersChange }) => {
 			});
 			return acc;
 		},
-		[{ value: "all", label: lang === "pl" ? "Wszystkie" : "All" }]
+		[{ value: 'all', label: lang === 'pl' ? 'Wszystkie' : 'All' }],
 	);
 
 	const sortOptions = [
-		{ value: "oldest", label: lang === "pl" ? "Najstarsze" : "Oldest" },
-		{ value: "newest", label: lang === "pl" ? "Najnowsze" : "Newest" },
+		{ value: 'oldest', label: lang === 'pl' ? 'Najstarsze' : 'Oldest' },
+		{ value: 'newest', label: lang === 'pl' ? 'Najnowsze' : 'Newest' },
 	];
 
 	return (
@@ -37,7 +37,7 @@ const Filters = ({ lang, filterValues, onFiltersChange }) => {
 				name="language"
 				type="option"
 				options={languageOptions}
-				label={lang === "pl" ? "Język" : "Language"}
+				label={lang === 'pl' ? 'Język' : 'Language'}
 				value={filterValues.language}
 				onValueChange={onFiltersChange}
 			/>
@@ -45,7 +45,7 @@ const Filters = ({ lang, filterValues, onFiltersChange }) => {
 				name="sort"
 				type="option"
 				options={sortOptions}
-				label={lang === "pl" ? "Sortuj" : "Sort"}
+				label={lang === 'pl' ? 'Sortuj' : 'Sort'}
 				value={filterValues.sort}
 				onValueChange={onFiltersChange}
 			/>

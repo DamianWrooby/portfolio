@@ -1,6 +1,6 @@
-import debounce from "../debounce";
+import debounce from '../debounce';
 
-describe("debounce", () => {
+describe('debounce', () => {
 	beforeEach(() => {
 		jest.useFakeTimers();
 	});
@@ -9,14 +9,14 @@ describe("debounce", () => {
 		jest.useRealTimers();
 	});
 
-	it("does not call the function before the timeout elapses", () => {
+	it('does not call the function before the timeout elapses', () => {
 		const fn = jest.fn();
 		const debounced = debounce(fn, 300);
 		debounced();
 		expect(fn).not.toHaveBeenCalled();
 	});
 
-	it("calls the function once after the timeout", () => {
+	it('calls the function once after the timeout', () => {
 		const fn = jest.fn();
 		const debounced = debounce(fn, 300);
 		debounced();
@@ -24,15 +24,15 @@ describe("debounce", () => {
 		expect(fn).toHaveBeenCalledTimes(1);
 	});
 
-	it("passes arguments through to the wrapped function", () => {
+	it('passes arguments through to the wrapped function', () => {
 		const fn = jest.fn();
 		const debounced = debounce(fn, 300);
-		debounced("hello", 42);
+		debounced('hello', 42);
 		jest.advanceTimersByTime(300);
-		expect(fn).toHaveBeenCalledWith("hello", 42);
+		expect(fn).toHaveBeenCalledWith('hello', 42);
 	});
 
-	it("resets the timer when called again before the timeout", () => {
+	it('resets the timer when called again before the timeout', () => {
 		const fn = jest.fn();
 		const debounced = debounce(fn, 300);
 		debounced();
@@ -44,7 +44,7 @@ describe("debounce", () => {
 		expect(fn).toHaveBeenCalledTimes(1);
 	});
 
-	it("uses 300ms as the default timeout", () => {
+	it('uses 300ms as the default timeout', () => {
 		const fn = jest.fn();
 		const debounced = debounce(fn);
 		debounced();

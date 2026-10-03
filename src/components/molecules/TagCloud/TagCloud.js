@@ -1,8 +1,8 @@
-import PropTypes from "prop-types";
-import React from "react";
-import styled from "styled-components";
+import PropTypes from 'prop-types';
+import React from 'react';
+import styled from 'styled-components';
 
-import Tags from "../Tags/Tags";
+import Tags from '../Tags/Tags';
 
 const Wrapper = styled.div`
 	margin: auto;
@@ -21,7 +21,7 @@ const TagCloud = ({ tags, lang }) => {
 	return (
 		<Wrapper>
 			<Label>
-				{lang === "pl" ? "Szukaj wg tematów:" : "Search blog by topics:"}
+				{lang === 'pl' ? 'Szukaj wg tematów:' : 'Search blog by topics:'}
 			</Label>
 			<Tags tags={tags} lang={lang} isAnimated />
 		</Wrapper>

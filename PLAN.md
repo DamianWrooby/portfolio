@@ -1,12 +1,14 @@
 # Technologies Section Redesign Plan
 
 ## Goal
+
 Replace the plain logo-list "Technologies" section with a "How I Build Software" capability section
 using 3 animated skill cards, hover glow/scale effects, and updated copy in both EN and PL.
 
 ---
 
 ## User Choices
+
 - **Layout**: 3 Skill Cards (Enterprise Frontend | Fullstack & APIs | AI & Product)
 - **Interactivity**: CSS hover glow + scale (no extra JS)
 - **Lottie animation**: Keep, moved below the card grid (centered)
@@ -16,11 +18,11 @@ using 3 animated skill cards, hover glow/scale effects, and updated copy in both
 
 ## Files to Change
 
-| File | Action |
-|------|--------|
-| `src/components/molecules/SkillCards/SkillCards.js` | **CREATE** — new molecule replacing TechnologiesList |
-| `src/components/organisms/Technologies/Technologies.js` | **MODIFY** — new title, swap TechnologiesList → SkillCards, restructure layout |
-| `src/components/molecules/TechnologiesList/TechnologiesList.js` | **KEEP** (not deleted — used nowhere else currently, but left for safety) |
+| File                                                            | Action                                                                         |
+| --------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| `src/components/molecules/SkillCards/SkillCards.js`             | **CREATE** — new molecule replacing TechnologiesList                           |
+| `src/components/organisms/Technologies/Technologies.js`         | **MODIFY** — new title, swap TechnologiesList → SkillCards, restructure layout |
+| `src/components/molecules/TechnologiesList/TechnologiesList.js` | **KEEP** (not deleted — used nowhere else currently, but left for safety)      |
 
 ---
 
@@ -31,6 +33,7 @@ using 3 animated skill cards, hover glow/scale effects, and updated copy in both
 ### Card Data (hardcoded, lang-aware)
 
 **Card 1 – Enterprise Frontend Engineering**
+
 - Icon: `🧠`
 - EN description: "Building scalable, enterprise-ready SPAs with strong state management and performance focus."
 - PL description: "Tworzenie skalowalnych, gotowych na środowisko produkcyjne aplikacji SPA z silnym zarządzaniem stanem."
@@ -50,6 +53,7 @@ using 3 animated skill cards, hover glow/scale effects, and updated copy in both
   - Testy jednostkowe i integracyjne (Jasmine, Jest)
 
 **Card 2 – Fullstack & APIs**
+
 - Icon: `⚙️`
 - EN description: "Designing clean APIs and production-ready backend services."
 - PL description: "Projektowanie czystych API i gotowych na produkcję serwisów backendowych."
@@ -67,6 +71,7 @@ using 3 animated skill cards, hover glow/scale effects, and updated copy in both
   - Uwierzytelnianie i zarządzanie sesjami
 
 **Card 3 – AI & Product Engineering**
+
 - Icon: `🤖`
 - EN description: "Integrating AI capabilities into real-world products."
 - PL description: "Integrowanie możliwości AI w rzeczywistych produktach."
@@ -96,6 +101,7 @@ BulletItem     — li with neonBlue "→" prefix, white text
 ```
 
 ### GSAP Animation
+
 - Re-use existing pattern: `gsap.from(card, { autoAlpha: 0, y: '-=30', scrollTrigger: { trigger: card, start: 'top bottom-=80px' } })` staggered via `forEach` with `useRef` on the grid.
 
 ---
@@ -103,12 +109,14 @@ BulletItem     — li with neonBlue "→" prefix, white text
 ## 2. Updated `Technologies` Organism
 
 ### Section header copy changes
-| | EN | PL |
-|--|--|--|
-| Title | "How I Build Software" | "Jak buduję oprogramowanie" |
+
+|          | EN                                                                                | PL                                                                              |
+| -------- | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| Title    | "How I Build Software"                                                            | "Jak buduję oprogramowanie"                                                     |
 | Subtitle | "Frontend-focused product engineer with fullstack and AI integration experience." | "Inżynier produktu z doświadczeniem we frontendzie, fullstack i integracji AI." |
 
 ### Layout restructure
+
 - **Remove** `flex-direction: row` on `xl` from `InnerWrapper` (currently it puts TechnologiesList + Lottie side-by-side).
 - **New layout** in `Main`:
   1. `Separator`
@@ -140,6 +148,7 @@ git push -u origin claude/redesign-tech-section-w90Pu
 ---
 
 ## What Does NOT Change
+
 - File/component name `Technologies` (organism)
 - Scroll anchor `id="technologies"` (nav links still work)
 - `LottieAnimation` molecule (kept, just repositioned)

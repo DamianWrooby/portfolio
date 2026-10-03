@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import styled, { css } from 'styled-components';
-import Links from '../../organisms/Navigation/Links';
+
 import { NavigationContext } from '../../../contexts/NavigationContext';
+import Links from '../../organisms/Navigation/Links';
 import MobileNav from './MobileNav';
 
 const Wrapper = styled.nav`

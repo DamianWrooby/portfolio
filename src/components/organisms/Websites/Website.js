@@ -1,8 +1,9 @@
-import PropTypes from 'prop-types';
-import React, { useRef, useEffect } from 'react';
-import gsap from 'gsap';
-import styled from 'styled-components';
 import { GatsbyImage } from 'gatsby-plugin-image';
+import gsap from 'gsap';
+import PropTypes from 'prop-types';
+import React, { useEffect, useRef } from 'react';
+import styled from 'styled-components';
+
 import listIcon from '../../../assets/images/favicon.png';
 import Button from '../../atoms/Button/Button';
 
@@ -23,7 +24,9 @@ const ImageWrapper = styled.figure`
 	}
 `;
 
-const ContentWrapper = styled.div`width: 100%;`;
+const ContentWrapper = styled.div`
+	width: 100%;
+`;
 
 const Title = styled.h3`
 	font-family: ${({ theme }) => theme.fonts.mainFont};
@@ -43,7 +46,7 @@ const Description = styled.p`
 `;
 
 const StyledImg = styled(GatsbyImage)`
-  border-radius: 20px;
+	border-radius: 20px;
 `;
 
 const ListsContainer = styled.div`
@@ -86,7 +89,7 @@ const ScopeList = styled.ul`
 const TechItem = styled.li`
 	padding: 10px 15px 10px 0;
 	&:before {
-		content: "";
+		content: '';
 		display: inline-block;
 		width: 20px;
 		height: 10px;
@@ -122,7 +125,7 @@ const Website = ({
 	fullScreenshotUrl,
 	image,
 	imgKey,
-	imgAlt
+	imgAlt,
 }) => {
 	const imageRef = useRef(null);
 	const contentRef = useRef(null);
@@ -137,8 +140,8 @@ const Website = ({
 				x: '-=150',
 				scrollTrigger: {
 					trigger: image,
-					start: 'top bottom-=200px'
-				}
+					start: 'top bottom-=200px',
+				},
 			});
 			gsap.from(content.children, {
 				autoAlpha: 0,
@@ -147,17 +150,17 @@ const Website = ({
 				stagger: 0.1,
 				scrollTrigger: {
 					trigger: image,
-					start: 'top bottom-=200px'
-				}
+					start: 'top bottom-=200px',
+				},
 			});
 		}
 	}, []);
 
-	const scopeList = scopeOfWork.map((el) => {
+	const scopeList = scopeOfWork.map(el => {
 		return <ScopeItem key={el}>{el}</ScopeItem>;
 	});
 
-	const techList = technologies.map((el) => {
+	const techList = technologies.map(el => {
 		return <TechItem key={el}>{el}</TechItem>;
 	});
 
@@ -192,7 +195,13 @@ const Website = ({
 						/>
 					)}
 					{websiteUrl === ' ' ? null : (
-						<Button renderAs="a" label="Live" title="Live" link={websiteUrl} animated={true} />
+						<Button
+							renderAs="a"
+							label="Live"
+							title="Live"
+							link={websiteUrl}
+							animated={true}
+						/>
 					)}
 				</ButtonsWrapper>
 			</ContentWrapper>
@@ -210,7 +219,7 @@ Website.propTypes = {
 	title: PropTypes.string.isRequired,
 	scopeOfWork: PropTypes.array.isRequired,
 	lang: PropTypes.string.isRequired,
-	fullScreenshotUrl: PropTypes.string
+	fullScreenshotUrl: PropTypes.string,
 };
 
 export default Website;

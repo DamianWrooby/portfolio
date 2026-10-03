@@ -39,7 +39,9 @@ const Title = styled.h1`
 	font-weight: 700;
 	color: white;
 	z-index: 3;
-	text-shadow: 0px 4px 3px rgba(0, 0, 0, 1), 0px 8px 13px rgba(0, 0, 0, 1),
+	text-shadow:
+		0px 4px 3px rgba(0, 0, 0, 1),
+		0px 8px 13px rgba(0, 0, 0, 1),
 		0px 18px 23px rgba(0, 0, 0, 0.6);
 	${({ theme }) => theme.mq.md} {
 		font-size: ${({ theme }) => theme.fontSize.xxxl};
@@ -59,7 +61,9 @@ const Subtitle = styled.h2`
 	text-align: center;
 	color: white;
 	z-index: 3;
-	text-shadow: 0px 4px 3px rgba(0, 0, 0, 1), 0px 8px 13px rgba(0, 0, 0, 1),
+	text-shadow:
+		0px 4px 3px rgba(0, 0, 0, 1),
+		0px 8px 13px rgba(0, 0, 0, 1),
 		0px 18px 23px rgba(0, 0, 0, 0.6);
 	${({ theme }) => theme.mq.md} {
 		font-size: ${({ theme }) => theme.fontSize.xxl};
@@ -80,7 +84,9 @@ const SecondTitle = styled.p`
 	font-weight: 700;
 	color: white;
 	z-index: 3;
-	text-shadow: 0px 4px 3px rgba(0, 0, 0, 1), 0px 8px 13px rgba(0, 0, 0, 1),
+	text-shadow:
+		0px 4px 3px rgba(0, 0, 0, 1),
+		0px 8px 13px rgba(0, 0, 0, 1),
 		0px 18px 23px rgba(0, 0, 0, 0.6);
 	${({ theme }) => theme.mq.lg} {
 		top: 39vh;
@@ -101,7 +107,9 @@ const SecondSubtitle = styled.p`
 	font-weight: 700;
 	color: white;
 	z-index: 3;
-	text-shadow: 0px 4px 3px rgba(0, 0, 0, 1), 0px 8px 13px rgba(0, 0, 0, 1),
+	text-shadow:
+		0px 4px 3px rgba(0, 0, 0, 1),
+		0px 8px 13px rgba(0, 0, 0, 1),
 		0px 18px 23px rgba(0, 0, 0, 0.6);
 	${({ theme }) => theme.mq.lg} {
 		top: 49vh;
@@ -220,11 +228,11 @@ const Header = ({ lang }) => {
 		tl.fromTo(
 			title,
 			{ y: '-=200' },
-			{ duration: 1, y: '+=200', autoAlpha: 1 }
+			{ duration: 1, y: '+=200', autoAlpha: 1 },
 		).fromTo(
 			subtitle,
 			{ x: '-=100' },
-			{ duration: 1, x: '+=100', autoAlpha: 1 }
+			{ duration: 1, x: '+=100', autoAlpha: 1 },
 		);
 
 		tl2
@@ -237,7 +245,7 @@ const Header = ({ lang }) => {
 					duration: 3,
 					ease: 'power4.in',
 					autoAlpha: 1,
-				}
+				},
 			)
 			.to(
 				[title, subtitle],
@@ -246,7 +254,7 @@ const Header = ({ lang }) => {
 					y: -100,
 					autoAlpha: 0,
 				},
-				'-=3'
+				'-=3',
 			)
 			.fromTo(
 				secondTitle,
@@ -260,7 +268,7 @@ const Header = ({ lang }) => {
 					ease: 'power1.in',
 					autoAlpha: 1,
 				},
-				'-=3'
+				'-=3',
 			)
 			.fromTo(
 				secondSubtitle,
@@ -272,7 +280,7 @@ const Header = ({ lang }) => {
 					y: '-=200',
 					ease: 'power1.in',
 				},
-				'-=2'
+				'-=2',
 			)
 			.fromTo(
 				secondSubtitle,
@@ -284,7 +292,7 @@ const Header = ({ lang }) => {
 					ease: 'power4.in',
 					autoAlpha: 1,
 				},
-				'-=2'
+				'-=2',
 			)
 			.fromTo(
 				firstLayer,
@@ -296,7 +304,7 @@ const Header = ({ lang }) => {
 					ease: 'power4.in',
 					autoAlpha: 0,
 				},
-				'-=2'
+				'-=2',
 			)
 			.fromTo(
 				secondLayerBg,
@@ -308,7 +316,7 @@ const Header = ({ lang }) => {
 					ease: 'power4.in',
 					autoAlpha: 0.4,
 				},
-				'-=1'
+				'-=1',
 			)
 			.to(secondTitle, {
 				autoAlpha: 1,
@@ -330,7 +338,7 @@ const Header = ({ lang }) => {
 					autoAlpha: 0,
 					duration: 0.5,
 				},
-				'-=0.5'
+				'-=0.5',
 			);
 
 		// Replaces the ScrollMagic scene:

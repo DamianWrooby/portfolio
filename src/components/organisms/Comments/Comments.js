@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import CommentForm from "../../molecules/Forms/CommentForm";
-import Comment from "./Comment";
+import CommentForm from '../../molecules/Forms/CommentForm';
+import Comment from './Comment';
 
 const CommentsContainer = styled.div`
 	max-width: ${({ theme }) => theme.articleContainerWidth};
@@ -29,8 +29,8 @@ const CommentList = styled.div`
 const Comments = ({ lang, comments, postId }) => {
 	return (
 		<CommentsContainer>
-			{lang === "en" && <h2>Join the discussion</h2>}
-			{lang === "pl" && <h2>Dołącz do dyskusji</h2>}
+			{lang === 'en' && <h2>Join the discussion</h2>}
+			{lang === 'pl' && <h2>Dołącz do dyskusji</h2>}
 			<CommentForm lang={lang} postId={postId} />
 			<CommentList>
 				{comments.length > 0 &&

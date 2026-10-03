@@ -94,7 +94,10 @@ const DEFAULT_LANGUAGE = 'en';
 const PAGES_DIR = path.resolve('./src/pages');
 
 const getLocalizedRoute = componentPath => {
-	const relative = path.relative(PAGES_DIR, componentPath).split(path.sep).join('/');
+	const relative = path
+		.relative(PAGES_DIR, componentPath)
+		.split(path.sep)
+		.join('/');
 	const [name, ...rest] = relative.split('.');
 	const route = `/${name.replace(/(^|\/)index$/, '')}/`.replace(/\/+/g, '/');
 
@@ -105,18 +108,24 @@ const getLocalizedRoute = componentPath => {
 	}
 
 	const [firstSegment] = name.split('/');
-	const language = /^[a-z]{2}$/.test(firstSegment) && name.includes('/') ? firstSegment : DEFAULT_LANGUAGE;
+	const language =
+		/^[a-z]{2}$/.test(firstSegment) && name.includes('/')
+			? firstSegment
+			: DEFAULT_LANGUAGE;
 	return { path: route, language };
 };
 
-const isOwnPage = componentPath => !path.relative(PAGES_DIR, componentPath).startsWith('..');
+const isOwnPage = componentPath =>
+	!path.relative(PAGES_DIR, componentPath).startsWith('..');
 
 exports.onCreatePage = async ({ page, actions }) => {
 	const { createPage, deletePage } = actions;
 
 	if (page.context.slug || !isOwnPage(page.componentPath)) return;
 
-	const { path: localizedPath, language } = getLocalizedRoute(page.componentPath);
+	const { path: localizedPath, language } = getLocalizedRoute(
+		page.componentPath,
+	);
 	const newPage = {
 		...page,
 		path: page.path === '/404.html' ? '/404.html' : localizedPath,

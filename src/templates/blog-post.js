@@ -1,38 +1,38 @@
-import { collection, onSnapshot, query, where } from "firebase/firestore";
-import { graphql } from "gatsby";
-import { GatsbyImage } from "gatsby-plugin-image";
-import PropTypes from "prop-types";
-import React, { useEffect, useState } from "react";
-import ReactMarkdown from "react-markdown";
-import rehypeSlug from "rehype-slug";
-import remarkGfm from "remark-gfm";
+import { collection, onSnapshot, query, where } from 'firebase/firestore';
+import { graphql } from 'gatsby';
+import { GatsbyImage } from 'gatsby-plugin-image';
+import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
+import ReactMarkdown from 'react-markdown';
+import rehypeSlug from 'rehype-slug';
+import remarkGfm from 'remark-gfm';
 
-import Seo from "../components/atoms/Seo/Seo";
-import Separator from "../components/atoms/Separator/Separator";
-import Footer from "../components/molecules/Footer/Footer";
-import ToC from "../components/molecules/ToC/ToC";
-import Comments from "../components/organisms/Comments/Comments";
-import Navigation from "../components/organisms/Navigation/Navigation";
-import NavigationProvider from "../contexts/NavigationContext";
-import Layout from "../layouts/layout";
-import { db } from "../services/firebase";
-import CodeBlock from "../utils/CodeBlock";
+import Seo from '../components/atoms/Seo/Seo';
+import Separator from '../components/atoms/Separator/Separator';
+import Footer from '../components/molecules/Footer/Footer';
+import ToC from '../components/molecules/ToC/ToC';
+import Comments from '../components/organisms/Comments/Comments';
+import Navigation from '../components/organisms/Navigation/Navigation';
+import NavigationProvider from '../contexts/NavigationContext';
+import Layout from '../layouts/layout';
+import { db } from '../services/firebase';
+import CodeBlock from '../utils/CodeBlock';
 import {
 	ArticleContent,
 	FeatureImageWrapper,
 	HorizontalLine,
 	PostHeader,
 	Text,
-} from "./styled-components";
+} from './styled-components';
 
 // Extract h2/h3 headings from markdown and build the ToC item tree.
 // Uses the same slug algorithm as rehype-slug (github-slugger-compatible).
 function slugify(text) {
 	return text
 		.toLowerCase()
-		.replace(/[^\w\s-]/g, "")
-		.replace(/\s+/g, "-")
-		.replace(/-+/g, "-")
+		.replace(/[^\w\s-]/g, '')
+		.replace(/\s+/g, '-')
+		.replace(/-+/g, '-')
 		.trim();
 }
 
@@ -58,7 +58,7 @@ const mdComponents = {
 	code({ className, children }) {
 		const isBlock = Boolean(className);
 		if (!isBlock) return <code className={className}>{children}</code>;
-		return <CodeBlock>{String(children).replace(/\n$/, "")}</CodeBlock>;
+		return <CodeBlock>{String(children).replace(/\n$/, '')}</CodeBlock>;
 	},
 };
 
@@ -70,7 +70,7 @@ const BlogPost = ({ data }) => {
 	const [comments, setComments] = useState([]);
 
 	useEffect(() => {
-		const q = query(collection(db, "comments"), where("postId", "==", id));
+		const q = query(collection(db, 'comments'), where('postId', '==', id));
 
 		const unsubscribe = onSnapshot(q, querySnapshot => {
 			const comments = [];
@@ -110,8 +110,7 @@ const BlogPost = ({ data }) => {
 							<ReactMarkdown
 								remarkPlugins={[remarkGfm]}
 								rehypePlugins={[rehypeSlug]}
-								components={mdComponents}
-							>
+								components={mdComponents}>
 								{rawMarkdown}
 							</ReactMarkdown>
 						</Text>

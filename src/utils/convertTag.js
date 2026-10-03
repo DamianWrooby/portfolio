@@ -1,7 +1,7 @@
 exports.convertToPath = tag => {
-	return tag.toLowerCase().replace(" ", "-").replace(".", "_");
+	return tag.toLowerCase().replace(' ', '-').replace('.', '_');
 };
 
 exports.convertToOriginal = tag => {
-	return tag.replace("-", " ").replace("_", ".");
+	return tag.replace('-', ' ').replace('_', '.');
 };

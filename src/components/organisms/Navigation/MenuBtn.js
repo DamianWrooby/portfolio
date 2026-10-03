@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
-import styled, { css } from "styled-components";
+import React, { useContext } from 'react';
+import styled, { css } from 'styled-components';
 
-import { NavigationContext } from "../../../contexts/NavigationContext";
+import { NavigationContext } from '../../../contexts/NavigationContext';
 
 const TopLine = styled.div`
 	position: absolute;

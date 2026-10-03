@@ -122,4 +122,6 @@ const WebsitesIndex = () => {
 
 export default WebsitesIndex;
 
-export const Head = () => <Seo title="Projekty stron internetowych" lang="pl" />;
+export const Head = () => (
+	<Seo title="Projekty stron internetowych" lang="pl" />
+);

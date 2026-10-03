@@ -1,13 +1,13 @@
-import { GatsbyImage } from "gatsby-plugin-image";
-import gsap from "gsap";
-import PropTypes from "prop-types";
-import React, { useEffect, useRef } from "react";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import styled from "styled-components";
+import { GatsbyImage } from 'gatsby-plugin-image';
+import gsap from 'gsap';
+import PropTypes from 'prop-types';
+import React, { useEffect, useRef } from 'react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import styled from 'styled-components';
 
-import listIcon from "../../../assets/images/favicon.png";
-import Button from "../../atoms/Button/Button";
+import listIcon from '../../../assets/images/favicon.png';
+import Button from '../../atoms/Button/Button';
 
 const Wrapper = styled.article`
 	width: 100%;
@@ -70,7 +70,7 @@ const List = styled.ul`
 const Item = styled.li`
 	padding: 10px 15px 10px 0;
 	&:before {
-		content: "";
+		content: '';
 		display: inline-block;
 		width: 20px;
 		height: 10px;
@@ -112,20 +112,20 @@ const Project = ({
 		if (content && image) {
 			gsap.from(image, {
 				autoAlpha: 0,
-				x: "-=150",
+				x: '-=150',
 				scrollTrigger: {
 					trigger: image,
-					start: "top bottom-=200px",
+					start: 'top bottom-=200px',
 				},
 			});
 			gsap.from(content.children, {
 				autoAlpha: 0,
-				y: "-=50",
+				y: '-=50',
 				duration: 0.5,
 				stagger: 0.1,
 				scrollTrigger: {
 					trigger: image,
-					start: "top bottom-=200px",
+					start: 'top bottom-=200px',
 				},
 			});
 		}
@@ -143,16 +143,18 @@ const Project = ({
 			<ContentWrapper ref={contentRef}>
 				<Title>{title}</Title>
 				<Description>
-					<ReactMarkdown remarkPlugins={[remarkGfm]}>{description}</ReactMarkdown>
+					<ReactMarkdown remarkPlugins={[remarkGfm]}>
+						{description}
+					</ReactMarkdown>
 				</Description>
-				{lang === "en" && <ListTitle>Technologies & Tools</ListTitle>}
-				{lang === "pl" && <ListTitle>Technologie i narzędzia</ListTitle>}
+				{lang === 'en' && <ListTitle>Technologies & Tools</ListTitle>}
+				{lang === 'pl' && <ListTitle>Technologie i narzędzia</ListTitle>}
 				<List>{techList}</List>
 				<ButtonsWrapper>
-					{lang === "en" && (
+					{lang === 'en' && (
 						<Button renderAs="a" label="Code" link={codeUrl} animated={false} />
 					)}
-					{lang === "pl" && (
+					{lang === 'pl' && (
 						<Button renderAs="a" label="Kod" link={codeUrl} animated={false} />
 					)}
 					{liveDemoUrl && (

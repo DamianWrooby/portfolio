@@ -1,8 +1,8 @@
-import gsap from "gsap";
-import React, { useEffect, useRef } from "react";
-import styled from "styled-components";
+import gsap from 'gsap';
+import React, { useEffect, useRef } from 'react';
+import styled from 'styled-components';
 
-import Tag from "./Tag/Tag";
+import Tag from './Tag/Tag';
 
 const TagsContainer = styled.div`
 	display: flex;
@@ -20,8 +20,8 @@ const Tags = ({ tags, lang, isAnimated = false }) => {
 		if (tagList && isAnimated) {
 			gsap.from(tagList.children, {
 				autoAlpha: 0,
-				x: "-=1000",
-				y: "-=100",
+				x: '-=1000',
+				y: '-=100',
 				stagger: 0.01,
 			});
 		}

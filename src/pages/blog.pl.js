@@ -104,7 +104,7 @@ const BlogIndex = () => {
 
 	filters.language !== 'all' &&
 		(postsList = postsList.filter(
-			post => post.props.postLanguage === filters.language
+			post => post.props.postLanguage === filters.language,
 		));
 	filters.sort === 'newest' && (postsList = postsList.reverse());
 
